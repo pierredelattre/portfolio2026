@@ -1,8 +1,28 @@
-/* Variables */
-:root {
-  --primary: #262626;
-  --secondary: #737373;
-  --background: #fafafa;
+/* Theme */
+:root,
+:root[data-theme='light'] {
+  --primary: oklch(27% 0 271);
+  --secondary: oklch(55.5% 0 271);
+  --surface: oklch(98.5% 0 271);
+
+  --switch: oklch(0% 0 0);
+
+  /* --selected--color:
+  --selected--background: */
+
+  --color-focus: oklch(0.72 0.16 250);
+
+  --type-school: oklch(73% 0.1 133);
+  --type-fictive: oklch(45.5% 0.2 291.5);
+  --type-freelance: oklch(65% 0.1 223.528);
+}
+
+:root[data-theme='dark'] {
+  --primary: oklch(88.531% 0.0001 271.152);
+  --secondary: oklch(66.655% 0.00008 271.152);
+  --surface: oklch(14.479% 0.00002 271.152);
+
+  --switch: oklch(100% 0 275);
 }
 
 
@@ -16,8 +36,9 @@
 }
 
 body {
-  background: #fafafa;
+  background: var(--surface);
   color: var(--primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 main {
@@ -57,15 +78,15 @@ header .text--secondary {
 }
 
 header .switch {
-  position:absolute;
+  position: absolute;
   top: 2rem;
   right: 2rem;
   width: 20px;
   height: 20px;
-  border: 1px solid #FFF;
   border-radius: 999px;
-  background-color: #262626;
+  background-color: var(--switch);
   cursor: pointer;
+  transition: background-color 0.4s ease;
 }
 
 .header__title {
@@ -155,7 +176,7 @@ header>div {
 
   .header__intro p {
     width: 100%;
-  }  
+  }
 }
 
 /* Home Section */
