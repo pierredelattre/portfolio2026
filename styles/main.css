@@ -11,6 +11,7 @@
   --selected--background: */
 
   --color-focus: oklch(0.72 0.16 250);
+  --color-placeholder: oklch(95.5% 0 271);
 
   --type-school: oklch(73% 0.1 133);
   --type-fictive: oklch(45.5% 0.2 291.5);
@@ -46,6 +47,12 @@ main {
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
   main {
     padding: 1rem;
   }
@@ -73,7 +80,7 @@ header .background {
   transition: height 0.5s ease;
 }
 
-header .text--secondary {
+.text--secondary {
   color: var(--secondary);
 }
 
@@ -180,3 +187,78 @@ header>div {
 }
 
 /* Home Section */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.home #works {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  row-gap: 1rem;
+}
+
+.home #works h3 {
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+
+.home #works .projet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-row: 2;
+}
+
+.home #works .projet .projet__content {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.home #works .projet img {
+  width: 100%;
+  height: auto;
+}
+
+.home #works .projet .tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .25rem;
+}
+
+.home #works .projet .tags .tag {
+  padding: .25rem;
+  background-color: var(--primary);
+  color: var(--surface);
+  font-size: .75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .home #works {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto auto auto auto auto auto;
+    gap: 1.5rem;
+    row-gap: 1rem;
+  }
+
+  .home #works h3 {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .home #works .projet {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+
+  .home #works .projet img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+}
