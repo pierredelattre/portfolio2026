@@ -46,6 +46,13 @@ main {
   padding: 2rem;
 }
 
+a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary);
+  transition: color 0.4s ease;
+}
+
 @media screen and (max-width: 768px) {
   body {
     display: flex;
@@ -186,6 +193,54 @@ header>div {
   }
 }
 
+@media screen and (min-width:769px) and (max-width: 1280px) {
+  header {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto auto auto auto;
+    gap: 1.5rem;
+    row-gap: 3rem;
+  }
+
+  header .switch {
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .header__title {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .header__cities {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .header__services {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  .header__email {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+
+  .header__intro {
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+
+  .header__links {
+    grid-column: 1 / 3;
+    grid-row: 4;
+  }
+
+  .header__intro p {
+    width: 70%;
+  }
+}
+
 /* Home Section */
 .home {
   display: flex;
@@ -209,6 +264,7 @@ header>div {
 .home #works .projet {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
   grid-row: 2;
 }
@@ -216,6 +272,13 @@ header>div {
 .home #works .projet .projet__content {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
+}
+
+.home #works .projet .projet__content__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: .5rem;
 }
 
@@ -256,9 +319,44 @@ header>div {
     grid-row: auto;
   }
 
+  .home #works .projet__image {
+    width: 100%;
+    height: auto;
+  }
+
   .home #works .projet img {
     width: 100%;
     height: 320px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width:769px) and (max-width: 1280px) {
+  .home #works {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .home #works h3 {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .home #works .projet {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .home #works .projet__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .home #works .projet img {
+    width: 100%;
+    height: 340px;
     object-fit: cover;
   }
 }
