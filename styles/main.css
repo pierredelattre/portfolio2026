@@ -180,6 +180,7 @@ header {
     background-color: var(--switch);
     cursor: pointer;
     transition: background-color 0.4s ease;
+    z-index: 1000; /* pour éviter qu'elle passe derrière le header */
 
     @media screen and (max-width: 768px) {
       top: 1rem;
