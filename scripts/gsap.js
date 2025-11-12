@@ -1,15 +1,20 @@
-// Masque le contenu jusqu'à ce que GSAP initialise (pour éviter le flash sur iOS)
+// Force Safari iOS à ne rien afficher avant réinit
+document.documentElement.style.scrollBehavior = "auto"; // désactive le smooth scroll
+window.scrollTo(0, 99999); // envoie tout en bas (hors écran)
+
+// On masque le contenu le temps de la réinit
 document.body.style.visibility = "hidden";
 
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
 }
-window.scrollTo(0, 0);
 
 window.addEventListener("load", () => {
+  // Repositionne la page en haut APRÈS le paint initial
   setTimeout(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    window.scrollTo(0, 0);
 
+    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.clearScrollMemory();
     ScrollTrigger.refresh(true);
 
@@ -22,7 +27,13 @@ window.addEventListener("load", () => {
       ".header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links"
     );
 
-    gsap.set(header, { height: 0, overflow: "hidden", opacity: 0, paddingTop: 0, paddingBottom: 0 });
+    gsap.set(header, {
+      height: 0,
+      overflow: "hidden",
+      opacity: 0,
+      paddingTop: 0,
+      paddingBottom: 0,
+    });
     gsap.set(headerItems, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({ delay: 0.4 });
@@ -33,36 +44,44 @@ window.addEventListener("load", () => {
       paddingTop: "32px",
       paddingBottom: "32px",
       duration: 1.4,
-      ease: "power4.inOut"
+      ease: "power4.inOut",
     });
 
-    tl.to(headerItems, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.08,
-      ease: "power2.out"
-    }, "-=0.5");
+    tl.to(
+      headerItems,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
 
-    tl.to("#works > *", {
-      opacity: 1,
-      y: 0,
-      stagger: 0.08,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=0.2");
+    tl.to(
+      "#works > *",
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.2"
+    );
 
     gsap.to("#playground > h3", {
       scrollTrigger: {
         trigger: "#playground",
         start: "top 80%",
         toggleActions: "play none none none",
-        once: true
+        once: true,
       },
       opacity: 1,
       y: 0,
       duration: 0.8,
-      ease: "power3.out"
+      ease: "power3.out",
     });
 
     gsap.to("#playground .col > *", {
@@ -70,21 +89,19 @@ window.addEventListener("load", () => {
         trigger: "#playground",
         start: "top 75%",
         toggleActions: "play none none none",
-        once: true
+        once: true,
       },
       opacity: 1,
       y: 0,
       stagger: 0.08,
       duration: 1.2,
-      ease: "power3.out"
+      ease: "power3.out",
     });
 
-    // Une fois tout initialisé, on rend la page visible (sécurisé pour iOS)
+    // Réaffiche la page une fois tout prêt
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        document.body.style.visibility = "visible";
-        document.body.classList.add("ready");
-      }, 50);
+      document.body.style.visibility = "visible";
+      document.body.classList.add("ready");
     });
-  }, 10);
+  }, 100);
 });
