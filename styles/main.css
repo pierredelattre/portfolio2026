@@ -50,7 +50,7 @@ body {
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 0rem;
   }
 }
 
