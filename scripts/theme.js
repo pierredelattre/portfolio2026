@@ -4,24 +4,23 @@ const root = document.documentElement;
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 const applyTheme = (theme) => {
-  if (theme) {
-    root.dataset.theme = theme;
-    switchButton?.setAttribute('aria-pressed', String(theme === 'dark'));
-  } else {
-    root.removeAttribute('data-theme');
-    switchButton?.setAttribute('aria-pressed', 'false');
-  }
+  root.dataset.theme = theme;
+  switchButton?.setAttribute('aria-pressed', String(theme === 'dark'));
+};
+
+const syncWithSystemPreference = () => {
+  if (localStorage.getItem(THEME_KEY)) return;
+  applyTheme(prefersDark.matches ? 'dark' : 'light');
 };
 
 const storedTheme = localStorage.getItem(THEME_KEY);
 if (storedTheme) {
   applyTheme(storedTheme);
+} else {
+  syncWithSystemPreference();
 }
 
-prefersDark.addEventListener('change', (event) => {
-  if (localStorage.getItem(THEME_KEY)) return;
-  applyTheme(event.matches ? 'dark' : 'light');
-});
+prefersDark.addEventListener('change', syncWithSystemPreference);
 
 switchButton?.addEventListener('click', () => {
   const current = root.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
