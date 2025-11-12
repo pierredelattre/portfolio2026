@@ -53,7 +53,7 @@ main {
   }
 }
 
-p.text--secondary {
+.text--secondary {
   color: var(--secondary);
 }
 

@@ -94,6 +94,7 @@
 
       & .projet__image {
         overflow: hidden;
+        cursor: pointer;
 
         @media screen and (max-width: 768px) {
           width: 100%;
