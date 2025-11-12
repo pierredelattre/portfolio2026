@@ -18,6 +18,10 @@ window.addEventListener("load", () => {
     ScrollTrigger.clearScrollMemory();
     ScrollTrigger.refresh(true);
 
+    if (window.innerWidth >= 1280) {
+      gsap.set("body", { scale: 0.95, opacity: 0 });
+    }
+
     gsap.set("#works > *", { opacity: 0, y: 40 });
     gsap.set("#playground > h3", { opacity: 0, y: 40 });
     gsap.set("#playground .col > *", { opacity: 0, y: 40 });
@@ -70,6 +74,15 @@ window.addEventListener("load", () => {
       },
       "-=0.2"
     );
+
+    if (window.innerWidth >= 1280) {
+      // Étape finale : zoom avant global du site
+      tl.fromTo("body", 
+        { scale: 0.96, opacity: 0.6 },
+        { scale: 1, opacity: 1, duration: 1.2, ease: "power4.out" },
+        "-=0.6"
+      );
+    }
 
     gsap.to("#playground > h3", {
       scrollTrigger: {
