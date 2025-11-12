@@ -1,3 +1,6 @@
+// Masque le contenu jusqu'à ce que GSAP initialise (pour éviter le flash sur iOS)
+document.body.style.visibility = "hidden";
+
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
@@ -74,6 +77,14 @@ window.addEventListener("load", () => {
       stagger: 0.08,
       duration: 1.2,
       ease: "power3.out"
+    });
+
+    // Une fois tout initialisé, on rend la page visible (sécurisé pour iOS)
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.body.style.visibility = "visible";
+        document.body.classList.add("ready");
+      }, 50);
     });
   }, 10);
 });

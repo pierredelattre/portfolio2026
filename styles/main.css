@@ -1,3 +1,12 @@
+html, body {
+  visibility: hidden;
+}
+
+body.ready {
+  visibility: visible;
+  transition: visibility 0s ease 0s;
+}
+
 /* Theme */
 :root,
 :root[data-theme='light'] {
