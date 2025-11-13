@@ -10,27 +10,27 @@ export const works = [
     cover: 'https://placehold.co/400x600/EEE/31343C'
   },
   {
-    slug: 'framer-experience',
+    slug: 'projet',
     title: 'Projet',
     description:
       'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
-    tags: ['Framer', 'Webdesign'],
-    cover: 'https://placehold.co/400x440/EEE/31343C'
+    tags: ['UI Design'],
+    cover: 'https://placehold.co/400x600/EEE/31343C'
   },
   {
-    slug: 'ux-ui-suite',
+    slug: 'projet',
     title: 'Projet',
     description:
       'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
-    tags: ['UX & UI Design'],
-    cover: 'https://placehold.co/400x520/EEE/31343C'
+    tags: ['UI Design'],
+    cover: 'https://placehold.co/400x600/EEE/31343C'
   },
   {
-    slug: 'design-system-lab',
+    slug: 'projet',
     title: 'Projet',
     description:
       'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
-    tags: ['Design system'],
+    tags: ['UI Design'],
     cover: 'https://placehold.co/400x600/EEE/31343C'
   }
 ]
