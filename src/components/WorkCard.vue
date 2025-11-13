@@ -9,7 +9,7 @@
       <div class="projet__content__title">
         <h4>{{ work.title }}</h4>
         <div class="tags">
-          <div class="tag" v-for="tag in work.tags" :key="tag">{{ tag }}</div>
+          <TagItem v-for="tag in work.tags" :key="tag" :label="tag" />
         </div>
       </div>
       <p class="text--secondary">{{ work.description }}</p>
@@ -21,6 +21,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
+import TagItem from './TagItem.vue'
 
 defineProps({
   work: {
@@ -89,13 +90,6 @@ defineProps({
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.25rem;
-
-    & .tag {
-      padding: 0.25rem;
-      background-color: var(--primary);
-      color: var(--surface);
-      font-size: 0.75rem;
-    }
   }
 }
 

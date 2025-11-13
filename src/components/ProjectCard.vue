@@ -4,7 +4,7 @@
       <div class="projet__content__title">
         <h4>{{ title }}</h4>
         <div v-if="tags?.length" class="tags">
-          <div class="tag" v-for="tag in tags" :key="tag">{{ tag }}</div>
+          <TagItem v-for="tag in tags" :key="tag" :label="tag" />
         </div>
       </div>
       <p class="text--secondary">{{ description }}</p>
@@ -13,6 +13,8 @@
 </template>
 
 <script setup>
+import TagItem from './TagItem.vue'
+
 defineProps({
   title: {
     type: String,
@@ -57,10 +59,4 @@ defineProps({
   gap: 0.25rem;
 }
 
-.tag {
-  padding: 0.25rem;
-  background-color: var(--primary);
-  color: var(--surface);
-  font-size: 0.75rem;
-}
 </style>
