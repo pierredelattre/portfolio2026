@@ -9,7 +9,7 @@
 </script>
 
 <style scoped lang="css">
-  footer {
-    padding: 2rem;
-  }
+footer {
+  padding: 2rem;
+}
 </style>
