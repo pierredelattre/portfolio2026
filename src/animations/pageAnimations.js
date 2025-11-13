@@ -62,8 +62,8 @@ export function initPageAnimations() {
 
       if (header) {
         header.style.height = 'auto'
-        header.style.paddingTop = '32px'
-        header.style.paddingBottom = '32px'
+        // header.style.paddingTop = '32px'
+        // header.style.paddingBottom = '32px'
       }
 
       items?.forEach((el) => {
@@ -223,25 +223,29 @@ export function initPageAnimations() {
       )
 
       if (header && headerItems) {
-        gsap.set(header, {
-          height: 0,
-          overflow: 'hidden',
-          opacity: 0,
-          paddingTop: 0,
-          paddingBottom: 0
-        })
+        if (!window.location.pathname.includes('/projet')) {
+          gsap.set(header, {
+            height: 0,
+            overflow: 'hidden',
+            opacity: 0,
+            paddingTop: 0,
+            paddingBottom: 0
+          })
+        }
         gsap.set(headerItems, { opacity: 0, y: 20 })
 
         const tl = gsap.timeline({ delay: 0.4 })
 
-        tl.to(header, {
-          height: 'auto',
-          opacity: 1,
-          paddingTop: '32px',
-          paddingBottom: '32px',
-          duration: 1.4,
-          ease: 'power4.inOut'
-        })
+        if (!window.location.pathname.includes('/projet')) {
+          tl.to(header, {
+            height: 'auto',
+            opacity: 1,
+            paddingTop: '32px',
+            paddingBottom: '32px',
+            duration: 1.4,
+            ease: 'power4.inOut'
+          })
+        }
 
         tl.to(
           headerItems,
@@ -276,6 +280,25 @@ export function initPageAnimations() {
             { scale: 1, opacity: 1, duration: 1.2, ease: 'power4.out' },
             '-=0.6'
           )
+        }
+      }
+
+      if (window.location.pathname.includes('/projet')) {
+        const headerBg = document.querySelector('header .background')
+
+        // Arriver directement en état SHRINK (120px), pas 600px
+        if (header) {
+          header.style.height = '120px'
+          header.style.opacity = '1'
+          header.style.paddingTop = '32px'
+          header.style.paddingBottom = '32px'
+          header.classList.add('has-background')
+        }
+
+        if (headerBg) {
+          headerBg.style.display = 'block'
+          headerBg.style.height = '0px'
+          headerBg.style.opacity = '1'
         }
       }
 

@@ -319,5 +319,9 @@ header {
     --switch: oklch(100% 0 275);
 
     color: var(--primary);
+
+    & .header__links, & .header__intro {
+      display: none
+    }
   }
 }
