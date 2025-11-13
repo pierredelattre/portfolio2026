@@ -118,8 +118,6 @@ export function initPageAnimations() {
       header,
       {
         height: '120px',
-        paddingTop: '12px',
-        paddingBottom: '12px',
         duration: 0.55,
         ease: 'power3.inOut'
       },
