@@ -8,7 +8,6 @@
       @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"
     ></div>
-    <div class="background"></div>
     <div class="header__title">
       <h1 class="text--secondary">Pierre Delattre</h1>
       <h2>Product Designer</h2>

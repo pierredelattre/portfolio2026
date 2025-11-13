@@ -1,5 +1,8 @@
 <template>
-  <Header />
+  <div id="page-hero">
+    <div id="page-bg" aria-hidden="true"></div>
+    <Header />
+  </div>
   <main>
     <RouterView />
   </main>

@@ -3,6 +3,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 let initialized = false
 let projectBackground = ''
+const PROJECT_BG_HEIGHT = 600
+const MAIN_START_Y = -PROJECT_BG_HEIGHT
+const HEADER_ITEMS_SELECTOR =
+  '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
 
 export function initPageAnimations() {
   if (initialized || typeof window === 'undefined') {
@@ -22,171 +26,156 @@ export function initPageAnimations() {
   }
 
   const handlePageLoaded = () => {
-    const headerBg = document.querySelector('header .background')
+    const header = document.querySelector('header')
+    const mainEl = document.querySelector('main')
+    const pageBg = document.querySelector('#page-bg')
+    const projectSection = document.querySelector('section.projet')
+    const footer = document.querySelector('footer')
 
-    const projectSectionInit = document.querySelector('section.projet')
-    if (projectSectionInit) {
-      const projChildren = projectSectionInit.querySelectorAll(':scope > *')
+    if (projectSection) {
+      const projChildren = projectSection.querySelectorAll(':scope > *')
       projChildren.forEach((el) => {
         el.style.opacity = '0'
         el.style.transform = 'translateY(40px)'
       })
     }
 
-    const footerInit = document.querySelector('footer')
-    if (footerInit) {
-      const footerItems = footerInit.querySelectorAll(':scope > *')
+    if (footer) {
+      const footerItems = footer.querySelectorAll(':scope > *')
       footerItems.forEach((el) => {
         el.style.opacity = '0'
         el.style.transform = 'translateY(60px)'
       })
     }
 
-    if (!headerBg) return
-
-    headerBg.style.opacity = '0'
-    headerBg.style.display = 'block'
-    headerBg.style.height = '0px'
+    if (!header || !mainEl || !pageBg) return
 
     if (!projectBackground) {
-      const headerEl = document.querySelector('header')
-      if (headerEl) headerEl.classList.remove('has-background')
-      headerBg.style.display = 'block'
-      headerBg.style.opacity = '0'
-      headerBg.style.height = '0px'
+      header.classList.remove('has-background', 'is-floating')
+      header.style.removeProperty('min-height')
+      header.style.removeProperty('top')
+      document.body.classList.remove('project-page')
+      header.style.height = 'auto'
+      header.style.opacity = '1'
+      header.style.paddingTop = ''
+      header.style.paddingBottom = ''
 
-      const header = document.querySelector('header')
-      const items = header?.querySelectorAll(
-        '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
-      )
+      pageBg.style.opacity = '0'
+      pageBg.style.backgroundImage = ''
+      pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
 
-      if (header) {
-        header.style.height = 'auto'
-        // header.style.paddingTop = '32px'
-        // header.style.paddingBottom = '32px'
-      }
+      gsap.killTweensOf(mainEl)
+      gsap.set(mainEl, { clearProps: 'transform' })
 
-      items?.forEach((el) => {
+      const items = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
+      items.forEach((el) => {
         el.style.display = 'flex'
         el.style.opacity = '1'
         el.style.transform = 'translateY(0)'
       })
 
+      if (footer) {
+        gsap.killTweensOf(footer)
+        gsap.set(footer, { clearProps: 'transform' })
+      }
+
       return
     }
 
-    const headerEl = document.querySelector('header')
-    if (headerEl) headerEl.classList.add('has-background')
-    headerBg.style.display = 'block'
-
-    const header = document.querySelector('header')
-    const headerItems = header?.querySelectorAll(
-      '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
-    )
-
-    if (!header || !headerItems) return
-
+    header.classList.add('has-background', 'is-floating')
+    document.body.classList.add('project-page')
     header.style.opacity = '1'
+    header.style.height = 'auto'
+    header.style.paddingTop = '32px'
+    header.style.paddingBottom = '32px'
 
-    const mainEls = header.querySelectorAll('.header__title, .header__cities, .header__services, .header__email')
-    mainEls.forEach((el) => {
+    pageBg.style.opacity = '0'
+    pageBg.style.backgroundImage = `url('${projectBackground}')`
+    pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
+
+    gsap.killTweensOf(mainEl)
+    gsap.set(mainEl, { y: MAIN_START_Y })
+
+    const headerItems = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
+    if (!headerItems.length) return
+    headerItems.forEach((el) => {
       el.style.opacity = '1'
       el.style.transform = 'translateY(0)'
     })
 
-    headerBg.style.backgroundPosition = 'center'
-    headerBg.style.backgroundSize = 'cover'
-    headerBg.style.backgroundImage = `url('${projectBackground}')`
-    headerBg.style.backgroundRepeat = 'no-repeat'
-    headerBg.style.backgroundAttachment = 'scroll'
-    headerBg.style.backgroundPosition = 'center top'
-
-    const tlProject = gsap.timeline()
+    const tlProject = gsap.timeline({ paused: true })
     const toHide = header.querySelectorAll('.header__intro, .header__links')
 
-    tlProject.to(toHide, {
-      opacity: 0,
-      y: -20,
-      duration: 0.35,
-      stagger: 0.06,
-      ease: 'power2.inOut'
-    })
+    if (toHide.length) {
+      tlProject.to(toHide, {
+        opacity: 0,
+        y: -20,
+        duration: 0.35,
+        stagger: 0.06,
+        ease: 'power2.inOut'
+      })
 
-    tlProject.set(toHide, { display: 'none' })
+      tlProject.set(toHide, { display: 'none' })
+    }
 
     tlProject.to(
-      header,
+      pageBg,
       {
-        height: '120px',
-        duration: 0.55,
-        ease: 'power3.inOut'
+        opacity: 1,
+        duration: 1.0,
+        ease: 'power3.out'
       },
-      '-=0.2'
+      toHide.length ? '-=0.1' : '+=0'
     )
-
-    tlProject.to(header, {
-      height: '600px',
-      duration: 1.0,
-      ease: 'power3.out'
-    })
-
-    const bg = document.querySelector('header .background')
 
     tlProject.fromTo(
-      bg,
-      { height: 0, opacity: 0, scale: 1, transformOrigin: 'top center' },
-      { height: '600px', opacity: 1, scale: 1, duration: 1.0, ease: 'power3.out' },
-      '-=1.0'
+      mainEl,
+      { y: MAIN_START_Y },
+      { y: 0, duration: 1.1, ease: 'power3.out' },
+      '<'
     )
 
-    const bgImg = new Image()
-    bgImg.src = projectBackground
+    if (projectSection) {
+      gsap.set('section.projet > *', { opacity: 0, y: 40 })
+      tlProject.to(
+        'section.projet > *',
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.8,
+          ease: 'power3.out'
+        },
+        '+=0.1'
+      )
+    }
 
-    bgImg.onload = () => {
-      if (!bg) return
-
-      tlProject.set(bg, { display: 'block' })
-
-      const toShow = header.querySelectorAll('.header__title, .header__cities, .header__services, .header__email')
-      tlProject.set(toShow, { opacity: 1, y: 0 })
-
-      const projectSection = document.querySelector('section.projet')
-      if (projectSection) {
-        gsap.set('section.projet > *', { opacity: 0, y: 40 })
-        tlProject.to(
-          'section.projet > *',
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.08,
-            duration: 0.8,
-            ease: 'power3.out'
+    if (footer) {
+      const footerChildren = footer.querySelectorAll(':scope > *')
+      if (footerChildren.length > 0) {
+        gsap.set(footerChildren, { opacity: 0, y: 60 })
+        gsap.to(footerChildren, {
+          scrollTrigger: {
+            trigger: footer,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+            once: true
           },
-          '+=0.1'
-        )
-      }
-
-      const footer = document.querySelector('footer')
-      if (footer) {
-        const footerChildren = footer.querySelectorAll(':scope > *')
-        if (footerChildren.length > 0) {
-          gsap.set(footerChildren, { opacity: 0, y: 60 })
-          gsap.to(footerChildren, {
-            scrollTrigger: {
-              trigger: footer,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-              once: true
-            },
-            opacity: 1,
-            y: 0,
-            stagger: 0.08,
-            duration: 1.2,
-            ease: 'power3.out'
-          })
-        }
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 1.2,
+          ease: 'power3.out'
+        })
       }
     }
+
+    tlProject.call(() => {
+      header.classList.remove('is-floating')
+      gsap.set(mainEl, { clearProps: 'transform' })
+    })
+
+    tlProject.play()
   }
 
   window.addEventListener('load', () => {
@@ -284,21 +273,25 @@ export function initPageAnimations() {
       }
 
       if (window.location.pathname.includes('/projet')) {
-        const headerBg = document.querySelector('header .background')
+        const pageBg = document.querySelector('#page-bg')
+        const mainEl = document.querySelector('main')
 
-        // Arriver directement en état SHRINK (120px), pas 600px
         if (header) {
-          header.style.height = '120px'
           header.style.opacity = '1'
           header.style.paddingTop = '32px'
           header.style.paddingBottom = '32px'
-          header.classList.add('has-background')
+          header.classList.add('has-background', 'is-floating')
         }
 
-        if (headerBg) {
-          headerBg.style.display = 'block'
-          headerBg.style.height = '0px'
-          headerBg.style.opacity = '1'
+        document.body.classList.add('project-page')
+
+        if (pageBg) {
+          pageBg.style.opacity = '0'
+          pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
+        }
+
+        if (mainEl) {
+          gsap.set(mainEl, { y: MAIN_START_Y })
         }
       }
 
