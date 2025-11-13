@@ -284,7 +284,7 @@ export function initPageAnimations() {
       ScrollTrigger.refresh(true)
 
       if (window.innerWidth >= 1280) {
-        gsap.set('body', { scale: 0.95, opacity: 0 })
+        gsap.set('body', { scale: 0.96, opacity: 0 })
       }
 
       const worksItems = document.querySelectorAll('#works > *')
@@ -320,6 +320,7 @@ export function initPageAnimations() {
       const measuredHeaderHeight = header ? header.getBoundingClientRect().height || header.scrollHeight : null
 
       if (header && headerItems) {
+        const isDesktop = window.innerWidth >= 1280
         const shouldAnimateHeaderHeight = isProjectPage
         if (!isProjectPage) {
           lockScroll()
@@ -342,13 +343,21 @@ export function initPageAnimations() {
         const tl = gsap.timeline({ delay: 0.4 })
         const introStartLabel = 'introStart'
         const headerRevealCompleteLabel = 'headerRevealComplete'
+        const worksRevealCompleteLabel = 'worksRevealComplete'
+        const WORKS_TWEEN_DURATION = 0.8
+        const WORKS_OVERLAP_OFFSET = 0.2
+        const playFinalBodyScale = () => {
+          if (isDesktop) {
+            gsap.to('body', { scale: 1, opacity: 1, duration: 0.9, ease: 'power3.out' })
+          }
+        }
         const releaseScroll = () => {
           if (!isProjectPage) {
             unlockScroll()
           }
         }
         const finalizeHeaderDimensions = () => {
-          if (!isProjectPage && header) {
+          if (shouldAnimateHeaderHeight && header) {
             header.style.removeProperty('overflow')
             header.style.removeProperty('height')
           }
@@ -376,11 +385,10 @@ export function initPageAnimations() {
           )
         }
 
-        if (window.innerWidth >= 1280) {
-          tl.fromTo(
+        if (isDesktop) {
+          tl.to(
             'body',
-            { scale: 0.96, opacity: 0.6 },
-            { scale: 1, opacity: 1, duration: 1.2, ease: 'power4.out' },
+            { opacity: 0.7, duration: 0.6, ease: 'power2.out' },
             introStartLabel
           )
         }
@@ -418,18 +426,24 @@ export function initPageAnimations() {
         tl.call(releaseScroll, null, headerRevealCompleteLabel)
 
         if (worksItems.length) {
+          const worksStart = `${headerRevealCompleteLabel}-=${WORKS_OVERLAP_OFFSET}`
           tl.to(
             worksItems,
             {
               opacity: 1,
               y: 0,
               stagger: 0.08,
-              duration: 0.8,
+              duration: WORKS_TWEEN_DURATION,
               ease: 'power3.out'
             },
-            `${headerRevealCompleteLabel}-=0.2`
+            worksStart
           )
+          const worksCompleteOffset = (WORKS_TWEEN_DURATION - WORKS_OVERLAP_OFFSET).toFixed(2)
+          tl.addLabel(worksRevealCompleteLabel, `${headerRevealCompleteLabel}+=${worksCompleteOffset}`)
+        } else {
+          tl.addLabel(worksRevealCompleteLabel, headerRevealCompleteLabel)
         }
+        tl.call(playFinalBodyScale, null, worksRevealCompleteLabel)
 
         tl.call(() => {
           if (isProjectPage) {
