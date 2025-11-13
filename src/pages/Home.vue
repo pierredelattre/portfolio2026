@@ -1,30 +1,13 @@
 <template>
   <section class="home">
-    <div id="works">
-      <h3>Réalisations</h3>
-      <WorkCard v-for="work in worksData" :key="work.slug" :work="work" />
-    </div>
-
-    <div id="playground">
-      <h3>Playground</h3>
-      <div class="playground__content">
-        <div class="col" v-for="(column, columnIndex) in playgroundData" :key="`column-${columnIndex}`">
-          <PlaygroundCard
-            v-for="(item, itemIndex) in column"
-            :key="`item-${columnIndex}-${itemIndex}`"
-            :title="item.title"
-            :date="item.date"
-            :image="item.image"
-          />
-        </div>
-      </div>
-    </div>
+    <WorksSection :works="worksData" />
+    <PlaygroundSection :columns="playgroundData" />
   </section>
 </template>
 
 <script setup>
-import PlaygroundCard from '@/components/PlaygroundCard.vue'
-import WorkCard from '@/components/WorkCard.vue'
+import PlaygroundSection from '@/components/PlaygroundSection.vue'
+import WorksSection from '@/components/WorksSection.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { playgroundColumns, works } from '@/data/content'
 

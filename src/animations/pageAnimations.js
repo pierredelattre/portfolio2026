@@ -75,6 +75,11 @@ export function initPageAnimations() {
       })
 
       if (footer) {
+        const footerItems = footer.querySelectorAll(':scope > *')
+        footerItems.forEach((el) => {
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+        })
         gsap.killTweensOf(footer)
         gsap.set(footer, { clearProps: 'transform' })
       }
@@ -153,20 +158,18 @@ export function initPageAnimations() {
     if (footer) {
       const footerChildren = footer.querySelectorAll(':scope > *')
       if (footerChildren.length > 0) {
-        gsap.set(footerChildren, { opacity: 0, y: 60 })
-        gsap.to(footerChildren, {
-          scrollTrigger: {
-            trigger: footer,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-            once: true
+        tlProject.set(footerChildren, { opacity: 0, y: 60 })
+        tlProject.to(
+          footerChildren,
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 0.9,
+            ease: 'power3.out'
           },
-          opacity: 1,
-          y: 0,
-          stagger: 0.08,
-          duration: 1.2,
-          ease: 'power3.out'
-        })
+          '+=0.15'
+        )
       }
     }
 

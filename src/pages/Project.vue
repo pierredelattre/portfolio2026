@@ -1,16 +1,10 @@
 <template>
   <section v-if="project" class="project">
-    <h2>{{ project.title }}</h2>
-    <p>{{ project.description }}</p>
-
     <section class="projet" v-if="project.highlights?.length">
-      <ProjectCard
-        v-for="(highlight, index) in project.highlights"
-        :key="`${highlight.title}-${index}`"
-        :title="highlight.title"
-        :description="highlight.description"
-        :tags="highlight.tags"
-      />
+      <h2>{{ project.title }}</h2>
+      <p>{{ project.description }}</p>
+      <ProjectCard v-for="(highlight, index) in project.highlights" :key="`${highlight.title}-${index}`"
+        :title="highlight.title" :description="highlight.description" :tags="highlight.tags" />
     </section>
   </section>
   <section v-else class="project">

@@ -28,3 +28,39 @@ defineProps({
   }
 })
 </script>
+
+<style scoped>
+.projet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projet__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projet__content__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.tag {
+  padding: 0.25rem;
+  background-color: var(--primary);
+  color: var(--surface);
+  font-size: 0.75rem;
+}
+</style>

@@ -36,3 +36,77 @@ defineProps({
   }
 })
 </script>
+
+<style scoped>
+.projet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+
+  & a:has(.projet__image) {
+    width: 100%;
+  }
+
+  & .projet__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  & .projet__content__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  & .projet__image {
+    overflow: hidden;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1280px) {
+      width: 100%;
+      height: auto;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+
+      @media screen and (max-width: 768px) {
+        height: 320px;
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1280px) {
+        height: 340px;
+      }
+    }
+  }
+
+  & .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+
+    & .tag {
+      padding: 0.25rem;
+      background-color: var(--primary);
+      color: var(--surface);
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.projet:hover .projet__image img {
+  transform: scale(1.05);
+}
+</style>
