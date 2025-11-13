@@ -312,10 +312,16 @@ export function initPageAnimations() {
       const headerItems = header?.querySelectorAll(
         '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
       )
+      const themeSwitch = header?.querySelector('.switch') || null
+      const measuredHeaderHeight = header ? header.getBoundingClientRect().height || header.scrollHeight : null
 
       if (header && headerItems) {
+        const shouldAnimateHeaderHeight = isProjectPage
         if (!isProjectPage) {
           lockScroll()
+          gsap.set(header, { opacity: 0 })
+        }
+        if (shouldAnimateHeaderHeight) {
           gsap.set(header, {
             height: 0,
             overflow: 'hidden',
@@ -325,6 +331,9 @@ export function initPageAnimations() {
           })
         }
         gsap.set(headerItems, { opacity: 0, y: 20 })
+        if (themeSwitch) {
+          gsap.set(themeSwitch, { opacity: 0, y: 20 })
+        }
 
         const tl = gsap.timeline({ delay: 0.4 })
         const introStartLabel = 'introStart'
@@ -334,17 +343,33 @@ export function initPageAnimations() {
             unlockScroll()
           }
         }
+        const finalizeHeaderDimensions = () => {
+          if (!isProjectPage && header) {
+            header.style.removeProperty('overflow')
+            header.style.removeProperty('height')
+          }
+        }
         tl.addLabel(introStartLabel, 0)
 
-        if (!isProjectPage) {
+        if (shouldAnimateHeaderHeight) {
           tl.to(header, {
-            height: 'auto',
+            height: measuredHeaderHeight || 'auto',
             opacity: 1,
             paddingTop: '32px',
             paddingBottom: '32px',
             duration: 1.4,
             ease: 'power4.inOut'
           }, introStartLabel)
+        } else {
+          tl.to(
+            header,
+            {
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power2.out'
+            },
+            introStartLabel
+          )
         }
 
         if (window.innerWidth >= 1280) {
@@ -356,6 +381,23 @@ export function initPageAnimations() {
           )
         }
 
+        if (themeSwitch) {
+          const switchStart = `${introStartLabel}+=0.2`
+          tl.fromTo(
+            themeSwitch,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out'
+            },
+            switchStart
+          )
+        }
+
+        const headerItemsStart = themeSwitch ? `${introStartLabel}+=0.55` : '-=0.5'
+
         tl.to(
           headerItems,
           {
@@ -365,9 +407,10 @@ export function initPageAnimations() {
             stagger: 0.08,
             ease: 'power2.out'
           },
-          '-=0.5'
+          headerItemsStart
         )
         tl.addLabel(headerRevealCompleteLabel)
+        tl.call(finalizeHeaderDimensions, null, headerRevealCompleteLabel)
         tl.call(releaseScroll, null, headerRevealCompleteLabel)
 
         if (worksItems.length) {
