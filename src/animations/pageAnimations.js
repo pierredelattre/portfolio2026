@@ -70,6 +70,13 @@ export function initPageAnimations() {
     const projectSection = document.querySelector('section.projet')
     const footer = document.querySelector('footer')
 
+    // --- HARD RESET to avoid broken animations on refresh ---
+    gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
+    gsap.set([header, mainEl, pageBg, projectSection, footer], { clearProps: 'all' })
+    gsap.globalTimeline.clear()
+    ScrollTrigger.getAll().forEach(st => st.kill())
+    // --- END RESET ---
+
     if (projectSection) {
       const projChildren = projectSection.querySelectorAll(':scope > *')
       projChildren.forEach((el) => {
