@@ -14,20 +14,13 @@
       </div>
       <p class="text--secondary">{{ work.description }}</p>
     </div>
-    <RouterLink :to="`/projet/${work.slug}`" data-link>
-      <div class="link">
-        <div class="link__label">
-          <p>Découvrir</p>
-        </div>
-        <div class="link__border"></div>
-        <div class="link__border--hover"></div>
-      </div>
-    </RouterLink>
+    <LinkItem :to="`/projet/${work.slug}`" label="Découvrir" />
   </div>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import LinkItem from './LinkItem.vue'
 
 defineProps({
   work: {
