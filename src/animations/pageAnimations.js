@@ -5,6 +5,7 @@ let initialized = false
 let projectBackground = ''
 const PROJECT_BG_HEIGHT = 600
 const MAIN_START_Y = -PROJECT_BG_HEIGHT
+const MAIN_INTRO_MIN_HEIGHT = '70vh'
 const HEADER_ITEMS_SELECTOR =
   '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
 
@@ -66,6 +67,7 @@ export function initPageAnimations() {
 
       gsap.killTweensOf(mainEl)
       gsap.set(mainEl, { clearProps: 'transform' })
+      mainEl.style.removeProperty('min-height')
 
       const items = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
       items.forEach((el) => {
@@ -99,6 +101,7 @@ export function initPageAnimations() {
     pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
 
     gsap.killTweensOf(mainEl)
+    mainEl.style.minHeight = MAIN_INTRO_MIN_HEIGHT
     gsap.set(mainEl, { y: MAIN_START_Y })
 
     const headerItems = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
@@ -176,6 +179,7 @@ export function initPageAnimations() {
     tlProject.call(() => {
       header.classList.remove('is-floating')
       gsap.set(mainEl, { clearProps: 'transform' })
+      mainEl.style.removeProperty('min-height')
     })
 
     tlProject.play()
@@ -210,12 +214,14 @@ export function initPageAnimations() {
       }
 
       const header = document.querySelector('header')
+      const mainEl = document.querySelector('main')
+      const isProjectPage = window.location.pathname.includes('/projet')
       const headerItems = header?.querySelectorAll(
         '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
       )
 
       if (header && headerItems) {
-        if (!window.location.pathname.includes('/projet')) {
+        if (!isProjectPage) {
           gsap.set(header, {
             height: 0,
             overflow: 'hidden',
@@ -228,7 +234,7 @@ export function initPageAnimations() {
 
         const tl = gsap.timeline({ delay: 0.4 })
 
-        if (!window.location.pathname.includes('/projet')) {
+        if (!isProjectPage) {
           tl.to(header, {
             height: 'auto',
             opacity: 1,
@@ -273,11 +279,17 @@ export function initPageAnimations() {
             '-=0.6'
           )
         }
+
+        tl.call(() => {
+          if (isProjectPage) {
+            mainEl?.style.removeProperty('min-height')
+          }
+        })
       }
 
-      if (window.location.pathname.includes('/projet')) {
+      if (isProjectPage) {
         const pageBg = document.querySelector('#page-bg')
-        const mainEl = document.querySelector('main')
+        const projectMain = document.querySelector('main')
 
         if (header) {
           header.style.opacity = '1'
@@ -293,8 +305,9 @@ export function initPageAnimations() {
           pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
         }
 
-        if (mainEl) {
-          gsap.set(mainEl, { y: MAIN_START_Y })
+        if (projectMain) {
+          projectMain.style.minHeight = MAIN_INTRO_MIN_HEIGHT
+          gsap.set(projectMain, { y: MAIN_START_Y })
         }
       }
 
