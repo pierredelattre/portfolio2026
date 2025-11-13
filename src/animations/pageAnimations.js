@@ -6,6 +6,8 @@ let projectBackground = ''
 const PROJECT_BG_HEIGHT = 600
 const MAIN_START_Y = -PROJECT_BG_HEIGHT
 const MAIN_INTRO_MIN_HEIGHT = '70vh'
+let worksIntroCompleted = false
+const worksIntroWaiters = []
 const HEADER_ITEMS_SELECTOR =
   '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
 const SCROLL_LOCK_CLASS = 'scroll-locked'
@@ -44,6 +46,42 @@ const unlockScroll = () => {
       lockedScrollY = null
     }
   }
+}
+
+const resetWorksIntroState = () => {
+  worksIntroCompleted = false
+  worksIntroWaiters.length = 0
+}
+
+const markWorksIntroComplete = () => {
+  if (worksIntroCompleted) return
+  worksIntroCompleted = true
+  while (worksIntroWaiters.length) {
+    const waiter = worksIntroWaiters.shift()
+    waiter?.()
+  }
+}
+
+const runWhenWorksIntroComplete = (callback) => {
+  if (worksIntroCompleted) {
+    callback()
+  } else {
+    worksIntroWaiters.push(callback)
+  }
+}
+
+const createDeferredScrollReveal = ({ targets, trigger, start, vars }) => {
+  if (!trigger || !targets) return
+  const hasLength = typeof targets.length === 'number'
+  if (hasLength && targets.length === 0) return
+
+  const tween = gsap.to(targets, { ...vars, paused: true })
+  ScrollTrigger.create({
+    trigger,
+    start,
+    once: true,
+    onEnter: () => runWhenWorksIntroComplete(() => tween.play())
+  })
 }
 
 export function initPageAnimations() {
@@ -236,6 +274,7 @@ export function initPageAnimations() {
 
   window.addEventListener('load', () => {
     setTimeout(() => {
+      resetWorksIntroState()
       window.scrollTo(0, 0)
 
       ScrollTrigger.clearScrollMemory()
@@ -251,6 +290,9 @@ export function initPageAnimations() {
       const playgroundItems = playgroundSection
         ? playgroundSection.querySelectorAll('.col > *')
         : []
+      const isProjectPage = window.location.pathname.includes('/projet')
+      const footer = document.querySelector('footer')
+      const footerItems = footer ? footer.querySelectorAll(':scope > *') : []
 
       if (worksItems.length) {
         gsap.set(worksItems, { opacity: 0, y: 40 })
@@ -261,16 +303,19 @@ export function initPageAnimations() {
       if (playgroundItems.length) {
         gsap.set(playgroundItems, { opacity: 0, y: 40 })
       }
+      if (!isProjectPage && footerItems.length) {
+        gsap.set(footerItems, { opacity: 0, y: 60 })
+      }
 
       const header = document.querySelector('header')
       const mainEl = document.querySelector('main')
-      const isProjectPage = window.location.pathname.includes('/projet')
       const headerItems = header?.querySelectorAll(
         '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
       )
 
       if (header && headerItems) {
         if (!isProjectPage) {
+          lockScroll()
           gsap.set(header, {
             height: 0,
             overflow: 'hidden',
@@ -282,6 +327,14 @@ export function initPageAnimations() {
         gsap.set(headerItems, { opacity: 0, y: 20 })
 
         const tl = gsap.timeline({ delay: 0.4 })
+        const introStartLabel = 'introStart'
+        const headerRevealCompleteLabel = 'headerRevealComplete'
+        const releaseScroll = () => {
+          if (!isProjectPage) {
+            unlockScroll()
+          }
+        }
+        tl.addLabel(introStartLabel, 0)
 
         if (!isProjectPage) {
           tl.to(header, {
@@ -291,7 +344,16 @@ export function initPageAnimations() {
             paddingBottom: '32px',
             duration: 1.4,
             ease: 'power4.inOut'
-          })
+          }, introStartLabel)
+        }
+
+        if (window.innerWidth >= 1280) {
+          tl.fromTo(
+            'body',
+            { scale: 0.96, opacity: 0.6 },
+            { scale: 1, opacity: 1, duration: 1.2, ease: 'power4.out' },
+            introStartLabel
+          )
         }
 
         tl.to(
@@ -305,6 +367,8 @@ export function initPageAnimations() {
           },
           '-=0.5'
         )
+        tl.addLabel(headerRevealCompleteLabel)
+        tl.call(releaseScroll, null, headerRevealCompleteLabel)
 
         if (worksItems.length) {
           tl.to(
@@ -316,16 +380,7 @@ export function initPageAnimations() {
               duration: 0.8,
               ease: 'power3.out'
             },
-            '-=0.2'
-          )
-        }
-
-        if (window.innerWidth >= 1280) {
-          tl.fromTo(
-            'body',
-            { scale: 0.96, opacity: 0.6 },
-            { scale: 1, opacity: 1, duration: 1.2, ease: 'power4.out' },
-            '-=0.6'
+            `${headerRevealCompleteLabel}-=0.2`
           )
         }
 
@@ -335,7 +390,16 @@ export function initPageAnimations() {
           }
         })
 
-        tl.eventCallback('onInterrupt', unlockScroll)
+        tl.eventCallback('onComplete', () => {
+          markWorksIntroComplete()
+          releaseScroll()
+        })
+        tl.eventCallback('onInterrupt', () => {
+          releaseScroll()
+          markWorksIntroComplete()
+        })
+      } else {
+        markWorksIntroComplete()
       }
 
       if (isProjectPage) {
@@ -363,33 +427,46 @@ export function initPageAnimations() {
       }
 
       if (playgroundSection && playgroundTitle) {
-        gsap.to(playgroundTitle, {
-          scrollTrigger: {
-            trigger: playgroundSection,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-            once: true
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out'
+        createDeferredScrollReveal({
+          targets: playgroundTitle,
+          trigger: playgroundSection,
+          start: 'top 80%',
+          vars: {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+          }
         })
       }
 
       if (playgroundSection && playgroundItems.length) {
-        gsap.to(playgroundItems, {
-          scrollTrigger: {
-            trigger: playgroundSection,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
-            once: true
-          },
-          opacity: 1,
-          y: 0,
-          stagger: 0.08,
-          duration: 1.2,
-          ease: 'power3.out'
+        createDeferredScrollReveal({
+          targets: playgroundItems,
+          trigger: playgroundSection,
+          start: 'top 75%',
+          vars: {
+            opacity: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 1.2,
+            ease: 'power3.out'
+          }
+        })
+      }
+
+      if (!isProjectPage && footer && footerItems.length) {
+        createDeferredScrollReveal({
+          targets: footerItems,
+          trigger: footer,
+          start: 'top 85%',
+          vars: {
+            opacity: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 0.9,
+            ease: 'power3.out'
+          }
         })
       }
 
