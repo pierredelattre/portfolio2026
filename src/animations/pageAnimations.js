@@ -14,7 +14,13 @@ const SCROLL_LOCK_CLASS = 'scroll-locked'
 let lockedScrollY = null
 let scrollLockCount = 0
 
-const getHeaderPaddingValue = () => (typeof window !== 'undefined' && window.innerWidth < 768 ? '16px' : '32px')
+const isMobileViewport = () =>
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+
+const getHeaderPaddingValues = () =>
+  isMobileViewport()
+    ? { top: '1rem', bottom: '1rem' }
+    : { top: '2rem', bottom: '2rem' }
 
 const lockScroll = () => {
   if (typeof window === 'undefined') return
@@ -109,7 +115,7 @@ export function initPageAnimations() {
     const pageBg = document.querySelector('#page-bg')
     const projectSection = document.querySelector('section.projet')
     const footer = document.querySelector('footer')
-    const headerPadding = getHeaderPaddingValue()
+    const headerPadding = getHeaderPaddingValues()
 
     // --- HARD RESET to avoid broken animations on refresh ---
     gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
@@ -177,8 +183,8 @@ export function initPageAnimations() {
     document.body.classList.add('project-page')
     header.style.opacity = '1'
     header.style.height = 'auto'
-    header.style.paddingTop = headerPadding
-    header.style.paddingBottom = headerPadding
+    header.style.paddingTop = headerPadding.top
+    header.style.paddingBottom = headerPadding.bottom
 
     lockScroll()
 
@@ -316,7 +322,7 @@ export function initPageAnimations() {
         '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
       )
       const themeSwitch = header?.querySelector('.switch') || null
-      const headerPadding = getHeaderPaddingValue()
+      const headerPadding = getHeaderPaddingValues()
       const measuredHeaderHeight = header ? header.getBoundingClientRect().height || header.scrollHeight : null
 
       if (header && headerItems) {
@@ -368,8 +374,8 @@ export function initPageAnimations() {
           tl.to(header, {
             height: measuredHeaderHeight || 'auto',
             opacity: 1,
-            paddingTop: headerPadding,
-            paddingBottom: headerPadding,
+            paddingTop: headerPadding.top,
+            paddingBottom: headerPadding.bottom,
             duration: 1.4,
             ease: 'power4.inOut'
           }, introStartLabel)
@@ -468,10 +474,10 @@ export function initPageAnimations() {
         const projectMain = document.querySelector('main')
 
         if (header) {
-          const headerPadding = getHeaderPaddingValue()
+          const headerPadding = getHeaderPaddingValues()
           header.style.opacity = '1'
-          header.style.paddingTop = headerPadding
-          header.style.paddingBottom = headerPadding
+          header.style.paddingTop = headerPadding.top
+          header.style.paddingBottom = headerPadding.bottom
           header.classList.add('has-background', 'is-floating')
         }
 
