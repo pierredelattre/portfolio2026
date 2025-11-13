@@ -8,6 +8,43 @@ const MAIN_START_Y = -PROJECT_BG_HEIGHT
 const MAIN_INTRO_MIN_HEIGHT = '70vh'
 const HEADER_ITEMS_SELECTOR =
   '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
+const SCROLL_LOCK_CLASS = 'scroll-locked'
+let lockedScrollY = null
+let scrollLockCount = 0
+
+const lockScroll = () => {
+  if (typeof window === 'undefined') return
+
+  if (scrollLockCount === 0) {
+    lockedScrollY = window.scrollY || document.documentElement.scrollTop || 0
+    document.documentElement.classList.add(SCROLL_LOCK_CLASS)
+    document.body.classList.add(SCROLL_LOCK_CLASS)
+    document.body.style.top = `-${lockedScrollY}px`
+    document.body.style.position = 'fixed'
+    document.body.style.width = '100%'
+  }
+
+  scrollLockCount += 1
+}
+
+const unlockScroll = () => {
+  if (typeof window === 'undefined' || scrollLockCount === 0) return
+
+  scrollLockCount -= 1
+
+  if (scrollLockCount === 0) {
+    document.documentElement.classList.remove(SCROLL_LOCK_CLASS)
+    document.body.classList.remove(SCROLL_LOCK_CLASS)
+    document.body.style.removeProperty('top')
+    document.body.style.removeProperty('position')
+    document.body.style.removeProperty('width')
+
+    if (lockedScrollY !== null) {
+      window.scrollTo(0, lockedScrollY)
+      lockedScrollY = null
+    }
+  }
+}
 
 export function initPageAnimations() {
   if (initialized || typeof window === 'undefined') {
@@ -85,7 +122,6 @@ export function initPageAnimations() {
         gsap.killTweensOf(footer)
         gsap.set(footer, { clearProps: 'transform' })
       }
-
       return
     }
 
@@ -95,6 +131,8 @@ export function initPageAnimations() {
     header.style.height = 'auto'
     header.style.paddingTop = '32px'
     header.style.paddingBottom = '32px'
+
+    lockScroll()
 
     pageBg.style.opacity = '0'
     pageBg.style.backgroundImage = `url('${projectBackground}')`
@@ -143,6 +181,13 @@ export function initPageAnimations() {
       '<'
     )
 
+    tlProject.call(() => {
+      header.classList.remove('is-floating')
+      gsap.set(mainEl, { clearProps: 'transform' })
+      mainEl.style.removeProperty('min-height')
+      unlockScroll()
+    })
+
     if (projectSection) {
       gsap.set('section.projet > *', { opacity: 0, y: 40 })
       tlProject.to(
@@ -176,11 +221,8 @@ export function initPageAnimations() {
       }
     }
 
-    tlProject.call(() => {
-      header.classList.remove('is-floating')
-      gsap.set(mainEl, { clearProps: 'transform' })
-      mainEl.style.removeProperty('min-height')
-    })
+    tlProject.eventCallback('onComplete', unlockScroll)
+    tlProject.eventCallback('onInterrupt', unlockScroll)
 
     tlProject.play()
   }
@@ -285,6 +327,8 @@ export function initPageAnimations() {
             mainEl?.style.removeProperty('min-height')
           }
         })
+
+        tl.eventCallback('onInterrupt', unlockScroll)
       }
 
       if (isProjectPage) {

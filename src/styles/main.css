@@ -2,6 +2,12 @@ html, body {
   visibility: hidden;
 }
 
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden;
+  height: 100%;
+}
+
 body.ready {
   visibility: visible;
   transition: visibility 0s ease 0s, background-color 0.4s ease, color 0.4s ease;
