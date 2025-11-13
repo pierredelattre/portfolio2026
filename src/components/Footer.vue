@@ -11,5 +11,9 @@
 <style scoped lang="css">
 footer {
   padding: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 </style>
