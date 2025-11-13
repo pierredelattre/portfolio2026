@@ -289,10 +289,6 @@ export function initPageAnimations() {
       ScrollTrigger.clearScrollMemory()
       ScrollTrigger.refresh(true)
 
-      if (window.innerWidth >= 1280) {
-        gsap.set('body', { scale: 0.96, opacity: 0 })
-      }
-
       const worksItems = document.querySelectorAll('#works > *')
       const playgroundSection = document.querySelector('#playground')
       const playgroundTitle = playgroundSection?.querySelector(':scope > h3') || null
@@ -352,11 +348,6 @@ export function initPageAnimations() {
         const worksRevealCompleteLabel = 'worksRevealComplete'
         const WORKS_TWEEN_DURATION = 0.8
         const WORKS_OVERLAP_OFFSET = 0.2
-        const playFinalBodyScale = () => {
-          if (isDesktop) {
-            gsap.to('body', { scale: 1, opacity: 1, duration: 0.9, ease: 'power3.out' })
-          }
-        }
         const releaseScroll = () => {
           if (!isProjectPage) {
             unlockScroll()
@@ -387,14 +378,6 @@ export function initPageAnimations() {
               duration: 0.8,
               ease: 'power2.out'
             },
-            introStartLabel
-          )
-        }
-
-        if (isDesktop) {
-          tl.to(
-            'body',
-            { opacity: 0.7, duration: 0.6, ease: 'power2.out' },
             introStartLabel
           )
         }
@@ -449,8 +432,6 @@ export function initPageAnimations() {
         } else {
           tl.addLabel(worksRevealCompleteLabel, headerRevealCompleteLabel)
         }
-        tl.call(playFinalBodyScale, null, worksRevealCompleteLabel)
-
         tl.call(() => {
           if (isProjectPage) {
             mainEl?.style.removeProperty('min-height')
