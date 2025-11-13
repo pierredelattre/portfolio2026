@@ -305,4 +305,15 @@ header {
     align-items: flex-start;
     gap: .25rem;
   }
+
+  &.has-background {
+    /* Force dark‑mode token set inside header regardless of system or theme */
+    --primary: oklch(88% 0 271);
+    --secondary: oklch(66% 0 271);
+    --inactive: oklch(51% 0 271);
+    --surface: oklch(14% 0 271);
+    --switch: oklch(100% 0 275);
+
+    color: var(--primary);
+  }
 }

@@ -49,6 +49,8 @@ export function initPageAnimations() {
     headerBg.style.height = '0px'
 
     if (!projectBackground) {
+      const headerEl = document.querySelector('header')
+      if (headerEl) headerEl.classList.remove('has-background')
       headerBg.style.display = 'block'
       headerBg.style.opacity = '0'
       headerBg.style.height = '0px'
@@ -73,6 +75,8 @@ export function initPageAnimations() {
       return
     }
 
+    const headerEl = document.querySelector('header')
+    if (headerEl) headerEl.classList.add('has-background')
     headerBg.style.display = 'block'
 
     const header = document.querySelector('header')
