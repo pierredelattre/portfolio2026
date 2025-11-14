@@ -41,6 +41,12 @@ defineProps({
       width: 100%;
       height: 100%;
       object-fit: cover;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     @media screen and (max-width: 1280px) {
@@ -59,7 +65,11 @@ defineProps({
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 1rem;
+    gap: .5rem;
+
+    @media screen and (max-width: 768px) {
+      justify-content: flex-start;
+    }
 
     & p {
       line-height: 1.5;
