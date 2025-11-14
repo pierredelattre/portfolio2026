@@ -1,19 +1,19 @@
 <template>
   <section class="project">
-    <ProjectIntro
-      v-if="hasProject"
-      :title="projectData.title"
-      :type="projectData.type"
-      :intro="projectData.intro"
-      :description="projectData.description"
-      :services="projectData.services"
-      :team="projectData.team"
-      :links="projectData.links"
-    />
+    <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
+      :description="projectData.description" :services="projectData.services" :team="projectData.team"
+      :links="projectData.links" />
     <section v-else class="project__error">
       <h2>Projet introuvable</h2>
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
+
+    <ColumnTextLayout
+        image-src="https://placehold.co/400x600/EEE/31343C"
+        image-alt="alt de l'image"
+        title="Titre"
+        text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!"
+      />
   </section>
 </template>
 
@@ -21,6 +21,7 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import ProjectIntro from '@/components/ProjectIntro.vue'
+import ColumnTextLayout from '@/components/layouts/ColumnTextLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
 import projectBackground from '@/assets/Frame3288.png'
@@ -62,6 +63,18 @@ usePageLoaded(projectBg)
     grid-template-rows: auto auto auto auto;
   }
 
-  /* ProjectIntro handles .projet layout */
+  & .layout {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 2rem;
+    grid-column: 1 / 17;
+    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      grid-column: 1;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto;
+    }
+  }
 }
 </style>

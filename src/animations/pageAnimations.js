@@ -116,6 +116,10 @@ export function initPageAnimations() {
     const projectSection = document.querySelector('section.projet')
     const footer = document.querySelector('footer')
     const headerPadding = getHeaderPaddingValues()
+    const layoutSections =
+      mainEl && projectSection
+        ? Array.from(mainEl.querySelectorAll('.layout')).filter((el) => !projectSection.contains(el))
+        : []
 
     // --- HARD RESET to avoid broken animations on refresh ---
     gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
@@ -166,6 +170,13 @@ export function initPageAnimations() {
         el.style.opacity = '1'
         el.style.transform = 'translateY(0)'
       })
+
+      if (layoutSections.length) {
+        layoutSections.forEach((el) => {
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+        })
+      }
 
       if (footer) {
         const footerItems = footer.querySelectorAll(':scope > *')
@@ -254,6 +265,21 @@ export function initPageAnimations() {
           ease: 'power3.out'
         },
         '+=0.1'
+      )
+    }
+
+    if (layoutSections.length) {
+      gsap.set(layoutSections, { opacity: 0, y: 40 })
+      tlProject.to(
+        layoutSections,
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.12,
+          duration: 0.9,
+          ease: 'power3.out'
+        },
+        '+=0.15'
       )
     }
 
