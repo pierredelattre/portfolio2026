@@ -2,6 +2,10 @@ html, body {
   visibility: hidden;
 }
 
+p.line-height--150 {
+  line-height: 1.5;
+}
+
 html.scroll-locked,
 body.scroll-locked {
   overflow: hidden;

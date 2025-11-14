@@ -1,62 +1,38 @@
 <template>
   <section class="project">
-    <section class="projet" v-if="highlights.length">
-      <div class="project__heading">
-        <h2>{{ title }}</h2>
-        <ProjectLabel v-if="type" :type="type" />
-      </div>
-      <p>{{ description }}</p>
-
-      <article
-        v-for="(highlight, index) in highlights"
-        :key="`${highlight.title}-${index}`"
-        class="project-card"
-      >
-        <div class="project-card__content">
-          <div class="project-card__title">
-            <h4>{{ highlight.title }}</h4>
-            <div v-if="highlight.tags?.length" class="project-card__tags">
-              <TagItem v-for="tag in highlight.tags" :key="tag" :label="tag" />
-            </div>
-          </div>
-          <p class="text--secondary">{{ highlight.description }}</p>
-        </div>
-      </article>
+    <ProjectIntro
+      v-if="hasProject"
+      :title="projectData.title"
+      :type="projectData.type"
+      :intro="projectData.intro"
+      :description="projectData.description"
+      :services="projectData.services"
+      :team="projectData.team"
+      :links="projectData.links"
+    />
+    <section v-else class="project__error">
+      <h2>Projet introuvable</h2>
+      <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import ProjectLabel from '@/components/ProjectLabel.vue'
-import TagItem from '@/components/TagItem.vue'
+import { RouterLink } from 'vue-router'
+import ProjectIntro from '@/components/ProjectIntro.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
+import { works } from '@/data/content'
 import projectBackground from '@/assets/Frame3288.png'
 
-const title = 'Projet'
-const description = 'Case study complet du projet'
-const type = 'school'
+const PROJECT_ROUTE = '/projet/projet'
+const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
 
-const highlights = [
-  {
-    title: 'Contexte',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
-    tags: ['UX Research']
-  },
-  {
-    title: 'Approche',
-    description:
-      'Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus.',
-    tags: ['UI Design', 'Prototype']
-  },
-  {
-    title: 'Impact',
-    description:
-      'Egestas natoque condimentum massa pellentesque sed vitae aliquam. Integer sapien erat bibendum cursus lacus.',
-    tags: ['Delivery']
-  }
-]
+if (!projectData) {
+  console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
+}
+
+const hasProject = computed(() => Boolean(projectData))
 
 const projectBg = computed(() => projectBackground)
 
@@ -65,42 +41,27 @@ usePageLoaded(projectBg)
 
 <style scoped>
 .project {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: auto;
+  gap: 2rem;
+  row-gap: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  transition: height 0.5s ease;
 
-.project__heading {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
+  .project__error {
+    grid-column: 9 / 17;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
 
-.project-card__content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.project-card__title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.project-card__tags {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.25rem;
+  /* ProjectIntro handles .projet layout */
 }
 </style>

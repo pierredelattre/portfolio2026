@@ -12,7 +12,7 @@
           <TagItem v-for="tag in work.tags" :key="tag" :label="tag" />
         </div>
       </div>
-      <p class="text--secondary">{{ work.description }}</p>
+      <p class="text--secondary">{{ work.intro }}</p>
     </div>
     <LinkItem :to="workLink" label="Découvrir" />
   </div>
