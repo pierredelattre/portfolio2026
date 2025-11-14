@@ -14,10 +14,9 @@ const routes = [
     redirect: '/projet/projet'
   },
   {
-    path: '/projet/:slug',
-    name: 'project',
-    component: () => import('@/pages/Project.vue'),
-    props: true,
+    path: '/projet/projet',
+    name: 'projet',
+    component: () => import('@/views/Projet.vue'),
     meta: {
       headerMode: 'project'
     }

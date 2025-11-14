@@ -1,6 +1,6 @@
 <template>
   <div class="projet">
-    <RouterLink :to="`/projet/${work.slug}`" data-link>
+    <RouterLink :to="workLink" data-link>
       <div class="projet__image">
         <img :src="work.cover" :alt="work.title" loading="lazy" />
       </div>
@@ -14,21 +14,25 @@
       </div>
       <p class="text--secondary">{{ work.description }}</p>
     </div>
-    <LinkItem :to="`/projet/${work.slug}`" label="Découvrir" />
+    <LinkItem :to="workLink" label="Découvrir" />
   </div>
 </template>
 
 <script setup>
+import { computed, toRef } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 import TagItem from './TagItem.vue'
 
-defineProps({
+const props = defineProps({
   work: {
     type: Object,
     required: true
   }
 })
+
+const work = toRef(props, 'work')
+const workLink = computed(() => work.value.route || '/')
 </script>
 
 <style scoped>
