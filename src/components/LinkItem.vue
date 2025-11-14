@@ -3,7 +3,22 @@
     <div class="link">
       <div :class="['link__label', { 'text--secondary': secondary }]">
         <p>{{ label }}</p>
-        <slot />
+        <svg
+          v-if="external"
+          class="link__icon"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4H6C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3H11.5C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5V9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+          />
+        </svg>
+        <slot v-else />
       </div>
       <div class="link__border"></div>
       <div class="link__border--hover"></div>
@@ -39,6 +54,10 @@ const props = defineProps({
   rel: {
     type: String,
     default: null
+  },
+  external: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -61,8 +80,13 @@ const wrapperAttrs = computed(() => {
       href: props.href
     }
 
-    if (props.target) attrs.target = props.target
-    if (props.rel) attrs.rel = props.rel
+    if (props.external) {
+      attrs.target = '_blank'
+      attrs.rel = 'noreferrer noopener'
+    } else {
+      if (props.target) attrs.target = props.target
+      if (props.rel) attrs.rel = props.rel
+    }
 
     return attrs
   }
@@ -82,27 +106,24 @@ const wrapperAttrs = computed(() => {
     display: flex;
     flex-direction: row;
     gap: 0.125rem;
-
-    & svg {
-      width: 16px;
-      height: 16px;
-      fill: var(--primary);
-      transition: fill 0.4s ease;
-    }
+    color: inherit;
+    transition: color 0.4s ease;
 
     & p {
+      color: inherit;
       transition: color 0.4s ease;
+    }
+
+    & .link__icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: fill 0.4s ease;
     }
   }
 
   & .link__label.text--secondary {
-    & p {
-      color: var(--secondary);
-    }
-
-    & svg {
-      fill: var(--secondary);
-    }
+    color: var(--secondary);
   }
 
   & .link__border {
@@ -122,13 +143,7 @@ const wrapperAttrs = computed(() => {
 
 .link:hover {
   & .link__label {
-    & p {
-      color: var(--primary);
-    }
-
-    & svg {
-      fill: var(--primary);
-    }
+    color: var(--primary);
   }
 
   & .link__border--hover {

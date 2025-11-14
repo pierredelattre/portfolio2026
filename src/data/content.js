@@ -7,8 +7,8 @@ export const works = [
     description:
       'Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque condimentum massa pellentesque.',
     services: ['UX Research', 'UI Design'],
-    team: [{ label: 'Freelance', href: '#', rel: 'noreferrer noopener' }],
-    links: [{ label: 'Exemple', href: '#', secondary: true }],
+    team: [{ label: 'Freelance', href: '#', external: true }],
+    links: [{ label: 'Exemple', href: '#', secondary: true, external: true }],
     tags: ['UI Design'],
     cover: 'https://placehold.co/400x600/EEE/31343C',
     route: '/projet/projet',
@@ -22,8 +22,8 @@ export const works = [
     description:
       'Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque condimentum massa pellentesque.',
     services: ['UX Research', 'UI Design'],
-    team: [{ label: 'Freelance', href: '#', rel: 'noreferrer noopener' }],
-    links: [{ label: 'Exemple', href: '#', secondary: true }],
+    team: [{ label: 'Freelance', href: '#', external: true }],
+    links: [{ label: 'Exemple', href: '#', secondary: true, external: true }],
     tags: ['UI Design'],
     cover: 'https://placehold.co/400x600/EEE/31343C',
     route: '/projet/projet',
@@ -37,8 +37,8 @@ export const works = [
     description:
       'Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque condimentum massa pellentesque.',
     services: ['UX Research', 'UI Design'],
-    team: [{ label: 'Freelance', href: '#', rel: 'noreferrer noopener' }],
-    links: [{ label: 'Exemple', href: '#', secondary: true }],
+    team: [{ label: 'Freelance', href: '#', external: true }],
+    links: [{ label: 'Exemple', href: '#', secondary: true, external: true }],
     tags: ['UI Design'],
     cover: 'https://placehold.co/400x600/EEE/31343C',
     route: '/projet/projet',
@@ -52,8 +52,8 @@ export const works = [
     description:
       'Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque condimentum massa pellentesque.',
     services: ['UX Research', 'UI Design'],
-    team: [{ label: 'Freelance', href: '#', rel: 'noreferrer noopener' }],
-    links: [{ label: 'Exemple', href: '#', secondary: true }],
+    team: [{ label: 'Freelance', href: '#', external: true }],
+    links: [{ label: 'Exemple', href: '#', secondary: true, external: true }],
     tags: ['UI Design'],
     cover: 'https://placehold.co/400x600/EEE/31343C',
     route: '/projet/projet',
