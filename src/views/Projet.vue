@@ -12,6 +12,11 @@
       text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!" />
     <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+
+    <GridScrollLayout :images="gridScrollImages" title="Titre" :text="gridScrollText" />
+
+    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
   </section>
 </template>
 
@@ -21,6 +26,7 @@ import { RouterLink } from 'vue-router'
 import ProjectIntro from '@/components/ProjectIntro.vue'
 import ColumnTextLayout from '@/components/layouts/ColumnTextLayout.vue'
 import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
+import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
 import projectBackground from '@/assets/Frame3288.png'
@@ -31,6 +37,15 @@ const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
 if (!projectData) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
+
+const gridScrollImages = [
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
+]
+
+const gridScrollText =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero.'
 
 const hasProject = computed(() => Boolean(projectData))
 
@@ -67,12 +82,12 @@ usePageLoaded(projectBg)
     grid-template-columns: repeat(16, 1fr);
     gap: 2rem;
     grid-column: 1 / 17;
-    overflow: hidden;
 
     @media screen and (max-width: 768px) {
       grid-column: 1;
       grid-template-columns: 1fr;
       grid-template-rows: auto;
+      gap: 1rem;
     }
 
     &.layout__image-fwidth {
@@ -85,6 +100,7 @@ usePageLoaded(projectBg)
       gap: 2rem;
       height: 700px;
     }
+
   }
 }
 </style>
