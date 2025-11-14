@@ -60,6 +60,7 @@ export const projects = [
     slug: 'projet',
     title: 'Projet',
     description: 'Case study complet du projet',
+    type: 'school',
     background: projectBackground,
     highlights: [
       {

@@ -16,3 +16,11 @@ const playgroundData = playgroundColumns
 
 usePageLoaded()
 </script>
+
+<style scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+</style>

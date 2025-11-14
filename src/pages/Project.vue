@@ -1,7 +1,10 @@
 <template>
   <section v-if="project" class="project">
     <section class="projet" v-if="project.highlights?.length">
-      <h2>{{ project.title }}</h2>
+      <div class="project__heading">
+        <h2>{{ project.title }}</h2>
+        <ProjectLabel v-if="project.type" :type="project.type" />
+      </div>
       <p>{{ project.description }}</p>
       <ProjectCard v-for="(highlight, index) in project.highlights" :key="`${highlight.title}-${index}`"
         :title="highlight.title" :description="highlight.description" :tags="highlight.tags" />
@@ -20,6 +23,7 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
 import ProjectCard from '@/components/ProjectCard.vue'
+import ProjectLabel from '@/components/ProjectLabel.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { projects } from '@/data/content'
 
@@ -30,3 +34,16 @@ const projectBg = computed(() => project.value?.background || '')
 
 usePageLoaded(projectBg)
 </script>
+
+<style scoped>
+.project {
+  /* Project-specific layout handled elsewhere */
+}
+
+.project__heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+</style>
