@@ -126,7 +126,7 @@ const parsedImages = computed(() =>
     }
 
     @media screen and (min-width: 1280px) {
-      top: 2rem;
+      top: 8rem;
       position: sticky;
     }
 
