@@ -97,18 +97,33 @@ header {
   transition: height 0.5s ease;
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto auto auto auto auto;
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto auto auto auto; */
     gap: 1.5rem;
     row-gap: 3rem;
     padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  & > *:not(.switch, .header__links, .header__intro) {
+    width: calc((100% / 2) - 1rem);
   }
 
   @media screen and (min-width: 769px) and (max-width: 1280px) {
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto auto auto auto auto auto;
-    gap: 1.5rem;
+    /* grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto auto auto auto auto auto; */
     row-gap: 3rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
   }
 
   & .switch {
