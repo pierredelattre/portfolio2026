@@ -60,6 +60,16 @@ const unlockScroll = () => {
   }
 }
 
+const forceUnlockScroll = () => {
+  if (typeof window === 'undefined') return
+  const previousRestorePreference = shouldRestoreScrollOnUnlock
+  shouldRestoreScrollOnUnlock = false
+  while (scrollLockCount > 0) {
+    unlockScroll()
+  }
+  shouldRestoreScrollOnUnlock = previousRestorePreference
+}
+
 const resetWorksIntroState = () => {
   worksIntroCompleted = false
   worksIntroWaiters.length = 0
@@ -235,6 +245,7 @@ export function initPageAnimations() {
   }
 
   const handlePageLoaded = () => {
+    forceUnlockScroll()
     const header = document.querySelector('header')
     const mainEl = document.querySelector('main')
     const pageBg = document.querySelector('#page-bg')
