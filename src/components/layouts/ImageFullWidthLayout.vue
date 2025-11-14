@@ -34,7 +34,7 @@ defineProps({
   position: relative;
   overflow: hidden;
 
-  & > img {
+  &>img {
     grid-column: 1;
     width: 100%;
     height: 100%;
@@ -47,7 +47,7 @@ defineProps({
     -ms-user-select: none;
   }
 
-  & > .text {
+  &>.text {
     position: absolute;
     bottom: 2rem;
     left: 2rem;
@@ -64,24 +64,29 @@ defineProps({
       width: calc(100% - 2rem);
     }
 
-    & > p {
-      max-width: 70%;
+    &>p {
+      max-width: 40%;
       line-height: 1.5;
+
+      @media screen and (min-width: 768px) and (max-width: 1280px) {
+        max-width: 70%;
+      }
 
       @media screen and (max-width: 768px) {
         max-width: 100%;
       }
     }
 
-    & > p,
-    & > h3 {
+    &>p,
+    &>h3 {
       color: var(--surface);
     }
   }
 
   @media screen and (max-width: 768px) {
-    & > h3,
-    & > p {
+
+    &>h3,
+    &>p {
       grid-column: 1;
     }
   }

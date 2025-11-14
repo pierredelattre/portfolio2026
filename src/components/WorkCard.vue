@@ -50,6 +50,10 @@ const workLink = computed(() => work.value.route || '/')
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    & > p {
+      line-height: 1.5;
+    }
   }
 
   & .projet__content__title {

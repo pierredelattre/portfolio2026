@@ -363,13 +363,19 @@ export function initPageAnimations() {
       '<'
     )
 
-    tlProject.call(() => {
+    let projectIntroSettled = false
+    const settleProjectIntro = () => {
+      if (projectIntroSettled) return
+      projectIntroSettled = true
       header.classList.remove('is-floating')
       gsap.set(mainEl, { clearProps: 'transform' })
       mainEl.style.removeProperty('min-height')
       unlockScroll()
       ScrollTrigger.refresh()
-    })
+      markWorksIntroComplete()
+    }
+
+    tlProject.call(() => gsap.delayedCall(0.15, settleProjectIntro))
 
     setupProjectScrollReveals({ projectSection, layoutSections })
 
@@ -391,8 +397,8 @@ export function initPageAnimations() {
       }
     }
 
-    tlProject.eventCallback('onComplete', unlockScroll)
-    tlProject.eventCallback('onInterrupt', unlockScroll)
+    tlProject.eventCallback('onComplete', settleProjectIntro)
+    tlProject.eventCallback('onInterrupt', settleProjectIntro)
 
     tlProject.play()
   }
@@ -650,6 +656,7 @@ export function initPageAnimations() {
 
     document.addEventListener('pageLoaded', (event) => {
       projectBackground = event?.detail?.projectBg || ''
+      resetWorksIntroState()
       handlePageLoaded()
     })
   })

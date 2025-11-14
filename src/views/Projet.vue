@@ -17,6 +17,9 @@
 
     <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+
+    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
   </section>
 </template>
 
@@ -60,7 +63,7 @@ usePageLoaded(projectBg)
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: auto;
   gap: 2rem;
-  row-gap: 5rem;
+  row-gap: 7rem;
   padding-top: 5rem;
   padding-bottom: 5rem;
   transition: height 0.5s ease;
