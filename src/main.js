@@ -16,6 +16,10 @@ const lenis = new Lenis({
   easing: (t) => t
 })
 
+if (typeof window !== 'undefined') {
+  window.__lenis = lenis
+}
+
 gsap.registerPlugin(ScrollTrigger)
 
 ScrollTrigger.scrollerProxy(document.body, {

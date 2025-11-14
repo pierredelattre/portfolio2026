@@ -13,6 +13,7 @@ const HEADER_ITEMS_SELECTOR =
 const SCROLL_LOCK_CLASS = 'scroll-locked'
 let lockedScrollY = null
 let scrollLockCount = 0
+let shouldRestoreScrollOnUnlock = true
 
 const isMobileViewport = () =>
   typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
@@ -22,10 +23,11 @@ const getHeaderPaddingValues = () =>
     ? { top: '1rem', bottom: '1rem' }
     : { top: '2rem', bottom: '2rem' }
 
-const lockScroll = () => {
+const lockScroll = ({ restoreOnUnlock = true } = {}) => {
   if (typeof window === 'undefined') return
 
   if (scrollLockCount === 0) {
+    shouldRestoreScrollOnUnlock = restoreOnUnlock
     lockedScrollY = window.scrollY || document.documentElement.scrollTop || 0
     document.documentElement.classList.add(SCROLL_LOCK_CLASS)
     document.body.classList.add(SCROLL_LOCK_CLASS)
@@ -49,10 +51,12 @@ const unlockScroll = () => {
     document.body.style.removeProperty('position')
     document.body.style.removeProperty('width')
 
-    if (lockedScrollY !== null) {
-      window.scrollTo(0, lockedScrollY)
-      lockedScrollY = null
+    const targetScrollY = shouldRestoreScrollOnUnlock ? lockedScrollY : 0
+    if (targetScrollY !== null && targetScrollY !== undefined) {
+      window.scrollTo(0, targetScrollY)
     }
+    lockedScrollY = null
+    shouldRestoreScrollOnUnlock = true
   }
 }
 
@@ -197,7 +201,7 @@ export function initPageAnimations() {
     header.style.paddingTop = headerPadding.top
     header.style.paddingBottom = headerPadding.bottom
 
-    lockScroll()
+    lockScroll({ restoreOnUnlock: false })
 
     pageBg.style.opacity = '0'
     pageBg.style.backgroundImage = `url('${projectBackground}')`
