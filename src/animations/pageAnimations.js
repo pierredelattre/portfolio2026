@@ -82,18 +82,139 @@ const runWhenWorksIntroComplete = (callback) => {
   }
 }
 
-const createDeferredScrollReveal = ({ targets, trigger, start, vars }) => {
+const resolveElement = (input) => {
+  if (!input) return null
+  if (typeof input === 'string') {
+    return document.querySelector(input)
+  }
+  return input
+}
+
+const createDeferredScrollReveal = ({
+  targets,
+  trigger,
+  start,
+  vars,
+  playIfVisible = false,
+  autoPlayOnReady = false,
+  waitForFirstScrollBeforeAuto = false
+}) => {
   if (!trigger || !targets) return
   const hasLength = typeof targets.length === 'number'
   if (hasLength && targets.length === 0) return
 
+  const triggerEl = resolveElement(trigger)
+  if (!triggerEl) return
+
   const tween = gsap.to(targets, { ...vars, paused: true })
-  ScrollTrigger.create({
-    trigger,
+  let visibilityHandlerAttached = false
+  let scrollVisibilityHandlerAttached = false
+  const removeVisibilityListeners = () => {
+    if (visibilityHandlerAttached) {
+      ScrollTrigger.removeEventListener('refresh', checkVisibility)
+      visibilityHandlerAttached = false
+    }
+    if (scrollVisibilityHandlerAttached) {
+      window.removeEventListener('scroll', onScrollVisibilityCheck)
+      scrollVisibilityHandlerAttached = false
+    }
+  }
+
+  let hasPlayed = false
+  const playTween = () => {
+    if (hasPlayed) return
+    hasPlayed = true
+    removeVisibilityListeners()
+    tween.play()
+  }
+  const requestPlay = () => runWhenWorksIntroComplete(playTween)
+
+  if (autoPlayOnReady) {
+    requestPlay()
+  }
+
+  const st = ScrollTrigger.create({
+    trigger: triggerEl,
     start,
     once: true,
-    onEnter: () => runWhenWorksIntroComplete(() => tween.play())
+    onEnter: requestPlay,
+    onEnterBack: requestPlay
   })
+
+  const checkVisibility = () => {
+    if (hasPlayed || !playIfVisible) return
+    if (ScrollTrigger.isInViewport(triggerEl, 0)) {
+      requestPlay()
+    }
+  }
+  const onScrollVisibilityCheck = () => {
+    if (!playIfVisible || hasPlayed) return
+    checkVisibility()
+  }
+
+  if (playIfVisible) {
+    if (waitForFirstScrollBeforeAuto) {
+      window.addEventListener('scroll', onScrollVisibilityCheck, { passive: true })
+      scrollVisibilityHandlerAttached = true
+    } else {
+      checkVisibility()
+      ScrollTrigger.addEventListener('refresh', checkVisibility)
+      visibilityHandlerAttached = true
+    }
+  }
+
+  const cleanup = () => {
+    removeVisibilityListeners()
+    st.kill()
+  }
+
+  tween.eventCallback('onComplete', cleanup)
+}
+
+const setupProjectScrollReveals = ({ projectSection, layoutSections }) => {
+  if (!projectSection && (!layoutSections || !layoutSections.length)) {
+    return
+  }
+
+  if (projectSection) {
+    const introChildren = projectSection.querySelectorAll(':scope > *')
+    if (introChildren.length) {
+      gsap.set(introChildren, { opacity: 0, y: 40 })
+      createDeferredScrollReveal({
+        targets: introChildren,
+        trigger: projectSection,
+        start: 'top 95%',
+        playIfVisible: true,
+        autoPlayOnReady: true,
+        vars: {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.4,
+          ease: 'power3.out'
+        }
+      })
+    }
+  }
+
+  if (layoutSections && layoutSections.length) {
+    gsap.set(layoutSections, { opacity: 0, y: 40 })
+    layoutSections.forEach((section) => {
+      createDeferredScrollReveal({
+        targets: section,
+        trigger: section,
+        start: 'top 80%',
+        playIfVisible: true,
+        waitForFirstScrollBeforeAuto: true,
+        vars: {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out'
+        }
+      })
+    })
+  }
 }
 
 export function initPageAnimations() {
@@ -118,12 +239,12 @@ export function initPageAnimations() {
     const mainEl = document.querySelector('main')
     const pageBg = document.querySelector('#page-bg')
     const projectSection = document.querySelector('section.projet')
+    const projectWrapper = document.querySelector('section.project')
     const footer = document.querySelector('footer')
     const headerPadding = getHeaderPaddingValues()
-    const layoutSections =
-      mainEl && projectSection
-        ? Array.from(mainEl.querySelectorAll('.layout')).filter((el) => !projectSection.contains(el))
-        : []
+    const layoutSections = projectWrapper
+      ? Array.from(projectWrapper.querySelectorAll(':scope > .layout'))
+      : []
 
     // --- HARD RESET to avoid broken animations on refresh ---
     gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
@@ -131,14 +252,6 @@ export function initPageAnimations() {
     gsap.globalTimeline.clear()
     ScrollTrigger.getAll().forEach(st => st.kill())
     // --- END RESET ---
-
-    if (projectSection) {
-      const projChildren = projectSection.querySelectorAll(':scope > *')
-      projChildren.forEach((el) => {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(40px)'
-      })
-    }
 
     if (footer) {
       const footerItems = footer.querySelectorAll(':scope > *')
@@ -255,37 +368,10 @@ export function initPageAnimations() {
       gsap.set(mainEl, { clearProps: 'transform' })
       mainEl.style.removeProperty('min-height')
       unlockScroll()
+      ScrollTrigger.refresh()
     })
 
-    if (projectSection) {
-      gsap.set('section.projet > *', { opacity: 0, y: 40 })
-      tlProject.to(
-        'section.projet > *',
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: 'power3.out'
-        },
-        '+=0.1'
-      )
-    }
-
-    if (layoutSections.length) {
-      gsap.set(layoutSections, { opacity: 0, y: 40 })
-      tlProject.to(
-        layoutSections,
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.12,
-          duration: 0.9,
-          ease: 'power3.out'
-        },
-        '+=0.15'
-      )
-    }
+    setupProjectScrollReveals({ projectSection, layoutSections })
 
     if (footer) {
       const footerChildren = footer.querySelectorAll(':scope > *')
@@ -443,6 +529,11 @@ export function initPageAnimations() {
         tl.addLabel(headerRevealCompleteLabel)
         tl.call(finalizeHeaderDimensions, null, headerRevealCompleteLabel)
         tl.call(releaseScroll, null, headerRevealCompleteLabel)
+        if (isProjectPage) {
+          tl.call(() => {
+            markWorksIntroComplete()
+          }, null, headerRevealCompleteLabel)
+        }
 
         if (worksItems.length) {
           const worksStart = `${headerRevealCompleteLabel}-=${WORKS_OVERLAP_OFFSET}`
@@ -469,7 +560,9 @@ export function initPageAnimations() {
         })
 
         tl.eventCallback('onComplete', () => {
-          markWorksIntroComplete()
+          if (!isProjectPage) {
+            markWorksIntroComplete()
+          }
           releaseScroll()
         })
         tl.eventCallback('onInterrupt', () => {
