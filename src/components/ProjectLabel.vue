@@ -45,6 +45,7 @@ const typeInfo = computed(() => LABELS[props.type] ?? null)
 .project-label__text {
   font-weight: 500;
   white-space: nowrap;
+  line-height: 1.3;
 }
 
 @keyframes label-fade {

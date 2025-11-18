@@ -2,6 +2,12 @@ html, body {
   visibility: hidden;
 }
 
+@media screen and (min-width: 1024px) {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 p.line-height--150 {
   line-height: 1.5;
 }
