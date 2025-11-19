@@ -1,22 +1,22 @@
 <template>
   <footer>
-    <div class="projects">
-      <a href="#">
+    <div v-if="showProjectNavigation" class="projects">
+      <RouterLink v-if="previousProject" :to="previousProject.route">
         <div class="project--previous">
           <div class="overlay"></div>
-          <img src="/src/assets/Frame3288.png" alt="Alt de l'image">
+          <img :src="previousProject.cover" :alt="`Visuel de ${previousProject.title}`">
           <p>Projet précédent</p>
-          <h3>Projet</h3>
+          <h3>{{ previousProject.title }}</h3>
         </div>
-      </a>
-      <a href="#">
+      </RouterLink>
+      <RouterLink v-if="nextProject" :to="nextProject.route">
         <div class="project--next">
           <div class="overlay"></div>
-          <img src="/src/assets/Frame3288.png" alt="Alt de l'image">
+          <img :src="nextProject.cover" :alt="`Visuel de ${nextProject.title}`">
           <p>Projet suivant</p>
-          <h3>Projet</h3>
+          <h3>{{ nextProject.title }}</h3>
         </div>
-      </a>
+      </RouterLink>
     </div>
     <div class="footer__infos">
       <div class="footer__liens">
@@ -37,7 +37,37 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { works } from '@/data/content'
 import LinkItem from './LinkItem.vue'
+
+const route = useRoute()
+const PROJECT_ROUTE_PREFIX = '/projet'
+const projectList = works.filter((work) => typeof work.route === 'string' && work.route.startsWith(PROJECT_ROUTE_PREFIX))
+
+const isProjectPage = computed(() => route.path?.startsWith(PROJECT_ROUTE_PREFIX))
+
+const currentProjectIndex = computed(() => {
+  if (!isProjectPage.value) return -1
+  return projectList.findIndex((project) => project.route === route.path)
+})
+
+const projectCount = projectList.length
+
+const previousProject = computed(() => {
+  if (currentProjectIndex.value === -1 || projectCount === 0) return null
+  const index = (currentProjectIndex.value - 1 + projectCount) % projectCount
+  return projectList[index]
+})
+
+const nextProject = computed(() => {
+  if (currentProjectIndex.value === -1 || projectCount === 0) return null
+  const index = (currentProjectIndex.value + 1) % projectCount
+  return projectList[index]
+})
+
+const showProjectNavigation = computed(() => Boolean(previousProject.value && nextProject.value))
 </script>
 
 <style scoped lang="css">
