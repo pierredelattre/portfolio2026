@@ -10,11 +10,19 @@ const routes = [
     }
   },
   {
+    path: '/projet/talkie',
+    name: 'talkie',
+    component: () => import('@/views/Talkie.vue'),
+    meta: {
+      headerMode: 'project'
+    }
+  },
+  {
     path: '/projet/alpine',
     name: 'alpine',
     component: () => import('@/views/Alpine.vue'),
     meta: {
-      headerMode: 'alpine'
+      headerMode: 'project'
     }
   },
   {
@@ -27,8 +35,41 @@ const routes = [
   }
 ]
 
+const PROJECT_ROUTE_PREFIX = '/projet'
+const projectRouteNames = routes
+  .filter((route) => route.path.startsWith(PROJECT_ROUTE_PREFIX))
+  .map((route) => route.name)
+  .filter(Boolean)
+
+const getLenisScrollPosition = () => {
+  if (typeof window === 'undefined') return null
+  const lenisInstance = window.__lenis
+  if (!lenisInstance) return null
+
+  const candidates = [
+    lenisInstance.animatedScroll,
+    lenisInstance.actualScroll,
+    lenisInstance.targetScroll,
+    lenisInstance.scroll
+  ]
+
+  for (const value of candidates) {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+      return value
+    }
+  }
+
+  return null
+}
+
 const getScrollPosition = () => {
   if (typeof window === 'undefined') return 0
+
+  const lenisScroll = getLenisScrollPosition()
+  if (typeof lenisScroll === 'number') {
+    return lenisScroll
+  }
+
   return window.scrollY || document.documentElement.scrollTop || 0
 }
 
@@ -85,11 +126,31 @@ const router = createRouter({
   }
 })
 
-router.beforeEach(async (to, from) => {
-  const navigatingHomeToProject =
-    typeof window !== 'undefined' && from?.name === 'home' && to?.name === 'projet'
+const isProjectRoute = (route) => {
+  if (!route) return false
 
-  if (navigatingHomeToProject && getScrollPosition() > 2) {
+  if (typeof route.path === 'string' && route.path.startsWith(PROJECT_ROUTE_PREFIX)) {
+    return true
+  }
+
+  if (typeof route.fullPath === 'string' && route.fullPath.startsWith(PROJECT_ROUTE_PREFIX)) {
+    return true
+  }
+
+  if (typeof route.name === 'string' && projectRouteNames.includes(route.name)) {
+    return true
+  }
+
+  return false
+}
+
+router.beforeEach(async (to, from) => {
+  if (typeof window === 'undefined') return true
+
+  const navigatingHomeToProject = from?.name === 'home' && isProjectRoute(to)
+  const switchingProjects = isProjectRoute(from) && isProjectRoute(to)
+
+  if ((navigatingHomeToProject || switchingProjects) && getScrollPosition() > 2) {
     await scrollToTopBeforeProjectNavigation()
   }
 

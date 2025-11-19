@@ -1,9 +1,12 @@
 <template>
   <section class="layout layout__image-fwidth">
-    <img :src="imageSrc" :alt="imageAlt" />
+    <picture>
+      <source v-if="imageMobileSrc" :srcset="imageMobileSrc" media="(max-width: 768px)" />
+      <img :src="imageSrc" :alt="imageAlt" />
+    </picture>
     <div class="text">
-      <h3>{{ title }}</h3>
-      <p>{{ text }}</p>
+      <h3 :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ title }}</h3>
+      <p :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ text }}</p>
     </div>
   </section>
 </template>
@@ -13,6 +16,10 @@ defineProps({
   imageSrc: {
     type: String,
     required: true
+  },
+  imageMobileSrc: {
+    type: String,
+    default: ''
   },
   imageAlt: {
     type: String,
@@ -25,6 +32,10 @@ defineProps({
   text: {
     type: String,
     required: true
+  },
+  secondary: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
@@ -34,10 +45,16 @@ defineProps({
   position: relative;
   overflow: hidden;
 
-  &>img {
+  &>picture,
+  &>picture > img {
     grid-column: 1;
     width: 100%;
     height: 100%;
+    display: block;
+  }
+
+  &>picture > img {
+    grid-column: 1;
     object-fit: cover;
     user-drag: none;
     -webkit-user-drag: none;
@@ -67,6 +84,7 @@ defineProps({
     &>p {
       max-width: 40%;
       line-height: 1.5;
+      white-space: pre-line;
 
       @media screen and (min-width: 768px) and (max-width: 1280px) {
         max-width: 70%;
@@ -77,8 +95,8 @@ defineProps({
       }
     }
 
-    &>p,
-    &>h3 {
+    &>p:not(.text--secondary),
+    &>h3:not(.text--secondary) {
       color: var(--surface);
     }
   }

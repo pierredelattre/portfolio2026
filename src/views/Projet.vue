@@ -86,6 +86,12 @@ usePageLoaded(projectBg)
     gap: 2rem;
     grid-column: 1 / 17;
 
+    & h3 {
+      border-bottom: 1px solid var(--inactive);
+      padding-bottom: .5rem;
+      margin-bottom: .5rem;
+    }
+
     @media screen and (max-width: 768px) {
       grid-column: 1;
       grid-template-columns: 1fr;

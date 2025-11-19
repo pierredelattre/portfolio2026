@@ -1,7 +1,10 @@
 <template>
   <section class="layout layout__column-text">
     <div class="col image">
-      <img :src="imageSrc" :alt="imageAlt" />
+      <picture>
+        <source v-if="imageMobileSrc" :srcset="imageMobileSrc" media="(max-width: 768px)" />
+        <img :src="imageSrc" :alt="imageAlt" />
+      </picture>
     </div>
     <div class="col text">
       <h3>{{ title }}</h3>
@@ -15,6 +18,10 @@ defineProps({
   imageSrc: {
     type: String,
     required: true
+  },
+  imageMobileSrc: {
+    type: String,
+    default: ''
   },
   imageAlt: {
     type: String,
@@ -37,9 +44,14 @@ defineProps({
     grid-column: 1 / 9;
     height: 540px;
 
-    & img {
+    & picture,
+    & picture > img {
       width: 100%;
       height: 100%;
+      display: block;
+    }
+
+    & picture > img {
       object-fit: cover;
       user-drag: none;
       -webkit-user-drag: none;
@@ -74,6 +86,7 @@ defineProps({
     & p {
       line-height: 1.5;
       max-width: 70%;
+      white-space: pre-line;
 
       @media screen and (max-width: 768px) {
         max-width: 100%;

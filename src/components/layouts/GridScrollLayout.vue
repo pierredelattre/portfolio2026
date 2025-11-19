@@ -1,16 +1,27 @@
 <template>
   <section class="layout layout-grid-scroll">
     <div class="col images-grid">
-      <img
-        v-for="(image, index) in parsedImages"
-        :key="`${image.src}-${index}`"
-        :src="image.src"
-        :alt="image.alt || title"
-      />
+      <picture v-for="(image, index) in parsedImages" :key="`${image.src}-${index}`">
+        <source v-if="image.mobileSrc" :srcset="image.mobileSrc" media="(max-width: 768px)" />
+        <img :src="image.src" :alt="image.alt || title" />
+      </picture>
     </div>
     <div class="col text">
       <h3>{{ title }}</h3>
-      <p class="line-height--150">{{ text }}</p>
+      <template v-if="hasRichText">
+        <div v-for="(block, index) in richTextBlocks" :key="`rich-text-${index}`" class="grid-scroll-text__block">
+          <p v-if="block.description" class="line-height--150">
+            {{ block.description }}
+          </p>
+          <div v-if="block.ideas.length" class="grid-scroll-text__ideas">
+            <div v-for="idea in block.ideas" :key="`idea-${idea.label}-${index}`" class="grid-scroll-text__idea">
+              <span class="grid-scroll-text__idea-index">{{ idea.label }}</span>
+              <p class="grid-scroll-text__idea-text">{{ idea.text }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+      <p v-else class="line-height--150">{{ text }}</p>
     </div>
   </section>
 </template>
@@ -28,18 +39,53 @@ const props = defineProps({
     required: true
   },
   text: {
-    type: String,
+    type: [String, Array],
     required: true
   }
 })
 
+const ideaKeys = ['1', '2', '3']
+
+const richTextBlocks = computed(() => {
+  if (!Array.isArray(props.text)) {
+    return []
+  }
+
+  return props.text
+    .map((block = {}) => {
+      const ideas = ideaKeys
+        .map((key) => {
+          const value = block?.[key]
+
+          if (!value) {
+            return null
+          }
+
+          return {
+            label: key,
+            text: value
+          }
+        })
+        .filter(Boolean)
+
+      return {
+        description: block?.description || '',
+        ideas
+      }
+    })
+    .filter((block) => block.description || block.ideas.length)
+})
+
+const hasRichText = computed(() => richTextBlocks.value.length > 0)
+
 const parsedImages = computed(() =>
   props.images.map((image) => {
     if (typeof image === 'string') {
-      return { src: image, alt: '' }
+      return { src: image, mobileSrc: '', alt: '' }
     }
     return {
       src: image?.src || '',
+      mobileSrc: image?.mobileSrc || '',
       alt: image?.alt || ''
     }
   })
@@ -50,7 +96,7 @@ const parsedImages = computed(() =>
 .layout-grid-scroll {
   position: relative;
 
-  & > .images-grid {
+  &>.images-grid {
     position: relative;
     grid-column: 1 / 9;
     display: grid;
@@ -71,11 +117,17 @@ const parsedImages = computed(() =>
       grid-template-rows: auto auto;
     }
 
-    & > img {
+    &>picture {
       width: 100%;
       height: auto;
-      object-fit: cover;
       display: block;
+
+      &>img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
       &:nth-child(1) {
         height: 540px;
@@ -106,7 +158,7 @@ const parsedImages = computed(() =>
     }
   }
 
-  & > .text {
+  &>.text {
     grid-column: 9 / 17;
     top: 0;
     display: flex;
@@ -119,10 +171,60 @@ const parsedImages = computed(() =>
     & p {
       max-width: 70%;
       line-height: 1.5;
+      white-space: pre-line;
 
       @media screen and (max-width: 768px) {
         max-width: 100%;
       }
+    }
+
+    .grid-scroll-text__block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .grid-scroll-text__ideas {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .grid-scroll-text__idea {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .grid-scroll-text__idea-index {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      color: var(--primary);
+      padding: .25rem;
+      border-radius: 999px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .grid-scroll-text__idea:nth-child(1) .grid-scroll-text__idea-index {
+      background-color: #B62222;
+    }
+
+    .grid-scroll-text__idea:nth-child(2) .grid-scroll-text__idea-index {
+      background-color: #259d1f;
+    }
+
+    .grid-scroll-text__idea:nth-child(3) .grid-scroll-text__idea-index {
+      background-color: #2262B6;
+    }
+
+    .grid-scroll-text__idea-text {
+      margin: 0;
+      line-height: 1.5;
     }
 
     @media screen and (min-width: 1280px) {

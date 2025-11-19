@@ -23,14 +23,9 @@ body.ready {
   transition: visibility 0s ease 0s, background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Overlay */
-/* #page-hero:has(header.has-background) #overlay {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-  background: linear-gradient(0deg, oklch(14% 0 271), transparent);
-} */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
 
 /* Theme */
 :root,
@@ -49,6 +44,7 @@ body.ready {
   --type-freelance: oklch(65% 0.1 223.5);
 }
 
+
 :root[data-theme='dark'] {
   --primary: oklch(88% 0 271);
   --secondary: oklch(66% 0 271);
@@ -57,7 +53,6 @@ body.ready {
 
   --switch: oklch(100% 0 275);
 }
-
 
 /* Global */
 * {
@@ -115,7 +110,7 @@ body.project-page #page-hero {
   z-index: -1;
   opacity: 0;
   pointer-events: none;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   filter: brightness(0.4);

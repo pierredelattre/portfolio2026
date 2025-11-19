@@ -8,24 +8,23 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image"
+    <ColumnTextLayout image-src="/src/assets/septiemeseance/contexte.jpg" image-alt="alt de l'image"
       title="Contexte & Enjeu"
-      text="Les utilisateurs qui veulent simplement trouver une séance de cinéma se heurtent généralement à des plateformes denses, chargées et peu adaptées au mobile. Septième Séance est né de cette frustration : proposer un service clair, rapide, recentré sur l’essentiel.
-L’objectif était simple : permettre à n’importe qui de découvrir les films en cours et de voir en quelques secondes les horaires dans les cinémas proches." />
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image"
-      title="Conception du service"
-      text="Le cœur du produit repose sur un parcours fluide : afficher immédiatement les cinémas autour de l’utilisateur, permettre de consulter les séances du jour en un geste, et offrir une page film qui rassemble toutes les informations utiles — sans superflu.
-L’accent a été mis sur la rapidité d’accès et sur la réduction de la charge cognitive. Trouver une séance devait devenir une action instinctive, presque automatique." />
+      text="La plupart des services existants autour du cinéma proposent beaucoup d’informations, mais rarement de manière directe. L’utilisateur doit souvent naviguer entre plusieurs écrans avant d’avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l’utilisateur, même lorsqu’il l’a autorisée, et obligent à passer par une fiche film ou une fiche cinéma avant d’afficher des résultats.
 
-    <GridScrollLayout :images="gridScrollImages" title="Architecture" :text="gridScrollText" />
+L’enjeu était de créer un service plus fluide, qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps." />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+    <ImageFullWidthLayout secondary image-src="/src/assets/septiemeseance/geoloc.jpg"
+      image-alt="Géolocalisation ou recherche manuelle" title="Géolocalisation ou recherche manuelle"
+      text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+    <GridScrollLayout :images="gridScrollImages" title="Filtres de recherche" :text="gridScrollFiltersText" />
 
-    <GridScrollLayout :images="gridScrollImages" title="Améliorations" :text="upgradesText" />
+    <ImageFullWidthLayout secondary image-src="/src/assets/septiemeseance/projections.jpg"
+      image-alt="Liste des projections autour" title="Liste des projections autour"
+      text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
+
+    <GridScrollLayout :images="upgrades" title="Futures améliorations" :text="gridScrollUpgradesText" />
   </section>
 </template>
 
@@ -38,12 +37,7 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
-import projectBackground from '@/assets/Frame3288.png'
-
-const gridScrollText =
-  'L’application s’organise autour d’un parcours clair. L’accueil propose soit d’utiliser la géolocalisation, soit de rechercher un film, une ville ou un cinéma, ce qui permet de s’adapter aux besoins de chaque utilisateur. Une fois la zone définie, la liste des cinémas apparaît et chacun possède sa propre page avec les séances du jour, ainsi qu’un changement de date rapide. La page film regroupe l’essentiel (infos, résumé et toutes les séances disponibles) pour comparer facilement sans naviguer partout. L’ensemble reste léger, logique et pensé pour un usage mobile, que l’utilisateur cherche ce qu\'il se passe près de lui ou qu\'il prépare une sortie ailleurs.'
-
-const upgradesText= "Letterboxd watchlists friends, App mobile, Alertes, Notes des films, prix gagnés"
+import projectBackground from '@/assets/septiemeseance/002.jpg'
 
 const PROJECT_ROUTE = '/projet/septiemeseance'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -58,6 +52,29 @@ const gridScrollImages = [
   { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
 ]
 
+const upgrades = [
+  { src: '/src/assets/septiemeseance/notes.jpg', alt: "Ajout des notes et critiques des films" },
+  { src: '/src/assets/septiemeseance/alertes.jpg', alt: "Être notifié de la projection d'un film autour de chez soi" },
+  { src: '/src/assets/septiemeseance/letterboxd.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-letterboxd.jpg', alt: "Lier son compte à Letterboxd" }
+]
+
+const gridScrollFiltersText = [
+  {
+    description:
+      'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis et plus utile selon les situations.',
+    1: 'Le premier filtre concerne le périmètre : l’utilisateur peut définir la distance autour du point détecté en géolocalisation ou autour de la ville/cinéma qu’il a choisi manuellement. Cela permet d’élargir ou de réduire facilement la zone couverte. Il peut aussi choisir la date de sa séance souhaitée pour voir les projections à cette date.',
+    2: 'D’autres filtres viennent affiner les résultats, notamment le genre du film, son année, sa durée et une option permettant de distinguer les films récents des “films cultes” encore projetés. Les utilisateurs peuvent également filtrer selon les abonnements acceptés par chaque salle, par exemple UGC ou Pathé.',
+    3: 'La gestion des langues et des sous-titres fait aussi partie des options disponibles. L’idée générale est de laisser à chacun la possibilité d’adapter l’affichage en fonction de ses contraintes. On retrouve aussi ces filtres sur la page film afin de filter dans les séances.',
+  }
+]
+
+const gridScrollUpgradesText = [
+  {
+    description:
+      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
+  }
+]
+
 const hasProject = computed(() => Boolean(projectData))
 
 const projectBg = computed(() => projectBackground)
@@ -65,7 +82,13 @@ const projectBg = computed(() => projectBackground)
 usePageLoaded(projectBg)
 </script>
 
-<style scoped>
+<style>
+@media screen and (max-width: 768px) {
+  section.layout.layout-grid-scroll:nth-child(2) img:nth-child(2) {
+    height: 100%!important;
+  }
+}
+
 .project {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
@@ -93,6 +116,12 @@ usePageLoaded(projectBg)
     grid-template-columns: repeat(16, 1fr);
     gap: 2rem;
     grid-column: 1 / 17;
+
+    & h3 {
+      border-bottom: 1px solid var(--inactive);
+      padding-bottom: .5rem;
+      margin-bottom: .5rem;
+    }
 
     @media screen and (max-width: 768px) {
       grid-column: 1;
