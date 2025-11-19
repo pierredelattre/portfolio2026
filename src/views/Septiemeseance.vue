@@ -16,7 +16,7 @@ L’enjeu était de créer un service plus fluide, qui répond vraiment au besoi
 
     <ImageFullWidthLayout secondary :image-src="geolocationImage"
       image-alt="Géolocalisation ou recherche manuelle" title="Géolocalisation ou recherche manuelle"
-      text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
+      text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est, quant à elle, conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
 
     <GridScrollLayout :images="gridScrollImages" title="Filtres de recherche" :text="gridScrollFiltersText" />
 
@@ -78,7 +78,7 @@ const gridScrollFiltersText = [
 const gridScrollUpgradesText = [
   {
     description:
-      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
+      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
   }
 ]
 

@@ -26,6 +26,14 @@ const routes = [
     }
   },
   {
+    path: '/projet/projet',
+    name: 'projet',
+    component: () => import('@/views/Projet.vue'),
+    meta: {
+      headerMode: 'project'
+    }
+  },
+  {
     path: '/projet/septiemeseance',
     name: 'septiemeseance',
     component: () => import('@/views/Septiemeseance.vue'),
