@@ -8,19 +8,19 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="/src/assets/septiemeseance/contexte.jpg" image-alt="alt de l'image"
+    <ColumnTextLayout :image-src="contextImage" image-alt="alt de l'image"
       title="Contexte & Enjeu"
       text="La plupart des services existants autour du cinéma proposent beaucoup d’informations, mais rarement de manière directe. L’utilisateur doit souvent naviguer entre plusieurs écrans avant d’avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l’utilisateur, même lorsqu’il l’a autorisée, et obligent à passer par une fiche film ou une fiche cinéma avant d’afficher des résultats.
 
 L’enjeu était de créer un service plus fluide, qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps." />
 
-    <ImageFullWidthLayout secondary image-src="/src/assets/septiemeseance/geoloc.jpg"
+    <ImageFullWidthLayout secondary :image-src="geolocationImage"
       image-alt="Géolocalisation ou recherche manuelle" title="Géolocalisation ou recherche manuelle"
       text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
 
     <GridScrollLayout :images="gridScrollImages" title="Filtres de recherche" :text="gridScrollFiltersText" />
 
-    <ImageFullWidthLayout secondary image-src="/src/assets/septiemeseance/projections.jpg"
+    <ImageFullWidthLayout secondary :image-src="projectionsImage"
       image-alt="Liste des projections autour" title="Liste des projections autour"
       text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
 
@@ -38,6 +38,13 @@ import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
 import projectBackground from '@/assets/septiemeseance/002.jpg'
+import contextImage from '@/assets/septiemeseance/contexte.jpg'
+import geolocationImage from '@/assets/septiemeseance/geoloc.jpg'
+import projectionsImage from '@/assets/septiemeseance/projections.jpg'
+import notesImage from '@/assets/septiemeseance/notes.jpg'
+import alertsImage from '@/assets/septiemeseance/alertes.jpg'
+import letterboxdImage from '@/assets/septiemeseance/letterboxd.jpg'
+import letterboxdMobileImage from '@/assets/septiemeseance/mobile-letterboxd.jpg'
 
 const PROJECT_ROUTE = '/projet/septiemeseance'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -53,9 +60,9 @@ const gridScrollImages = [
 ]
 
 const upgrades = [
-  { src: '/src/assets/septiemeseance/notes.jpg', alt: "Ajout des notes et critiques des films" },
-  { src: '/src/assets/septiemeseance/alertes.jpg', alt: "Être notifié de la projection d'un film autour de chez soi" },
-  { src: '/src/assets/septiemeseance/letterboxd.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-letterboxd.jpg', alt: "Lier son compte à Letterboxd" }
+  { src: notesImage, alt: "Ajout des notes et critiques des films" },
+  { src: alertsImage, alt: "Être notifié de la projection d'un film autour de chez soi" },
+  { src: letterboxdImage, mobileSrc: letterboxdMobileImage, alt: "Lier son compte à Letterboxd" }
 ]
 
 const gridScrollFiltersText = [

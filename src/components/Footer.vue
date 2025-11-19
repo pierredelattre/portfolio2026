@@ -71,12 +71,16 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
 </script>
 
 <style scoped lang="css">
-
 body:has(.home) footer {
   display: none!important;
 }
 
 footer {
+  --primary: oklch(88% 0 271);
+  --secondary: oklch(72% 0 271);
+  --inactive: oklch(35% 0 271);
+  background: oklch(12% 0.02 271);
+  color: var(--primary);
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: auto auto;
@@ -112,8 +116,8 @@ footer {
     }
 
     &>a {
-      color: oklch(88% 0 271);
-      
+      color: var(--primary);
+
       &:hover {
         img {
           transform: scale(1.05);
@@ -142,7 +146,7 @@ footer {
           left: 0;
           height: 100%;
           width: 100%;
-          background: linear-gradient(0turn, #090909, #09090900);
+          background: linear-gradient(0turn, #050505, #05050500);
         }
 
         & img {

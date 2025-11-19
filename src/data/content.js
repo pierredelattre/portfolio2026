@@ -1,3 +1,6 @@
+import septiemeCover from '@/assets/septiemeseance/002.jpg'
+import alpinePlaceholder from '@/assets/Frame3288.png'
+
 export const works = [
   {
     id: 'septiemeseance',
@@ -10,12 +13,12 @@ export const works = [
     team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
     tags: ['Freelance', 'UX/UI Design', 'Front-end'],
-    cover: '/src/assets/septiemeseance/002.jpg',
+    cover: septiemeCover,
     route: '/projet/septiemeseance',
     type: 'freelance'
   },
   {
-    id: 'alpine',
+    id: 'projet',
     title: 'Projet',
     intro:
       'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
@@ -55,7 +58,7 @@ export const works = [
     team: [],
     links: [],
     tags: ['École', 'UI Design'],
-    cover: '/src/assets/Frame3288.png',
+    cover: alpinePlaceholder,
     route: '/projet/alpine',
     type: 'school'
   }
