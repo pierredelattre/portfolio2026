@@ -14,13 +14,13 @@
 
 L’enjeu était de créer un service plus fluide, qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps." />
 
-    <ImageFullWidthLayout secondary :image-src="geolocationImage"
+    <ImageFullWidthLayout secondary :image-mobile-src="geolocationImageMobile" :image-src="geolocationImage"
       image-alt="Géolocalisation ou recherche manuelle" title="Géolocalisation ou recherche manuelle"
       text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est, quant à elle, conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
 
     <GridScrollLayout :images="gridScrollImages" title="Filtres de recherche" :text="gridScrollFiltersText" />
 
-    <ImageFullWidthLayout secondary :image-src="projectionsImage"
+    <ImageFullWidthLayout secondary :image-mobile-src="projectionsImageMobile" :image-src="projectionsImage"
       image-alt="Liste des projections autour" title="Liste des projections autour"
       text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
 
@@ -37,12 +37,16 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
+
 import projectBackground from '@/assets/septiemeseance/002.jpg'
 import contextImage from '@/assets/septiemeseance/contexte.jpg'
 import geolocationImage from '@/assets/septiemeseance/geoloc.jpg'
+import geolocationImageMobile from '@/assets/septiemeseance/mobile-geoloc.jpg'
 import projectionsImage from '@/assets/septiemeseance/projections.jpg'
+import projectionsImageMobile from '@/assets/septiemeseance/mobile-projections.jpg'
 import notesImage from '@/assets/septiemeseance/notes.jpg'
 import alertsImage from '@/assets/septiemeseance/alertes.jpg'
+import alertsImageMobile from '@/assets/septiemeseance/mobile-alertes.jpg'
 import letterboxdImage from '@/assets/septiemeseance/letterboxd.jpg'
 import letterboxdMobileImage from '@/assets/septiemeseance/mobile-letterboxd.jpg'
 
@@ -54,14 +58,14 @@ if (!projectData) {
 }
 
 const gridScrollImages = [
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
+  { src: '/src/assets/septiemeseance/filter-films.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-films.jpg', alt: "Filtrer les films" },
+  { src: '/src/assets/septiemeseance/filter-perimetre.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-perimetre.jpg', alt: "Périmètre de recherche & date" },
+  { src: '/src/assets/septiemeseance/filter-langue.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-langue.jpg', alt: "Choix des langues et des sous-titres" }
 ]
 
 const upgrades = [
   { src: notesImage, alt: "Ajout des notes et critiques des films" },
-  { src: alertsImage, alt: "Être notifié de la projection d'un film autour de chez soi" },
+  { src: alertsImage, mobileSrc: alertsImageMobile, alt: "Être notifié de la projection d'un film autour de chez soi" },
   { src: letterboxdImage, mobileSrc: letterboxdMobileImage, alt: "Lier son compte à Letterboxd" }
 ]
 
@@ -69,8 +73,8 @@ const gridScrollFiltersText = [
   {
     description:
       'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis et plus utile selon les situations.',
-    1: 'Le premier filtre concerne le périmètre : l’utilisateur peut définir la distance autour du point détecté en géolocalisation ou autour de la ville/cinéma qu’il a choisi manuellement. Cela permet d’élargir ou de réduire facilement la zone couverte. Il peut aussi choisir la date de sa séance souhaitée pour voir les projections à cette date.',
-    2: 'D’autres filtres viennent affiner les résultats, notamment le genre du film, son année, sa durée et une option permettant de distinguer les films récents des “films cultes” encore projetés. Les utilisateurs peuvent également filtrer selon les abonnements acceptés par chaque salle, par exemple UGC ou Pathé.',
+    1: 'Certains filtres viennent affiner les résultats, notamment le genre du film, son année, sa durée et une option permettant de distinguer les films récents des “films cultes” encore projetés. Les utilisateurs peuvent également filtrer selon les abonnements acceptés par chaque salle, par exemple UGC ou Pathé.',
+    2: 'L’utilisateur peut définir la distance autour du point détecté en géolocalisation ou autour de la ville/cinéma qu’il a choisi manuellement. Cela permet d’élargir ou de réduire facilement la zone couverte. Il peut aussi choisir la date de sa séance souhaitée pour voir les projections à cette date.',
     3: 'La gestion des langues et des sous-titres fait aussi partie des options disponibles. L’idée générale est de laisser à chacun la possibilité d’adapter l’affichage en fonction de ses contraintes. On retrouve aussi ces filtres sur la page film afin de filter dans les séances.',
   }
 ]
@@ -78,7 +82,7 @@ const gridScrollFiltersText = [
 const gridScrollUpgradesText = [
   {
     description:
-      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
+      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile ainsi qu'un bouton réinitialiser les filtres. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
   }
 ]
 

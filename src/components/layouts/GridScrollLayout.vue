@@ -211,15 +211,18 @@ const parsedImages = computed(() =>
     }
 
     .grid-scroll-text__idea:nth-child(1) .grid-scroll-text__idea-index {
-      background-color: #B62222;
+      background-color: #DB1D1D;
+      color: white;
     }
 
     .grid-scroll-text__idea:nth-child(2) .grid-scroll-text__idea-index {
       background-color: #259d1f;
+      color: white;
     }
 
     .grid-scroll-text__idea:nth-child(3) .grid-scroll-text__idea-index {
       background-color: #2262B6;
+      color: white;
     }
 
     .grid-scroll-text__idea-text {
