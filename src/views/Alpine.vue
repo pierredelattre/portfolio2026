@@ -8,18 +8,20 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!" />
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+    <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
+      text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi définit un parvcours utilisateur adapté à la voiture : interface centrée conducteur, mise en avant des informations de monitoring des organes de la voiture." />
 
-    <GridScrollLayout :images="gridScrollImages" title="Titre" :text="gridScrollText" />
+    <ImageFullWidthLayout :image-src=bench :image-mobile-src=benchMobile image-alt="Benchmark" title="Benchmark"
+      text="Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents.
+      
+      Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces" />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+<ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit" title="Réalisation d’un UI Kit"
+      text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+Les bonnes pratiques de la marque ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs propres à la marque mais aussi une proposition de nuances différentes pour une bonne accessibilité." />
+
+    <GridScrollLayout :images="gridScrollImages" title="Du concept aux écrans finaux" :text="gridScrollText" />
   </section>
 </template>
 
@@ -32,7 +34,20 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
-import projectBackground from '@/assets/Frame3288.png'
+
+import projectBackground from '@/assets/alpine/alpine-mockup.jpg'
+import philosophie from '@/assets/alpine/philosophie.jpg'
+import nav from '@/assets/alpine/nav.jpg'
+import dashboard from '@/assets/alpine/dashboard.jpg'
+import research from '@/assets/alpine/research.jpg'
+import navMobile from '@/assets/alpine/mobile-nav.jpg'
+import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg'
+import researcMobile from '@/assets/alpine/mobile-research.jpg'
+import uikit from '@/assets/alpine/uikit.jpg'
+import uikitMobile from '@/assets/alpine/mobile-uikit.jpg'
+import bench from '@/assets/alpine/bench.jpg'
+import benchMobile from '@/assets/alpine/mobile-bench.jpg'
+
 
 const PROJECT_ROUTE = '/projet/alpine'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -42,13 +57,13 @@ if (!projectData) {
 }
 
 const gridScrollImages = [
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
+  { src: nav, mobileSrc: navMobile, alt: "Navigation GPS" },
+  { src: dashboard, mobileSrc: dashboardMobile, alt: "Tableau de bord" },
+  { src: research, mobileSrc: researcMobile, alt: "Recherche multimédia" }
 ]
 
 const gridScrollText =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero.'
+  'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
 
 const hasProject = computed(() => Boolean(projectData))
 

@@ -1,5 +1,7 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg'
-import alpinePlaceholder from '@/assets/Frame3288.png'
+import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg'
+import projetPlaceholder from '@/assets/alpine/alpine-mockup.jpg'
+import talkiePlaceholder from '@/assets/alpine/alpine-mockup.jpg'
 
 export const works = [
   {
@@ -10,7 +12,7 @@ export const works = [
     description:
       'Septième Séance est une plateforme qui permet de trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche. L’objectif est de proposer une expérience simple, rapide et adaptée au mobile, loin de la complexité des services existants.',
     services: ['Recherche utilisateur', 'UI Design', 'UI Kit', 'Front-end'],
-    team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
+    team: [{ label: 'Mathieu Lefebvre', href: 'https://bento.me/matlfb', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
     tags: ['Freelance', 'UX/UI Design', 'Front-end'],
     cover: septiemeCover,
@@ -28,7 +30,7 @@ export const works = [
     team: [{ label: 'Freelance', href: '#', external: true }],
     links: [{ label: 'Lien d\'exemple', href: '#', secondary: true, external: true }],
     tags: ['UI Design'],
-    cover: 'https://placehold.co/400x600/EEE/31343C',
+    cover: projetPlaceholder,
     route: '/projet/projet',
     type: 'school'
   },
@@ -43,7 +45,7 @@ export const works = [
     team: [{ label: 'Grégoire De Gaiffier', href: 'https://gregoiredegaiffier.be/', external: true }],
     links: [{ label: 'Design system', href: 'https://zeroheight.com/638c688b2/p/946500-talkie', secondary: true, external: true }],
     tags: ['École', 'UX/UI Design', 'Design system'],
-    cover: 'https://placehold.co/400x600/EEE/31343C',
+    cover: talkiePlaceholder,
     route: '/projet/talkie',
     type: 'school'
   },
@@ -51,9 +53,9 @@ export const works = [
     id: 'alpine',
     title: 'Alpine Infotainment',
     intro:
-      'Lorem ipsum dolor sit amet consectetur. Tellus sit odio duis mattis enim ipsum. Lorem placerat amet augue arcu curabitur duis non eu.',
+      'Conception d’un infodivertissement complet pour une Alpine A110 électrique fictive, pensé pour refléter l’identité de la marque et accompagner le conducteur.',
     description:
-      'Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque condimentum massa pellentesque.',
+      'Réalisation d’une interface complète dédiée à une voiture fictive : l’Alpine A110 électrique. Proposition d’un infodivertissement adapté au conducteur de la voiture & à la marque. L’interface possède des accès aux fonctionnalités de base : GPS, gestion voiture, climatisation, réglages, téléphonie, musique, connectivité & un bouton warning obligatoire. Trois scénarios sont travaillés : le paramétrage d’un trajet sur le GPS, passer un appel & mettre de la musique, choisir une playlist ou encore sélectionner un album.',
     services: ['UI Design', 'UI Kit'],
     team: [],
     links: [],
