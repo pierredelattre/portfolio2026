@@ -32,7 +32,7 @@ export const works = [
     tags: ['UI Design'],
     cover: projetPlaceholder,
     route: '/projet/projet',
-    type: 'school'
+    type: 'freelance'
   },
   {
     id: 'talkie',
@@ -68,18 +68,18 @@ export const works = [
 
 export const playgroundColumns = [
   [
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }
-  ],
-  [
+    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' },
     { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
     { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }
   ],
   [
     { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
+    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' }
+  ],
+  [
     { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }
+    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
+    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' }
   ],
   [
     { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }

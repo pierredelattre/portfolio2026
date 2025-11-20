@@ -1,12 +1,17 @@
 <template>
   <div class="playground__item">
     <img :src="image" :alt="title" loading="lazy" />
+    <div v-if="type" class="playground__label">
+      <ProjectLabel :type="type" />
+    </div>
     <p class="title">{{ title }}</p>
     <p class="date text--secondary">{{ date }}</p>
   </div>
 </template>
 
 <script setup>
+import ProjectLabel from '@/components/ProjectLabel.vue'
+
 defineProps({
   title: {
     type: String,
@@ -19,6 +24,10 @@ defineProps({
   image: {
     type: String,
     required: true
+  },
+  type: {
+    type: String,
+    default: ''
   }
 })
 </script>
@@ -36,6 +45,15 @@ defineProps({
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+}
+
+.playground__label {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  backdrop-filter: blur(8px);
 }
 
 .playground__item .title {

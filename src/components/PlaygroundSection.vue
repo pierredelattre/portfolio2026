@@ -6,9 +6,7 @@
         <PlaygroundCard
           v-for="(item, itemIndex) in column"
           :key="`item-${columnIndex}-${itemIndex}`"
-          :title="item.title"
-          :date="item.date"
-          :image="item.image"
+          v-bind="item"
         />
       </div>
     </div>
