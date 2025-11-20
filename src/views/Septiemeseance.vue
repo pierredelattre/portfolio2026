@@ -44,6 +44,12 @@ import geolocationImage from '@/assets/septiemeseance/geoloc.jpg'
 import geolocationImageMobile from '@/assets/septiemeseance/mobile-geoloc.jpg'
 import projectionsImage from '@/assets/septiemeseance/projections.jpg'
 import projectionsImageMobile from '@/assets/septiemeseance/mobile-projections.jpg'
+import filterFilmsImage from '@/assets/septiemeseance/filter-films.jpg'
+import filterFilmsMobileImage from '@/assets/septiemeseance/mobile-filter-films.jpg'
+import filterPerimeterImage from '@/assets/septiemeseance/filter-perimetre.jpg'
+import filterPerimeterMobileImage from '@/assets/septiemeseance/mobile-filter-perimetre.jpg'
+import filterLanguageImage from '@/assets/septiemeseance/filter-langue.jpg'
+import filterLanguageMobileImage from '@/assets/septiemeseance/mobile-filter-langue.jpg'
 import notesImage from '@/assets/septiemeseance/notes.jpg'
 import alertsImage from '@/assets/septiemeseance/alertes.jpg'
 import alertsImageMobile from '@/assets/septiemeseance/mobile-alertes.jpg'
@@ -58,9 +64,9 @@ if (!projectData) {
 }
 
 const gridScrollImages = [
-  { src: '/src/assets/septiemeseance/filter-films.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-films.jpg', alt: "Filtrer les films" },
-  { src: '/src/assets/septiemeseance/filter-perimetre.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-perimetre.jpg', alt: "Périmètre de recherche & date" },
-  { src: '/src/assets/septiemeseance/filter-langue.jpg', mobileSrc: '/src/assets/septiemeseance/mobile-filter-langue.jpg', alt: "Choix des langues et des sous-titres" }
+  { src: filterFilmsImage, mobileSrc: filterFilmsMobileImage, alt: 'Filtrer les films' },
+  { src: filterPerimeterImage, mobileSrc: filterPerimeterMobileImage, alt: 'Périmètre de recherche & date' },
+  { src: filterLanguageImage, mobileSrc: filterLanguageMobileImage, alt: 'Choix des langues et des sous-titres' }
 ]
 
 const upgrades = [
