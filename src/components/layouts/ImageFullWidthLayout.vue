@@ -46,14 +46,14 @@ defineProps({
   overflow: hidden;
 
   &>picture,
-  &>picture > img {
+  &>picture>img {
     grid-column: 1;
     width: 100%;
     height: 100%;
     display: block;
   }
 
-  &>picture > img {
+  &>picture>img {
     grid-column: 1;
     object-fit: cover;
     user-drag: none;
@@ -82,12 +82,12 @@ defineProps({
     }
 
     &>p {
-      max-width: 40%;
+      max-width: 30%;
       line-height: 1.5;
       white-space: pre-line;
 
       @media screen and (min-width: 768px) and (max-width: 1280px) {
-        max-width: 70%;
+        max-width: 64%;
       }
 
       @media screen and (max-width: 768px) {

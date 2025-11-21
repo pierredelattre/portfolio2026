@@ -45,13 +45,13 @@ defineProps({
     height: 540px;
 
     & picture,
-    & picture > img {
+    & picture>img {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    & picture > img {
+    & picture>img {
       object-fit: cover;
       user-drag: none;
       -webkit-user-drag: none;
@@ -85,8 +85,12 @@ defineProps({
 
     & p {
       line-height: 1.5;
-      max-width: 70%;
+      max-width: 64%;
       white-space: pre-line;
+
+      @media screen and (min-width: 1700px) {
+        max-width: 50%;
+      }
 
       @media screen and (max-width: 768px) {
         max-width: 100%;

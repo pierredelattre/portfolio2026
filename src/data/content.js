@@ -38,9 +38,9 @@ export const works = [
     id: 'talkie',
     title: 'Talkie',
     intro:
-      'Application d’apprentissage de langues orientée autour des quiz intéractifs et multijoueurs.',
+      'Talkie est une application d’apprentissage des langues pensée pour rendre la progression plus ludique, personnalisée et immersive grâce à des cours interactifs, des quêtes, du multijoueur et un design system complet.',
     description:
-      'Application d’apprentissage de langues orientée autour des quiz intéractifs et multijoueurs.',
+      'Nous avons imaginé Talkie comme une alternative moderne aux applications classiques de langue : plus vivante, plus flexible et ancrée dans des scénarios réels, avec une dimension sociale forte. Le projet inclut l’UX research complète, l’architecture produit, les maquettes, ainsi que la création d’un design system documenté.',
     services: ['Recherche utilisateur', 'UI Design', 'Design system'],
     team: [{ label: 'Grégoire De Gaiffier', href: 'https://gregoiredegaiffier.be/', external: true }],
     links: [{ label: 'Design system', href: 'https://zeroheight.com/638c688b2/p/946500-talkie', secondary: true, external: true }],

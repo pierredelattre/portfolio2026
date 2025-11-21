@@ -26,14 +26,12 @@
 
     <div class="header__intro">
       <p>
-        Lorem ipsum dolor sit amet consectetur. Enim integer sapien erat bibendum cursus lacus nec. Augue sit elit
-        morbi consectetur lacus leo ullamcorper. Ornare proin viverra malesuada phasellus leo rhoncus. Egestas natoque
-        condimentum massa pellentesque.
+        Designer UX/UI orienté produit, spécialisé dans la conception d’interfaces accessibles et la création de design systems cohérents. Expérience en e-commerce, intégration front-end et recherche utilisateur.
       </p>
     </div>
 
     <div class="header__links">
-      <LinkItem href="#" label="CV" secondary external />
+      <LinkItem href="/src/assets/resume.pdf" label="CV" secondary external />
       <LinkItem href="#" label="Cosmos" secondary external />
       <LinkItem href="#" label="Are.na" secondary external />
     </div>
@@ -240,7 +238,11 @@ header {
     line-height: 1.5;
 
     @media screen and (min-width: 768px) {
-      max-width: 70%;
+      max-width: 64%;
+    }
+
+    @media screen and (min-width: 1700px) {
+      max-width: 50%;
     }
   }
 

@@ -8,31 +8,18 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image"
-      title="Contexte & Enjeu"
-      text="Le projet part d’un constat simple : la majorité des outils existants pour chercher une séance de cinéma sont lourds, peu directs et rarement pensés pour un usage immédiat. Les grands acteurs du marché demandent souvent de passer par une fiche film, une fiche cinéma ou plusieurs menus avant d’obtenir un simple horaire. Dans certains cas, même après avoir autorisé la géolocalisation, les résultats ne sont pas affichés.
-      
-      L’enjeu était donc de proposer une expérience qui commence vraiment par la question que se pose l’utilisateur : qu’est-ce qui passe autour de moi, maintenant ou ce soir ? L’objectif était d’éviter la navigation en cascade, de réduire la friction et de rendre la recherche plus naturelle, que ce soit en utilisant sa position ou en choisissant manuellement une ville ou un cinéma." />
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image"
-      title="Conception du service"
-      text="La conception s’est d’abord concentrée sur la manière dont les utilisateurs effectuent réellement leur recherche. Certains veulent simplement savoir ce qui se joue près d’eux, d’autres préparent une sortie dans une autre ville, et d’autres encore partent d’un film qu’ils ont envie de voir. À partir de ces comportements, plusieurs points clés ont été définis.
-      
-      L’accueil doit permettre deux entrées : géolocalisation ou recherche manuelle. La géolocalisation affiche les cinémas les plus proches dès qu’elle est autorisée. La recherche, elle, doit être rapide : nom de ville, nom de cinéma ou même titre de film, le tout affiché par autocomplétion et une tolérance d'erreurs.
-Une fois la zone choisie, la liste des films apparaît, chacun ayant une page dédiée.
+    <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
+      text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi définit un parvcours utilisateur adapté à la voiture : interface centrée conducteur, mise en avant des informations de monitoring des organes de la voiture." />
 
-La page film joue un rôle central. Elle réunit les informations essentielles et surtout toutes les séances disponibles autour du périmètre défini, quel que soit le cinéma. Cela permet d’avoir une vision d’ensemble sans perdre le fil." />
+    <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
 
-    <GridScrollLayout :images="gridScrollImages" title="Architecture" text="L’application s’organise autour d’un parcours clair. L’accueil propose soit d’utiliser la géolocalisation, soit de rechercher un film, une ville ou un cinéma, ce qui permet de s’adapter aux besoins de chaque utilisateur. Une fois la zone définie, la liste des cinémas apparaît et chacun possède sa propre page avec les séances du jour, ainsi qu’un changement de date rapide. La page film regroupe l’essentiel (infos, résumé et toutes les séances disponibles) pour comparer facilement sans naviguer partout. L’ensemble reste léger, logique et pensé pour un usage mobile, que l’utilisateur cherche ce qu\'il se passe près de lui ou qu\'il prépare une sortie ailleurs." />
+    <ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
+      title="Réalisation d’un UI Kit"
+      text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+Les bonnes pratiques de la marque ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs propres à la marque mais aussi une proposition de nuances différentes pour une bonne accessibilité." />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
-
-    <GridScrollLayout :images="gridScrollImages" title="Futures améliorations" text="Suite à la mise en production, plusieurs évolutions sont déjà envisagées pour enrichir l’expérience. Les points clés sont la récupération et l'affichage des prix des séances ainsi que l'affichage de la prochaine séance disponible dès la page des résultats. Une version mobile dédiée permettrait d’activer des alertes personnalisées : sortie d’un film attendu, séance disponible dans un rayon donné, ou rappel lorsqu’un film arrive dans une salle préférée. L'affichage des options plus spécifiques des séances : séances 3D, avant-premières...
-    
-    Enfin, l’intégration de notes et d’avis provenant de différentes plateformes renforcerait également la découverte, tout comme l’affichage des prix et distinctions reçus par les films. Une connexion optionnelle à Letterboxd ou Trakt est envisagée afin afficher uniquement les séances des films présents dans sa watchlist, et filtrer toute la recherche en fonction de celle-ci, avoir les alertes." />
+    <GridScrollLayout :images="gridScrollImages" title="Du concept aux écrans finaux" :text="gridScrollText" />
   </section>
 </template>
 
@@ -45,9 +32,27 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
-import projectBackground from '@/assets/Frame3288.png'
 
-const PROJECT_ROUTE = '/projet/talkie'
+import projectBackground from '@/assets/alpine/alpine-mockup.jpg'
+import philosophie from '@/assets/alpine/philosophie.jpg'
+import nav from '@/assets/alpine/nav.jpg'
+import dashboard from '@/assets/alpine/dashboard.jpg'
+import research from '@/assets/alpine/research.jpg'
+import navMobile from '@/assets/alpine/mobile-nav.jpg'
+import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg'
+import researcMobile from '@/assets/alpine/mobile-research.jpg'
+import uikit from '@/assets/alpine/uikit.jpg'
+import uikitMobile from '@/assets/alpine/mobile-uikit.jpg'
+
+import benchBatterie from '@/assets/alpine/bench-batterie.jpg'
+import benchClim from '@/assets/alpine/bench-clim.jpg'
+import benchDashboard from '@/assets/alpine/bench-dashboard.jpg'
+
+import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg'
+import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg'
+import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg'
+
+const PROJECT_ROUTE = '/projet/alpine'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
 
 if (!projectData) {
@@ -55,10 +60,22 @@ if (!projectData) {
 }
 
 const gridScrollImages = [
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
+  { src: nav, mobileSrc: navMobile, alt: "Navigation GPS" },
+  { src: dashboard, mobileSrc: dashboardMobile, alt: "Tableau de bord" },
+  { src: research, mobileSrc: researcMobile, alt: "Recherche multimédia" }
 ]
+
+const benchmarkGrid = [
+  { src: benchDashboard, mobileSrc: benchDashboardMobile, alt: "Tableau de bord de l'interface" },
+  { src: benchClim, mobileSrc: benchClimMobile, alt: "Climatisation & chauffage" },
+  { src: benchBatterie, mobileSrc: benchBatterieMobile, alt: "Batterie & autonomie" }
+]
+
+const gridScrollText =
+  'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
+
+const benchGridText =
+  '  Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
 
 const hasProject = computed(() => Boolean(projectData))
 
@@ -67,7 +84,7 @@ const projectBg = computed(() => projectBackground)
 usePageLoaded(projectBg)
 </script>
 
-<style>
+<style scoped>
 .project {
   display: grid;
   grid-template-columns: repeat(16, 1fr);

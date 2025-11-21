@@ -11,12 +11,10 @@
     <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
       text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi définit un parvcours utilisateur adapté à la voiture : interface centrée conducteur, mise en avant des informations de monitoring des organes de la voiture." />
 
-    <ImageFullWidthLayout :image-src=bench :image-mobile-src=benchMobile image-alt="Benchmark" title="Benchmark"
-      text="Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents.
-      
-      Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces" />
+    <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
 
-<ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit" title="Réalisation d’un UI Kit"
+    <ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
+      title="Réalisation d’un UI Kit"
       text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 
 Les bonnes pratiques de la marque ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs propres à la marque mais aussi une proposition de nuances différentes pour une bonne accessibilité." />
@@ -45,9 +43,14 @@ import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg'
 import researcMobile from '@/assets/alpine/mobile-research.jpg'
 import uikit from '@/assets/alpine/uikit.jpg'
 import uikitMobile from '@/assets/alpine/mobile-uikit.jpg'
-import bench from '@/assets/alpine/bench.jpg'
-import benchMobile from '@/assets/alpine/mobile-bench.jpg'
 
+import benchBatterie from '@/assets/alpine/bench-batterie.jpg'
+import benchClim from '@/assets/alpine/bench-clim.jpg'
+import benchDashboard from '@/assets/alpine/bench-dashboard.jpg'
+
+import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg'
+import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg'
+import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg'
 
 const PROJECT_ROUTE = '/projet/alpine'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -62,8 +65,17 @@ const gridScrollImages = [
   { src: research, mobileSrc: researcMobile, alt: "Recherche multimédia" }
 ]
 
+const benchmarkGrid = [
+  { src: benchDashboard, mobileSrc: benchDashboardMobile, alt: "Tableau de bord de l'interface" },
+  { src: benchClim, mobileSrc: benchClimMobile, alt: "Climatisation & chauffage" },
+  { src: benchBatterie, mobileSrc: benchBatterieMobile, alt: "Batterie & autonomie" }
+]
+
 const gridScrollText =
   'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
+
+const benchGridText =
+  '  Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
 
 const hasProject = computed(() => Boolean(projectData))
 

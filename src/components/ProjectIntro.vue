@@ -16,28 +16,14 @@
       </div>
       <div v-if="team.length" class="team">
         <h3 class="text--secondary">En collaboration avec</h3>
-        <LinkItem
-          v-for="(item, index) in team"
-          :key="`${item.label}-${index}`"
-          :href="item.href"
-          :to="item.to"
-          :label="item.label"
-          :secondary="item.secondary"
-          :external="Boolean(item.external)"
-        />
+        <LinkItem v-for="(item, index) in team" :key="`${item.label}-${index}`" :href="item.href" :to="item.to"
+          :label="item.label" :secondary="item.secondary" :external="Boolean(item.external)" />
       </div>
     </div>
 
     <div v-if="links.length" class="links">
-      <LinkItem
-        v-for="(link, index) in links"
-        :key="`${link.label}-${index}`"
-        :href="link.href"
-        :to="link.to"
-        :label="link.label"
-        :secondary="link.secondary"
-        :external="Boolean(link.external)"
-      />
+      <LinkItem v-for="(link, index) in links" :key="`${link.label}-${index}`" :href="link.href" :to="link.to"
+        :label="link.label" :secondary="link.secondary" :external="Boolean(link.external)" />
     </div>
   </section>
 </template>
@@ -91,7 +77,11 @@ const hasInfos = computed(() => props.services.length > 0 || props.team.length >
   grid-column: 9 / 17;
 
   & p {
-    max-width: 70%;
+    max-width: 64%;
+  }
+
+  @media screen and (min-width: 1700px) {
+    max-width: 50%;
   }
 
   @media screen and (max-width: 768px) {
