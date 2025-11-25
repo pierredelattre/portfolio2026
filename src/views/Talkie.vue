@@ -68,7 +68,9 @@ import tests from '@/assets/talkie/tests.jpg'
 
 import persona from '@/assets/talkie/per.jpg'
 import entretiens from '@/assets/talkie/entr.jpg'
+import entretiensMobile from '@/assets/talkie/mobile-entr.jpg'
 import fonctions from '@/assets/talkie/fonctions.jpg'
+import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg'
 
 const PROJECT_ROUTE = '/projet/talkie'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -85,8 +87,8 @@ const uiGridImages = [
 
 const rechercheUX = [
   { src: persona, alt: "Persona" },
-  { src: entretiens, alt: "Entretiens" },
-  { src: fonctions, alt: "Fonctionnalités" }
+  { src: entretiens, mobileSrc: entretiensMobile, alt: "Entretiens" },
+  { src: fonctions, mobileSrc: fonctionsMobile, alt: "Fonctionnalités" }
 ]
 
 const hasProject = computed(() => Boolean(projectData))
