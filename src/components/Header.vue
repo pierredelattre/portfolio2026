@@ -41,10 +41,10 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import LinkItem from './LinkItem.vue'
-import resumePdf from '@/assets/resume.pdf'
 
 const THEME_KEY = 'theme-preference'
 const theme = ref('light')
+const resumePdf = encodeURI('/CV Pierre Delattre.pdf')
 let prefersDarkMedia
 
 const applyTheme = (value) => {
