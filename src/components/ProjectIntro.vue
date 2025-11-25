@@ -78,10 +78,10 @@ const hasInfos = computed(() => props.services.length > 0 || props.team.length >
 
   & p {
     max-width: 64%;
-  }
 
-  @media screen and (min-width: 1700px) {
-    max-width: 50%;
+    @media screen and (min-width: 1700px) {
+      max-width: 50%;
+    }
   }
 
   @media screen and (max-width: 768px) {

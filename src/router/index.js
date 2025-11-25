@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/projet/alpine',
     name: 'alpine',
-    component: () => import('@/views/Talkie.vue'),
+    component: () => import('@/views/Alpine.vue'),
     meta: {
       headerMode: 'project'
     }

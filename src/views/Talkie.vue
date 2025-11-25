@@ -8,18 +8,41 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
-      text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi définit un parvcours utilisateur adapté à la voiture : interface centrée conducteur, mise en avant des informations de monitoring des organes de la voiture." />
+    <ColumnTextLayout :image-src=contexte image-alt="Contexte & Enjeux" title="Contexte & Enjeux" text="Talkie naît du constat que les applications d’apprentissage souffrent souvent de répétitivité, faible profondeur et manque d’immersion. Nous avons cherché à concevoir une expérience qui combine gamification, mise en situation et flexibilité totale, en intégrant des modules solo, duels, quiz thématiques et un apprentissage guidé.
+L’objectif : rendre l’apprentissage motivant, répétable, personnalisé et culturellement enrichissant." />
 
-    <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
+    <GridScrollLayout :images="rechercheUX" title="Recherche utilisateur" text="Entretiens qualitatifs, proto-personas et recherches secondaires ont mis en lumière des attentes clés :
+– variété dans les formats d’apprentissage,
+– scénarios réels pour pratiquer,
+– progression claire,
+– sessions courtes,
+– dimension sociale motivante.
 
-    <ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
-      title="Réalisation d’un UI Kit"
-      text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
+Ces insights ont nourri l’arborescence et les parcours." />
 
-Les bonnes pratiques de la marque ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs propres à la marque mais aussi une proposition de nuances différentes pour une bonne accessibilité." />
+    <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile image-alt="Architecture & parcours"
+      title="Architecture & parcours"
+      text="L’expérience est structurée autour de cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil.
+Nous avons conçu des parcours fluides pour le duel, les quizz thématiques et l’apprentissage guidé, en garantissant une navigation claire." />
 
-    <GridScrollLayout :images="gridScrollImages" title="Du concept aux écrans finaux" :text="gridScrollText" />
+    <GridScrollLayout :images=uiGridImages title="Conception UI"
+      text="L’UI a été conçue pour simplifier la diversité des formats (cours, quiz, duels, quêtes) grâce à des patterns réutilisables : cartes de contenus, blocs de progression, modules de quiz et header cohérent.
+
+La hiérarchie d’information a été pensée pour être immédiate : titres clairs, actions primaires visibles, actions secondaires accessibles sans distraire.
+
+Les feedbacks (réponses, progression, score) jouent un rôle central pour soutenir la dimension gamifiée et garder l’utilisateur engagé.
+L’ensemble vise, quant à elle, une interface prévisible et fluide, où chaque écran reprend les mêmes logiques pour réduire la charge cognitive." />
+
+    <ColumnTextLayout :image-src=designsystem image-alt="Design system" title="Design system" text="La première itération du produit abouti sur un device mobile néanmoins afin de se positionner en tant qu’acteurs dans ce marché, une présence tablettes & desktop est nécessaire. Un besoin cohérence a été identifié pour les futures version mais aussi une maintenance plus facile et des perspectives d’évolutions envisageables. De plus, face aux différentes fonctionnalités et services gérés par les différentes équipes, un design language est à mettre en place.
+
+Cela résulterait en une meilleure communication entre les équipes et une meilleure efficience. 
+
+Un design system complet a alors été créé : design tokens, fondations, composants, templates et documentation Zeroheight, synchronisée avec Figma." />
+
+<ColumnTextLayout :image-src=tests image-alt="Tests utilisateurs" title="Tests utilisateurs" text="Les tests ont révélé des ajustements essentiels : clarifier certains éléments de progression (comme les “réponses connues”), ajouter un récapitulatif de fin de quiz plus valorisant, et améliorer la visibilité d’actions clés (inviter un ami, quitter ou reprendre un cours).
+Ils ont aussi mis en lumière le besoin de titres de page, de pictos plus lisibles et de feedbacks interactifs plus explicites.
+
+Ces retours ont permis d’améliorer la hiérarchie visuelle, la compréhension immédiate des écrans et la cohérence des interactions, tout en confirmant la fluidité globale des parcours proposés." />
   </section>
 </template>
 
@@ -33,49 +56,38 @@ import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
 
-import projectBackground from '@/assets/alpine/alpine-mockup.jpg'
-import philosophie from '@/assets/alpine/philosophie.jpg'
-import nav from '@/assets/alpine/nav.jpg'
-import dashboard from '@/assets/alpine/dashboard.jpg'
-import research from '@/assets/alpine/research.jpg'
-import navMobile from '@/assets/alpine/mobile-nav.jpg'
-import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg'
-import researcMobile from '@/assets/alpine/mobile-research.jpg'
-import uikit from '@/assets/alpine/uikit.jpg'
-import uikitMobile from '@/assets/alpine/mobile-uikit.jpg'
+import projectBackground from '@/assets/talkie/banner.jpg'
+import contexte from '@/assets/talkie/contexte.jpg'
+import flows from '@/assets/talkie/flows.jpg'
+import flowsMobile from '@/assets/talkie/mobile-flows.jpg'
+import designsystem from '@/assets/talkie/designsystem.jpg'
+import apprentissage from '@/assets/talkie/apprentissage.jpg'
+import quiz from '@/assets/talkie/quiz.jpg'
+import duels from '@/assets/talkie/duels.jpg'
+import tests from '@/assets/talkie/tests.jpg'
 
-import benchBatterie from '@/assets/alpine/bench-batterie.jpg'
-import benchClim from '@/assets/alpine/bench-clim.jpg'
-import benchDashboard from '@/assets/alpine/bench-dashboard.jpg'
+import persona from '@/assets/talkie/per.jpg'
+import entretiens from '@/assets/talkie/entr.jpg'
+import fonctions from '@/assets/talkie/fonctions.jpg'
 
-import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg'
-import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg'
-import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg'
-
-const PROJECT_ROUTE = '/projet/alpine'
+const PROJECT_ROUTE = '/projet/talkie'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
 
 if (!projectData) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const gridScrollImages = [
-  { src: nav, mobileSrc: navMobile, alt: "Navigation GPS" },
-  { src: dashboard, mobileSrc: dashboardMobile, alt: "Tableau de bord" },
-  { src: research, mobileSrc: researcMobile, alt: "Recherche multimédia" }
+const uiGridImages = [
+  { src: apprentissage, alt: "Cours" },
+  { src: quiz, alt: "Quizs en solo" },
+  { src: duels, alt: "Duels entre joueurs" }
 ]
 
-const benchmarkGrid = [
-  { src: benchDashboard, mobileSrc: benchDashboardMobile, alt: "Tableau de bord de l'interface" },
-  { src: benchClim, mobileSrc: benchClimMobile, alt: "Climatisation & chauffage" },
-  { src: benchBatterie, mobileSrc: benchBatterieMobile, alt: "Batterie & autonomie" }
+const rechercheUX = [
+  { src: persona, alt: "Persona" },
+  { src: entretiens, alt: "Entretiens" },
+  { src: fonctions, alt: "Fonctionnalités" }
 ]
-
-const gridScrollText =
-  'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
-
-const benchGridText =
-  '  Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
 
 const hasProject = computed(() => Boolean(projectData))
 
@@ -84,7 +96,7 @@ const projectBg = computed(() => projectBackground)
 usePageLoaded(projectBg)
 </script>
 
-<style scoped>
+<style>
 .project {
   display: grid;
   grid-template-columns: repeat(16, 1fr);

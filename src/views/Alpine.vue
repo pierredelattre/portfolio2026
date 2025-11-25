@@ -75,7 +75,7 @@ const gridScrollText =
   'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
 
 const benchGridText =
-  '  Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
+  'Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
 
 const hasProject = computed(() => Boolean(projectData))
 
@@ -84,7 +84,7 @@ const projectBg = computed(() => projectBackground)
 usePageLoaded(projectBg)
 </script>
 
-<style scoped>
+<style>
 .project {
   display: grid;
   grid-template-columns: repeat(16, 1fr);

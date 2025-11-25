@@ -146,7 +146,7 @@ footer {
           left: 0;
           height: 100%;
           width: 100%;
-          background: linear-gradient(0turn, #050505, #05050500);
+          background: linear-gradient(0turn, #090909, #05050500);
         }
 
         & img {

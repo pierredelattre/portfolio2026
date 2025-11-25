@@ -1,7 +1,7 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg'
 import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg'
-import projetPlaceholder from '@/assets/alpine/alpine-mockup.jpg'
-import talkiePlaceholder from '@/assets/alpine/alpine-mockup.jpg'
+import projetPlaceholder from '@/assets/placeholder.png'
+import talkiePlaceholder from '@/assets/talkie/banner.jpg'
 
 export const works = [
   {
