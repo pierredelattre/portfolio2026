@@ -31,7 +31,7 @@
     </div>
 
     <div class="header__links">
-      <LinkItem href="/src/assets/resume.pdf" label="CV" secondary external />
+      <LinkItem :href="resumePdf" label="CV" secondary external />
       <LinkItem href="#" label="Cosmos" secondary external />
       <LinkItem href="#" label="Are.na" secondary external />
     </div>
@@ -41,6 +41,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import LinkItem from './LinkItem.vue'
+import resumePdf from '@/assets/resume.pdf'
 
 const THEME_KEY = 'theme-preference'
 const theme = ref('light')
