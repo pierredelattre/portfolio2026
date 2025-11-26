@@ -1,5 +1,5 @@
 <template>
-  <div class="playground__item">
+  <div class="playground__item" role="button" tabindex="0" @click="handleSelect" @keyup.enter="handleSelect">
     <img :src="image" :alt="title" loading="lazy" />
     <div v-if="type" class="playground__label">
       <ProjectLabel :type="type" />
@@ -30,6 +30,12 @@ defineProps({
     default: ''
   }
 })
+
+const emit = defineEmits(['select'])
+
+const handleSelect = () => {
+  emit('select')
+}
 </script>
 
 <style scoped>
@@ -38,6 +44,7 @@ defineProps({
   overflow: hidden;
   height: 180px;
   width: 100%;
+  cursor: pointer;
 }
 
 .playground__item img {
