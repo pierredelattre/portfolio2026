@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <WorksSection :works="worksData" />
-    <PlaygroundSection :columns="playgroundData" />
+    <!-- <PlaygroundSection :columns="playgroundData" /> -->
   </section>
 </template>
 
@@ -17,10 +17,16 @@ const playgroundData = playgroundColumns
 usePageLoaded()
 </script>
 
-<style scoped>
+<style>
 .home {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+@media screen and (min-width: 1280px) {
+  #works>.projet:last-child {
+    grid-column: 3/5;
+  }
 }
 </style>
