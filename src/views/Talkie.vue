@@ -20,7 +20,7 @@ L’objectif : rendre l’apprentissage motivant, répétable, personnalisé et 
 
 Ces insights ont nourri l’arborescence et les parcours." />
 
-    <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile image-alt="Architecture & parcours"
+    <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile secondary image-alt="Architecture & parcours"
       title="Architecture & parcours"
       text="L’expérience est structurée autour de cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil.
 Nous avons conçu des parcours fluides pour le duel, les quizz thématiques et l’apprentissage guidé, en garantissant une navigation claire." />

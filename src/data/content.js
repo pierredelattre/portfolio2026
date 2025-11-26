@@ -68,20 +68,156 @@ export const works = [
 
 export const playgroundColumns = [
   [
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }
+    {
+      title: 'Exploration Septième Séance',
+      date: '2024',
+      image: 'src/assets/talkie/apprentissage.jpg',
+      type: 'freelance',
+      modalText: 'Moodboard photo et traitements d’images autour de Septième Séance.',
+      media: [
+        {
+          type: 'image',
+          src: 'src/assets/talkie/apprentissage.jpg',
+          alt: 'Exploration visuelle Septième Séance'
+        },
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/262626/f5f5f5?text=Septieme+Shot+2',
+          alt: 'UI secondaire Septième Séance'
+        }
+      ]
+    },
+    {
+      title: 'Prototype Alpine HUD',
+      date: '2023',
+      image: 'https://placehold.co/400x600/0a2740/ffffff?text=Alpine',
+      modalText: 'Essais d’animations tête haute pour l’Alpine A110 fictive.',
+      media: [
+        {
+          type: 'video',
+          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+          alt: 'Prototype Alpine HUD'
+        },
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/143d66/ffffff?text=HUD+State',
+          alt: 'Variation du HUD Alpine'
+        }
+      ]
+    },
+    {
+      title: 'Set de pictos',
+      date: '2022',
+      image: 'https://placehold.co/400x600/333333/eeeeee?text=Icons',
+      modalText: 'Petite série de pictogrammes pour un design system interne.',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/222222/f9f9f9?text=Pictos',
+          alt: 'Planche de pictogrammes'
+        }
+      ]
+    }
   ],
   [
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' }
+    {
+      title: 'Talkie Cards',
+      date: '2024',
+      image: 'https://placehold.co/400x600/6a00ff/ffffff?text=Talkie',
+      modalText: 'Exploration d’un format de cartes interactives pour Talkie.',
+      type: 'freelance',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/4400aa/ffffff?text=Talkie+1',
+          alt: 'Carte Talkie 1'
+        },
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/6a00ff/ffffff?text=Talkie+2',
+          alt: 'Carte Talkie 2'
+        },
+        {
+          type: 'video',
+          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+          alt: 'Interaction Talkie'
+        }
+      ]
+    },
+    {
+      title: 'Typo Study',
+      date: '2023',
+      image: 'https://placehold.co/400x600/000000/ffffff?text=Typo',
+      modalText: 'Recherche typographique sur une grille variable.',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/000000/ffffff?text=Typo+Study',
+          alt: 'Set typographique'
+        }
+      ]
+    }
   ],
   [
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' },
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C', type: 'freelance' }
+    {
+      title: 'Nehomia',
+      date: '2025',
+      image: 'src/assets/playground/nehomia.jpg',
+      modalText: 'Webdesign',
+      media: [
+        {
+          type: 'image',
+          src: 'src/assets/playground/nehomia.jpg',
+          alt: 'Webdesign'
+        }
+      ]
+    },
+    {
+      title: 'Palette Talkie',
+      date: '2024',
+      image: 'https://placehold.co/400x600/fad400/111111?text=Palette',
+      modalText: 'Palette secondaire imaginée pour Talkie.',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/fad400/1c1c1c?text=Palette',
+          alt: 'Palette colorée'
+        }
+      ]
+    },
+    {
+      title: 'Affiche perso',
+      date: '2021',
+      image: 'https://placehold.co/400x600/ff5a5f/ffffff?text=Affiche',
+      type: 'freelance',
+      modalText: 'Affiche perso imprimée en risographie.',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/ff5a5f/ffffff?text=Affiche+1',
+          alt: 'Affiche version 1'
+        },
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/bb1a1f/ffffff?text=Affiche+detail',
+          alt: 'Détail affiche'
+        }
+      ]
+    }
   ],
   [
-    { title: 'Item', date: 'Date', image: 'https://placehold.co/400x600/EEE/31343C' }
+    {
+      title: 'Shot caméra',
+      date: '2020',
+      image: 'https://placehold.co/400x600/151515/eeeeee?text=Shot',
+      modalText: 'Testing photo et colorimétrie sur une scène interior design.',
+      media: [
+        {
+          type: 'image',
+          src: 'https://placehold.co/1400x900/151515/eeeeee?text=Shot',
+          alt: 'Shot caméra'
+        }
+      ]
+    }
   ]
 ]

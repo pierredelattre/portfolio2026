@@ -284,8 +284,8 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(10, 10, 16, 0.35);
-  backdrop-filter: blur(8px);
+  background: rgba(10, 10, 16, 0.65);
+  backdrop-filter: blur(16px);
   animation: overlay-in 0.35s ease forwards;
   z-index: 999;
 }
@@ -297,7 +297,7 @@ onBeforeUnmount(() => {
   }
   to {
     background: rgba(10, 10, 16, 0.35);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(16px);
   }
 }
 
@@ -355,13 +355,11 @@ onBeforeUnmount(() => {
 .slide-next-enter-from,
 .slide-prev-leave-to {
   transform: translateX(100%);
-  opacity: 0.6;
 }
 
 .slide-next-leave-to,
 .slide-prev-enter-from {
   transform: translateX(-100%);
-  opacity: 0.6;
 }
 
 .slide-next-enter-to,
@@ -369,7 +367,6 @@ onBeforeUnmount(() => {
 .slide-prev-enter-to,
 .slide-prev-leave-from {
   transform: translateX(0);
-  opacity: 1;
 }
 
 .playground-modal__text {
