@@ -22,8 +22,8 @@
       <div class="footer__liens">
         <h3>Liens</h3>
         <div class="links">
-          <LinkItem href="#" label="CV" secondary external />
-          <LinkItem href="#" label="Cosmos" secondary external />
+          <LinkItem :href=resumePdf label="CV" secondary external />
+          <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external />
           <LinkItem href="#" label="Are.na" secondary external />
         </div>
       </div>
@@ -41,6 +41,8 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { works } from '@/data/content'
 import LinkItem from './LinkItem.vue'
+
+import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 
 const route = useRoute()
 const PROJECT_ROUTE_PREFIX = '/projet'

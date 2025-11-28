@@ -31,8 +31,8 @@
     </div>
 
     <div class="header__links">
-      <LinkItem :href="resumePdf" label="CV" secondary external />
-      <LinkItem href="#" label="Cosmos" secondary external />
+      <LinkItem :href=resumePdf label="CV" secondary external />
+      <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external />
       <LinkItem href="#" label="Are.na" secondary external />
     </div>
   </header>
@@ -44,7 +44,7 @@ import LinkItem from './LinkItem.vue'
 
 const THEME_KEY = 'theme-preference'
 const theme = ref('light')
-const resumePdf = encodeURI('/CV Pierre Delattre.pdf')
+import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 let prefersDarkMedia
 
 const applyTheme = (value) => {

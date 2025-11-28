@@ -51,6 +51,12 @@ defineProps({
   }
 }
 
+#works > div {
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
 #works :deep(.projet) {
   grid-row: 2;
 }

@@ -28,7 +28,7 @@ export const works = [
       'Nous avons imaginé Talkie comme une alternative moderne aux applications classiques de langue : plus vivante, plus flexible et ancrée dans des scénarios réels, avec une dimension sociale forte. Le projet inclut l’UX research complète, l’architecture produit, les maquettes, ainsi que la création d’un design system documenté.',
     services: ['Recherche utilisateur', 'UI Design', 'Design system'],
     team: [{ label: 'Grégoire De Gaiffier', href: 'https://gregoiredegaiffier.be/', external: true }],
-    links: [{ label: 'Design system', href: 'https://zeroheight.com/638c688b2/p/946500-talkie', secondary: true, external: true }],
+    links: [],
     tags: ['École', 'UX/UI Design', 'Design system'],
     cover: talkiePlaceholder,
     route: '/projet/talkie',
@@ -51,156 +51,137 @@ export const works = [
   }
 ]
 
+import nehomia from '@/assets/playground/nehomia.jpg'
+
+import gayaMobile from '@/assets/playground/gaya-mobile.jpg'
+import gayaDesktop from '@/assets/playground/gaya-desk.jpg'
+
+import flim from '@/assets/playground/flim.jpg'
+import flimLive from '@/assets/playground/flim-live.jpg'
+
+import baron from '@/assets/playground/baron-1.jpg'
+import baron2 from '@/assets/playground/baron-2.jpg'
+import baron3 from '@/assets/playground/baron-3.jpg'
+import baron4 from '@/assets/playground/baron-4.jpg'
+
+
+import rvrs from '@/assets/playground/rvrs.jpg'
+
+import mag from '@/assets/playground/magazine.jpg'
+import mag2 from '@/assets/playground/magazine-2.jpg'
+
 export const playgroundColumns = [
   [
     {
-      title: 'Exploration Septième Séance',
-      date: '2024',
-      image: 'src/assets/talkie/apprentissage.jpg',
-      type: 'freelance',
-      modalText: 'Moodboard photo et traitements d’images autour de Septième Séance.',
+      title: 'Flim',
+      image: flim,
+      color: 'dark',
+      modalText: 'Application de réservation de séances cinéma',
       media: [
         {
           type: 'image',
-          src: 'src/assets/talkie/apprentissage.jpg',
-          alt: 'Exploration visuelle Septième Séance'
+          src: flim,
+          alt: 'Flim - Réservations de séances de films'
         },
         {
           type: 'image',
-          src: 'https://placehold.co/1400x900/262626/f5f5f5?text=Septieme+Shot+2',
-          alt: 'UI secondaire Septième Séance'
-        }
-      ]
-    },
-    {
-      title: 'Prototype Alpine HUD',
-      date: '2023',
-      image: 'https://placehold.co/400x600/0a2740/ffffff?text=Alpine',
-      modalText: 'Essais d’animations tête haute pour l’Alpine A110 fictive.',
-      media: [
-        {
-          type: 'video',
-          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-          alt: 'Prototype Alpine HUD'
-        },
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/143d66/ffffff?text=HUD+State',
-          alt: 'Variation du HUD Alpine'
-        }
-      ]
-    },
-    {
-      title: 'Set de pictos',
-      date: '2022',
-      image: 'https://placehold.co/400x600/333333/eeeeee?text=Icons',
-      modalText: 'Petite série de pictogrammes pour un design system interne.',
-      media: [
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/222222/f9f9f9?text=Pictos',
-          alt: 'Planche de pictogrammes'
+          src: flimLive,
+          alt: 'Flim - Live Activity iOS'
         }
       ]
     }
   ],
   [
     {
-      title: 'Talkie Cards',
-      date: '2024',
-      image: 'https://placehold.co/400x600/6a00ff/ffffff?text=Talkie',
-      modalText: 'Exploration d’un format de cartes interactives pour Talkie.',
-      type: 'freelance',
+      title: 'Gayacoin',
+      image: gayaMobile,
+      modalText: 'Gayacoin App & section web',
       media: [
         {
           type: 'image',
-          src: 'https://placehold.co/1400x900/4400aa/ffffff?text=Talkie+1',
-          alt: 'Carte Talkie 1'
+          src: gayaMobile,
+          alt: 'Gayacoin App'
         },
         {
           type: 'image',
-          src: 'https://placehold.co/1400x900/6a00ff/ffffff?text=Talkie+2',
-          alt: 'Carte Talkie 2'
-        },
-        {
-          type: 'video',
-          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-          alt: 'Interaction Talkie'
-        }
-      ]
-    },
-    {
-      title: 'Typo Study',
-      date: '2023',
-      image: 'https://placehold.co/400x600/000000/ffffff?text=Typo',
-      modalText: 'Recherche typographique sur une grille variable.',
-      media: [
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/000000/ffffff?text=Typo+Study',
-          alt: 'Set typographique'
+          src: gayaDesktop,
+          alt: 'Gayacoin Website section'
         }
       ]
     }
   ],
   [
+    {
+      title: 'Au Baron',
+      image: baron2,
+      color: 'dark',
+      modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+      media: [
+        {
+          type: 'image',
+          src: baron2,
+          alt: 'Sommaire de la page produit'
+        },
+        {
+          type: 'image',
+          src: baron4,
+          alt: 'Page produit mobile'
+        },
+        {
+          type: 'image',
+          src: baron,
+          alt: 'Cross-sells'
+        },
+        {
+          type: 'image',
+          src: baron3,
+          alt: 'Up-sells & questionnaire des préférences'
+        }
+      ]
+    },
     {
       title: 'Nehomia',
-      date: '2025',
-      image: 'src/assets/playground/nehomia.jpg',
-      modalText: 'Webdesign',
+      image: nehomia,
+      modalText: 'Homepage concept for Nehomia',
+      color: 'dark',
       media: [
         {
           type: 'image',
-          src: 'src/assets/playground/nehomia.jpg',
-          alt: 'Webdesign'
-        }
-      ]
-    },
-    {
-      title: 'Palette Talkie',
-      date: '2024',
-      image: 'https://placehold.co/400x600/fad400/111111?text=Palette',
-      modalText: 'Palette secondaire imaginée pour Talkie.',
-      media: [
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/fad400/1c1c1c?text=Palette',
-          alt: 'Palette colorée'
-        }
-      ]
-    },
-    {
-      title: 'Affiche perso',
-      date: '2021',
-      image: 'https://placehold.co/400x600/ff5a5f/ffffff?text=Affiche',
-      type: 'freelance',
-      modalText: 'Affiche perso imprimée en risographie.',
-      media: [
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/ff5a5f/ffffff?text=Affiche+1',
-          alt: 'Affiche version 1'
-        },
-        {
-          type: 'image',
-          src: 'https://placehold.co/1400x900/bb1a1f/ffffff?text=Affiche+detail',
-          alt: 'Détail affiche'
+          src: nehomia,
+          alt: 'Homepage Nehomia'
         }
       ]
     }
   ],
   [
     {
-      title: 'Shot caméra',
-      date: '2020',
-      image: 'https://placehold.co/400x600/151515/eeeeee?text=Shot',
-      modalText: 'Testing photo et colorimétrie sur une scène interior design.',
+      title: 'RVRS',
+      image: rvrs,
+      color: 'dark',
+      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
       media: [
         {
           type: 'image',
-          src: 'https://placehold.co/1400x900/151515/eeeeee?text=Shot',
-          alt: 'Shot caméra'
+          src: rvrs,
+          alt: 'Site RVRS'
+        }
+      ]
+    },
+    {
+      title: 'Magazine',
+      image: mag,
+      color: 'dark',
+      modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
+      media: [
+        {
+          type: 'image',
+          src: mag,
+          alt: 'Site RVRS'
+        },
+        {
+          type: 'image',
+          src: mag2,
+          alt: 'Site RVRS'
         }
       ]
     }

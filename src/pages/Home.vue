@@ -26,7 +26,12 @@ usePageLoaded()
 
 @media screen and (min-width: 1280px) {
   #works>.projet:last-child {
-    grid-column: 3/5;
+    grid-column: 3 / 5;
+
+    &>div,
+    &>a:has(div.link) {
+      max-width: calc(64%);
+    }
   }
 }
 </style>
