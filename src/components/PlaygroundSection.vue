@@ -259,11 +259,7 @@ onBeforeUnmount(() => {
 @media screen and (min-width: 1281px) {
   .playground__content .col:nth-child(3) :deep(.playground__item:nth-child(2)),
   .playground__content .col:nth-child(2) :deep(.playground__item:nth-child(1)) {
-    height: 340px !important;
-  }
-
-  .playground__content .col:nth-child(4) :deep(.playground__item:nth-child(1)) {
-    height: 620px !important;
+    /* height: 320px !important; */
   }
 }
 
