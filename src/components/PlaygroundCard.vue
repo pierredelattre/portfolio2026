@@ -45,24 +45,13 @@ const props = defineProps({
 
 const emit = defineEmits(['select'])
 
-const normalizeColor = (value) => {
-  const trimmed = value.trim()
-  if (!trimmed) return ''
-  if (trimmed.startsWith('var(')) return trimmed
-  if (trimmed.startsWith('--')) return `var(${trimmed})`
-  if (/^(#|rgb|hsl|oklch|oklab)/i.test(trimmed)) return trimmed
-  return `var(--${trimmed})`
-}
-
 const styleVars = computed(() => {
-  if (!props.color) return {}
-  const resolved = normalizeColor(props.color)
-  if (!resolved) return {}
-  return {
-    '--playground-card-label-bg': resolved,
-    '--playground-card-label-border': 'transparent',
-    '--playground-card-text': resolved
+  if (props.color === 'dark') {
+    return {
+      '--playground-card-text': '#000000'
+    }
   }
+  return {}
 })
 
 const handleSelect = () => {

@@ -68,9 +68,11 @@
               </button>
             </div>
 
-            <p v-if="modalText" class="playground-modal__text">
+            <div class="playground-modal__text__div" v-if="modalText">
+              <p class="playground-modal__text">
               {{ modalText }}
             </p>
+            </div>
           </div>
         </div>
       </transition>
@@ -370,6 +372,14 @@ onBeforeUnmount(() => {
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.9);
   max-width: 80ch;
+}
+
+.playground-modal__text__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .playground-modal__close {

@@ -75,7 +75,7 @@ export const playgroundColumns = [
     {
       title: 'Flim',
       image: flim,
-      color: 'surface',
+      color: 'dark',
       modalText: 'Application de réservation de séances cinéma',
       media: [
         {
@@ -114,7 +114,7 @@ export const playgroundColumns = [
     {
       title: 'Au Baron',
       image: baron2,
-      color: 'surface',
+      color: 'dark',
       modalText: 'École – Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
       media: [
         {
@@ -143,7 +143,7 @@ export const playgroundColumns = [
       title: 'Nehomia',
       image: nehomia,
       modalText: 'Homepage concept for Nehomia',
-      color: 'surface',
+      color: 'dark',
       media: [
         {
           type: 'image',
@@ -157,7 +157,7 @@ export const playgroundColumns = [
     {
       title: 'RVRS',
       image: rvrs,
-      color: 'surface',
+      color: 'dark',
       modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
       media: [
         {
@@ -170,7 +170,7 @@ export const playgroundColumns = [
     {
       title: 'Magazine',
       image: mag,
-      color: 'surface',
+      color: 'dark',
       modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
       media: [
         {
