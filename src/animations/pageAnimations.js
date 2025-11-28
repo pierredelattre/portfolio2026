@@ -5,7 +5,9 @@ let initialized = false
 let projectBackground = ''
 const PROJECT_BG_HEIGHT = 600
 const MAIN_START_Y = -PROJECT_BG_HEIGHT
-const MAIN_INTRO_MIN_HEIGHT = '70vh'
+const supportsDynamicViewportUnits =
+  typeof window !== 'undefined' && window.CSS?.supports?.('min-height', '100dvh')
+const MAIN_INTRO_MIN_HEIGHT = supportsDynamicViewportUnits ? '70dvh' : '70vh'
 let worksIntroCompleted = false
 const worksIntroWaiters = []
 const HEADER_ITEMS_SELECTOR =
