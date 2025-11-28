@@ -51,7 +51,7 @@ defineProps({
   }
 }
 
-#works > div {
+#works > div:not(:last-child) {
   @media screen and (max-width: 768px) {
     margin-bottom: 2rem;
   }
