@@ -7,11 +7,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 
 body {
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
+  height: 110dvh;
 }
 
 @media screen and (min-width: 1024px) {
