@@ -32,7 +32,7 @@
 
     <div class="header__links">
       <LinkItem :href=resumePdf label="CV" secondary external />
-      <LinkItem href="#" label="Cosmos" secondary external />
+      <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external />
       <LinkItem href="#" label="Are.na" secondary external />
     </div>
   </header>

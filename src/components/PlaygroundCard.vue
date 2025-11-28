@@ -70,6 +70,10 @@ const handleSelect = () => {
   --playground-card-label-border: #ababab;
   --playground-card-text: #ffffff;
   color: var(--playground-card-text);
+
+  @media screen and (max-width: 768px) {
+    height: 320px;
+  }
 }
 
 .playground__item img {
