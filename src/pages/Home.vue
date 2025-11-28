@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <WorksSection :works="worksData" />
-    <!-- <PlaygroundSection :columns="playgroundData" /> -->
+    <PlaygroundSection :columns="playgroundData" />
   </section>
 </template>
 
