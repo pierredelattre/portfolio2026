@@ -115,7 +115,7 @@ export const playgroundColumns = [
       title: 'Au Baron',
       image: baron2,
       color: 'dark',
-      modalText: 'École – Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+      modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
       media: [
         {
           type: 'image',
