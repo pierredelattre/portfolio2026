@@ -32,7 +32,6 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
-import projectBackground from '@/assets/Frame3288.png'
 
 const PROJECT_ROUTE = '/projet/projet'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
