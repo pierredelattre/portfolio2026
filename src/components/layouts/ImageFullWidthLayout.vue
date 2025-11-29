@@ -90,17 +90,16 @@ defineProps({
     }
 
     &>p {
-      max-width: min(420px, 45%);
+      max-width: 30%;
       line-height: 1.5;
       white-space: pre-line;
 
       @media screen and (min-width: 768px) and (max-width: 1280px) {
-        max-width: 60%;
+        max-width: 64%;
       }
 
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 768px) {
         max-width: 100%;
-        padding-right: 1rem;
       }
     }
 
