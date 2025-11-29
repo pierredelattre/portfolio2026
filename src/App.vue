@@ -8,6 +8,7 @@
     <RouterView />
   </main>
   <Footer />
+  <SpeedInsights/>
 </template>
 
 <script setup>
