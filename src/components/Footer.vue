@@ -91,11 +91,12 @@ body:has(.home) .site-footer {
 }
 
 .site-footer {
-  /* --primary: oklch(88% 0 271);
+  --primary: oklch(88% 0 271);
   --secondary: oklch(72% 0 271);
-  --inactive: oklch(35% 0 271); */
-  background: oklch(14% 0 271);
-  color: oklch(88% 0 271);
+  --inactive: oklch(35% 0 271);
+  --surface: oklch(14% 0 271);
+  background: var(--surface);
+  color: var(--primary);
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: auto auto;

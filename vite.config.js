@@ -16,11 +16,11 @@ export default defineConfig({
 
         const params = new URLSearchParams()
         if (!url.searchParams.has('w')) {
-          params.set('w', '480;768;1024;1440;1920')
+          params.set('w', '480;768;1024;1440;1920;2560;3200')
         }
 
         if (!url.searchParams.has('format')) {
-          params.set('format', 'webp;jpg')
+          params.set('format', 'jpg')
         }
 
         if (!url.searchParams.has('quality')) {
