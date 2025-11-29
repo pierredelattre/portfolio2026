@@ -1,7 +1,7 @@
-import septiemeCover from '@/assets/septiemeseance/002.jpg'
-import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg'
-import projetPlaceholder from '@/assets/placeholder.png'
-import talkiePlaceholder from '@/assets/talkie/banner.jpg'
+import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized'
+import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
+import projetPlaceholder from '@/assets/placeholder.png?optimized'
+import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
 export const works = [
   {
@@ -51,24 +51,24 @@ export const works = [
   }
 ]
 
-import nehomia from '@/assets/playground/nehomia.jpg'
+import nehomia from '@/assets/playground/nehomia.jpg?optimized'
 
-import gayaMobile from '@/assets/playground/gaya-mobile.jpg'
-import gayaDesktop from '@/assets/playground/gaya-desk.jpg'
+import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
+import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
 
-import flim from '@/assets/playground/flim.jpg'
-import flimLive from '@/assets/playground/flim-live.jpg'
+import flim from '@/assets/playground/flim.jpg?optimized'
+import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
-import baron from '@/assets/playground/baron-1.jpg'
-import baron2 from '@/assets/playground/baron-2.jpg'
-import baron3 from '@/assets/playground/baron-3.jpg'
-import baron4 from '@/assets/playground/baron-4.jpg'
+import baron from '@/assets/playground/baron-1.jpg?optimized'
+import baron2 from '@/assets/playground/baron-2.jpg?optimized'
+import baron3 from '@/assets/playground/baron-3.jpg?optimized'
+import baron4 from '@/assets/playground/baron-4.jpg?optimized'
 
 
-import rvrs from '@/assets/playground/rvrs.jpg'
+import rvrs from '@/assets/playground/rvrs.jpg?optimized'
 
-import mag from '@/assets/playground/magazine.jpg'
-import mag2 from '@/assets/playground/magazine-2.jpg'
+import mag from '@/assets/playground/magazine.jpg?optimized'
+import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
 
 export const playgroundColumns = [
   [

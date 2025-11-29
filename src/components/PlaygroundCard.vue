@@ -7,7 +7,13 @@
     @click="handleSelect"
     @keyup.enter="handleSelect"
   >
-    <img :src="image" :alt="title" loading="lazy" />
+    <OptimizedImage
+      class="playground__image"
+      img-class="playground__image-media"
+      :source="image"
+      :alt="title"
+      sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 100vw"
+    />
     <div v-if="type" class="playground__label">
       <ProjectLabel :type="type" />
     </div>
@@ -19,6 +25,7 @@
 <script setup>
 import { computed } from 'vue'
 import ProjectLabel from '@/components/ProjectLabel.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 
 const props = defineProps({
   title: {
@@ -30,7 +37,7 @@ const props = defineProps({
     required: true
   },
   image: {
-    type: String,
+    type: [String, Object],
     required: true
   },
   type: {
@@ -76,7 +83,13 @@ const handleSelect = () => {
   }
 }
 
-.playground__item img {
+:deep(.playground__image) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:deep(.playground__image-media) {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -110,7 +123,7 @@ const handleSelect = () => {
   right: 1rem;
 }
 
-.playground__item:hover img {
+.playground__item:hover :deep(.playground__image-media) {
   transform: scale(1.05);
 }
 </style>

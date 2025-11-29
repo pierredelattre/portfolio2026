@@ -39,7 +39,13 @@
                     ></video>
                   </template>
                   <template v-else>
-                    <img :src="activeMedia.src" :alt="activeMedia.alt || selectedItem?.title" loading="lazy" />
+                    <OptimizedImage
+                      class="playground-modal__image"
+                      img-class="playground-modal__image-media"
+                      :source="activeMedia.src"
+                      :alt="activeMedia.alt || selectedItem?.title"
+                      sizes="(min-width: 1024px) 70vw, 100vw"
+                    />
                   </template>
                 </div>
               </transition>
@@ -83,6 +89,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 import closeIcon from '@/assets/x-mark.svg'
 
 defineProps({
@@ -325,7 +332,14 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-.playground-modal__media img,
+.playground-modal__media video,
+:deep(.playground-modal__image) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:deep(.playground-modal__image-media),
 .playground-modal__media video {
   width: 100%;
   height: 100%;

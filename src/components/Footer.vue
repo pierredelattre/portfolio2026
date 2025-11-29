@@ -4,7 +4,13 @@
       <RouterLink v-if="previousProject" :to="previousProject.route">
         <div class="project--previous">
           <div class="overlay"></div>
-          <img :src="previousProject.cover" :alt="`Visuel de ${previousProject.title}`">
+          <OptimizedImage
+            class="project-image"
+            img-class="project-image__media"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            :source="previousProject.cover"
+            :alt="`Visuel de ${previousProject.title}`"
+          />
           <p>Projet précédent</p>
           <h3>{{ previousProject.title }}</h3>
         </div>
@@ -12,7 +18,13 @@
       <RouterLink v-if="nextProject" :to="nextProject.route">
         <div class="project--next">
           <div class="overlay"></div>
-          <img :src="nextProject.cover" :alt="`Visuel de ${nextProject.title}`">
+          <OptimizedImage
+            class="project-image"
+            img-class="project-image__media"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            :source="nextProject.cover"
+            :alt="`Visuel de ${nextProject.title}`"
+          />
           <p>Projet suivant</p>
           <h3>{{ nextProject.title }}</h3>
         </div>
@@ -41,6 +53,7 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { works } from '@/data/content'
 import LinkItem from './LinkItem.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 
@@ -121,7 +134,7 @@ footer {
       color: var(--primary);
 
       &:hover {
-        img {
+        :deep(.project-image__media) {
           transform: scale(1.05);
         }
       }
@@ -151,14 +164,19 @@ footer {
           background: linear-gradient(0turn, #090909, #05050500);
         }
 
-        & img {
+        & :deep(.project-image) {
           z-index: 0;
           position: absolute;
-          object-fit: cover;
           top: 0;
           left: 0;
           height: 100%;
           width: 100%;
+        }
+
+        & :deep(.project-image__media) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           transition: transform .4s ease;
         }
 
