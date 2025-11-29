@@ -8,6 +8,9 @@ import { initPageAnimations } from './animations/pageAnimations'
 
 import './styles/main.css'
 
+import { inject } from '@vercel/analytics';
+inject();
+
 const lenis = new Lenis({
   duration: 1.4,
   smooth: true,
