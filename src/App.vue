@@ -14,4 +14,5 @@
 import { RouterView } from 'vue-router'
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 </script>
