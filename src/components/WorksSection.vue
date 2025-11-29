@@ -1,7 +1,7 @@
 <template>
   <div id="works">
     <h3>Réalisations</h3>
-    <WorkCard v-for="work in works" :key="work.id" :work="work" />
+    <WorkCard v-for="(work, index) in works" :key="work.id" :work="work" :priority="index === 0" />
   </div>
 </template>
 

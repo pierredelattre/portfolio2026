@@ -8,6 +8,8 @@
           :source="work.cover"
           :alt="work.title"
           sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+          :loading="priority ? 'eager' : 'lazy'"
+          :fetchpriority="priority ? 'high' : 'auto'"
         />
       </div>
     </RouterLink>
@@ -35,6 +37,10 @@ const props = defineProps({
   work: {
     type: Object,
     required: true
+  },
+  priority: {
+    type: Boolean,
+    default: false
   }
 })
 
