@@ -22,7 +22,7 @@ L’enjeu était de créer un service plus fluide, qui répond vraiment au besoi
 
     <ImageFullWidthLayout secondary :image-mobile-src="projectionsImageMobile" :image-src="projectionsImage"
       image-alt="Liste des projections autour" title="Liste des projections autour"
-      text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. <strong>La présentation est pensée</strong> pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
+      text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
 
     <GridScrollLayout :images="upgrades" title="Futures améliorations" text="Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. 
     
