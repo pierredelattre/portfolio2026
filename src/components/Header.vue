@@ -123,8 +123,6 @@ header {
     &>*:not(.switch, .header__links, .header__intro) {
       width: calc((100% / 2) - 1rem);
     }
-
-
   }
 
   & .switch {
@@ -278,8 +276,7 @@ header {
     --inactive: oklch(51% 0 271);
     --surface: oklch(14% 0 271);
     --switch: oklch(100% 0 275);
-
-    color: var(--primary);
+    color: var(--switch);
   }
 
   &.has-background .header__intro,

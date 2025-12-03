@@ -10,7 +10,7 @@
     />
     <div class="text">
       <h3 :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ title }}</h3>
-      <p :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ text }}</p>
+      <p :style="secondary ? 'color: oklch(14% 0 271)' : ''" v-html="text"></p>
     </div>
   </section>
 </template>

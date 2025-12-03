@@ -13,7 +13,7 @@
 
     <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
 
-    <ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
+    <ImageFullWidthLayout secondary :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
       title="Réalisation d’un UI Kit"
       text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 

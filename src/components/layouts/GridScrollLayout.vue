@@ -16,18 +16,16 @@
       <h3>{{ title }}</h3>
       <template v-if="hasRichText">
         <div v-for="(block, index) in richTextBlocks" :key="`rich-text-${index}`" class="grid-scroll-text__block">
-          <p v-if="block.description" class="line-height--150">
-            {{ block.description }}
-          </p>
+          <p v-if="block.description" class="line-height--150" v-html="block.description"></p>
           <div v-if="block.ideas.length" class="grid-scroll-text__ideas">
             <div v-for="idea in block.ideas" :key="`idea-${idea.label}-${index}`" class="grid-scroll-text__idea">
               <span class="grid-scroll-text__idea-index">{{ idea.label }}</span>
-              <p class="grid-scroll-text__idea-text">{{ idea.text }}</p>
+              <p class="grid-scroll-text__idea-text" v-html="idea.text"></p>
             </div>
           </div>
         </div>
       </template>
-      <p v-else class="line-height--150">{{ text }}</p>
+      <p v-else class="line-height--150" v-html="text"></p>
     </div>
   </section>
 </template>

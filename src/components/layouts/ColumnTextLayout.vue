@@ -12,7 +12,7 @@
     </div>
     <div class="col text">
       <h3>{{ title }}</h3>
-      <p>{{ text }}</p>
+      <p v-html="text"></p>
     </div>
   </section>
 </template>
