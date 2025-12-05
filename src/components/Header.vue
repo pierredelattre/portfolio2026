@@ -3,8 +3,12 @@
     <div class="switch" role="button" tabindex="0" :aria-pressed="theme === 'dark'" @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"></div>
     <div class="header__title">
-      <h1 class="text--secondary">Pierre Delattre</h1>
-      <h2>Product Designer</h2>
+      <RouterLink to="/" class="header__home-link">
+        <h1 class="text--secondary">Pierre Delattre</h1>
+      </RouterLink>
+      <RouterLink to="/" class="header__home-link">
+        <h2>Product Designer</h2>
+      </RouterLink>
     </div>
 
     <div class="header__cities">
@@ -40,6 +44,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 
 const THEME_KEY = 'theme-preference'
@@ -162,6 +167,12 @@ header {
       grid-column: 1 / 5;
       grid-row: 1;
     }
+  }
+
+  & .header__home-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
   }
 
   & .header__cities {
