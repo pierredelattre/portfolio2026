@@ -26,6 +26,18 @@ const getHeaderPaddingValues = () =>
     ? { top: '1rem', bottom: '1rem' }
     : { top: '2rem', bottom: '2rem' }
 
+const isProjectIntroDebugging = () => {
+  if (DEBUG_PROJECT_INTRO) return true
+  if (typeof window === 'undefined') return false
+  try {
+    if (window.__DEBUG_PROJECT_INTRO === true) return true
+    if (window.localStorage?.getItem('debug-project-intro') === '1') return true
+  } catch (err) {
+    // ignore storage access errors
+  }
+  return false
+}
+
 const lockScroll = ({ restoreOnUnlock = true } = {}) => {
   if (typeof window === 'undefined') return
 
@@ -277,8 +289,10 @@ export function initPageAnimations() {
 
     if (!header || !mainEl || !pageBg) return
 
+    const debugProjectIntro = isProjectIntroDebugging()
+
     if (!projectBackground) {
-      if (DEBUG_PROJECT_INTRO) {
+      if (debugProjectIntro) {
         console.log('[intro-project] reset branch (no background)', { projectBackground })
       }
       header.classList.remove('has-background', 'is-floating')
@@ -324,26 +338,25 @@ export function initPageAnimations() {
       return
     }
 
-    if (DEBUG_PROJECT_INTRO) {
+    const measureHeader = header.getBoundingClientRect().height || header.scrollHeight || null
+
+    if (debugProjectIntro) {
       console.log('[intro-project] start branch', {
         projectBackground,
         scrollY: window.scrollY,
         lenisScroll: window.__lenis?.animatedScroll,
         playgroundOpen: document.body.classList.contains('playground-open'),
-        headerHeight: header.getBoundingClientRect().height
+        measuredHeader: measureHeader
       })
     }
 
-    const measuredHeaderHeight =
-      header.getBoundingClientRect().height || header.scrollHeight || PROJECT_BG_HEIGHT
-
+    // Reset to initial state for intro animation
     header.classList.add('has-background', 'is-floating')
     document.body.classList.add('project-page')
     header.style.opacity = '1'
-    header.style.height = '0px'
-    header.style.overflow = 'hidden'
-    header.style.paddingTop = '0px'
-    header.style.paddingBottom = '0px'
+    header.style.height = 'auto'
+    header.style.paddingTop = headerPadding.top
+    header.style.paddingBottom = headerPadding.bottom
 
     lockScroll({ restoreOnUnlock: false })
 
@@ -366,19 +379,16 @@ export function initPageAnimations() {
     const toHide = header.querySelectorAll('.header__intro, .header__links')
 
     if (toHide.length) {
-      gsap.set(toHide, { opacity: 1, display: 'flex', y: 0 })
-    }
+      tlProject.to(toHide, {
+        opacity: 0,
+        y: -20,
+        duration: 0.35,
+        stagger: 0.06,
+        ease: 'power2.inOut'
+      })
 
-    tlProject.to(
-      header,
-      {
-        height: measuredHeaderHeight,
-        paddingTop: headerPadding.top,
-        paddingBottom: headerPadding.bottom,
-        duration: 1.2,
-        ease: 'power4.inOut'
-      }
-    )
+      tlProject.set(toHide, { display: 'none' })
+    }
 
     tlProject.to(
       pageBg,
@@ -388,24 +398,8 @@ export function initPageAnimations() {
         duration: 1.0,
         ease: 'power3.out'
       },
-      '<'
+      toHide.length ? '-=0.1' : '+=0'
     )
-
-    if (toHide.length) {
-      tlProject.to(
-        toHide,
-        {
-          opacity: 0,
-          y: -20,
-          duration: 0.35,
-          stagger: 0.06,
-          ease: 'power2.inOut'
-        },
-        '-=0.4'
-      )
-
-      tlProject.set(toHide, { display: 'none' })
-    }
 
     tlProject.fromTo(
       mainEl,
@@ -419,8 +413,6 @@ export function initPageAnimations() {
       if (projectIntroSettled) return
       projectIntroSettled = true
       header.classList.remove('is-floating')
-      header.style.removeProperty('overflow')
-      header.style.removeProperty('height')
       gsap.set(mainEl, { clearProps: 'transform' })
       mainEl.style.removeProperty('min-height')
       unlockScroll()
@@ -453,19 +445,39 @@ export function initPageAnimations() {
     tlProject.eventCallback('onComplete', settleProjectIntro)
     tlProject.eventCallback('onInterrupt', settleProjectIntro)
 
-    if (DEBUG_PROJECT_INTRO) {
+    if (debugProjectIntro) {
       tlProject.eventCallback('onStart', () => {
         console.log('[intro-project] timeline start', {
           scrollY: window.scrollY,
           lenisScroll: window.__lenis?.animatedScroll,
-          playgroundOpen: document.body.classList.contains('playground-open')
+          playgroundOpen: document.body.classList.contains('playground-open'),
+          headerInline: {
+            height: header.style.height,
+            paddingTop: header.style.paddingTop,
+            paddingBottom: header.style.paddingBottom,
+            overflow: header.style.overflow
+          },
+          pageBgInline: {
+            opacity: pageBg.style.opacity,
+            height: pageBg.style.height
+          }
         })
       })
       tlProject.eventCallback('onComplete', () => {
         console.log('[intro-project] timeline complete', {
           scrollY: window.scrollY,
           lenisScroll: window.__lenis?.animatedScroll,
-          playgroundOpen: document.body.classList.contains('playground-open')
+          playgroundOpen: document.body.classList.contains('playground-open'),
+          headerInline: {
+            height: header.style.height,
+            paddingTop: header.style.paddingTop,
+            paddingBottom: header.style.paddingBottom,
+            overflow: header.style.overflow
+          },
+          pageBgInline: {
+            opacity: pageBg.style.opacity,
+            height: pageBg.style.height
+          }
         })
         settleProjectIntro()
       })
