@@ -142,10 +142,16 @@ const openModal = (item) => {
   selectedItem.value = item
   activeMediaIndex.value = 0
   transitionDirection.value = 'next'
+  if (typeof document !== 'undefined') {
+    document.body.classList.add('playground-open')
+  }
 }
 
 const closeModal = () => {
   selectedItem.value = null
+  if (typeof document !== 'undefined') {
+    document.body.classList.remove('playground-open')
+  }
 }
 
 const goToNextMedia = () => {

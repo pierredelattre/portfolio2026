@@ -9,6 +9,7 @@ const supportsDynamicViewportUnits =
   typeof window !== 'undefined' && window.CSS?.supports?.('min-height', '100dvh')
 const MAIN_INTRO_MIN_HEIGHT = supportsDynamicViewportUnits ? '70dvh' : '70vh'
 let worksIntroCompleted = false
+const DEBUG_PROJECT_INTRO = typeof import.meta !== 'undefined' && import.meta?.env?.DEV
 const worksIntroWaiters = []
 const HEADER_ITEMS_SELECTOR =
   '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
@@ -277,6 +278,9 @@ export function initPageAnimations() {
     if (!header || !mainEl || !pageBg) return
 
     if (!projectBackground) {
+      if (DEBUG_PROJECT_INTRO) {
+        console.log('[intro-project] reset branch (no background)', { projectBackground })
+      }
       header.classList.remove('has-background', 'is-floating')
       header.style.removeProperty('min-height')
       header.style.removeProperty('top')
@@ -320,18 +324,32 @@ export function initPageAnimations() {
       return
     }
 
+    if (DEBUG_PROJECT_INTRO) {
+      console.log('[intro-project] start branch', {
+        projectBackground,
+        scrollY: window.scrollY,
+        lenisScroll: window.__lenis?.animatedScroll,
+        playgroundOpen: document.body.classList.contains('playground-open'),
+        headerHeight: header.getBoundingClientRect().height
+      })
+    }
+
+    const measuredHeaderHeight =
+      header.getBoundingClientRect().height || header.scrollHeight || PROJECT_BG_HEIGHT
+
     header.classList.add('has-background', 'is-floating')
     document.body.classList.add('project-page')
     header.style.opacity = '1'
-    header.style.height = 'auto'
-    header.style.paddingTop = headerPadding.top
-    header.style.paddingBottom = headerPadding.bottom
+    header.style.height = '0px'
+    header.style.overflow = 'hidden'
+    header.style.paddingTop = '0px'
+    header.style.paddingBottom = '0px'
 
     lockScroll({ restoreOnUnlock: false })
 
     pageBg.style.opacity = '0'
     pageBg.style.backgroundImage = `url('${projectBackground}')`
-    pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
+    pageBg.style.height = '0px'
 
     gsap.killTweensOf(mainEl)
     mainEl.style.minHeight = MAIN_INTRO_MIN_HEIGHT
@@ -348,26 +366,46 @@ export function initPageAnimations() {
     const toHide = header.querySelectorAll('.header__intro, .header__links')
 
     if (toHide.length) {
-      tlProject.to(toHide, {
-        opacity: 0,
-        y: -20,
-        duration: 0.35,
-        stagger: 0.06,
-        ease: 'power2.inOut'
-      })
-
-      tlProject.set(toHide, { display: 'none' })
+      gsap.set(toHide, { opacity: 1, display: 'flex', y: 0 })
     }
+
+    tlProject.to(
+      header,
+      {
+        height: measuredHeaderHeight,
+        paddingTop: headerPadding.top,
+        paddingBottom: headerPadding.bottom,
+        duration: 1.2,
+        ease: 'power4.inOut'
+      }
+    )
 
     tlProject.to(
       pageBg,
       {
         opacity: 1,
+        height: `${PROJECT_BG_HEIGHT}px`,
         duration: 1.0,
         ease: 'power3.out'
       },
-      toHide.length ? '-=0.1' : '+=0'
+      '<'
     )
+
+    if (toHide.length) {
+      tlProject.to(
+        toHide,
+        {
+          opacity: 0,
+          y: -20,
+          duration: 0.35,
+          stagger: 0.06,
+          ease: 'power2.inOut'
+        },
+        '-=0.4'
+      )
+
+      tlProject.set(toHide, { display: 'none' })
+    }
 
     tlProject.fromTo(
       mainEl,
@@ -381,6 +419,8 @@ export function initPageAnimations() {
       if (projectIntroSettled) return
       projectIntroSettled = true
       header.classList.remove('is-floating')
+      header.style.removeProperty('overflow')
+      header.style.removeProperty('height')
       gsap.set(mainEl, { clearProps: 'transform' })
       mainEl.style.removeProperty('min-height')
       unlockScroll()
@@ -412,6 +452,24 @@ export function initPageAnimations() {
 
     tlProject.eventCallback('onComplete', settleProjectIntro)
     tlProject.eventCallback('onInterrupt', settleProjectIntro)
+
+    if (DEBUG_PROJECT_INTRO) {
+      tlProject.eventCallback('onStart', () => {
+        console.log('[intro-project] timeline start', {
+          scrollY: window.scrollY,
+          lenisScroll: window.__lenis?.animatedScroll,
+          playgroundOpen: document.body.classList.contains('playground-open')
+        })
+      })
+      tlProject.eventCallback('onComplete', () => {
+        console.log('[intro-project] timeline complete', {
+          scrollY: window.scrollY,
+          lenisScroll: window.__lenis?.animatedScroll,
+          playgroundOpen: document.body.classList.contains('playground-open')
+        })
+        settleProjectIntro()
+      })
+    }
 
     tlProject.play()
   }

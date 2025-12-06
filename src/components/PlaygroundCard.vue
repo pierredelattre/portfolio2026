@@ -18,7 +18,7 @@
       <ProjectLabel :type="type" />
     </div>
     <p class="title">{{ title }}</p>
-    <p class="date text--secondary">{{ date }}</p>
+    <p v-if="date" class="date text--secondary">{{ date }}</p>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ const props = defineProps({
   },
   date: {
     type: String,
-    required: true
+    default: ''
   },
   image: {
     type: [String, Object],
