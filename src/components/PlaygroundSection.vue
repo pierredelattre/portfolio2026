@@ -171,11 +171,33 @@ const handleKeydown = (event) => {
   }
 }
 
-const lockScroll = () => {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return
+const getLenisInstance = () => (typeof window !== 'undefined' ? window.__lenis : null)
+
+const getScrollValue = () => {
+  if (typeof document === 'undefined') return 0
+
+  const lenis = getLenisInstance()
+  const lenisScroll =
+    lenis?.animatedScroll ??
+    lenis?.actualScroll ??
+    lenis?.targetScroll ??
+    lenis?.scroll
+
+  if (typeof lenisScroll === 'number' && Number.isFinite(lenisScroll)) {
+    return lenisScroll
+  }
+
   const body = document.body
   const html = document.documentElement
-  scrollPosition.value = window.scrollY || html.scrollTop || body.scrollTop || 0
+  return window.scrollY || html.scrollTop || body.scrollTop || 0
+}
+
+const lockScroll = () => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return
+  const lenis = getLenisInstance()
+  const body = document.body
+  const html = document.documentElement
+  scrollPosition.value = getScrollValue()
 
   previousStyles.value = {
     body: {
@@ -189,6 +211,7 @@ const lockScroll = () => {
     }
   }
 
+  lenis?.stop?.()
   body.style.overflow = 'hidden'
   body.style.position = 'fixed'
   body.style.top = `-${scrollPosition.value}px`
@@ -198,6 +221,7 @@ const lockScroll = () => {
 
 const unlockScroll = () => {
   if (typeof document === 'undefined') return
+  const lenis = getLenisInstance()
   const body = document.body
   const html = document.documentElement
   const { body: bodyStyles, html: htmlStyles } = previousStyles.value
@@ -209,7 +233,13 @@ const unlockScroll = () => {
   html.style.overflow = htmlStyles.overflow || ''
 
   if (typeof window !== 'undefined') {
-    window.scrollTo(0, scrollPosition.value || 0)
+    const target = scrollPosition.value || 0
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(target, { immediate: true })
+    } else {
+      window.scrollTo(0, target)
+    }
+    lenis?.start?.()
   }
 }
 
