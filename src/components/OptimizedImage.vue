@@ -4,7 +4,7 @@
     <picture v-if="shouldRenderPicture" class="optimized-image__picture">
       <template v-if="hasMobileSources">
         <template v-for="(srcset, type) in mobileSources" :key="`mobile-${type}`">
-          <source :srcset="srcset" :type="type" :media="mobileMediaQuery" :sizes="sizesAttr" />
+          <source :srcset="srcset" :type="formatType(type)" :media="mobileMediaQuery" :sizes="sizesAttr" />
         </template>
         <source
           v-if="mobileFallbackSrcset"
@@ -14,7 +14,7 @@
         />
       </template>
       <template v-for="(srcset, type) in resolvedSources" :key="type">
-        <source :srcset="srcset" :type="type" :sizes="sizesAttr" />
+        <source :srcset="srcset" :type="formatType(type)" :sizes="sizesAttr" />
       </template>
       <img
         :src="imgAttrs.src"
@@ -182,6 +182,11 @@ const handleLoad = () => {
 
 const handleError = () => {
   isLoaded.value = true
+}
+
+const formatType = (value) => {
+  if (!value) return undefined
+  return value.includes('/') ? value : `image/${value}`
 }
 
 watch(
