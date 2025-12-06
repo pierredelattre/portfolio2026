@@ -39,7 +39,14 @@
                     ></video>
                   </template>
                   <template v-else>
-                    <img :src="activeMedia.src" :alt="activeMedia.alt || selectedItem?.title" loading="lazy" />
+                    <OptimizedImage
+                      class="playground-modal__image"
+                      img-class="playground-modal__image-media"
+                      :source="activeMedia.src"
+                      :mobile-source="activeMedia.mobileSrc || activeMedia.src"
+                      :alt="activeMedia.alt || selectedItem?.title"
+                      sizes="(min-width: 1024px) 70vw, 100vw"
+                    />
                   </template>
                 </div>
               </transition>
@@ -83,6 +90,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 import closeIcon from '@/assets/x-mark.svg'
 
 defineProps({
@@ -115,7 +123,12 @@ const mediaItems = computed(() => {
   }
 
   if (selectedItem.value.image) {
-    return [{ type: 'image', src: selectedItem.value.image, alt: selectedItem.value.title }]
+    return [{
+      type: 'image',
+      src: selectedItem.value.image,
+      mobileSrc: selectedItem.value.mobileImage || selectedItem.value.image,
+      alt: selectedItem.value.title
+    }]
   }
 
   return []
@@ -129,10 +142,16 @@ const openModal = (item) => {
   selectedItem.value = item
   activeMediaIndex.value = 0
   transitionDirection.value = 'next'
+  if (typeof document !== 'undefined') {
+    document.body.classList.add('playground-open')
+  }
 }
 
 const closeModal = () => {
   selectedItem.value = null
+  if (typeof document !== 'undefined') {
+    document.body.classList.remove('playground-open')
+  }
 }
 
 const goToNextMedia = () => {
@@ -158,11 +177,22 @@ const handleKeydown = (event) => {
   }
 }
 
-const lockScroll = () => {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return
+const getLenisInstance = () => (typeof window !== 'undefined' ? window.__lenis : null)
+
+const getScrollValue = () => {
+  if (typeof document === 'undefined') return 0
+
   const body = document.body
   const html = document.documentElement
-  scrollPosition.value = window.scrollY || html.scrollTop || body.scrollTop || 0
+  return window.scrollY || html.scrollTop || body.scrollTop || 0
+}
+
+const lockScroll = () => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return
+  const lenis = getLenisInstance()
+  const body = document.body
+  const html = document.documentElement
+  scrollPosition.value = getScrollValue()
 
   previousStyles.value = {
     body: {
@@ -176,6 +206,7 @@ const lockScroll = () => {
     }
   }
 
+  lenis?.stop?.()
   body.style.overflow = 'hidden'
   body.style.position = 'fixed'
   body.style.top = `-${scrollPosition.value}px`
@@ -185,6 +216,7 @@ const lockScroll = () => {
 
 const unlockScroll = () => {
   if (typeof document === 'undefined') return
+  const lenis = getLenisInstance()
   const body = document.body
   const html = document.documentElement
   const { body: bodyStyles, html: htmlStyles } = previousStyles.value
@@ -196,7 +228,12 @@ const unlockScroll = () => {
   html.style.overflow = htmlStyles.overflow || ''
 
   if (typeof window !== 'undefined') {
-    window.scrollTo(0, scrollPosition.value || 0)
+    const target = scrollPosition.value || 0
+    window.scrollTo(0, target)
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(target, { immediate: true })
+    }
+    lenis?.start?.()
   }
 }
 
@@ -325,7 +362,14 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-.playground-modal__media img,
+.playground-modal__media video,
+:deep(.playground-modal__image) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:deep(.playground-modal__image-media),
 .playground-modal__media video {
   width: 100%;
   height: 100%;

@@ -1,10 +1,16 @@
 <template>
-  <footer>
+  <footer class="site-footer">
     <div v-if="showProjectNavigation" class="projects">
       <RouterLink v-if="previousProject" :to="previousProject.route">
         <div class="project--previous">
           <div class="overlay"></div>
-          <img :src="previousProject.cover" :alt="`Visuel de ${previousProject.title}`">
+          <OptimizedImage
+            class="project-image"
+            img-class="project-image__media"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            :source="previousProject.cover"
+            :alt="`Visuel de ${previousProject.title}`"
+          />
           <p>Projet précédent</p>
           <h3>{{ previousProject.title }}</h3>
         </div>
@@ -12,7 +18,13 @@
       <RouterLink v-if="nextProject" :to="nextProject.route">
         <div class="project--next">
           <div class="overlay"></div>
-          <img :src="nextProject.cover" :alt="`Visuel de ${nextProject.title}`">
+          <OptimizedImage
+            class="project-image"
+            img-class="project-image__media"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            :source="nextProject.cover"
+            :alt="`Visuel de ${nextProject.title}`"
+          />
           <p>Projet suivant</p>
           <h3>{{ nextProject.title }}</h3>
         </div>
@@ -24,7 +36,7 @@
         <div class="links">
           <LinkItem :href=resumePdf label="CV" secondary external />
           <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external />
-          <LinkItem href="#" label="Are.na" secondary external />
+          <LinkItem href="#" label="Freelance" secondary external />
         </div>
       </div>
       <div class="footer__email">
@@ -41,6 +53,7 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { works } from '@/data/content'
 import LinkItem from './LinkItem.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 
@@ -73,16 +86,17 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
 </script>
 
 <style scoped lang="css">
-body:has(.home) footer {
+body:has(.home) .site-footer {
   display: none!important;
 }
 
-footer {
-  /* --primary: oklch(88% 0 271);
+.site-footer {
+  --primary: oklch(88% 0 271);
   --secondary: oklch(72% 0 271);
-  --inactive: oklch(35% 0 271); */
-  background: oklch(14% 0 271);
-  color: oklch(88% 0 271);
+  --inactive: oklch(35% 0 271);
+  --surface: oklch(14% 0 271);
+  background: var(--surface);
+  color: var(--primary);
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: auto auto;
@@ -121,7 +135,7 @@ footer {
       color: var(--primary);
 
       &:hover {
-        img {
+        :deep(.project-image__media) {
           transform: scale(1.05);
         }
       }
@@ -151,14 +165,19 @@ footer {
           background: linear-gradient(0turn, #090909, #05050500);
         }
 
-        & img {
+        & :deep(.project-image) {
           z-index: 0;
           position: absolute;
-          object-fit: cover;
           top: 0;
           left: 0;
           height: 100%;
           width: 100%;
+        }
+
+        & :deep(.project-image__media) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           transition: transform .4s ease;
         }
 

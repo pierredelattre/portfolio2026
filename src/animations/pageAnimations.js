@@ -9,6 +9,7 @@ const supportsDynamicViewportUnits =
   typeof window !== 'undefined' && window.CSS?.supports?.('min-height', '100dvh')
 const MAIN_INTRO_MIN_HEIGHT = supportsDynamicViewportUnits ? '70dvh' : '70vh'
 let worksIntroCompleted = false
+const DEBUG_PROJECT_INTRO = typeof import.meta !== 'undefined' && import.meta?.env?.DEV
 const worksIntroWaiters = []
 const HEADER_ITEMS_SELECTOR =
   '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
@@ -24,6 +25,18 @@ const getHeaderPaddingValues = () =>
   isMobileViewport()
     ? { top: '1rem', bottom: '1rem' }
     : { top: '2rem', bottom: '2rem' }
+
+const isProjectIntroDebugging = () => {
+  if (DEBUG_PROJECT_INTRO) return true
+  if (typeof window === 'undefined') return false
+  try {
+    if (window.__DEBUG_PROJECT_INTRO === true) return true
+    if (window.localStorage?.getItem('debug-project-intro') === '1') return true
+  } catch (err) {
+    // ignore storage access errors
+  }
+  return false
+}
 
 const lockScroll = ({ restoreOnUnlock = true } = {}) => {
   if (typeof window === 'undefined') return
@@ -258,6 +271,19 @@ export function initPageAnimations() {
     const layoutSections = projectWrapper
       ? Array.from(projectWrapper.querySelectorAll(':scope > .layout'))
       : []
+    const debugProjectIntro = isProjectIntroDebugging()
+
+    const lenis = typeof window !== 'undefined' ? window.__lenis : null
+    const syncLenisToTop = () => {
+      if (!lenis || typeof lenis.scrollTo !== 'function') return
+      const current = lenis.animatedScroll
+      if (typeof current === 'number' && Math.abs(current) > 1) {
+        lenis.scrollTo(0, { immediate: true })
+        if (debugProjectIntro) {
+          console.log('[intro-project] lenis synced to top', { current, newScroll: lenis.animatedScroll })
+        }
+      }
+    }
 
     // --- HARD RESET to avoid broken animations on refresh ---
     gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
@@ -320,6 +346,9 @@ export function initPageAnimations() {
       return
     }
 
+    syncLenisToTop()
+    window.scrollTo(0, 0)
+
     header.classList.add('has-background', 'is-floating')
     document.body.classList.add('project-page')
     header.style.opacity = '1'
@@ -336,6 +365,13 @@ export function initPageAnimations() {
     gsap.killTweensOf(mainEl)
     mainEl.style.minHeight = MAIN_INTRO_MIN_HEIGHT
     gsap.set(mainEl, { y: MAIN_START_Y })
+    if (debugProjectIntro) {
+      console.log('[intro-project] main reset', {
+        y: gsap.getProperty(mainEl, 'y'),
+        scrollY: window.scrollY,
+        lenisScroll: window.__lenis?.animatedScroll
+      })
+    }
 
     const headerItems = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
     if (!headerItems.length) return
@@ -412,6 +448,26 @@ export function initPageAnimations() {
 
     tlProject.eventCallback('onComplete', settleProjectIntro)
     tlProject.eventCallback('onInterrupt', settleProjectIntro)
+
+    if (debugProjectIntro) {
+      tlProject.eventCallback('onStart', () => {
+        console.log('[intro-project] timeline start', {
+          scrollY: window.scrollY,
+          lenisScroll: window.__lenis?.animatedScroll,
+          mainY: gsap.getProperty(mainEl, 'y'),
+          pageBgHeight: parseFloat(getComputedStyle(pageBg).height) || 0
+        })
+      })
+      tlProject.eventCallback('onComplete', () => {
+        console.log('[intro-project] timeline complete', {
+          scrollY: window.scrollY,
+          lenisScroll: window.__lenis?.animatedScroll,
+          mainY: gsap.getProperty(mainEl, 'y'),
+          pageBgHeight: parseFloat(getComputedStyle(pageBg).height) || 0
+        })
+        settleProjectIntro()
+      })
+    }
 
     tlProject.play()
   }

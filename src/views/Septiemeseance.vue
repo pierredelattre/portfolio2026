@@ -24,7 +24,9 @@ L’enjeu était de créer un service plus fluide, qui répond vraiment au besoi
       image-alt="Liste des projections autour" title="Liste des projections autour"
       text="Une fois la géolocalisation acceptée par, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
 
-    <GridScrollLayout :images="upgrades" title="Futures améliorations" :text="gridScrollUpgradesText" />
+    <GridScrollLayout :images="upgrades" title="Futures améliorations" text="Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. 
+    
+    Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile ainsi qu'un bouton réinitialiser les filtres. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées." />
   </section>
 </template>
 
@@ -37,24 +39,25 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
+import { resolveOptimizedImageSrc } from '@/utils/image'
 
-import projectBackground from '@/assets/septiemeseance/002.jpg'
-import contextImage from '@/assets/septiemeseance/contexte.jpg'
-import geolocationImage from '@/assets/septiemeseance/geoloc.jpg'
-import geolocationImageMobile from '@/assets/septiemeseance/mobile-geoloc.jpg'
-import projectionsImage from '@/assets/septiemeseance/projections.jpg'
-import projectionsImageMobile from '@/assets/septiemeseance/mobile-projections.jpg'
-import filterFilmsImage from '@/assets/septiemeseance/filter-films.jpg'
-import filterFilmsMobileImage from '@/assets/septiemeseance/mobile-filter-films.jpg'
-import filterPerimeterImage from '@/assets/septiemeseance/filter-perimetre.jpg'
-import filterPerimeterMobileImage from '@/assets/septiemeseance/mobile-filter-perimetre.jpg'
-import filterLanguageImage from '@/assets/septiemeseance/filter-langue.jpg'
-import filterLanguageMobileImage from '@/assets/septiemeseance/mobile-filter-langue.jpg'
-import notesImage from '@/assets/septiemeseance/notes.jpg'
-import alertsImage from '@/assets/septiemeseance/alertes.jpg'
-import alertsImageMobile from '@/assets/septiemeseance/mobile-alertes.jpg'
-import letterboxdImage from '@/assets/septiemeseance/letterboxd.jpg'
-import letterboxdMobileImage from '@/assets/septiemeseance/mobile-letterboxd.jpg'
+import projectBackground from '@/assets/septiemeseance/002.jpg?optimized'
+import contextImage from '@/assets/septiemeseance/contexte.jpg?optimized'
+import geolocationImage from '@/assets/septiemeseance/geoloc.jpg?optimized'
+import geolocationImageMobile from '@/assets/septiemeseance/mobile-geoloc.jpg?optimized'
+import projectionsImage from '@/assets/septiemeseance/projections.jpg?optimized'
+import projectionsImageMobile from '@/assets/septiemeseance/mobile-projections.jpg?optimized'
+import filterFilmsImage from '@/assets/septiemeseance/filter-films.jpg?optimized'
+import filterFilmsMobileImage from '@/assets/septiemeseance/mobile-filter-films.jpg?optimized'
+import filterPerimeterImage from '@/assets/septiemeseance/filter-perimetre.jpg?optimized'
+import filterPerimeterMobileImage from '@/assets/septiemeseance/mobile-filter-perimetre.jpg?optimized'
+import filterLanguageImage from '@/assets/septiemeseance/filter-langue.jpg?optimized'
+import filterLanguageMobileImage from '@/assets/septiemeseance/mobile-filter-langue.jpg?optimized'
+import notesImage from '@/assets/septiemeseance/notes.jpg?optimized'
+import alertsImage from '@/assets/septiemeseance/alertes.jpg?optimized'
+import alertsImageMobile from '@/assets/septiemeseance/mobile-alertes.jpg?optimized'
+import letterboxdImage from '@/assets/septiemeseance/letterboxd.jpg?optimized'
+import letterboxdMobileImage from '@/assets/septiemeseance/mobile-letterboxd.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/septiemeseance'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -94,7 +97,7 @@ const gridScrollUpgradesText = [
 
 const hasProject = computed(() => Boolean(projectData))
 
-const projectBg = computed(() => projectBackground)
+const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 
 usePageLoaded(projectBg)
 </script>

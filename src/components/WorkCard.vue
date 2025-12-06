@@ -2,7 +2,15 @@
   <div class="projet">
     <RouterLink :to="workLink" data-link>
       <div class="projet__image">
-        <img :src="work.cover" :alt="work.title" loading="lazy" />
+        <OptimizedImage
+          class="projet__image-media"
+          img-class="projet__image-tag"
+          :source="work.cover"
+          :alt="work.title"
+          sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+          :loading="priority ? 'eager' : 'lazy'"
+          :fetchpriority="priority ? 'high' : 'auto'"
+        />
       </div>
     </RouterLink>
     <div class="projet__content">
@@ -23,11 +31,16 @@ import { computed, toRef } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 import TagItem from './TagItem.vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 
 const props = defineProps({
   work: {
     type: Object,
     required: true
+  },
+  priority: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -77,7 +90,13 @@ const workLink = computed(() => work.value.route || '/')
       height: auto;
     }
 
-    & img {
+    & :deep(.projet__image-media) {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    & :deep(.projet__image-tag) {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -101,7 +120,7 @@ const workLink = computed(() => work.value.route || '/')
   }
 }
 
-.projet:hover .projet__image img {
+.projet:hover .projet__image :deep(.projet__image-tag) {
   transform: scale(1.05);
 }
 </style>

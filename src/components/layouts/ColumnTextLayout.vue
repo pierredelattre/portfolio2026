@@ -1,26 +1,32 @@
 <template>
   <section class="layout layout__column-text">
     <div class="col image">
-      <picture>
-        <source v-if="imageMobileSrc" :srcset="imageMobileSrc" media="(max-width: 768px)" />
-        <img :src="imageSrc" :alt="imageAlt" />
-      </picture>
+      <OptimizedImage
+        class="layout__column-text-image"
+        img-class="layout__column-text-image-media"
+        :source="imageSrc"
+        :mobile-source="imageMobileSrc"
+        :alt="imageAlt"
+        sizes="(min-width: 1280px) 50vw, 100vw"
+      />
     </div>
     <div class="col text">
       <h3>{{ title }}</h3>
-      <p>{{ text }}</p>
+      <p v-html="text"></p>
     </div>
   </section>
 </template>
 
 <script setup>
+import OptimizedImage from '@/components/OptimizedImage.vue'
+
 defineProps({
   imageSrc: {
-    type: String,
+    type: [String, Object],
     required: true
   },
   imageMobileSrc: {
-    type: String,
+    type: [String, Object],
     default: ''
   },
   imageAlt: {
@@ -44,14 +50,15 @@ defineProps({
     grid-column: 1 / 9;
     height: 540px;
 
-    & picture,
-    & picture>img {
+    & :deep(.layout__column-text-image) {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    & picture>img {
+    & :deep(.layout__column-text-image-media) {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       user-drag: none;
       -webkit-user-drag: none;

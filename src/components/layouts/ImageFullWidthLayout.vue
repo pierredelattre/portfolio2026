@@ -1,24 +1,30 @@
 <template>
   <section class="layout layout__image-fwidth">
-    <picture>
-      <source v-if="imageMobileSrc" :srcset="imageMobileSrc" media="(max-width: 768px)" />
-      <img :src="imageSrc" :alt="imageAlt" />
-    </picture>
+    <OptimizedImage
+      class="layout__image-fwidth-media"
+      img-class="layout__image-fwidth-img"
+      :source="imageSrc"
+      :mobile-source="imageMobileSrc"
+      :alt="imageAlt"
+      sizes="100vw"
+    />
     <div class="text">
       <h3 :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ title }}</h3>
-      <p :style="secondary ? 'color: oklch(14% 0 271)' : ''">{{ text }}</p>
+      <p :style="secondary ? 'color: oklch(14% 0 271)' : ''" v-html="text"></p>
     </div>
   </section>
 </template>
 
 <script setup>
+import OptimizedImage from '@/components/OptimizedImage.vue'
+
 defineProps({
   imageSrc: {
-    type: String,
+    type: [String, Object],
     required: true
   },
   imageMobileSrc: {
-    type: String,
+    type: [String, Object],
     default: ''
   },
   imageAlt: {
@@ -45,17 +51,19 @@ defineProps({
   position: relative;
   overflow: hidden;
 
-  &>picture,
-  &>picture>img {
+  & :deep(.layout__image-fwidth-media) {
     grid-column: 1;
     width: 100%;
     height: 100%;
     display: block;
   }
 
-  &>picture>img {
+  & :deep(.layout__image-fwidth-img) {
     grid-column: 1;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     user-drag: none;
     -webkit-user-drag: none;
     user-select: none;

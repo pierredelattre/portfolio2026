@@ -13,7 +13,7 @@
 
     <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
 
-    <ImageFullWidthLayout :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
+    <ImageFullWidthLayout secondary :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
       title="Réalisation d’un UI Kit"
       text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 
@@ -32,25 +32,26 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
+import { resolveOptimizedImageSrc } from '@/utils/image'
 
-import projectBackground from '@/assets/alpine/alpine-mockup.jpg'
-import philosophie from '@/assets/alpine/philosophie.jpg'
-import nav from '@/assets/alpine/nav.jpg'
-import dashboard from '@/assets/alpine/dashboard.jpg'
-import research from '@/assets/alpine/research.jpg'
-import navMobile from '@/assets/alpine/mobile-nav.jpg'
-import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg'
-import researcMobile from '@/assets/alpine/mobile-research.jpg'
-import uikit from '@/assets/alpine/uikit.jpg'
-import uikitMobile from '@/assets/alpine/mobile-uikit.jpg'
+import projectBackground from '@/assets/alpine/alpine-mockup.jpg?optimized'
+import philosophie from '@/assets/alpine/philosophie.jpg?optimized'
+import nav from '@/assets/alpine/nav.jpg?optimized'
+import dashboard from '@/assets/alpine/dashboard.jpg?optimized'
+import research from '@/assets/alpine/research.jpg?optimized'
+import navMobile from '@/assets/alpine/mobile-nav.jpg?optimized'
+import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg?optimized'
+import researcMobile from '@/assets/alpine/mobile-research.jpg?optimized'
+import uikit from '@/assets/alpine/uikit.jpg?optimized'
+import uikitMobile from '@/assets/alpine/mobile-uikit.jpg?optimized'
 
-import benchBatterie from '@/assets/alpine/bench-batterie.jpg'
-import benchClim from '@/assets/alpine/bench-clim.jpg'
-import benchDashboard from '@/assets/alpine/bench-dashboard.jpg'
+import benchBatterie from '@/assets/alpine/bench-batterie.jpg?optimized'
+import benchClim from '@/assets/alpine/bench-clim.jpg?optimized'
+import benchDashboard from '@/assets/alpine/bench-dashboard.jpg?optimized'
 
-import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg'
-import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg'
-import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg'
+import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg?optimized'
+import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg?optimized'
+import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/alpine'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -79,7 +80,7 @@ const benchGridText =
 
 const hasProject = computed(() => Boolean(projectData))
 
-const projectBg = computed(() => projectBackground)
+const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 
 usePageLoaded(projectBg)
 </script>

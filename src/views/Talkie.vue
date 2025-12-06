@@ -55,22 +55,23 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
 import { works } from '@/data/content'
+import { resolveOptimizedImageSrc } from '@/utils/image'
 
-import projectBackground from '@/assets/talkie/banner.jpg'
-import contexte from '@/assets/talkie/contexte.jpg'
-import flows from '@/assets/talkie/flows.jpg'
-import flowsMobile from '@/assets/talkie/mobile-flows.jpg'
-import designsystem from '@/assets/talkie/designsystem.jpg'
-import apprentissage from '@/assets/talkie/apprentissage.jpg'
-import quiz from '@/assets/talkie/quiz.jpg'
-import duels from '@/assets/talkie/duels.jpg'
-import tests from '@/assets/talkie/tests.jpg'
+import projectBackground from '@/assets/talkie/banner.jpg?optimized'
+import contexte from '@/assets/talkie/contexte.jpg?optimized'
+import flows from '@/assets/talkie/flows.jpg?optimized'
+import flowsMobile from '@/assets/talkie/mobile-flows.jpg?optimized'
+import designsystem from '@/assets/talkie/designsystem.jpg?optimized'
+import apprentissage from '@/assets/talkie/apprentissage.jpg?optimized'
+import quiz from '@/assets/talkie/quiz.jpg?optimized'
+import duels from '@/assets/talkie/duels.jpg?optimized'
+import tests from '@/assets/talkie/tests.jpg?optimized'
 
-import persona from '@/assets/talkie/per.jpg'
-import entretiens from '@/assets/talkie/entr.jpg'
-import entretiensMobile from '@/assets/talkie/mobile-entr.jpg'
-import fonctions from '@/assets/talkie/fonctions.jpg'
-import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg'
+import persona from '@/assets/talkie/per.jpg?optimized'
+import entretiens from '@/assets/talkie/entr.jpg?optimized'
+import entretiensMobile from '@/assets/talkie/mobile-entr.jpg?optimized'
+import fonctions from '@/assets/talkie/fonctions.jpg?optimized'
+import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/talkie'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
@@ -93,7 +94,7 @@ const rechercheUX = [
 
 const hasProject = computed(() => Boolean(projectData))
 
-const projectBg = computed(() => projectBackground)
+const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 
 usePageLoaded(projectBg)
 </script>

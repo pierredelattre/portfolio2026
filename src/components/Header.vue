@@ -3,8 +3,12 @@
     <div class="switch" role="button" tabindex="0" :aria-pressed="theme === 'dark'" @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"></div>
     <div class="header__title">
-      <h1 class="text--secondary">Pierre Delattre</h1>
-      <h2>Product Designer</h2>
+      <RouterLink to="/" class="header__home-link">
+        <h1 class="text--secondary">Pierre Delattre</h1>
+      </RouterLink>
+      <RouterLink to="/" class="header__home-link">
+        <h2>Product Designer</h2>
+      </RouterLink>
     </div>
 
     <div class="header__cities">
@@ -33,13 +37,14 @@
     <div class="header__links">
       <LinkItem :href=resumePdf label="CV" secondary external />
       <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external />
-      <LinkItem href="#" label="Are.na" secondary external />
+      <LinkItem href="#" label="Freelance" secondary external />
     </div>
   </header>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 
 const THEME_KEY = 'theme-preference'
@@ -123,8 +128,6 @@ header {
     &>*:not(.switch, .header__links, .header__intro) {
       width: calc((100% / 2) - 1rem);
     }
-
-
   }
 
   & .switch {
@@ -164,6 +167,12 @@ header {
       grid-column: 1 / 5;
       grid-row: 1;
     }
+  }
+
+  & .header__home-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
   }
 
   & .header__cities {
@@ -277,9 +286,8 @@ header {
     --secondary: oklch(66% 0 271);
     --inactive: oklch(51% 0 271);
     --surface: oklch(14% 0 271);
-    --switch: oklch(100% 0 275);
-
-    color: var(--primary);
+    --switch: oklch(88% 0 271);
+    color: var(--switch);
   }
 
   &.has-background .header__intro,

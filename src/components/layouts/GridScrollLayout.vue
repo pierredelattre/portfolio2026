@@ -1,33 +1,38 @@
 <template>
   <section class="layout layout-grid-scroll">
     <div class="col images-grid">
-      <picture v-for="(image, index) in parsedImages" :key="`${image.src}-${index}`">
-        <source v-if="image.mobileSrc" :srcset="image.mobileSrc" media="(max-width: 768px)" />
-        <img :src="image.src" :alt="image.alt || title" />
-      </picture>
+      <OptimizedImage
+        v-for="(image, index) in parsedImages"
+        :key="`${image.src?.img?.src || image.src}-${index}`"
+        class="grid-scroll-image"
+        img-class="grid-scroll-image-media"
+        :source="image.src"
+        :mobile-source="image.mobileSrc"
+        :alt="image.alt || title"
+        sizes="(min-width: 1280px) 25vw, 100vw"
+      />
     </div>
     <div class="col text">
       <h3>{{ title }}</h3>
       <template v-if="hasRichText">
         <div v-for="(block, index) in richTextBlocks" :key="`rich-text-${index}`" class="grid-scroll-text__block">
-          <p v-if="block.description" class="line-height--150">
-            {{ block.description }}
-          </p>
+          <p v-if="block.description" class="line-height--150" v-html="block.description"></p>
           <div v-if="block.ideas.length" class="grid-scroll-text__ideas">
             <div v-for="idea in block.ideas" :key="`idea-${idea.label}-${index}`" class="grid-scroll-text__idea">
               <span class="grid-scroll-text__idea-index">{{ idea.label }}</span>
-              <p class="grid-scroll-text__idea-text">{{ idea.text }}</p>
+              <p class="grid-scroll-text__idea-text" v-html="idea.text"></p>
             </div>
           </div>
         </div>
       </template>
-      <p v-else class="line-height--150">{{ text }}</p>
+      <p v-else class="line-height--150" v-html="text"></p>
     </div>
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue'
+import OptimizedImage from '@/components/OptimizedImage.vue'
 
 const props = defineProps({
   images: {
@@ -78,9 +83,11 @@ const richTextBlocks = computed(() => {
 
 const hasRichText = computed(() => richTextBlocks.value.length > 0)
 
+const isPicture = (value) => typeof value === 'object' && value !== null && 'img' in value && 'sources' in value
+
 const parsedImages = computed(() =>
   props.images.map((image) => {
-    if (typeof image === 'string') {
+    if (typeof image === 'string' || isPicture(image)) {
       return { src: image, mobileSrc: '', alt: '' }
     }
     return {
@@ -117,41 +124,43 @@ const parsedImages = computed(() =>
       grid-template-rows: auto auto;
     }
 
-    &>picture {
+    & :deep(.grid-scroll-image) {
       width: 100%;
       height: auto;
       display: block;
+    }
 
-      &>img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
+    & :deep(.grid-scroll-image-media) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-      &:nth-child(1) {
-        height: 540px;
-        grid-column: 1 / 3;
-        grid-row: 1;
-
-        @media screen and (max-width: 768px) {
-          height: 320px;
-        }
-
-        @media screen and (min-width: 768px) and (max-width: 1280px) {
-          grid-column: 1 / 3;
-          grid-row: 1;
-        }
-      }
-
-      &:nth-child(2),
-      &:nth-child(3) {
-        @media screen and (min-width: 768px) and (max-width: 1280px) {
-          height: 320px;
-        }
-      }
+    & :deep(.grid-scroll-image:nth-child(1)) {
+      height: 540px;
+      grid-column: 1 / 3;
+      grid-row: 1;
 
       @media screen and (max-width: 768px) {
+        height: 320px;
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 1280px) {
+        grid-column: 1 / 3;
+        grid-row: 1;
+      }
+    }
+
+    & :deep(.grid-scroll-image:nth-child(2)),
+    & :deep(.grid-scroll-image:nth-child(3)) {
+      @media screen and (min-width: 768px) and (max-width: 1280px) {
+        height: 320px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      & :deep(.grid-scroll-image) {
         height: 320px;
         grid-column: 1 / 3;
       }
