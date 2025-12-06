@@ -52,23 +52,30 @@ export const works = [
 ]
 
 import nehomia from '@/assets/playground/nehomia.jpg?optimized'
+import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
 
 import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
 import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
 
 import flim from '@/assets/playground/flim.jpg?optimized'
+import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
 import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
 import baron from '@/assets/playground/baron-1.jpg?optimized'
 import baron2 from '@/assets/playground/baron-2.jpg?optimized'
 import baron3 from '@/assets/playground/baron-3.jpg?optimized'
+import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
 import baron4 from '@/assets/playground/baron-4.jpg?optimized'
+import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 
 
 import rvrs from '@/assets/playground/rvrs.jpg?optimized'
+import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
 import mag from '@/assets/playground/magazine.jpg?optimized'
 import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
+import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
+import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 
 export const playgroundColumns = [
   [
@@ -81,6 +88,7 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: flim,
+          mobileSrc: flimMobile,
           alt: 'Flim - Réservations de séances de films'
         },
         {
@@ -125,6 +133,7 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: baron4,
+          mobileSrc: baron4Mobile,
           alt: 'Page produit mobile'
         },
         {
@@ -135,6 +144,7 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: baron3,
+          mobileSrc: baron3Mobile,
           alt: 'Up-sells & questionnaire des préférences'
         }
       ]
@@ -148,6 +158,7 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: nehomia,
+          mobileSrc: nehomiaMobile,
           alt: 'Homepage Nehomia'
         }
       ]
@@ -163,6 +174,7 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: rvrs,
+          mobileSrc: rvrsMobile,
           alt: 'Site RVRS'
         }
       ]
@@ -176,11 +188,13 @@ export const playgroundColumns = [
         {
           type: 'image',
           src: mag,
+          mobileSrc: magMobile,
           alt: 'Site RVRS'
         },
         {
           type: 'image',
           src: mag2,
+          mobileSrc: mag2Mobile,
           alt: 'Site RVRS'
         }
       ]

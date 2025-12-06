@@ -43,6 +43,7 @@
                       class="playground-modal__image"
                       img-class="playground-modal__image-media"
                       :source="activeMedia.src"
+                      :mobile-source="activeMedia.mobileSrc || activeMedia.src"
                       :alt="activeMedia.alt || selectedItem?.title"
                       sizes="(min-width: 1024px) 70vw, 100vw"
                     />
@@ -122,7 +123,12 @@ const mediaItems = computed(() => {
   }
 
   if (selectedItem.value.image) {
-    return [{ type: 'image', src: selectedItem.value.image, alt: selectedItem.value.title }]
+    return [{
+      type: 'image',
+      src: selectedItem.value.image,
+      mobileSrc: selectedItem.value.mobileImage || selectedItem.value.image,
+      alt: selectedItem.value.title
+    }]
   }
 
   return []
