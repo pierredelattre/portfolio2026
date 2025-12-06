@@ -176,17 +176,6 @@ const getLenisInstance = () => (typeof window !== 'undefined' ? window.__lenis :
 const getScrollValue = () => {
   if (typeof document === 'undefined') return 0
 
-  const lenis = getLenisInstance()
-  const lenisScroll =
-    lenis?.animatedScroll ??
-    lenis?.actualScroll ??
-    lenis?.targetScroll ??
-    lenis?.scroll
-
-  if (typeof lenisScroll === 'number' && Number.isFinite(lenisScroll)) {
-    return lenisScroll
-  }
-
   const body = document.body
   const html = document.documentElement
   return window.scrollY || html.scrollTop || body.scrollTop || 0
@@ -234,11 +223,7 @@ const unlockScroll = () => {
 
   if (typeof window !== 'undefined') {
     const target = scrollPosition.value || 0
-    if (lenis?.scrollTo) {
-      lenis.scrollTo(target, { immediate: true })
-    } else {
-      window.scrollTo(0, target)
-    }
+    window.scrollTo(0, target)
     lenis?.start?.()
   }
 }
