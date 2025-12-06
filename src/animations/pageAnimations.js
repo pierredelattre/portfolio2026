@@ -271,6 +271,19 @@ export function initPageAnimations() {
     const layoutSections = projectWrapper
       ? Array.from(projectWrapper.querySelectorAll(':scope > .layout'))
       : []
+    const debugProjectIntro = isProjectIntroDebugging()
+
+    const lenis = typeof window !== 'undefined' ? window.__lenis : null
+    const syncLenisToTop = () => {
+      if (!lenis || typeof lenis.scrollTo !== 'function') return
+      const current = lenis.animatedScroll
+      if (typeof current === 'number' && Math.abs(current) > 1) {
+        lenis.scrollTo(0, { immediate: true })
+        if (debugProjectIntro) {
+          console.log('[intro-project] lenis synced to top', { current, newScroll: lenis.animatedScroll })
+        }
+      }
+    }
 
     // --- HARD RESET to avoid broken animations on refresh ---
     gsap.killTweensOf([header, mainEl, pageBg, projectSection, footer])
@@ -289,12 +302,7 @@ export function initPageAnimations() {
 
     if (!header || !mainEl || !pageBg) return
 
-    const debugProjectIntro = isProjectIntroDebugging()
-
     if (!projectBackground) {
-      if (debugProjectIntro) {
-        console.log('[intro-project] reset branch (no background)', { projectBackground })
-      }
       header.classList.remove('has-background', 'is-floating')
       header.style.removeProperty('min-height')
       header.style.removeProperty('top')
@@ -338,19 +346,9 @@ export function initPageAnimations() {
       return
     }
 
-    const measureHeader = header.getBoundingClientRect().height || header.scrollHeight || null
+    syncLenisToTop()
+    window.scrollTo(0, 0)
 
-    if (debugProjectIntro) {
-      console.log('[intro-project] start branch', {
-        projectBackground,
-        scrollY: window.scrollY,
-        lenisScroll: window.__lenis?.animatedScroll,
-        playgroundOpen: document.body.classList.contains('playground-open'),
-        measuredHeader: measureHeader
-      })
-    }
-
-    // Reset to initial state for intro animation
     header.classList.add('has-background', 'is-floating')
     document.body.classList.add('project-page')
     header.style.opacity = '1'
@@ -362,11 +360,18 @@ export function initPageAnimations() {
 
     pageBg.style.opacity = '0'
     pageBg.style.backgroundImage = `url('${projectBackground}')`
-    pageBg.style.height = '0px'
+    pageBg.style.height = `${PROJECT_BG_HEIGHT}px`
 
     gsap.killTweensOf(mainEl)
     mainEl.style.minHeight = MAIN_INTRO_MIN_HEIGHT
     gsap.set(mainEl, { y: MAIN_START_Y })
+    if (debugProjectIntro) {
+      console.log('[intro-project] main reset', {
+        y: gsap.getProperty(mainEl, 'y'),
+        scrollY: window.scrollY,
+        lenisScroll: window.__lenis?.animatedScroll
+      })
+    }
 
     const headerItems = header.querySelectorAll(HEADER_ITEMS_SELECTOR)
     if (!headerItems.length) return
@@ -394,7 +399,6 @@ export function initPageAnimations() {
       pageBg,
       {
         opacity: 1,
-        height: `${PROJECT_BG_HEIGHT}px`,
         duration: 1.0,
         ease: 'power3.out'
       },
@@ -450,34 +454,16 @@ export function initPageAnimations() {
         console.log('[intro-project] timeline start', {
           scrollY: window.scrollY,
           lenisScroll: window.__lenis?.animatedScroll,
-          playgroundOpen: document.body.classList.contains('playground-open'),
-          headerInline: {
-            height: header.style.height,
-            paddingTop: header.style.paddingTop,
-            paddingBottom: header.style.paddingBottom,
-            overflow: header.style.overflow
-          },
-          pageBgInline: {
-            opacity: pageBg.style.opacity,
-            height: pageBg.style.height
-          }
+          mainY: gsap.getProperty(mainEl, 'y'),
+          pageBgHeight: parseFloat(getComputedStyle(pageBg).height) || 0
         })
       })
       tlProject.eventCallback('onComplete', () => {
         console.log('[intro-project] timeline complete', {
           scrollY: window.scrollY,
           lenisScroll: window.__lenis?.animatedScroll,
-          playgroundOpen: document.body.classList.contains('playground-open'),
-          headerInline: {
-            height: header.style.height,
-            paddingTop: header.style.paddingTop,
-            paddingBottom: header.style.paddingBottom,
-            overflow: header.style.overflow
-          },
-          pageBgInline: {
-            opacity: pageBg.style.opacity,
-            height: pageBg.style.height
-          }
+          mainY: gsap.getProperty(mainEl, 'y'),
+          pageBgHeight: parseFloat(getComputedStyle(pageBg).height) || 0
         })
         settleProjectIntro()
       })

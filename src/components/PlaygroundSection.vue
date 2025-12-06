@@ -230,6 +230,9 @@ const unlockScroll = () => {
   if (typeof window !== 'undefined') {
     const target = scrollPosition.value || 0
     window.scrollTo(0, target)
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(target, { immediate: true })
+    }
     lenis?.start?.()
   }
 }
