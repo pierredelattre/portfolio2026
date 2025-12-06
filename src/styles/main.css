@@ -57,7 +57,7 @@ h6 {
 
 
 :root[data-theme='dark'] {
-  --primary: oklch(100% 0 275);
+  --primary: oklch(88% 0 271);
   --secondary: oklch(66% 0 271);
   --inactive: oklch(51% 0 271);
   --surface: oklch(14% 0 271);

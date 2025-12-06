@@ -286,7 +286,7 @@ header {
     --secondary: oklch(66% 0 271);
     --inactive: oklch(51% 0 271);
     --surface: oklch(14% 0 271);
-    --switch: oklch(100% 0 275);
+    --switch: oklch(88% 0 271);
     color: var(--switch);
   }
 
