@@ -104,7 +104,7 @@ export const playgroundColumns = [
     {
       title: 'Youtube to Anki',
       image: anki,
-      color: 'light',
+      color: 'dark',
       modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
       media: [
         {
