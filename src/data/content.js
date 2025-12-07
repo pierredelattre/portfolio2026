@@ -72,6 +72,9 @@ import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 import rvrs from '@/assets/playground/rvrs.jpg?optimized'
 import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
+import anki from '@/assets/playground/anki.jpg?optimized'
+import ankiMobile from '@/assets/playground/mobile-anki.jpg?optimized'
+
 import mag from '@/assets/playground/magazine.jpg?optimized'
 import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
 import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
@@ -95,6 +98,20 @@ export const playgroundColumns = [
           type: 'image',
           src: flimLive,
           alt: 'Flim - Live Activity iOS'
+        }
+      ]
+    },
+    {
+      title: 'Youtube to Anki',
+      image: anki,
+      color: 'light',
+      modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
+      media: [
+        {
+          type: 'image',
+          src: anki,
+          mobileSrc: ankiMobile,
+          alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
         }
       ]
     }
