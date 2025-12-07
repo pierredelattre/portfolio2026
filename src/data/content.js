@@ -62,7 +62,9 @@ import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
 import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
 import baron from '@/assets/playground/baron-1.jpg?optimized'
+import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
 import baron2 from '@/assets/playground/baron-2.jpg?optimized'
+import baron2Desk from '@/assets/playground/desk-baron-2.jpg?optimized'
 import baron3 from '@/assets/playground/baron-3.jpg?optimized'
 import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
 import baron4 from '@/assets/playground/baron-4.jpg?optimized'
@@ -74,6 +76,7 @@ import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
 import anki from '@/assets/playground/anki.jpg?optimized'
 import ankiMobile from '@/assets/playground/mobile-anki.jpg?optimized'
+import ankiDesk from '@/assets/playground/desk-anki.jpg?optimized'
 
 import mag from '@/assets/playground/magazine.jpg?optimized'
 import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
@@ -109,7 +112,7 @@ export const playgroundColumns = [
       media: [
         {
           type: 'image',
-          src: anki,
+          src: ankiDesk,
           mobileSrc: ankiMobile,
           alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
         }
@@ -133,38 +136,6 @@ export const playgroundColumns = [
           alt: 'Gayacoin Website section'
         }
       ]
-    }
-  ],
-  [
-    {
-      title: 'Au Baron',
-      image: baron2,
-      color: 'dark',
-      modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
-      media: [
-        {
-          type: 'image',
-          src: baron2,
-          alt: 'Sommaire de la page produit'
-        },
-        {
-          type: 'image',
-          src: baron4,
-          mobileSrc: baron4Mobile,
-          alt: 'Page produit mobile'
-        },
-        {
-          type: 'image',
-          src: baron,
-          alt: 'Cross-sells'
-        },
-        {
-          type: 'image',
-          src: baron3,
-          mobileSrc: baron3Mobile,
-          alt: 'Up-sells & questionnaire des préférences'
-        }
-      ]
     },
     {
       title: 'Nehomia',
@@ -183,16 +154,34 @@ export const playgroundColumns = [
   ],
   [
     {
-      title: 'RVRS',
-      image: rvrs,
+      title: 'Au Baron',
+      image: baron2,
       color: 'dark',
-      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
+      modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
       media: [
         {
           type: 'image',
-          src: rvrs,
-          mobileSrc: rvrsMobile,
-          alt: 'Site RVRS'
+          src: baron2Desk,
+          mobileSrc: baron2,
+          alt: 'Sommaire de la page produit'
+        },
+        {
+          type: 'image',
+          src: baron4,
+          mobileSrc: baron4Mobile,
+          alt: 'Page produit mobile'
+        },
+        {
+          type: 'image',
+          src: baronDesk,
+          mobileSrc: baron,
+          alt: 'Cross-sells'
+        },
+        {
+          type: 'image',
+          src: baron3,
+          mobileSrc: baron3Mobile,
+          alt: 'Up-sells & questionnaire des préférences'
         }
       ]
     },
@@ -212,6 +201,22 @@ export const playgroundColumns = [
           type: 'image',
           src: mag2,
           mobileSrc: mag2Mobile,
+          alt: 'Site RVRS'
+        }
+      ]
+    }
+  ],
+  [
+    {
+      title: 'RVRS',
+      image: rvrs,
+      color: 'dark',
+      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
+      media: [
+        {
+          type: 'image',
+          src: rvrs,
+          mobileSrc: rvrsMobile,
           alt: 'Site RVRS'
         }
       ]
