@@ -1,4 +1,4 @@
-import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized'
+import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920;2560;3200&quality=96&lossless=true'
 import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import projetPlaceholder from '@/assets/placeholder.png?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'

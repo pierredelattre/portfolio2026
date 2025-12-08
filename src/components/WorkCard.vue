@@ -7,7 +7,7 @@
           img-class="projet__image-tag"
           :source="work.cover"
           :alt="work.title"
-          sizes="(min-width: 1600px) 40vw, (min-width: 1280px) 45vw, (min-width: 768px) 70vw, 100vw"
+          sizes="(min-width: 1600px) 70vw, (min-width: 1280px) 75vw, (min-width: 768px) 90vw, 100vw"
           :loading="priority ? 'eager' : 'lazy'"
           :fetchpriority="priority ? 'high' : 'auto'"
         />
