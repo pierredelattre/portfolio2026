@@ -24,7 +24,7 @@ export default defineConfig({
         }
 
         if (!url.searchParams.has('quality')) {
-          params.set('quality', '82')
+          params.set('quality', '90')
         }
 
         if (!url.searchParams.has('lossless')) {

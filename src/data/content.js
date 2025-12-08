@@ -128,6 +128,7 @@ export const playgroundColumns = [
     {
       title: 'Camera App',
       image: photo,
+      color: 'dark',
       media: [
         {
           type: 'image',

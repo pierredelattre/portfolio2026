@@ -12,7 +12,7 @@
       img-class="playground__image-media"
       :source="image"
       :alt="title"
-      sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 100vw"
+      sizes="(min-width: 1600px) 26vw, (min-width: 1280px) 33vw, (min-width: 1024px) 45vw, 95vw"
     />
     <div v-if="type" class="playground__label">
       <ProjectLabel :type="type" />
