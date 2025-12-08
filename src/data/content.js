@@ -91,41 +91,6 @@ import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 export const playgroundColumns = [
   [
     {
-      title: 'Flim',
-      image: flim,
-      color: 'dark',
-      modalText: 'Application de réservation de séances cinéma',
-      media: [
-        {
-          type: 'image',
-          src: flim,
-          mobileSrc: flimMobile,
-          alt: 'Flim - Réservations de séances de films'
-        },
-        {
-          type: 'image',
-          src: flimLive,
-          alt: 'Flim - Live Activity iOS'
-        }
-      ]
-    },
-    {
-      title: 'Youtube to Anki',
-      image: anki,
-      color: 'dark',
-      modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
-      media: [
-        {
-          type: 'image',
-          src: ankiDesk,
-          mobileSrc: ankiMobile,
-          alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
-        }
-      ]
-    }
-  ],
-  [
-    {
       title: 'Camera App',
       image: photo,
       color: 'dark',
@@ -145,22 +110,19 @@ export const playgroundColumns = [
       ]
     },
     {
-      title: 'Gayacoin',
-      image: gayaMobile,
-      modalText: 'Gayacoin App & section web',
+      title: 'RVRS',
+      image: rvrs,
+      color: 'dark',
+      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
       media: [
         {
           type: 'image',
-          src: gayaMobile,
-          alt: 'Gayacoin App'
-        },
-        {
-          type: 'image',
-          src: gayaDesktop,
-          alt: 'Gayacoin Website section'
+          src: rvrs,
+          mobileSrc: rvrsMobile,
+          alt: 'Site RVRS'
         }
       ]
-    }
+    },
   ],
   [
     {
@@ -196,32 +158,41 @@ export const playgroundColumns = [
       ]
     },
     {
-      title: 'Nehomia',
-      image: nehomia,
-      modalText: 'Homepage concept for Nehomia',
+      title: 'Flim',
+      image: flim,
       color: 'dark',
+      modalText: 'Application de réservation de séances cinéma',
       media: [
         {
           type: 'image',
-          src: nehomia,
-          mobileSrc: nehomiaMobile,
-          alt: 'Homepage Nehomia'
+          src: flim,
+          mobileSrc: flimMobile,
+          alt: 'Flim - Réservations de séances de films'
+        },
+        {
+          type: 'image',
+          src: flimLive,
+          alt: 'Flim - Live Activity iOS'
         }
       ]
     }
   ],
   [
     {
-      title: 'RVRS',
-      image: rvrs,
+      title: 'Gayacoin',
+      image: gayaMobile,
       color: 'dark',
-      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
+      modalText: 'Gayacoin App & section web',
       media: [
         {
           type: 'image',
-          src: rvrs,
-          mobileSrc: rvrsMobile,
-          alt: 'Site RVRS'
+          src: gayaMobile,
+          alt: 'Gayacoin App'
+        },
+        {
+          type: 'image',
+          src: gayaDesktop,
+          alt: 'Gayacoin Website section'
         }
       ]
     },
@@ -242,6 +213,36 @@ export const playgroundColumns = [
           src: mag2,
           mobileSrc: mag2Mobile,
           alt: 'Site RVRS'
+        }
+      ]
+    }
+  ],
+  [
+    {
+      title: 'Youtube to Anki',
+      image: anki,
+      color: 'dark',
+      modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
+      media: [
+        {
+          type: 'image',
+          src: ankiDesk,
+          mobileSrc: ankiMobile,
+          alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
+        }
+      ]
+    },
+    {
+      title: 'Nehomia',
+      image: nehomia,
+      modalText: 'Homepage concept for Nehomia',
+      color: 'dark',
+      media: [
+        {
+          type: 'image',
+          src: nehomia,
+          mobileSrc: nehomiaMobile,
+          alt: 'Homepage Nehomia'
         }
       ]
     }
