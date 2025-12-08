@@ -39,9 +39,9 @@ import philosophie from '@/assets/alpine/philosophie.jpg?optimized&w=1920;2560;3
 import nav from '@/assets/alpine/nav.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import dashboard from '@/assets/alpine/dashboard.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import research from '@/assets/alpine/research.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
-import navMobile from '@/assets/alpine/mobile-nav.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
-import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
-import researcMobile from '@/assets/alpine/mobile-research.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
+import navMobile from '@/assets/alpine/mobile-nav.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import dashboardMobile from '@/assets/alpine/mobile-dashboard.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import researcMobile from '@/assets/alpine/mobile-research.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 import uikit from '@/assets/alpine/uikit.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import uikitMobile from '@/assets/alpine/mobile-uikit.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
 
@@ -49,9 +49,9 @@ import benchBatterie from '@/assets/alpine/bench-batterie.jpg?optimized&w=1920;2
 import benchClim from '@/assets/alpine/bench-clim.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import benchDashboard from '@/assets/alpine/bench-dashboard.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 
-import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
-import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
-import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg?optimized&w=1280;1600;1920&quality=96&lossless=true'
+import benchBatterieMobile from '@/assets/alpine/mobile-bench-batterie.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import benchClimMobile from '@/assets/alpine/mobile-bench-clim.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import benchDashboardMobile from '@/assets/alpine/mobile-bench-dashboard.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 const PROJECT_ROUTE = '/projet/alpine'
 const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null

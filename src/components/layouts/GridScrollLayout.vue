@@ -9,7 +9,7 @@
         :source="image.src"
         :mobile-source="image.mobileSrc"
         :alt="image.alt || title"
-        sizes="(min-width: 1600px) 50vw, (min-width: 1280px) 55vw, (min-width: 1024px) 70vw, 100vw"
+        sizes="(min-width: 1600px) 50vw, (min-width: 1280px) 55vw, (min-width: 1024px) 70vw, 90vw"
       />
     </div>
     <div class="col text">
