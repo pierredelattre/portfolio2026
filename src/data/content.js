@@ -54,6 +54,11 @@ export const works = [
 import nehomia from '@/assets/playground/nehomia.jpg?optimized'
 import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
 
+import photo from '@/assets/playground/photo.jpg?optimized'
+import photoMobile from '@/assets/playground/mobile-photo.jpg?optimized'
+import photo2 from '@/assets/playground/photo2.jpg?optimized'
+import photo2Mobile from '@/assets/playground/mobile-photo2.jpg?optimized'
+
 import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
 import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
 
@@ -121,6 +126,24 @@ export const playgroundColumns = [
   ],
   [
     {
+      title: 'Camera App',
+      image: photo,
+      media: [
+        {
+          type: 'image',
+          src: photo,
+          mobileSrc: photoMobile,
+          alt: 'Camera app & Bibliothèque'
+        },
+        {
+          type: 'image',
+          src: photo2,
+          mobileSrc: photo2Mobile,
+          alt: 'Landscape'
+        }
+      ]
+    },
+    {
       title: 'Gayacoin',
       image: gayaMobile,
       modalText: 'Gayacoin App & section web',
@@ -134,20 +157,6 @@ export const playgroundColumns = [
           type: 'image',
           src: gayaDesktop,
           alt: 'Gayacoin Website section'
-        }
-      ]
-    },
-    {
-      title: 'Nehomia',
-      image: nehomia,
-      modalText: 'Homepage concept for Nehomia',
-      color: 'dark',
-      media: [
-        {
-          type: 'image',
-          src: nehomia,
-          mobileSrc: nehomiaMobile,
-          alt: 'Homepage Nehomia'
         }
       ]
     }
@@ -186,22 +195,16 @@ export const playgroundColumns = [
       ]
     },
     {
-      title: 'Magazine',
-      image: mag,
+      title: 'Nehomia',
+      image: nehomia,
+      modalText: 'Homepage concept for Nehomia',
       color: 'dark',
-      modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
       media: [
         {
           type: 'image',
-          src: mag,
-          mobileSrc: magMobile,
-          alt: 'Site RVRS'
-        },
-        {
-          type: 'image',
-          src: mag2,
-          mobileSrc: mag2Mobile,
-          alt: 'Site RVRS'
+          src: nehomia,
+          mobileSrc: nehomiaMobile,
+          alt: 'Homepage Nehomia'
         }
       ]
     }
@@ -217,6 +220,26 @@ export const playgroundColumns = [
           type: 'image',
           src: rvrs,
           mobileSrc: rvrsMobile,
+          alt: 'Site RVRS'
+        }
+      ]
+    },
+    {
+      title: 'Magazine',
+      image: mag,
+      color: 'dark',
+      modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
+      media: [
+        {
+          type: 'image',
+          src: mag,
+          mobileSrc: magMobile,
+          alt: 'Site RVRS'
+        },
+        {
+          type: 'image',
+          src: mag2,
+          mobileSrc: mag2Mobile,
           alt: 'Site RVRS'
         }
       ]
