@@ -9,17 +9,25 @@
     </section>
 
     <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
-      text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi définit un parvcours utilisateur adapté à la voiture : interface centrée conducteur, mise en avant des informations de monitoring des organes de la voiture." />
+      text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi défini par un parcours utilisateur adapté à la voiture : une interface centrée conducteur avec la mise en avant des informations de monitoring des organes de la voiture." />
 
-    <GridScrollLayout :images="benchmarkGrid" title="Benchmark" :text="benchGridText" />
+    <GridScrollLayout :images="benchmarkGrid" title="Benchmark" text="Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. 
+    
+    Sources utilisées : Apple Carplay, Google Design for Driving, AutoInterfaces.com" />
 
     <ImageFullWidthLayout secondary :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
       title="Réalisation d’un UI Kit"
       text="Création d’un UI Kit proposant les composants nécessaires pour passer à la phase de maquettes : boutons, inputs, éléments de navigation, multimédias...
 
-Les bonnes pratiques de la marque ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs propres à la marque mais aussi une proposition de nuances différentes pour une bonne accessibilité." />
+Les bonnes pratiques d'Alpine ont été appliquées aux composants. On retrouve notamment la police utilisée par Alpine, les logos, le drapeau français ainsi que des couleurs de la marque mais aussi une proposition de nuances différentes pour une meilleure accessibilité." />
 
-    <GridScrollLayout :images="gridScrollImages" title="Du concept aux écrans finaux" :text="gridScrollText" />
+    <GridScrollLayout :images="gridScrollImages" title="Du concept aux écrans finaux" text="Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement. Trois modules essentiels ont été développés :
+    
+    - la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail)
+
+    -  le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation
+    
+    - le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur" />
   </section>
 </template>
 
@@ -71,12 +79,7 @@ const benchmarkGrid = [
   { src: benchClim, mobileSrc: benchClimMobile, alt: "Climatisation & chauffage" },
   { src: benchBatterie, mobileSrc: benchBatterieMobile, alt: "Batterie & autonomie" }
 ]
-
-const gridScrollText =
-  'Les différents écrans ont ensuite été conçus à partir de l’UI Kit pour donner vie à l’infodivertissement complet. Trois modules essentiels ont été développés : la navigation, avec un parcours de paramétrage simple et centré conducteur, des destinations prédéfinies (résidence & travail) ; le tableau de bord, qui met en avant les informations clés de la voiture électrique comme l’autonomie, la consommation, un résumé de lu multimédia et un résumé du de la navigation. Enfin, le système multimédia, est pensé pour naviguer rapidement entre playlists, albums et sources audio tout en minimisant la distraction du conducteur.'
-
-const benchGridText =
-  'Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. Sources utilises : Apple Carplay, Google Design for Driving, Auto Interfaces.'
+  
 
 const hasProject = computed(() => Boolean(projectData))
 

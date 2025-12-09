@@ -36,11 +36,11 @@ export const works = [
   },
   {
     id: 'alpine',
-    title: 'Alpine Infotainment',
+    title: 'Infodivertissement Alpine',
     intro:
       'Conception d’un infodivertissement complet pour une Alpine A110 électrique fictive, pensé pour refléter l’identité de la marque et accompagner le conducteur.',
     description:
-      'Réalisation d’une interface complète dédiée à une voiture fictive : l’Alpine A110 électrique. Proposition d’un infodivertissement adapté au conducteur de la voiture & à la marque. L’interface possède des accès aux fonctionnalités de base : GPS, gestion voiture, climatisation, réglages, téléphonie, musique, connectivité & un bouton warning obligatoire. Trois scénarios sont travaillés : le paramétrage d’un trajet sur le GPS, passer un appel & mettre de la musique, choisir une playlist ou encore sélectionner un album.',
+      'Réalisation d’une interface complète dédiée à une voiture fictive : l’Alpine A110 électrique. Proposition d’un infodivertissement adapté au conducteur de la voiture & à la marque. L’interface possède des accès aux fonctionnalités de base : GPS, gestion voiture, climatisation, réglages, téléphonie, musique, connectivité & un bouton warning obligatoire.',
     services: ['UI Design', 'UI Kit'],
     team: [],
     links: [],
