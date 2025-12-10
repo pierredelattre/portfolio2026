@@ -9,6 +9,7 @@
     </section>
 
     <ColumnTextLayout :image-src=contexte image-alt="Contexte & Enjeux" title="Contexte & Enjeux" text="Talkie naît du constat que les applications d’apprentissage souffrent souvent de répétitivité, faible profondeur et manque d’immersion. Nous avons cherché à concevoir une expérience qui combine gamification, mise en situation et flexibilité totale, en intégrant des modules solo, duels, quiz thématiques et un apprentissage guidé.
+    
 L’objectif : rendre l’apprentissage motivant, répétable, personnalisé et culturellement enrichissant." />
 
     <GridScrollLayout :images="rechercheUX" title="Recherche utilisateur" text="Entretiens qualitatifs, proto-personas et recherches secondaires ont mis en lumière des attentes clés :

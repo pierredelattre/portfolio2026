@@ -75,7 +75,6 @@ import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
 import baron4 from '@/assets/playground/baron-4.jpg?optimized'
 import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 
-
 import rvrs from '@/assets/playground/rvrs.jpg?optimized'
 import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
