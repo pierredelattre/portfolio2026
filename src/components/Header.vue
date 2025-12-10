@@ -1,12 +1,18 @@
 <template>
   <header id="header">
-     <div class="switch" role="button" tabindex="0" :aria-pressed="theme === 'dark'" @click="toggleTheme"
-      @keydown.enter.prevent="toggleTheme"></div>
+     <button
+      class="switch"
+      type="button"
+      :aria-pressed="theme === 'dark'"
+      :aria-label="themeLabel"
+      :title="themeLabel"
+      @click="toggleTheme"
+      @keydown.enter.prevent="toggleTheme"
+      @keydown.space.prevent="toggleTheme"
+    ></button>
     <div class="header__title">
-      <RouterLink to="/" class="header__home-link">
+      <RouterLink to="/" class="header__home-link" aria-label="Retour à l’accueil">
         <h1 class="text--secondary">Pierre Delattre</h1>
-      </RouterLink>
-      <RouterLink to="/" class="header__home-link">
         <h2>Product Designer</h2>
       </RouterLink>
     </div>
@@ -43,7 +49,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 
@@ -51,6 +57,9 @@ const THEME_KEY = 'theme-preference'
 const theme = ref('light')
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 let prefersDarkMedia
+const themeLabel = computed(() =>
+  theme.value === 'dark' ? 'Basculer en thème clair' : 'Basculer en thème sombre'
+)
 
 const applyTheme = (value) => {
   if (typeof document === 'undefined') return
@@ -143,6 +152,11 @@ header {
     transition: background-color 0.4s ease;
     z-index: 1000;
     border: 1px solid var(--text-primary);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
 
     @media screen and (max-width: 768px) {
       top: 1rem;
@@ -158,6 +172,12 @@ header {
   & .header__title {
     grid-column: 1 / 5;
     grid-row: 1;
+
+    &>a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
 
     @media screen and (max-width: 768px) {
       grid-column: 1 / 5;
