@@ -98,7 +98,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  body:has(#app main) #page-hero {
+  body:has(#app main) #page-hero:not(#page-hero:has(header.has-background)) {
     margin-bottom: 4rem;
   }
 }
