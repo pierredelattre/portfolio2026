@@ -136,8 +136,10 @@ const wrapperAttrs = computed(() => {
     width: 100%;
     height: 1px;
     background-color: var(--primary);
-    transform: translateX(-100%) translateY(-1px);
+    transform-origin: left center;
+    transform: scaleX(0) translateY(-1px);
     transition: transform 0.4s ease;
+    will-change: transform;
   }
 }
 
@@ -147,7 +149,7 @@ const wrapperAttrs = computed(() => {
   }
 
   & .link__border--hover {
-    transform: translateX(0) translateY(-1px);
+    transform: scaleX(1) translateY(-1px);
   }
 }
 </style>
