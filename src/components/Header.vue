@@ -97,6 +97,7 @@ header {
   grid-template-rows: auto auto auto;
   gap: 2rem;
   row-gap: 4rem;
+  align-content: start;
   padding: 2rem;
   transition: height 0.5s ease;
 
