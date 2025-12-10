@@ -1,5 +1,5 @@
 <template>
-  <div id="playground">
+  <section id="playground" aria-label="Playground">
     <h3>Playground</h3>
     <div class="playground__content">
       <div class="col" v-for="(column, columnIndex) in columns" :key="`column-${columnIndex}`">
@@ -15,7 +15,12 @@
     <Teleport to="body">
       <transition name="modal-fade">
         <div v-if="selectedItem" class="playground-modal" @click.self="closeModal">
-          <div class="playground-modal__content">
+          <div
+            class="playground-modal__content"
+            role="dialog"
+            aria-modal="true"
+            :aria-label="selectedItem?.title || 'Aperçu Playground'"
+          >
             <button class="playground-modal__close" type="button" aria-label="Fermer l’aperçu" @click="closeModal">
               (fermer)
             </button>
@@ -84,7 +89,7 @@
         </div>
       </transition>
     </Teleport>
-  </div>
+  </section>
 </template>
 
 <script setup>

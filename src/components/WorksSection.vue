@@ -1,8 +1,8 @@
 <template>
-  <div id="works">
+  <section id="works" aria-label="Réalisations">
     <h3>Réalisations</h3>
     <WorkCard v-for="(work, index) in works" :key="work.id" :work="work" :priority="index === 0" />
-  </div>
+  </section>
 </template>
 
 <script setup>

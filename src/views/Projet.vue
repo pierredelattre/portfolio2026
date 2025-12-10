@@ -1,5 +1,5 @@
 <template>
-  <section class="project">
+  <section class="project" :aria-label="projectLabel">
     <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
@@ -8,17 +8,17 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Aperçu visuel du projet" title="Titre"
       text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!" />
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Illustration plein écran du projet" title="Titre"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
 
     <GridScrollLayout :images="gridScrollImages" title="Titre" :text="gridScrollText" />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Maquette plein écran" title="Titre"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="alt de l'image" title="Titre"
+    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Autre visuel du projet" title="Titre"
       text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
   </section>
 </template>
@@ -41,15 +41,18 @@ if (!projectData) {
 }
 
 const gridScrollImages = [
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" },
-  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "alt de l'image" }
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "Visuel principal du projet" },
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "Détail d’interface" },
+  { src: 'https://placehold.co/400x600/EEE/31343C', alt: "Troisième capture du projet" }
 ]
 
 const gridScrollText =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero.'
 
 const hasProject = computed(() => Boolean(projectData))
+const projectLabel = computed(() =>
+  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+)
 
 const projectBg = computed(() => projectBackground)
 

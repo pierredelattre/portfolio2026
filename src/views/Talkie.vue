@@ -1,5 +1,5 @@
 <template>
-  <section class="project">
+  <section class="project" :aria-label="projectLabel">
     <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
@@ -94,6 +94,9 @@ const rechercheUX = [
 ]
 
 const hasProject = computed(() => Boolean(projectData))
+const projectLabel = computed(() =>
+  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+)
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 

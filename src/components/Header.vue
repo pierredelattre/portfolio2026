@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-    <div class="switch" role="button" tabindex="0" :aria-pressed="theme === 'dark'" @click="toggleTheme"
+     <div class="switch" role="button" tabindex="0" :aria-pressed="theme === 'dark'" @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"></div>
     <div class="header__title">
       <RouterLink to="/" class="header__home-link">

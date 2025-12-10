@@ -49,6 +49,7 @@ h6 {
   --switch: oklch(0% 0 0);
 
   --focus: oklch(0.72 0.16 250);
+  --focus-ring: color-mix(in oklch, var(--focus) 40%, transparent);
 
   --type-school: oklab(73.187% -0.12951 0.13864);
   --type-fictive: oklch(45.5% 0.2 291.5);
@@ -163,4 +164,11 @@ a {
   color: var(--primary);
   text-decoration: none;
   transition: color 0.4s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--focus-ring);
+  border-radius: 2px;
 }

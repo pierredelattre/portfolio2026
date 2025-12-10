@@ -1,5 +1,5 @@
 <template>
-  <section class="project">
+  <section class="project" :aria-label="projectLabel">
     <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
@@ -8,7 +8,7 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src="contextImage" image-alt="alt de l'image"
+    <ColumnTextLayout :image-src="contextImage" image-alt="Vue d’écran présentant le contexte du service"
       title="Contexte & Enjeu"
       text="La plupart des services existants autour du cinéma proposent beaucoup d’informations, mais rarement de manière directe. L’utilisateur doit souvent naviguer entre plusieurs écrans avant d’avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l’utilisateur, même lorsqu’il l’a autorisée, et obligent à passer par une fiche film ou une fiche cinéma avant d’afficher des résultats.
 
@@ -98,6 +98,9 @@ const gridScrollUpgradesText = [
 ]
 
 const hasProject = computed(() => Boolean(projectData))
+const projectLabel = computed(() =>
+  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+)
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 

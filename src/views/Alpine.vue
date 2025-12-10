@@ -1,5 +1,5 @@
 <template>
-  <section class="project">
+  <section class="project" :aria-label="projectLabel">
     <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
@@ -8,7 +8,7 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src=philosophie image-alt="Philosphie" title="Philosophie"
+    <ColumnTextLayout :image-src=philosophie image-alt="Interface Alpine : philosophie et cockpit" title="Philosophie"
       text="Adapté à l’identité de la marque, l’infodivertissement se voit aussi défini par un parcours utilisateur adapté à la voiture : une interface centrée conducteur avec la mise en avant des informations de monitoring des organes de la voiture." />
 
     <GridScrollLayout :images="benchmarkGrid" title="Benchmark" text="Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. 
@@ -82,6 +82,9 @@ const benchmarkGrid = [
   
 
 const hasProject = computed(() => Boolean(projectData))
+const projectLabel = computed(() =>
+  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+)
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
 

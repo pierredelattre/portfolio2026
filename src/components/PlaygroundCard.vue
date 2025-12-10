@@ -3,15 +3,18 @@
     class="playground__item"
     role="button"
     tabindex="0"
+    :aria-label="ariaLabel"
+    :title="title"
     :style="styleVars"
     @click="handleSelect"
     @keyup.enter="handleSelect"
+    @keyup.space.prevent="handleSelect"
   >
     <OptimizedImage
       class="playground__image"
       img-class="playground__image-media"
       :source="image"
-      :alt="title"
+      :alt="imageAlt"
       sizes="(min-width: 1600px) 26vw, (min-width: 1280px) 33vw, (min-width: 1024px) 45vw, 95vw"
     />
     <div v-if="type" class="playground__label">
@@ -60,6 +63,9 @@ const styleVars = computed(() => {
   }
   return {}
 })
+
+const ariaLabel = computed(() => `Ouvrir le projet ${props.title}`)
+const imageAlt = computed(() => `Visuel du projet ${props.title}`)
 
 const handleSelect = () => {
   emit('select')
