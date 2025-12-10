@@ -13,7 +13,7 @@
 
     <GridScrollLayout :images="benchmarkGrid" title="Benchmark" text="Découverte des bonnes pratiques constructeurs en ergonomie automobile & recherche des bonnes idées et fonctionnalités proposées par les concurrents. 
     
-    Sources utilisées : Apple Carplay, Google Design for Driving, AutoInterfaces.com" />
+    <strong>Sources utilisées</strong> : Apple Carplay, Google Design for Driving, AutoInterfaces.com" />
 
     <ImageFullWidthLayout secondary :image-src=uikit :image-mobile-src=uikitMobile image-alt="Réalisation d’un UI Kit"
       title="Réalisation d’un UI Kit"
