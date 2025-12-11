@@ -51,6 +51,9 @@ export const works = [
   }
 ]
 
+import bookclub from '@/assets/playground/bookclub.jpg?optimized'
+import bookclubMobile from '@/assets/playground/mobile-bookclub.jpg?optimized'
+
 import nehomia from '@/assets/playground/nehomia.jpg?optimized'
 import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
 
@@ -87,163 +90,169 @@ import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
 import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
 import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 
-export const playgroundColumns = [
-  [
-    {
-      title: 'Camera App',
-      image: photo,
-      color: 'dark',
-      media: [
-        {
-          type: 'image',
-          src: photo,
-          mobileSrc: photoMobile,
-          alt: 'Camera app & Bibliothèque'
-        },
-        {
-          type: 'image',
-          src: photo2,
-          mobileSrc: photo2Mobile,
-          alt: 'Landscape'
-        }
-      ]
-    },
-    {
-      title: 'RVRS',
-      image: rvrs,
-      color: 'dark',
-      modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
-      media: [
-        {
-          type: 'image',
-          src: rvrs,
-          mobileSrc: rvrsMobile,
-          alt: 'Site RVRS'
-        }
-      ]
-    },
-  ],
-  [
-    {
-      title: 'Au Baron',
-      image: baron2,
-      color: 'dark',
-      modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
-      media: [
-        {
-          type: 'image',
-          src: baron2Desk,
-          mobileSrc: baron2,
-          alt: 'Sommaire de la page produit'
-        },
-        {
-          type: 'image',
-          src: baron4,
-          mobileSrc: baron4Mobile,
-          alt: 'Page produit mobile'
-        },
-        {
-          type: 'image',
-          src: baronDesk,
-          mobileSrc: baron,
-          alt: 'Cross-sells'
-        },
-        {
-          type: 'image',
-          src: baron3,
-          mobileSrc: baron3Mobile,
-          alt: 'Up-sells & questionnaire des préférences'
-        }
-      ]
-    },
-    {
-      title: 'Flim',
-      image: flim,
-      color: 'dark',
-      modalText: 'Application de réservation de séances cinéma',
-      media: [
-        {
-          type: 'image',
-          src: flim,
-          mobileSrc: flimMobile,
-          alt: 'Flim - Réservations de séances de films'
-        },
-        {
-          type: 'image',
-          src: flimLive,
-          alt: 'Flim - Live Activity iOS'
-        }
-      ]
-    }
-  ],
-  [
-    {
-      title: 'Gayacoin',
-      image: gayaMobile,
-      color: 'dark',
-      modalText: 'Gayacoin App & section web',
-      media: [
-        {
-          type: 'image',
-          src: gayaMobile,
-          alt: 'Gayacoin App'
-        },
-        {
-          type: 'image',
-          src: gayaDesktop,
-          alt: 'Gayacoin Website section'
-        }
-      ]
-    },
-    {
-      title: 'Magazine',
-      image: mag,
-      color: 'dark',
-      modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
-      media: [
-        {
-          type: 'image',
-          src: mag,
-          mobileSrc: magMobile,
-          alt: 'Site RVRS'
-        },
-        {
-          type: 'image',
-          src: mag2,
-          mobileSrc: mag2Mobile,
-          alt: 'Site RVRS'
-        }
-      ]
-    }
-  ],
-  [
-    {
-      title: 'Youtube to Anki',
-      image: anki,
-      color: 'dark',
-      modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
-      media: [
-        {
-          type: 'image',
-          src: ankiDesk,
-          mobileSrc: ankiMobile,
-          alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
-        }
-      ]
-    },
-    {
-      title: 'Nehomia',
-      image: nehomia,
-      modalText: 'Homepage concept for Nehomia',
-      color: 'dark',
-      media: [
-        {
-          type: 'image',
-          src: nehomia,
-          mobileSrc: nehomiaMobile,
-          alt: 'Homepage Nehomia'
-        }
-      ]
-    }
-  ]
+export const playgroundItems = [
+  {
+    title: 'Book Club',
+    image: bookclub,
+    color: 'dark',
+    modalText: 'Book club app - Découvrir, lire, partager et organiser.',
+    media: [
+      {
+        type: 'image',
+        src: bookclub,
+        mobileSrc: bookclubMobile,
+        alt: 'Concept Book Club App'
+      }
+    ]
+  },
+  {
+    title: 'Camera App',
+    image: photo,
+    color: 'dark',
+    media: [
+      {
+        type: 'image',
+        src: photo,
+        mobileSrc: photoMobile,
+        alt: 'Camera app & Bibliothèque'
+      },
+      {
+        type: 'image',
+        src: photo2,
+        mobileSrc: photo2Mobile,
+        alt: 'Landscape'
+      }
+    ]
+  },
+  {
+    title: 'Au Baron',
+    image: baron2,
+    color: 'dark',
+    modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+    media: [
+      {
+        type: 'image',
+        src: baron2Desk,
+        mobileSrc: baron2,
+        alt: 'Sommaire de la page produit'
+      },
+      {
+        type: 'image',
+        src: baron4,
+        mobileSrc: baron4Mobile,
+        alt: 'Page produit mobile'
+      },
+      {
+        type: 'image',
+        src: baronDesk,
+        mobileSrc: baron,
+        alt: 'Cross-sells'
+      },
+      {
+        type: 'image',
+        src: baron3,
+        mobileSrc: baron3Mobile,
+        alt: 'Up-sells & questionnaire des préférences'
+      }
+    ]
+  },
+  {
+    title: 'Youtube to Anki',
+    image: anki,
+    color: 'dark',
+    modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
+    media: [
+      {
+        type: 'image',
+        src: ankiDesk,
+        mobileSrc: ankiMobile,
+        alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
+      }
+    ]
+  },
+  {
+    title: 'Flim',
+    image: flim,
+    color: 'dark',
+    modalText: 'Application de réservation de séances cinéma',
+    media: [
+      {
+        type: 'image',
+        src: flim,
+        mobileSrc: flimMobile,
+        alt: 'Flim - Réservations de séances de films'
+      },
+      {
+        type: 'image',
+        src: flimLive,
+        alt: 'Flim - Live Activity iOS'
+      }
+    ]
+  },
+  {
+    title: 'Gayacoin',
+    image: gayaMobile,
+    color: 'dark',
+    modalText: 'Gayacoin App & section web',
+    media: [
+      {
+        type: 'image',
+        src: gayaMobile,
+        alt: 'Gayacoin App'
+      },
+      {
+        type: 'image',
+        src: gayaDesktop,
+        alt: 'Gayacoin Website section'
+      }
+    ]
+  },
+  {
+    title: 'RVRS',
+    image: rvrs,
+    color: 'dark',
+    modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
+    media: [
+      {
+        type: 'image',
+        src: rvrs,
+        mobileSrc: rvrsMobile,
+        alt: 'Site RVRS'
+      }
+    ]
+  },
+  {
+    title: 'Magazine',
+    image: mag,
+    color: 'dark',
+    modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
+    media: [
+      {
+        type: 'image',
+        src: mag,
+        mobileSrc: magMobile,
+        alt: 'Site RVRS'
+      },
+      {
+        type: 'image',
+        src: mag2,
+        mobileSrc: mag2Mobile,
+        alt: 'Site RVRS'
+      }
+    ]
+  },
+  {
+    title: 'Nehomia',
+    image: nehomia,
+    modalText: 'Homepage concept for Nehomia',
+    color: 'dark',
+    media: [
+      {
+        type: 'image',
+        src: nehomia,
+        mobileSrc: nehomiaMobile,
+        alt: 'Homepage Nehomia'
+      }
+    ]
+  }
 ]

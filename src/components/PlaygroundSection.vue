@@ -2,7 +2,7 @@
   <section id="playground" aria-label="Playground">
     <h3>Playground</h3>
     <div class="playground__content">
-      <div class="col" v-for="(column, columnIndex) in columns" :key="`column-${columnIndex}`">
+      <div class="col" v-for="(column, columnIndex) in orderedColumns" :key="`column-${columnIndex}`">
         <PlaygroundCard
           v-for="(item, itemIndex) in column"
           :key="`item-${columnIndex}-${itemIndex}`"
@@ -96,13 +96,25 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
-import closeIcon from '@/assets/x-mark.svg'
 
-defineProps({
-  columns: {
+const props = defineProps({
+  items: {
     type: Array,
     required: true
   }
+})
+
+const COLUMN_COUNT = 4
+const orderedColumns = computed(() => {
+  const buckets = Array.from({ length: COLUMN_COUNT }, () => [])
+  const source = Array.isArray(props.items) ? props.items : []
+
+  source.forEach((item, index) => {
+    const columnIndex = index % COLUMN_COUNT
+    buckets[columnIndex].push(item)
+  })
+
+  return buckets
 })
 
 const selectedItem = ref(null)
