@@ -1,7 +1,7 @@
 <template>
   <section id="playground" aria-label="Playground">
     <h3>Playground</h3>
-    <div class="playground__content">
+    <div class="playground__content playground__content--grid">
       <div class="col" v-for="(column, columnIndex) in orderedColumns" :key="`column-${columnIndex}`">
         <PlaygroundCard
           v-for="(item, itemIndex) in column"
@@ -10,6 +10,14 @@
           @select="() => openModal(item)"
         />
       </div>
+    </div>
+    <div class="playground__content playground__content--stacked">
+      <PlaygroundCard
+        v-for="(item, itemIndex) in props.items"
+        :key="`stacked-${itemIndex}`"
+        v-bind="item"
+        @select="() => openModal(item)"
+      />
     </div>
 
     <Teleport to="body">
@@ -284,12 +292,25 @@ onBeforeUnmount(() => {
 
 .playground__content {
   display: flex;
-  flex-direction: row;
   gap: 2rem;
+}
+
+.playground__content--grid {
+  flex-direction: row;
 
   @media screen and (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
+    display: none;
+  }
+}
+
+.playground__content--stacked {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
   }
 }
 
@@ -303,6 +324,7 @@ onBeforeUnmount(() => {
 
   @media screen and (max-width: 768px) {
     gap: 1rem;
+    display: none;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1280px) {
