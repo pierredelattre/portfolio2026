@@ -241,18 +241,18 @@ export const playgroundItems = [
       }
     ]
   },
-  {
-    title: 'Nehomia',
-    image: nehomia,
-    modalText: 'Homepage concept for Nehomia',
-    color: 'dark',
-    media: [
-      {
-        type: 'image',
-        src: nehomia,
-        mobileSrc: nehomiaMobile,
-        alt: 'Homepage Nehomia'
-      }
-    ]
-  }
+  // {
+  //   title: 'Nehomia',
+  //   image: nehomia,
+  //   modalText: 'Homepage concept for Nehomia',
+  //   color: 'dark',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: nehomia,
+  //       mobileSrc: nehomiaMobile,
+  //       alt: 'Homepage Nehomia'
+  //     }
+  //   ]
+  // }
 ]
