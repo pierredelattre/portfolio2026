@@ -66,7 +66,7 @@
               </transition>
 
               <button
-                v-if="hasMultipleMedia"
+                v-if="hasMultipleMedia && hasPrev"
                 class="playground-modal__control playground-modal__control--prev"
                 type="button"
                 aria-label="Voir le visuel précédent"
@@ -77,7 +77,7 @@
                 </svg>
               </button>
               <button
-                v-if="hasMultipleMedia"
+                v-if="hasMultipleMedia && hasNext"
                 class="playground-modal__control playground-modal__control--next"
                 type="button"
                 aria-label="Voir le visuel suivant"
@@ -89,10 +89,15 @@
               </button>
             </div>
 
-            <div class="playground-modal__text__div" v-if="modalText">
-              <p class="playground-modal__text">
-              {{ modalText }}
-            </p>
+            <div class="playground-modal__text-row" v-if="modalText || hasMultipleMedia">
+              <div class="playground-modal__text__div" v-if="modalText">
+                <p class="playground-modal__text">
+                  {{ modalText }}
+                </p>
+              </div>
+              <div v-if="hasMultipleMedia" class="playground-modal__counter">
+                {{ activeMediaIndex + 1 }} / {{ mediaItems.length }}
+              </div>
             </div>
           </div>
         </div>
@@ -177,6 +182,8 @@ const mediaItems = computed(() => {
 const activeMedia = computed(() => mediaItems.value[activeMediaIndex.value] || null)
 const hasMultipleMedia = computed(() => mediaItems.value.length > 1)
 const modalText = computed(() => selectedItem.value?.modalText || selectedItem.value?.title || '')
+const hasPrev = computed(() => activeMediaIndex.value > 0)
+const hasNext = computed(() => activeMediaIndex.value < mediaItems.value.length - 1)
 
 const openModal = (item) => {
   selectedItem.value = item
@@ -195,15 +202,15 @@ const closeModal = () => {
 }
 
 const goToNextMedia = () => {
-  if (!mediaItems.value.length) return
+  if (!mediaItems.value.length || activeMediaIndex.value >= mediaItems.value.length - 1) return
   transitionDirection.value = 'next'
-  activeMediaIndex.value = (activeMediaIndex.value + 1) % mediaItems.value.length
+  activeMediaIndex.value = Math.min(activeMediaIndex.value + 1, mediaItems.value.length - 1)
 }
 
 const goToPrevMedia = () => {
-  if (!mediaItems.value.length) return
+  if (!mediaItems.value.length || activeMediaIndex.value <= 0) return
   transitionDirection.value = 'prev'
-  activeMediaIndex.value = (activeMediaIndex.value - 1 + mediaItems.value.length) % mediaItems.value.length
+  activeMediaIndex.value = Math.max(activeMediaIndex.value - 1, 0)
 }
 
 const handleKeydown = (event) => {
@@ -480,6 +487,14 @@ onBeforeUnmount(() => {
   width: 100%;
 }
 
+.playground-modal__text-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
 .playground-modal__close {
   top: -1rem;
   right: -1rem;
@@ -528,14 +543,9 @@ onBeforeUnmount(() => {
 }
 
 .playground-modal__counter {
-  position: absolute;
-  bottom: 1rem;
-  right: 1.5rem;
-  font-size: 0.85rem;
-  padding: 0.2rem 0.75rem;
-  /* border-radius: 999px; */
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 768px) {
