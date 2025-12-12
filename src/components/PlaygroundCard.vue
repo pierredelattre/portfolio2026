@@ -10,7 +10,19 @@
     @keyup.enter="handleSelect"
     @keyup.space.prevent="handleSelect"
   >
+    <template v-if="isVideo">
+      <video
+        class="playground__image-media"
+        :src="videoSrc"
+        :poster="videoPoster"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+    </template>
     <OptimizedImage
+      v-else
       class="playground__image"
       img-class="playground__image-media"
       :source="image"
@@ -66,6 +78,9 @@ const styleVars = computed(() => {
 
 const ariaLabel = computed(() => `Ouvrir le projet ${props.title}`)
 const imageAlt = computed(() => `Visuel du projet ${props.title}`)
+const isVideo = computed(() => typeof props.image === 'object' && props.image?.type === 'video' && props.image?.src)
+const videoSrc = computed(() => (isVideo.value ? props.image.src : ''))
+const videoPoster = computed(() => (isVideo.value ? props.image.poster || '' : ''))
 
 const handleSelect = () => {
   emit('select')
@@ -95,7 +110,8 @@ const handleSelect = () => {
   display: block;
 }
 
-:deep(.playground__image-media) {
+:deep(.playground__image-media),
+video.playground__image-media {
   width: 100%;
   height: 100%;
   object-fit: cover;

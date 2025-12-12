@@ -51,8 +51,11 @@ export const works = [
   }
 ]
 
+import bookclubvideo from '@/assets/playground/bookclub.mp4'
 import bookclub from '@/assets/playground/bookclub.jpg?optimized'
 import bookclubMobile from '@/assets/playground/mobile-bookclub.jpg?optimized'
+import bookclubVotes from '@/assets/playground/bookclub-votes.jpg?optimized'
+import bookclubVotesMobile from '@/assets/playground/mobile-bookclub-votes.jpg?optimized'
 
 import nehomia from '@/assets/playground/nehomia.jpg?optimized'
 import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
@@ -93,16 +96,28 @@ import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 export const playgroundItems = [
   {
     title: 'Book Club',
-    image: bookclub,
+    // image: bookclub,
+    image: { type: 'video', src: bookclubvideo, poster: bookclub },
     color: 'dark',
     modalText: 'Book club app - Découvrir, lire, partager et organiser.',
     media: [
+      {
+        type: 'video',
+        src: bookclubvideo,
+        alt: 'Vidéo votes Book Club App'
+      },
       {
         type: 'image',
         src: bookclub,
         mobileSrc: bookclubMobile,
         alt: 'Concept Book Club App'
-      }
+      },
+      {
+        type: 'image',
+        src: bookclubVotes,
+        mobileSrc: bookclubVotesMobile,
+        alt: 'Voter sur Book Club App'
+      },
     ]
   },
   {
