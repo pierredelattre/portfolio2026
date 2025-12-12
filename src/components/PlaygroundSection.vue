@@ -45,7 +45,8 @@
                       :src="activeMedia.src"
                       :poster="activeMedia.poster"
                       playsinline
-                      preload="metadata"
+                      webkit-playsinline
+                      preload="auto"
                       autoplay
                       muted
                       loop
@@ -148,12 +149,26 @@ const mediaItems = computed(() => {
   }
 
   if (selectedItem.value.image) {
-    return [{
-      type: 'image',
-      src: selectedItem.value.image,
-      mobileSrc: selectedItem.value.mobileImage || selectedItem.value.image,
-      alt: selectedItem.value.title
-    }]
+    const image = selectedItem.value.image
+    if (typeof image === 'object' && image?.type === 'video') {
+      return [
+        {
+          type: 'video',
+          src: image.src,
+          poster: image.poster,
+          alt: selectedItem.value.title
+        }
+      ]
+    }
+
+    return [
+      {
+        type: 'image',
+        src: image,
+        mobileSrc: selectedItem.value.mobileImage || image,
+        alt: selectedItem.value.title
+      }
+    ]
   }
 
   return []

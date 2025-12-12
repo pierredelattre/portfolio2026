@@ -19,6 +19,8 @@
         muted
         loop
         playsinline
+        webkit-playsinline
+        preload="metadata"
       ></video>
     </template>
     <OptimizedImage
@@ -115,6 +117,7 @@ video.playground__image-media {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.4s ease;
 }
 
