@@ -1,6 +1,6 @@
 <template>
-  <section id="playground" aria-label="Playground">
-    <h3>Playground</h3>
+  <section id="playground" aria-labelledby="playground-title">
+    <h3 id="playground-title">Playground</h3>
     <div class="playground__content playground__content--grid">
       <div class="col" v-for="(column, columnIndex) in orderedColumns" :key="`column-${columnIndex}`">
         <PlaygroundCard
