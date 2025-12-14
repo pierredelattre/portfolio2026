@@ -41,12 +41,15 @@
                   :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}`"
                 >
                   <template v-if="activeMedia.type === 'video'">
+                    <!-- Pour la vidéo, nous choisissons la source en fonction de la taille de l'écran -->
                     <video
-                      :src="activeMedia.src"
-                      :poster="activeMedia.poster"
+                      ref="videoPlayer"
+                      :key="getVideoSrcForBreakpoint(activeMedia)"
+                      :src="getVideoSrcForBreakpoint(activeMedia)"
+                      :poster="getVideoPosterSrc(activeMedia)"
                       playsinline
-                      webkit-playsinline
-                      preload="auto"
+                      webkit-playsinline                      
+                      preload="metadata"
                       autoplay
                       muted
                       loop
@@ -132,7 +135,9 @@ const orderedColumns = computed(() => {
 })
 
 const selectedItem = ref(null)
+const videoPlayer = ref(null)
 const activeMediaIndex = ref(0)
+const transitionDirection = ref('next')
 const previousStyles = ref({
   body: {
     overflow: '',
@@ -144,35 +149,40 @@ const previousStyles = ref({
     overflow: ''
   }
 })
-const transitionDirection = ref('next')
 const scrollPosition = ref(0)
 
 const mediaItems = computed(() => {
-  if (!selectedItem.value) return []
-  if (Array.isArray(selectedItem.value.media) && selectedItem.value.media.length > 0) {
-    return selectedItem.value.media
+  if (!selectedItem.value) {
+    return []
   }
 
-  if (selectedItem.value.image) {
-    const image = selectedItem.value.image
-    if (typeof image === 'object' && image?.type === 'video') {
-      return [
-        {
-          type: 'video',
-          src: image.src,
-          poster: image.poster,
-          alt: selectedItem.value.title
-        }
-      ]
-    }
-
-    return [
-      {
-        type: 'image',
-        src: image,
-        mobileSrc: selectedItem.value.mobileImage || image,
-        alt: selectedItem.value.title
+  // Cas 1: L'item a une propriété `media` (le cas le plus courant)
+  if (Array.isArray(selectedItem.value.media) && selectedItem.value.media.length > 0) {
+    return selectedItem.value.media.map((media) => {
+      // On s'assure que le poster est une chaîne de caractères
+      if (media.type === 'video' && media.poster && typeof media.poster === 'object') {
+        return { ...media, poster: media.poster.src }
       }
+      return media
+    })
+  }
+
+  // Cas 2: L'item n'a pas de `media`, mais une propriété `image` (fallback)
+  const { image, mobileImage, title } = selectedItem.value
+  if (image) {
+    // Si l'image principale est une vidéo
+    if (typeof image === 'object' && image.type === 'video') {
+      return [{
+        type: 'video',
+        src: image.src,
+        mobileSrc: image.mobileSrc,
+        poster: image.poster?.src || image.poster,
+        alt: title
+      }]
+    }
+    // Si c'est une image simple
+    return [
+      { type: 'image', src: image, mobileSrc: mobileImage || image, alt: title }
     ]
   }
 
@@ -185,13 +195,28 @@ const modalText = computed(() => selectedItem.value?.modalText || selectedItem.v
 const hasPrev = computed(() => activeMediaIndex.value > 0)
 const hasNext = computed(() => activeMediaIndex.value < mediaItems.value.length - 1)
 
-const openModal = (item) => {
+const getVideoSrcForBreakpoint = (media) => {
+  if (typeof window === 'undefined') {
+    return media.src
+  }
+  // Utilise la source mobile si la largeur de la fenêtre est <= 768px
+  const isMobile = window.innerWidth <= 768
+  return isMobile ? media.mobileSrc || media.src : media.src
+}
+
+const getVideoPosterSrc = (media) => {
+  if (!media || !media.poster) return ''
+  return typeof media.poster === 'object' ? media.poster.src : media.poster
+}
+
+const openModal = async (item) => {
   selectedItem.value = item
   activeMediaIndex.value = 0
   transitionDirection.value = 'next'
   if (typeof document !== 'undefined') {
     document.body.classList.add('playground-open')
   }
+
 }
 
 const closeModal = () => {
