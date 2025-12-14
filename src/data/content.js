@@ -52,7 +52,8 @@ export const works = [
 ]
 
 import layoutvideo from '@/assets/playground/layout.mp4'
-import layoutvideoMobile from '@/assets/playground/layout-mob.mp4'
+import layoutvideoMobile from '@/assets/playground/layout2.mp4'
+import layoutvideoMobileCard from '@/assets/playground/layout-mobile.mp4'
 
 import layoutdesk from '@/assets/playground/layout-desk.jpg?optimized'
 import layoutdeskMobile from '@/assets/playground/layout-deskMobile.jpg?optimized'
@@ -130,7 +131,7 @@ export const playgroundItems = [
   },
   {
     title: 'Layout Agence',
-    image: { type: 'video', src: layoutvideo, mobileSrc: layoutvideoMobile, poster: layoutdesk },
+    image: { type: 'video', src: layoutvideo, mobileSrc: layoutvideoMobileCard, poster: layoutdesk },
     color: 'dark',
     modalText: '',
     media: [
