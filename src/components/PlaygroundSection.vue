@@ -110,7 +110,7 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch, nextTick } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 
@@ -209,33 +209,65 @@ const getVideoPosterSrc = (media) => {
   return typeof media.poster === 'object' ? media.poster.src : media.poster
 }
 
+const playActiveVideo = async () => {
+  console.log('[playActiveVideo] Tentative de lecture vidéo.')
+  // On attend que Vue mette à jour le DOM pour que `videoPlayer` soit disponible
+  await nextTick()
+
+  const media = activeMedia.value
+  console.log('[playActiveVideo] Média actif:', media)
+
+  if (media?.type === 'video' && videoPlayer.value) {
+    console.log('[playActiveVideo] Élément vidéo trouvé:', videoPlayer.value)
+    console.log('[playActiveVideo] Source de la vidéo:', videoPlayer.value.src)
+
+    // Forcer le rechargement de la source. C'est crucial.
+    videoPlayer.value.load()
+    console.log('[playActiveVideo] Appel de video.load()')
+
+    try {
+      const playPromise = videoPlayer.value.play()
+      if (playPromise !== undefined) {
+        console.log('[playActiveVideo] Appel de video.play() en cours...')
+        await playPromise
+        console.log('[playActiveVideo] SUCCÈS: La vidéo est en cours de lecture.')
+      }
+    } catch (error) {
+      console.error('[playActiveVideo] ERREUR lors de la lecture vidéo:', error.name, error.message)
+      // On peut tenter de jouer en mode `muted` si ce n'est pas déjà le cas,
+      // mais les attributs sont déjà sur la balise.
+      // L'erreur est probablement due à une politique du navigateur (ex: mode économie d'énergie).
+    }
+  } else if (media?.type === 'video') {
+    console.warn('[playActiveVideo] Le média est une vidéo, mais l\'élément <video> (ref="videoPlayer") n\'a pas été trouvé dans le DOM.')
+  } else {
+    console.log('[playActiveVideo] Le média actif n\'est pas une vidéo.')
+  }
+}
+
 const openModal = async (item) => {
   selectedItem.value = item
   activeMediaIndex.value = 0
   transitionDirection.value = 'next'
-  if (typeof document !== 'undefined') {
-    document.body.classList.add('playground-open')
-  }
-
+  await playActiveVideo()
 }
 
 const closeModal = () => {
   selectedItem.value = null
-  if (typeof document !== 'undefined') {
-    document.body.classList.remove('playground-open')
-  }
 }
 
-const goToNextMedia = () => {
+const goToNextMedia = async () => {
   if (!mediaItems.value.length || activeMediaIndex.value >= mediaItems.value.length - 1) return
   transitionDirection.value = 'next'
   activeMediaIndex.value = Math.min(activeMediaIndex.value + 1, mediaItems.value.length - 1)
+  await playActiveVideo()
 }
 
-const goToPrevMedia = () => {
+const goToPrevMedia = async () => {
   if (!mediaItems.value.length || activeMediaIndex.value <= 0) return
   transitionDirection.value = 'prev'
   activeMediaIndex.value = Math.max(activeMediaIndex.value - 1, 0)
+  await playActiveVideo()
 }
 
 const handleKeydown = (event) => {
@@ -313,8 +345,10 @@ watch(
   () => selectedItem.value,
   (value) => {
     if (value) {
+      document.body.classList.add('playground-open')
       lockScroll()
     } else {
+      document.body.classList.remove('playground-open')
       unlockScroll()
     }
   }
