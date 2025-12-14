@@ -127,7 +127,7 @@ export const playgroundItems = [
     ]
   },
   {
-    title: 'Concept',
+    title: 'Layout Agence',
     image: { type: 'video', src: layoutvideo, poster: layoutdesk },
     color: 'dark',
     modalText: '',
