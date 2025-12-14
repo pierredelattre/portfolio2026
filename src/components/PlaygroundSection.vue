@@ -38,12 +38,12 @@
                 <div
                   v-if="activeMedia"
                   class="playground-modal__media-inner"
-                  :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}`"
+                  :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}-${isMobileView}`"
                 >
                   <template v-if="activeMedia.type === 'video'">
                     <video
                       ref="videoPlayer"
-                      :key="activeMedia.src"
+                      :key="`${activeMedia.src}-${isMobileView}`"
                       :poster="getVideoPosterSrc(activeMedia)"
                       :playsinline="true"
                       :webkit-playsinline="true"
@@ -139,6 +139,7 @@ const selectedItem = ref(null)
 const videoPlayer = ref(null)
 const activeMediaIndex = ref(0)
 const transitionDirection = ref('next')
+const isMobileView = ref(typeof window !== 'undefined' && window.innerWidth <= 768)
 const previousStyles = ref({
   body: {
     overflow: '',
@@ -345,12 +346,20 @@ watch(
   }
 )
 
+const updateView = () => {
+  if (typeof window !== 'undefined') {
+    isMobileView.value = window.innerWidth <= 768
+  }
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('resize', updateView)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('resize', updateView)
   unlockScroll()
 })
 </script>
