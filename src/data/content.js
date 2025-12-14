@@ -52,7 +52,7 @@ export const works = [
 ]
 
 import layoutvideo from '@/assets/playground/layout.mp4'
-import layoutvideoMobile from '@/assets/playground/layout2.mp4'
+import layoutvideoMobile from '@/assets/playground/layout3.mp4'
 import layoutvideoMobileCard from '@/assets/playground/layout-mobile.mp4'
 
 import layoutdesk from '@/assets/playground/layout-desk.jpg?optimized'
