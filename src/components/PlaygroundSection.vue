@@ -47,12 +47,12 @@
                       :key="getVideoSrcForBreakpoint(activeMedia)"
                       :src="getVideoSrcForBreakpoint(activeMedia)"
                       :poster="getVideoPosterSrc(activeMedia)"
-                      playsinline
-                      webkit-playsinline                      
+                      :playsinline="true"
+                      :webkit-playsinline="true"
                       preload="metadata"
-                      autoplay
-                      muted
-                      loop
+                      :autoplay="true"
+                      :muted="true"
+                      :loop="true"
                     ></video>
                   </template>
                   <template v-else>
