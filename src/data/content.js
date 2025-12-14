@@ -55,7 +55,7 @@ import layoutvideo from '@/assets/playground/layout.mp4'
 import layoutdesk from '@/assets/playground/layout-desk.jpg?optimized'
 import layoutdeskMobile from '@/assets/playground/layout-deskMobile.jpg?optimized'
 import layoutmobile from '@/assets/playground/layout-mobile.jpg?optimized'
-import layoutmobileMobile from '@/assets/playground/layout-mobilemobile.jpg?optimized'
+import layoutmobileMobile from '@/assets/playground/layout-mobileMobile.jpg?optimized'
 
 import bookclubvideo from '@/assets/playground/bookclub.mp4'
 import bookclub from '@/assets/playground/bookclub.jpg?optimized'
