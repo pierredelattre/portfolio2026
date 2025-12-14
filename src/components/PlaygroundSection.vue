@@ -41,19 +41,20 @@
                   :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}`"
                 >
                   <template v-if="activeMedia.type === 'video'">
-                    <!-- Pour la vidéo, nous choisissons la source en fonction de la taille de l'écran -->
                     <video
                       ref="videoPlayer"
-                      :key="getVideoSrcForBreakpoint(activeMedia)"
-                      :src="getVideoSrcForBreakpoint(activeMedia)"
+                      :key="activeMedia.src"
                       :poster="getVideoPosterSrc(activeMedia)"
                       :playsinline="true"
                       :webkit-playsinline="true"
-                      preload="metadata"
+                      preload="auto"
                       :autoplay="true"
                       :muted="true"
                       :loop="true"
-                    ></video>
+                    >
+                      <source v-if="activeMedia.mobileSrc" :src="activeMedia.mobileSrc" media="(max-width: 768px)" />
+                      <source :src="activeMedia.src" />
+                    </video>
                   </template>
                   <template v-else>
                     <OptimizedImage
@@ -195,15 +196,6 @@ const modalText = computed(() => selectedItem.value?.modalText || selectedItem.v
 const hasPrev = computed(() => activeMediaIndex.value > 0)
 const hasNext = computed(() => activeMediaIndex.value < mediaItems.value.length - 1)
 
-const getVideoSrcForBreakpoint = (media) => {
-  if (typeof window === 'undefined') {
-    return media.src
-  }
-  // Utilise la source mobile si la largeur de la fenêtre est <= 768px
-  const isMobile = window.innerWidth <= 768
-  return isMobile ? media.mobileSrc || media.src : media.src
-}
-
 const getVideoPosterSrc = (media) => {
   if (!media || !media.poster) return ''
   return typeof media.poster === 'object' ? media.poster.src : media.poster
@@ -219,7 +211,6 @@ const playActiveVideo = async () => {
 
   if (media?.type === 'video' && videoPlayer.value) {
     console.log('[playActiveVideo] Élément vidéo trouvé:', videoPlayer.value)
-    console.log('[playActiveVideo] Source de la vidéo:', videoPlayer.value.src)
 
     // Forcer le rechargement de la source. C'est crucial.
     videoPlayer.value.load()
