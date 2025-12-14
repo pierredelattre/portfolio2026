@@ -1,6 +1,7 @@
 <template>
   <section id="playground" aria-labelledby="playground-title">
     <h3 id="playground-title">Playground</h3>
+    <!-- Grille et cartes restent inchangées -->
     <div class="playground__content playground__content--grid">
       <div class="col" v-for="(column, columnIndex) in orderedColumns" :key="`column-${columnIndex}`">
         <PlaygroundCard
@@ -38,23 +39,14 @@
                 <div
                   v-if="activeMedia"
                   class="playground-modal__media-inner"
-                  :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}-${isMobileView}`"
+                  :key="`${selectedItem?.title || 'media'}-${activeMediaIndex}`"
                 >
                   <template v-if="activeMedia.type === 'video'">
-                    <video
-                      ref="videoPlayer"
-                      :key="`${activeMedia.src}-${isMobileView}`"
+                    <ModalVideoPlayer
+                      :key="activeVideoSrc"
+                      :src="activeVideoSrc"
                       :poster="getVideoPosterSrc(activeMedia)"
-                      :playsinline="true"
-                      :webkit-playsinline="true"
-                      preload="auto"
-                      :autoplay="true"
-                      :muted="true"
-                      :loop="true"
-                    >
-                      <source v-if="activeMedia.mobileSrc" :src="activeMedia.mobileSrc" media="(max-width: 768px)" />
-                      <source :src="activeMedia.src" />
-                    </video>
+                    />
                   </template>
                   <template v-else>
                     <OptimizedImage
@@ -111,9 +103,10 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch, nextTick } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
+import ModalVideoPlayer from '@/components/ModalVideoPlayer.vue'
 
 const props = defineProps({
   items: {
@@ -136,10 +129,9 @@ const orderedColumns = computed(() => {
 })
 
 const selectedItem = ref(null)
-const videoPlayer = ref(null)
 const activeMediaIndex = ref(0)
 const transitionDirection = ref('next')
-const isMobileView = ref(typeof window !== 'undefined' && window.innerWidth <= 768)
+const activeVideoSrc = ref('')
 const previousStyles = ref({
   body: {
     overflow: '',
@@ -202,64 +194,37 @@ const getVideoPosterSrc = (media) => {
   return typeof media.poster === 'object' ? media.poster.src : media.poster
 }
 
-const playActiveVideo = async () => {
-  console.log('[playActiveVideo] Tentative de lecture vidéo.')
-  // On attend que Vue mette à jour le DOM pour que `videoPlayer` soit disponible
-  await nextTick()
-
+const updateActiveVideoSrc = () => {
   const media = activeMedia.value
-  console.log('[playActiveVideo] Média actif:', media)
-
-  if (media?.type === 'video' && videoPlayer.value) {
-    console.log('[playActiveVideo] Élément vidéo trouvé:', videoPlayer.value)
-
-    // Forcer le rechargement de la source. C'est crucial.
-    videoPlayer.value.load()
-    console.log('[playActiveVideo] Appel de video.load()')
-
-    try {
-      const playPromise = videoPlayer.value.play()
-      if (playPromise !== undefined) {
-        console.log('[playActiveVideo] Appel de video.play() en cours...')
-        await playPromise
-        console.log('[playActiveVideo] SUCCÈS: La vidéo est en cours de lecture.')
-      }
-    } catch (error) {
-      console.error('[playActiveVideo] ERREUR lors de la lecture vidéo:', error.name, error.message)
-      // On peut tenter de jouer en mode `muted` si ce n'est pas déjà le cas,
-      // mais les attributs sont déjà sur la balise.
-      // L'erreur est probablement due à une politique du navigateur (ex: mode économie d'énergie).
-    }
-  } else if (media?.type === 'video') {
-    console.warn('[playActiveVideo] Le média est une vidéo, mais l\'élément <video> (ref="videoPlayer") n\'a pas été trouvé dans le DOM.')
-  } else {
-    console.log('[playActiveVideo] Le média actif n\'est pas une vidéo.')
+  if (media?.type !== 'video') {
+    activeVideoSrc.value = ''
+    return
   }
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+  activeVideoSrc.value = (isMobile && media.mobileSrc) ? media.mobileSrc : media.src
 }
 
-const openModal = async (item) => {
+const openModal = (item) => {
   selectedItem.value = item
   activeMediaIndex.value = 0
   transitionDirection.value = 'next'
-  await playActiveVideo()
+  updateActiveVideoSrc()
 }
 
 const closeModal = () => {
   selectedItem.value = null
 }
 
-const goToNextMedia = async () => {
+const goToNextMedia = () => {
   if (!mediaItems.value.length || activeMediaIndex.value >= mediaItems.value.length - 1) return
   transitionDirection.value = 'next'
   activeMediaIndex.value = Math.min(activeMediaIndex.value + 1, mediaItems.value.length - 1)
-  await playActiveVideo()
 }
 
-const goToPrevMedia = async () => {
+const goToPrevMedia = () => {
   if (!mediaItems.value.length || activeMediaIndex.value <= 0) return
   transitionDirection.value = 'prev'
   activeMediaIndex.value = Math.max(activeMediaIndex.value - 1, 0)
-  await playActiveVideo()
 }
 
 const handleKeydown = (event) => {
@@ -346,20 +311,14 @@ watch(
   }
 )
 
-const updateView = () => {
-  if (typeof window !== 'undefined') {
-    isMobileView.value = window.innerWidth <= 768
-  }
-}
+watch(activeMediaIndex, updateActiveVideoSrc)
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
-  window.addEventListener('resize', updateView)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
-  window.removeEventListener('resize', updateView)
   unlockScroll()
 })
 </script>
