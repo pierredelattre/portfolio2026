@@ -102,7 +102,6 @@ import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 export const playgroundItems = [
   {
     title: 'Book Club',
-    // image: bookclub,
     image: { type: 'video', src: bookclubvideo, poster: bookclub },
     color: 'dark',
     modalText: 'Book club app - Découvrir, lire, partager et organiser.',
@@ -129,14 +128,13 @@ export const playgroundItems = [
   },
   {
     title: 'Concept',
-    // image: bookclub,
     image: { type: 'video', src: layoutvideo, poster: layoutdesk },
     color: 'dark',
     modalText: '',
     media: [
       {
         type: 'video',
-        src: layoutdesk,
+        src: layoutvideo,
         poster: layoutdesk,
         alt: 'Showcase video'
       },
