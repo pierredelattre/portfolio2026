@@ -51,6 +51,12 @@ export const works = [
   }
 ]
 
+import layoutvideo from '@/assets/playground/layout.mp4'
+import layoutdesk from '@/assets/playground/layout-desk.jpg?optimized'
+import layoutdeskMobile from '@/assets/playground/layout-deskMobile.jpg?optimized'
+import layoutmobile from '@/assets/playground/layout-mobile.jpg?optimized'
+import layoutmobileMobile from '@/assets/playground/layout-mobilemobile.jpg?optimized'
+
 import bookclubvideo from '@/assets/playground/bookclub.mp4'
 import bookclub from '@/assets/playground/bookclub.jpg?optimized'
 import bookclubMobile from '@/assets/playground/mobile-bookclub.jpg?optimized'
@@ -104,6 +110,7 @@ export const playgroundItems = [
       {
         type: 'video',
         src: bookclubvideo,
+        poster: bookclub,
         alt: 'Vidéo votes Book Club App'
       },
       {
@@ -117,6 +124,33 @@ export const playgroundItems = [
         src: bookclubVotes,
         mobileSrc: bookclubVotesMobile,
         alt: 'Voter sur Book Club App'
+      },
+    ]
+  },
+  {
+    title: 'Concept',
+    // image: bookclub,
+    image: { type: 'video', src: layoutvideo, poster: layoutdesk },
+    color: 'dark',
+    modalText: '',
+    media: [
+      {
+        type: 'video',
+        src: layoutdesk,
+        poster: layoutdesk,
+        alt: 'Showcase video'
+      },
+      {
+        type: 'image',
+        src: layoutdesk,
+        mobileSrc: layoutdeskMobile,
+        alt: 'Desktop layout'
+      },
+      {
+        type: 'image',
+        src: layoutmobile,
+        mobileSrc: layoutmobileMobile,
+        alt: 'Mobile layout'
       },
     ]
   },
@@ -256,18 +290,18 @@ export const playgroundItems = [
       }
     ]
   },
-  // {
-  //   title: 'Nehomia',
-  //   image: nehomia,
-  //   modalText: 'Homepage concept for Nehomia',
-  //   color: 'dark',
-  //   media: [
-  //     {
-  //       type: 'image',
-  //       src: nehomia,
-  //       mobileSrc: nehomiaMobile,
-  //       alt: 'Homepage Nehomia'
-  //     }
-  //   ]
-  // }
+  {
+    title: 'Nehomia',
+    image: nehomia,
+    modalText: 'Homepage concept for Nehomia',
+    color: 'dark',
+    media: [
+      {
+        type: 'image',
+        src: nehomia,
+        mobileSrc: nehomiaMobile,
+        alt: 'Homepage Nehomia'
+      }
+    ]
+  }
 ]
