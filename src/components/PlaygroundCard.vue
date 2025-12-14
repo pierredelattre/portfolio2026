@@ -13,15 +13,17 @@
     <template v-if="isVideo">
       <video
         class="playground__image-media"
-        :src="videoSrc"
         :poster="videoPoster"
         autoplay
         muted
         loop
         playsinline
         webkit-playsinline
-        preload="metadata"
-      ></video>
+        preload="auto"
+      >
+        <source v-if="videoMobileSrc" :src="videoMobileSrc" media="(max-width: 768px)" />
+        <source :src="videoSrc" />
+      </video>
     </template>
     <OptimizedImage
       v-else
@@ -81,7 +83,8 @@ const styleVars = computed(() => {
 const ariaLabel = computed(() => `Ouvrir le projet ${props.title}`)
 const imageAlt = computed(() => `Visuel du projet ${props.title}`)
 const isVideo = computed(() => typeof props.image === 'object' && props.image?.type === 'video' && props.image?.src)
-const videoSrc = computed(() => (isVideo.value ? props.image.src : ''))
+const videoSrc = computed(() => (isVideo.value ? props.image.src : null))
+const videoMobileSrc = computed(() => (isVideo.value ? props.image.mobileSrc : null))
 const videoPoster = computed(() => (isVideo.value ? props.image.poster || '' : ''))
 
 const handleSelect = () => {
