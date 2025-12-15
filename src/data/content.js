@@ -130,7 +130,7 @@ export const playgroundItems = [
     ]
   },
   {
-    title: 'Layout Agence',
+    title: '',
     image: { type: 'video', src: layoutvideo, mobileSrc: layoutvideoMobileCard, poster: layoutdesk },
     color: 'dark',
     modalText: '',
