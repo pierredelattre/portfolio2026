@@ -7,6 +7,24 @@ import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
 export const works = [
   {
+    id: 'lira',
+    title: 'Lira',
+    intro:
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+    description:
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+    services: ['Product Design'],
+    team: [],
+    links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
+    tags: ['Product Design'],
+    cover: {
+      src: liraVideo,
+      mobile: liraVideoMobile,
+      poster: liraPoster
+    },
+    type: 'freelance'
+  },
+  {
     id: 'septiemeseance',
     title: 'Septième Séance',
     intro:
@@ -50,24 +68,6 @@ export const works = [
     cover: alpinePlaceholder,
     route: '/projet/alpine',
     type: 'school'
-  },
-  {
-    id: 'lira',
-    title: 'Lira',
-    intro:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
-    description:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
-    services: ['Product Design'],
-    team: [],
-    links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
-    tags: ['Product Design'],
-    cover: {
-      src: liraVideo,
-      mobile: liraVideoMobile,
-      poster: liraPoster
-    },
-    type: 'freelance'
   }
 ]
 

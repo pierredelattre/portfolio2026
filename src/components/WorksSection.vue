@@ -77,19 +77,19 @@ defineProps({
 
 @media screen and (min-width: 1281px) {
   #works :deep(.projet:nth-child(2) .projet__image) {
-    height: 600px;
+    height: 230px;
   }
 
   #works :deep(.projet:nth-child(3) .projet__image) {
-    height: 440px;
+    height: 460px;
   }
 
   #works :deep(.projet:nth-child(4) .projet__image) {
-    height: 520px;
+    height: 400px;
   }
 
   #works :deep(.projet:nth-child(5) .projet__image) {
-    height: 230px;
+    height: 480px;
   }
 }
 </style>

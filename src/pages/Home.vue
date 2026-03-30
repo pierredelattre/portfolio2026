@@ -25,13 +25,13 @@ usePageLoaded()
 }
 
 @media screen and (min-width: 1280px) {
-  #works>.projet:nth-child(4) {
+  #works>.projet:last-child {
     & img {
       object-position: right;
     }
   }
 
-  #works>.projet:last-child {
+  #works>.projet:nth-child(2) {
     & video {
       object-fit: cover;
     }

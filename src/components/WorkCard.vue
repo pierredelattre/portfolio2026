@@ -5,7 +5,7 @@
         <template v-if="isVideo">
           <video
             class="projet__image-media"
-            :poster="work.cover.poster"
+            :poster="videoPoster"
             autoplay
             muted
             loop
@@ -13,8 +13,8 @@
             webkit-playsinline
             preload="auto"
           >
-            <source v-if="work.cover.mobile" :src="work.cover.mobile" media="(max-width: 768px)" />
-            <source :src="work.cover.src" />
+            <source v-if="videoMobileSrc" :src="videoMobileSrc" media="(max-width: 768px)" />
+            <source :src="videoSrc" />
           </video>
         </template>
         <OptimizedImage
@@ -65,6 +65,20 @@ const props = defineProps({
 const work = toRef(props, 'work')
 const workLink = computed(() => work.value.route || '/')
 const isVideo = computed(() => work.value.cover && typeof work.value.cover === 'object' && work.value.cover.src)
+
+const normalizeVideoAsset = (asset) => {
+  if (!asset) return ''
+  if (typeof asset === 'string') return asset
+  if (typeof asset === 'object') {
+    if (asset.src) return asset.src
+    if (asset.img && asset.img.src) return asset.img.src
+  }
+  return ''
+}
+
+const videoSrc = computed(() => (isVideo.value ? normalizeVideoAsset(work.value.cover.src) : ''))
+const videoMobileSrc = computed(() => (isVideo.value ? normalizeVideoAsset(work.value.cover.mobile) : ''))
+const videoPoster = computed(() => (isVideo.value ? normalizeVideoAsset(work.value.cover.poster) : ''))
 
 const imageLinkComponent = computed(() => {
   // Si le projet a des liens externes et pas de route interne, utiliser un lien externe
@@ -159,6 +173,10 @@ const linkProps = computed(() => {
       height: 100%;
     }
 
+    & :deep(video) {
+      transition: transform 0.4s ease;
+    }
+ 
     & :deep(.projet__image-tag) {
       width: 100%;
       height: 100%;
@@ -190,7 +208,8 @@ const linkProps = computed(() => {
   }
 }
 
-.projet:hover .projet__image :deep(.projet__image-tag) {
+.projet:hover .projet__image :deep(.projet__image-tag),
+.projet:hover .projet__image video {
   transform: scale(1.05);
 }
 </style>

@@ -8,18 +8,20 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Aperçu visuel du projet" title="Titre"
-      text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!" />
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Illustration plein écran du projet" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+    <template v-if="hasProject">
+      <ColumnTextLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Aperçu visuel du projet" title="Titre"
+        text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia ab magnam ducimus accusamus pariatur. Tempora vitae quaerat asperiores quae, cupiditate mollitia quidem dignissimos consectetur atque deleniti neque debitis, est sequi!" />
+      <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Illustration plein écran du projet" title="Titre"
+        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
 
-    <GridScrollLayout :images="gridScrollImages" title="Titre" :text="gridScrollText" />
+      <GridScrollLayout :images="gridScrollImages" title="Titre" :text="gridScrollText" />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Maquette plein écran" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+      <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Maquette plein écran" title="Titre"
+        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
 
-    <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Autre visuel du projet" title="Titre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+      <ImageFullWidthLayout image-src="https://placehold.co/400x600/EEE/31343C" image-alt="Autre visuel du projet" title="Titre"
+        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laborum incidunt ipsa neque esse deleniti et. Officiis hic aliquid nihil tempore repellat voluptatum repudiandae placeat deleniti! Placeat quidem doloribus libero." />
+    </template>
   </section>
 </template>
 
