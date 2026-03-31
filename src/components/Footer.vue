@@ -43,7 +43,7 @@
         <h3>Email</h3>
         <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
       </div>
-      <p class="copyright text--secondary">Portfolio 2026</p>
+      <p class="copyright text--secondary">Portfolio 2026 – fait maison</p>
     </div>
   </footer>
 </template>
@@ -86,8 +86,14 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
 </script>
 
 <style scoped lang="css">
-body:has(.home) .site-footer {
+body:has(.home) .site-footer .projects {
   display: none!important;
+}
+
+body:has(.home) .site-footer {
+  gap: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .site-footer {
