@@ -13,10 +13,12 @@
 
 Duolingo construit l'habitude mais le contenu est artificiel et le plafond B1-B2 arrive vite. Anki a l'algorithme le plus rigoureux du marché, mais préparer ses cartes prend plus de temps que les réviser. LingQ propose l'approche la plus proche de ce que je cherchais, lire du contenu authentique avec une traduction intégrée, mais l'interface reste difficile à prendre en main.
 
-Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauvegarder les mots en contexte, les réviser ensuite avec un algorithme sérieux. Pas de configuration, pas de gamification." />
+Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauvegarder les mots en contexte, les réviser ensuite avec un algorithme sérieux. Pas de configuration, pas de gamification. 
+
+Le projet est en production depuis mars 2026." />
 
     <GridScrollLayoutRows :images="rechercheUX" title="Recherche & Positionnement"
-      text="La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo), forums LingQ, reviews App Store. Pas d'interviews primaires à ce stade.
+      text="La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
 
 Ce type de source a un biais évident : les utilisateurs qui postent sont plus frustrés que la moyenne. J'en ai tenu compte.
 
