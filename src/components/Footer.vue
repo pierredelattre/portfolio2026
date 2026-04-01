@@ -31,18 +31,20 @@
       </RouterLink>
     </div>
     <div class="footer__infos">
-      <div class="footer__liens">
-        <h3>Liens</h3>
-        <div class="links">
-          <LinkItem :href=resumePdf label="CV" secondary external />
-          <!-- <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external /> -->
-          <LinkItem href="#" label="Freelance" secondary external />
+      <template v-if="!isHomePage">
+        <div class="footer__liens">
+          <h3>Liens</h3>
+          <div class="links">
+            <LinkItem :href=resumePdf label="CV" secondary external />
+            <!-- <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external /> -->
+            <LinkItem href="#" label="Freelance" secondary external />
+          </div>
         </div>
-      </div>
-      <div class="footer__email">
-        <h3>Email</h3>
-        <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
-      </div>
+        <div class="footer__email">
+          <h3>Email</h3>
+          <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
+        </div>
+      </template>
       <p class="copyright text--secondary">Portfolio 2026 – fait maison</p>
     </div>
   </footer>
@@ -62,6 +64,7 @@ const PROJECT_ROUTE_PREFIX = '/projet'
 const projectList = works.filter((work) => typeof work.route === 'string' && work.route.startsWith(PROJECT_ROUTE_PREFIX))
 
 const isProjectPage = computed(() => route.path?.startsWith(PROJECT_ROUTE_PREFIX))
+const isHomePage = computed(() => route.path === '/')
 
 const currentProjectIndex = computed(() => {
   if (!isProjectPage.value) return -1
@@ -86,14 +89,14 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
 </script>
 
 <style scoped lang="css">
-body:has(.home) .site-footer .projects {
-  display: none!important;
-}
-
 body:has(.home) .site-footer {
   gap: 2rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+body:has(.home) .site-footer .projects {
+  display: none!important;
 }
 
 .site-footer {
