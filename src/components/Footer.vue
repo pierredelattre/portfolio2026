@@ -9,9 +9,9 @@
             img-class="project-image__media"
             sizes="(min-width: 1024px) 50vw, 100vw"
             :source="previousProject.thumbnail || previousProject.cover"
-            :alt="`Visuel de ${previousProject.title}`"
+            :alt="footerProjectAlt(previousProject.title)"
           />
-          <p>Projet précédent</p>
+          <p>{{ footerText.previousProject }}</p>
           <h3>{{ previousProject.title }}</h3>
         </div>
       </RouterLink>
@@ -23,9 +23,9 @@
             img-class="project-image__media"
             sizes="(min-width: 1024px) 50vw, 100vw"
             :source="nextProject.thumbnail || nextProject.cover"
-            :alt="`Visuel de ${nextProject.title}`"
+            :alt="footerProjectAlt(nextProject.title)"
           />
-          <p>Projet suivant</p>
+          <p>{{ footerText.nextProject }}</p>
           <h3>{{ nextProject.title }}</h3>
         </div>
       </RouterLink>
@@ -33,19 +33,19 @@
     <div class="footer__infos">
       <template v-if="!isHomePage">
         <div class="footer__liens">
-          <h3>Liens</h3>
+          <h3>{{ footerText.links }}</h3>
           <div class="links">
-            <LinkItem :href=resumePdf label="CV" secondary external />
+            <LinkItem :href="resumePdf" :label="footerText.resume" secondary external />
             <!-- <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external /> -->
             <!-- <LinkItem href="#" label="Freelance" secondary external /> -->
           </div>
         </div>
         <div class="footer__email">
-          <h3>Email</h3>
+          <h3>{{ footerText.email }}</h3>
           <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
         </div>
       </template>
-      <p class="copyright text--secondary">Portfolio 2026 – fait maison</p>
+      <p class="copyright text--secondary">{{ footerText.copyright }}</p>
     </div>
   </footer>
 </template>
@@ -53,36 +53,68 @@
 <script setup>
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { works } from '@/data/content'
+import { getWorksByLocale } from '@/data/content'
 import LinkItem from './LinkItem.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 
+const props = defineProps({
+  locale: {
+    type: String,
+    default: 'fr'
+  }
+})
+
+const isFrench = computed(() => props.locale?.toLowerCase().startsWith('fr'))
+const footerText = computed(() => (isFrench.value
+  ? {
+      previousProject: 'Projet précédent',
+      nextProject: 'Projet suivant',
+      links: 'Liens',
+      email: 'Email',
+      resume: 'CV',
+      copyright: 'Portfolio 2026'
+    }
+  : {
+      previousProject: 'Previous project',
+      nextProject: 'Next project',
+      links: 'Links',
+      email: 'Email',
+      resume: 'Resume',
+      copyright: 'Portfolio 2026'
+    }))
+
+const footerProjectAlt = (title) => (isFrench.value ? `Visuel de ${title}` : `Visual for ${title}`)
+
 const route = useRoute()
 const PROJECT_ROUTE_PREFIX = '/projet'
-const projectList = works.filter((work) => typeof work.route === 'string' && work.route.startsWith(PROJECT_ROUTE_PREFIX))
+const projectList = computed(() =>
+  getWorksByLocale(props.locale).filter(
+    (work) => typeof work.route === 'string' && work.route.startsWith(PROJECT_ROUTE_PREFIX)
+  )
+)
 
 const isProjectPage = computed(() => route.path?.startsWith(PROJECT_ROUTE_PREFIX))
 const isHomePage = computed(() => route.path === '/')
 
 const currentProjectIndex = computed(() => {
   if (!isProjectPage.value) return -1
-  return projectList.findIndex((project) => project.route === route.path)
+  return projectList.value.findIndex((project) => project.route === route.path)
 })
 
-const projectCount = projectList.length
+const projectCount = computed(() => projectList.value.length)
 
 const previousProject = computed(() => {
-  if (currentProjectIndex.value === -1 || projectCount === 0) return null
-  const index = (currentProjectIndex.value - 1 + projectCount) % projectCount
-  return projectList[index]
+  if (currentProjectIndex.value === -1 || projectCount.value === 0) return null
+  const index = (currentProjectIndex.value - 1 + projectCount.value) % projectCount.value
+  return projectList.value[index]
 })
 
 const nextProject = computed(() => {
-  if (currentProjectIndex.value === -1 || projectCount === 0) return null
-  const index = (currentProjectIndex.value + 1) % projectCount
-  return projectList[index]
+  if (currentProjectIndex.value === -1 || projectCount.value === 0) return null
+  const index = (currentProjectIndex.value + 1) % projectCount.value
+  return projectList.value[index]
 })
 
 const showProjectNavigation = computed(() => Boolean(previousProject.value && nextProject.value))

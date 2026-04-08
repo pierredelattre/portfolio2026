@@ -7,7 +7,7 @@
   <main>
     <RouterView :key="`view-${locale}`" />
   </main>
-  <Footer :key="`footer-${locale}`" />
+  <Footer :key="`footer-${locale}`" :locale="locale" />
   <SpeedInsights/>
    <Analytics />
 </template>
