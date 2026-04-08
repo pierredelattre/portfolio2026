@@ -1,5 +1,5 @@
 <template>
-  <footer class="site-footer">
+  <footer v-if="!isHomePage" class="site-footer">
     <div v-if="showProjectNavigation" class="projects">
       <RouterLink v-if="previousProject" :to="previousProject.route">
         <div class="project--previous">
@@ -89,16 +89,6 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
 </script>
 
 <style scoped lang="css">
-body:has(.home) .site-footer {
-  gap: 2rem;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-body:has(.home) .site-footer .projects {
-  display: none!important;
-}
-
 .site-footer {
   --primary: oklch(88% 0 271);
   --secondary: oklch(72% 0 271);
