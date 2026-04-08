@@ -17,7 +17,7 @@
           stroke-linejoin="round"
         />
       </svg>
-      <span>{{ t(`header.localeButton.${nextLocale}`) }}</span>
+      <span>{{ t(`header.localeButton.${locale}`) }}</span>
     </button>
     <!-- <button
       class="switch"

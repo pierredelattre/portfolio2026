@@ -1,12 +1,14 @@
 <template>
-  <section id="works" aria-label="Réalisations">
-    <h3>Réalisations</h3>
+  <section id="works" :aria-label="sectionLabel">
+    <h3>{{ sectionLabel }}</h3>
     <WorkCard v-for="(work, index) in works" :key="work.id" :work="work" :priority="index === 0" />
   </section>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import WorkCard from '@/components/WorkCard.vue'
+import { useLocale } from '@/i18n'
 
 defineProps({
   works: {
@@ -14,6 +16,9 @@ defineProps({
     required: true
   }
 })
+
+const { locale } = useLocale()
+const sectionLabel = computed(() => (locale.value === 'fr' ? 'Réalisations' : 'Works'))
 </script>
 
 <style scoped>

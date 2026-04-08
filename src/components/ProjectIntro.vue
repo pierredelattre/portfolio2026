@@ -11,11 +11,11 @@
 
     <div v-if="hasInfos" class="infos">
       <div v-if="services.length" class="services">
-        <h3 class="text--secondary">Services</h3>
+        <h3 class="text--secondary">{{ servicesLabel }}</h3>
         <p v-for="(service, index) in services" :key="`${service}-${index}`">{{ service }}</p>
       </div>
       <div v-if="team.length" class="team">
-        <h3 class="text--secondary">En collaboration avec</h3>
+        <h3 class="text--secondary">{{ collaborationLabel }}</h3>
         <LinkItem v-for="(item, index) in team" :key="`${item.label}-${index}`" :href="item.href" :to="item.to"
           :label="item.label" :secondary="item.secondary" :external="Boolean(item.external)" />
       </div>
@@ -32,6 +32,7 @@
 import { computed } from 'vue'
 import LinkItem from './LinkItem.vue'
 import ProjectLabel from './ProjectLabel.vue'
+import { useLocale } from '@/i18n'
 
 const props = defineProps({
   title: {
@@ -65,6 +66,11 @@ const props = defineProps({
 })
 
 const hasInfos = computed(() => props.services.length > 0 || props.team.length > 0)
+const { locale } = useLocale()
+const servicesLabel = computed(() => (locale.value === 'fr' ? 'Services' : 'Services'))
+const collaborationLabel = computed(() =>
+  (locale.value === 'fr' ? 'En collaboration avec' : 'In collaboration with')
+)
 </script>
 
 <style scoped>

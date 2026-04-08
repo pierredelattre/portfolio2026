@@ -12,7 +12,7 @@ const messages = {
       cityLabel: 'Villes',
       city: 'Lille – Paris',
       servicesLabel: 'Services',
-      services: ['Product Design', 'Webdesign', 'Framer, Webflow, Shopify & Wordpress'],
+      services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
       intro:
         'Designer UX/UI orienté produit, spécialisé dans la conception d\'interfaces accessibles et la création de design systems cohérents. Expérience en e-commerce, intégration front-end et recherche utilisateur.',
