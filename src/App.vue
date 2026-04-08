@@ -5,9 +5,9 @@
     <Header />
   </div>
   <main>
-    <RouterView />
+    <RouterView :key="`view-${locale}`" />
   </main>
-  <Footer />
+  <Footer :key="`footer-${locale}`" />
   <SpeedInsights/>
    <Analytics />
 </template>
@@ -16,6 +16,9 @@
 import { RouterView } from 'vue-router'
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
+import { useLocale } from '@/i18n'
 import { SpeedInsights } from "@vercel/speed-insights/vue"
 import { Analytics } from '@vercel/analytics/vue';
+
+const { locale } = useLocale()
 </script>

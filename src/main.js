@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import App from './App.vue'
 import router from './router'
 import { initPageAnimations } from './animations/pageAnimations'
+import { initializeLocale } from '@/i18n'
 
 import './styles/main.css'
 
@@ -47,5 +48,6 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 initPageAnimations()
+initializeLocale()
 
 createApp(App).use(router).mount('#app')
