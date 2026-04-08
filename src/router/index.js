@@ -2,6 +2,34 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/pages/Home.vue'
 
+const CHUNK_RELOAD_KEY = 'route-chunk-reload-once'
+const CHUNK_LOAD_ERROR_PATTERNS = [
+  'Failed to fetch dynamically imported module',
+  'Importing a module script failed',
+  'Unable to preload CSS'
+]
+
+const lazyWithChunkReload = (importer) => async () => {
+  try {
+    return await importer()
+  } catch (error) {
+    const message = String(error?.message || '')
+    const isChunkLoadError = CHUNK_LOAD_ERROR_PATTERNS.some((pattern) => message.includes(pattern))
+
+    if (isChunkLoadError && typeof window !== 'undefined') {
+      const hasReloaded = window.sessionStorage.getItem(CHUNK_RELOAD_KEY) === '1'
+      if (!hasReloaded) {
+        window.sessionStorage.setItem(CHUNK_RELOAD_KEY, '1')
+        window.location.reload()
+        return new Promise(() => {})
+      }
+      window.sessionStorage.removeItem(CHUNK_RELOAD_KEY)
+    }
+
+    throw error
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -14,7 +42,7 @@ const routes = [
   {
     path: '/projet/lira',
     name: 'lira',
-    component: () => import('@/views/Lira.vue'),
+    component: lazyWithChunkReload(() => import('@/views/Lira.vue')),
     meta: {
       headerMode: 'project'
     }
@@ -22,7 +50,7 @@ const routes = [
   {
     path: '/projet/talkie',
     name: 'talkie',
-    component: () => import('@/views/Talkie.vue'),
+    component: lazyWithChunkReload(() => import('@/views/Talkie.vue')),
     meta: {
       headerMode: 'project'
     }
@@ -30,7 +58,7 @@ const routes = [
   {
     path: '/projet/alpine',
     name: 'alpine',
-    component: () => import('@/views/Alpine.vue'),
+    component: lazyWithChunkReload(() => import('@/views/Alpine.vue')),
     meta: {
       headerMode: 'project'
     }
@@ -38,7 +66,7 @@ const routes = [
   {
     path: '/projet/septiemeseance',
     name: 'septiemeseance',
-    component: () => import('@/views/Septiemeseance.vue'),
+    component: lazyWithChunkReload(() => import('@/views/Septiemeseance.vue')),
     meta: {
       headerMode: 'project'
     }

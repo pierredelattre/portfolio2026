@@ -7,11 +7,12 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useLocale } from '@/i18n'
 
-const LABELS = {
-  school: { text: "Cas d'école", color: 'var(--type-school)' },
-  freelance: { text: 'Freelance', color: 'var(--type-freelance)' },
-  perso: { text: 'Perso', color: 'var(--type-perso)' }
+const TYPE_COLORS = {
+  school: 'var(--type-school)',
+  freelance: 'var(--type-freelance)',
+  perso: 'var(--type-perso)'
 }
 
 const props = defineProps({
@@ -21,7 +22,17 @@ const props = defineProps({
   }
 })
 
-const typeInfo = computed(() => LABELS[props.type] ?? null)
+const { t } = useLocale()
+
+const typeInfo = computed(() => {
+  const color = TYPE_COLORS[props.type]
+  if (!color) return null
+
+  return {
+    text: t(`projectType.${props.type}`),
+    color
+  }
+})
 </script>
 
 <style scoped>

@@ -35,6 +35,11 @@ const messages = {
       email: 'Email',
       resume: 'CV',
       copyright: 'Portfolio 2026'
+    },
+    projectType: {
+      school: "Cas d'école",
+      freelance: 'Freelance',
+      perso: 'Perso'
     }
   },
   en: {
@@ -67,6 +72,11 @@ const messages = {
       email: 'Email',
       resume: 'Resume',
       copyright: 'Portfolio 2026'
+    },
+    projectType: {
+      school: 'School project',
+      freelance: 'Freelance',
+      perso: 'Side project'
     }
   }
 }
