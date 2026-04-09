@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 
 const STORAGE_KEY = 'preferred-locale'
-const FALLBACK_LOCALE = 'fr'
+const FALLBACK_LOCALE = 'en'
 const SUPPORTED_LOCALES = ['fr', 'en']
 
 const messages = {
@@ -15,7 +15,7 @@ const messages = {
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
       intro:
-        'Designer UX/UI orienté produit, spécialisé dans la conception d\'interfaces accessibles et la création de design systems cohérents. Expérience en e-commerce, intégration front-end et recherche utilisateur.',
+        'Designer UX/UI orienté produit, spécialisé dans la conception d\'interfaces accessibles et la création de design systems cohérents. Expérience en recherche utilisateur, e-commerce et intégration front-end.',
       resume: 'CV',
       localeSwitchLabel: 'Changer de langue',
       localeButton: {
@@ -62,7 +62,7 @@ const messages = {
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
       intro:
-        'Product-oriented UX/UI Designer focused on building accessible interfaces and consistent design systems. Experience in e-commerce, front-end integration, and user research.',
+        'Product-oriented UX/UI Designer focused on building accessible interfaces and consistent design systems. Experience in user research, e-commerce and front-end integration.',
       resume: 'Resume',
       localeSwitchLabel: 'Switch language',
       localeButton: {
