@@ -218,8 +218,15 @@ const linkProps = computed(() => {
   }
 }
 
-.projet:hover .projet__image :deep(.projet__image-tag),
+.projet:hover .projet__image :deep(.projet__image-tag){
+  transform: scale(1.05)!important;
+}
+
+.projet .projet__image video {
+  transform: scale(1.02);
+}
+
 .projet:hover .projet__image video {
-  transform: scale(1.05);
+  transform: scale(1.07)!important;
 }
 </style>

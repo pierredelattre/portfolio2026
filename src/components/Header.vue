@@ -37,8 +37,7 @@
     </div>
 
     <div class="header__cities">
-      <p class="text--secondary">{{ t('header.cityLabel') }}</p>
-      <p>{{ t('header.city') }}</p>
+      <p class="text--secondary">{{ t('header.city') }}</p>
     </div>
 
     <div class="header__services">
@@ -71,8 +70,11 @@ import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 import { useLocale } from '@/i18n'
 
-import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 const { locale, setLocale, t } = useLocale()
+
+const resumePdf = computed(() =>
+  locale.value === 'fr' ? '/CV%20Delattre%20Pierre.pdf' : '/Resume%20Delattre%20Pierre.pdf'
+)
 
 const theme = ref('dark')
 const nextLocale = computed(() => (locale.value === 'fr' ? 'en' : 'fr'))

@@ -57,8 +57,6 @@ import { getWorksByLocale } from '@/data/content'
 import LinkItem from './LinkItem.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 
-import resumePdf from '@/assets/CV Delattre Pierre.pdf'
-
 const props = defineProps({
   locale: {
     type: String,
@@ -67,6 +65,9 @@ const props = defineProps({
 })
 
 const isFrench = computed(() => props.locale?.toLowerCase().startsWith('fr'))
+const resumePdf = computed(() =>
+  isFrench.value ? '/CV%20Delattre%20Pierre.pdf' : '/Resume%20Delattre%20Pierre.pdf'
+)
 const footerText = computed(() => (isFrench.value
   ? {
       previousProject: 'Projet précédent',
@@ -89,18 +90,20 @@ const footerProjectAlt = (title) => (isFrench.value ? `Visuel de ${title}` : `Vi
 
 const route = useRoute()
 const PROJECT_ROUTE_PREFIX = '/projet'
+const stripLocalePrefix = (path = '') => path.replace(/^\/(fr|en)(?=\/|$)/i, '') || '/'
 const projectList = computed(() =>
   getWorksByLocale(props.locale).filter(
     (work) => typeof work.route === 'string' && work.route.startsWith(PROJECT_ROUTE_PREFIX)
   )
 )
 
-const isProjectPage = computed(() => route.path?.startsWith(PROJECT_ROUTE_PREFIX))
-const isHomePage = computed(() => route.path === '/')
+const normalizedRoutePath = computed(() => stripLocalePrefix(route.path))
+const isProjectPage = computed(() => normalizedRoutePath.value.startsWith(PROJECT_ROUTE_PREFIX))
+const isHomePage = computed(() => route.name === 'home')
 
 const currentProjectIndex = computed(() => {
   if (!isProjectPage.value) return -1
-  return projectList.value.findIndex((project) => project.route === route.path)
+  return projectList.value.findIndex((project) => project.route === normalizedRoutePath.value)
 })
 
 const projectCount = computed(() => projectList.value.length)

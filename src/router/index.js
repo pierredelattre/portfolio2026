@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { setLocale } from '@/i18n'
 
 import Home from '@/pages/Home.vue'
 
@@ -30,11 +31,20 @@ const lazyWithChunkReload = (importer) => async () => {
   }
 }
 
+const LOCALE_SEGMENTS = ['fr', 'en']
+const buildLocalizedAliases = (path) => {
+  if (path === '/') {
+    return LOCALE_SEGMENTS.map((locale) => `/${locale}`)
+  }
+  return LOCALE_SEGMENTS.map((locale) => `/${locale}${path}`)
+}
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: Home,
+    alias: buildLocalizedAliases('/'),
     meta: {
       headerMode: 'home'
     }
@@ -43,6 +53,7 @@ const routes = [
     path: '/projet/lira',
     name: 'lira',
     component: lazyWithChunkReload(() => import('@/views/Lira.vue')),
+    alias: buildLocalizedAliases('/projet/lira'),
     meta: {
       headerMode: 'project'
     }
@@ -51,6 +62,7 @@ const routes = [
     path: '/projet/talkie',
     name: 'talkie',
     component: lazyWithChunkReload(() => import('@/views/Talkie.vue')),
+    alias: buildLocalizedAliases('/projet/talkie'),
     meta: {
       headerMode: 'project'
     }
@@ -59,6 +71,7 @@ const routes = [
     path: '/projet/alpine',
     name: 'alpine',
     component: lazyWithChunkReload(() => import('@/views/Alpine.vue')),
+    alias: buildLocalizedAliases('/projet/alpine'),
     meta: {
       headerMode: 'project'
     }
@@ -67,6 +80,7 @@ const routes = [
     path: '/projet/septiemeseance',
     name: 'septiemeseance',
     component: lazyWithChunkReload(() => import('@/views/Septiemeseance.vue')),
+    alias: buildLocalizedAliases('/projet/septiemeseance'),
     meta: {
       headerMode: 'project'
     }
@@ -183,6 +197,11 @@ const isProjectRoute = (route) => {
 }
 
 router.beforeEach(async (to, from) => {
+  const localeMatch = to.path.match(/^\/(fr|en)(?:\/|$)/i)
+  if (localeMatch) {
+    setLocale(localeMatch[1].toLowerCase())
+  }
+
   if (typeof window === 'undefined') return true
 
   const navigatingHomeToProject = from?.name === 'home' && isProjectRoute(to)

@@ -19,8 +19,8 @@ const messages = {
       resume: 'CV',
       localeSwitchLabel: 'Changer de langue',
       localeButton: {
-        fr: 'FR',
-        en: 'EN'
+        fr: 'Switch to English',
+        en: 'Switch to French'
       },
       themeSwitch: {
         darkToLight: 'Passer en mode clair',
@@ -56,8 +56,8 @@ const messages = {
       resume: 'Resume',
       localeSwitchLabel: 'Switch language',
       localeButton: {
-        fr: 'FR',
-        en: 'EN'
+        fr: 'Switch to English',
+        en: 'Switch to French'
       },
       themeSwitch: {
         darkToLight: 'Switch to light mode',
@@ -173,4 +173,4 @@ export const useLocale = () => {
   }
 }
 
-export { initializeLocale }
+export { initializeLocale, setLocale }
