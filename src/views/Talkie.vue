@@ -73,11 +73,11 @@ const PAGE_CONTENT = {
     researchTitle: 'Recherche utilisateur',
     researchText: `Trois entretiens semi-directifs de 30 minutes, avec des utilisateurs actifs d'apps concurrentes.
 
-Maxime, 25 ans, utilise Duolingo pour apprendre l'espagnol avant un voyage. Il bute sur la progression : impossible de sauter les notions déjà maîtrisées, et il confond régulièrement des mots similaires d'une langue à l'autre. L'app n'en tient pas compte.
+Le premier utilise Duolingo pour apprendre l'espagnol avant un voyage. Il bute sur la progression : impossible de sauter les notions déjà maîtrisées, et il confond régulièrement des mots similaires d'une langue à l'autre. L'app n'en tient pas compte.
 
-Dorian, 27 ans, utilise MemRise dans un cadre pro. Ce qui l'a fait décrocher : les exercices sont trop simples pour son niveau, la répétition est mécanique, et il ne voit pas où il en est.
+Le second utilise MemRise dans un cadre pro. Ce qui l'a fait décrocher : les exercices sont trop simples pour son niveau, la répétition est mécanique, et il ne voit pas où il en est.
 
-Noa ne peut pas cibler son apprentissage selon son domaine métier. Tout le vocabulaire est généraliste, peu importe ses besoins.
+Le dernier ne peut pas cibler son apprentissage selon son domaine métier. Tout le vocabulaire est généraliste, peu importe ses besoins.
 
 Les trois avaient la même situation de départ : ils voulaient apprendre. Le problème n'était pas la motivation. Aucune des apps ne leur donnait le sentiment de vraiment progresser.`,
     archAlt: 'Architecture et parcours',
@@ -120,11 +120,11 @@ Ce qui a changé : clarification de l'écran initial du quiz, récapitulatif de 
     researchTitle: 'User research',
     researchText: `Three 30-minute semi-structured interviews with active users of competing apps.
 
-Maxime, 25, uses Duolingo to learn Spanish before traveling. His frustration: no way to skip already mastered concepts, and frequent confusion between similar words across languages.
+The first one uses Duolingo to learn Spanish before traveling. His frustration: no way to skip already mastered concepts, and frequent confusion between similar words across languages.
 
-Dorian, 27, uses MemRise for work. He dropped off because exercises were too easy for his level, repetition felt mechanical, and progress tracking was unclear.
+The second uses MemRise for work. He dropped off because exercises were too easy for his level, repetition felt mechanical, and progress tracking was unclear.
 
-Noa cannot target learning around job-specific vocabulary. Everything stays generic regardless of real needs.
+The last one targets learning around job-specific vocabulary. Everything stays generic regardless of real needs.
 
 All three had the same starting point: they wanted to learn. Motivation was not the issue. None of the apps made them feel real progress.`,
     archAlt: 'Architecture and flows',
