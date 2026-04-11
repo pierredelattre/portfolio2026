@@ -36,6 +36,7 @@
           <h3>{{ footerText.links }}</h3>
           <div class="links">
             <LinkItem :href="resumePdf" :label="footerText.resume" secondary external />
+            <LinkItem href="https://source.pierredelattre.fr/" label="Source Design system" secondary external />
             <LinkItem href="https://github.com/pierredelattre" label="Github" secondary external />
             <!-- <LinkItem href="#" label="Freelance" secondary external /> -->
           </div>
