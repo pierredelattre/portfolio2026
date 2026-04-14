@@ -46,12 +46,12 @@ import biblioFr from '@/assets/lira/biblio.jpg?optimized'
 import biblioEn from '@/assets/lira/biblio-EN.jpg?optimized'
 import biblioMobileFr from '@/assets/lira/biblio-mobile.jpg?optimized'
 import biblioMobileEn from '@/assets/lira/biblio-mobile-EN.jpg?optimized'
-import persona1Fr from '@/assets/lira/persona-01.jpg?optimized'
-import persona1En from '@/assets/lira/persona-01-EN.jpg?optimized'
-import persona2Fr from '@/assets/lira/persona-02.jpg?optimized'
-import persona2En from '@/assets/lira/persona-02-EN.jpg?optimized'
-import persona3Fr from '@/assets/lira/persona-03.jpg?optimized'
-import persona3En from '@/assets/lira/persona-03-EN.jpg?optimized'
+import persona1Fr from '@/assets/lira/persona-01.jpg?optimized&w=1920;2560;3200&quality=92'
+import persona1En from '@/assets/lira/persona-01-EN.jpg?optimized&w=1920;2560;3200&quality=92'
+import persona2Fr from '@/assets/lira/persona-02.jpg?optimized&w=1920;2560;3200&quality=92'
+import persona2En from '@/assets/lira/persona-02-EN.jpg?optimized&w=1920;2560;3200&quality=92'
+import persona3Fr from '@/assets/lira/persona-03.jpg?optimized&w=1920;2560;3200&quality=92'
+import persona3En from '@/assets/lira/persona-03-EN.jpg?optimized&w=1920;2560;3200&quality=92'
 import reader1Fr from '@/assets/lira/reader-large.jpg?optimized'
 import reader1En from '@/assets/lira/reader-large-EN.jpg?optimized'
 import reader2MobileFr from '@/assets/lira/reader-mobile-mobile.jpg?optimized'
@@ -121,7 +121,7 @@ Pour ceux qui cherchent un point de départ, Lira intègre Project Gutenberg : p
 
 Les textes importés et les livres Gutenberg s'organisent dans la même bibliothèque personnelle. Chaque texte affiche la progression de lecture et le nombre de mots sauvegardés.`,
     reviewTitle: 'Révision et mots croisés',
-    reviewText: `La révision utilise le FSRS avec un rappel contextuel : le mot est masqué dans sa phrase d'origine, et l'utilisateur doit le retrouver. La mémorisation passe par la phrase, pas par le mot isolé.
+    reviewText: `La révision utilise le FSRS avec un rappel contextuel : l'utilisateur doit retrouver la traduction ou le mot original selon le mode. Un indice est proposé si l'utilisateur ne trouve pas la réponse : la phrase originale dont il est provient afin d'apporter du contexte. La mémorisation passe par le mot isolé mais aussi le contexte.
 
 Après quelques minutes de lecture et au moins 3 mots sauvegardés, un mini-quiz apparaît sur les mots de la session en cours. Court, optionnel.
 
@@ -150,36 +150,36 @@ Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adap
 
 Duolingo builds habits but its content is artificial, and most learners hit a B1-B2 ceiling quickly. Anki has one of the most rigorous algorithms on the market, but preparing cards often takes longer than reviewing them. LingQ is closer to what I wanted, reading real content with integrated translation, but the interface remains hard to navigate.
 
-Lira was built to solve a simple need: read real content, save words in context, and review them with a serious algorithm. No setup overhead, no gamification.
+Lira was built to solve a simple need : read real content, save words in context, and review them with a serious algorithm. No complex setup, no gamification.
 
 The product has been live since March 2026.`,
     researchTitle: 'Research and positioning',
-    researchText: `Research was run as desk research before launch: Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), LingQ forums, App Store reviews, and batch exports of YouTube comments. No primary interviews at this stage.
+    researchText: `Research was run as desk research before launch : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), LingQ forums, App Store reviews, and batch exports of YouTube comments. No primary interviews at this stage.
 
-This data has an obvious bias: users who post are often more frustrated than average. I accounted for that.
+This data has an obvious bias : users who post are often more frustrated than average.
 
-Main insight: the B1-B2 transition is the most commonly reported plateau. Advanced learners naturally move toward reading, this is not a need you create. A strong need for domain-specific vocabulary also appeared clearly. Manual Anki card creation is often cited as a dropout reason.
+Main insight : the B1-B2 transition is the most commonly reported plateau. Advanced learners naturally move toward reading, this is not a need you create. A strong need for domain-specific vocabulary also appeared clearly. Manual Anki card creation is often cited as a dropout reason.
 
-From this data, I built three proto-personas: a polyglot familiar with FSRS who wants zero friction, an expat who wants to read local news without breaking reading flow, and a long-term Duolingo user with a big streak but no real sense of progress.`,
+From this data, I built three proto-personas : a polyglot familiar with FSRS (a Free Spaced Repetition Scheduler algorithm) who wants zero friction, an expat who wants to read local news without breaking the reading flow, and a long-term Duolingo user with a big streak but no real sense of progress.`,
     readerTitle: 'Reader',
     readerText: `The reader is the core of the product. The objective was to keep reading as the main activity, not translation.
 
-Clicking a word opens a panel with two tabs: translation and definition. The user sees phonetics and can trigger audio pronunciation for a word or expression using local TTS (PiperTTS). No page switch, no loss of reading flow. One more click saves the word. FSRS cards are generated automatically using the original sentence as memory context.`,
+Clicking a word opens a panel with two tabs : translation and definition (beta). The user sees phonetics and can trigger audio pronunciation for a word or expression using local Text-to-Speech (PiperTTS). No page switch, no loss of reading flow. One more click saves the word. FSRS cards are generated automatically using the original sentence as memory context.`,
     libraryAlt: 'Library',
     libraryTitle: 'Library and import',
     libraryText: `Import accepts a URL, plain text, EPUB, or PDF. Users read what they want, with no imposed catalog.
 
-For people who want a starting point, Lira integrates Project Gutenberg: thousands of public-domain books directly in the app, including novels, short stories, and essays in Spanish, German, English, Italian, and more.
+For people who want a starting point, Lira integrates Project Gutenberg: some public-domain books directly available in the app, including novels, short stories, and essays in Spanish, German, English, Italian, and more.
 
 Imported texts and Gutenberg books live in the same personal library. Each text shows reading progress and saved-word count.`,
     reviewTitle: 'Review and crosswords',
-    reviewText: `Review uses FSRS with contextual recall: a word is hidden in its original sentence and the learner must retrieve it. Memorization happens through sentence context, not isolated words.
+    reviewText: `Review uses FSRS with contextual recall : the learner needs to translate the word (or the original word if he switched languages). If he can't manage to find it, he can see the original context where the word if from. Memorization happens through both isolated words and sentence context.
 
 After a few minutes of reading and at least three saved words, a short optional mini-quiz appears for words from the current session.
 
 Crosswords are generated from personal vocabulary. It gives users an alternative review format to classic flashcards.`,
     designTitle: 'Design',
-    designText: `Reading uses Literata, a serif tuned for long-form screen reading. The interface uses Satoshi. The background is a warm off-white instead of neutral white. Two core colors: a forest green for actions and brand, and a dark brown for text.
+    designText: `Reading uses Literata, a serif tuned for long-form screen reading. The interface uses Satoshi. The background is a warm off-white instead of neutral white. Two core colors : a forest green for actions and brand, and a dark brown for text.
 
 No streaks, no pressure notifications, no leaderboards. Progress stays personal.
 

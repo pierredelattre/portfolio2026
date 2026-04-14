@@ -333,7 +333,7 @@ const WORKS_EN_TRANSLATIONS = {
     intro:
       'Talkie is a language-learning app designed to make progress more playful, personalized, and immersive through interactive lessons, quests, multiplayer, and a complete design system.',
     description:
-      'We designed Talkie as a modern alternative to traditional language-learning apps: more dynamic, more flexible, and rooted in real-world scenarios, with a strong social layer. The project includes end-to-end UX research, product architecture, UI mockups, and a documented design system.',
+      'We designed Talkie as a modern alternative to traditional language-learning apps : more dynamic, more flexible, and rooted in real-world scenarios, with a strong social layer. The project includes end-to-end UX research, product architecture, UI mockups, and a documented design system.',
     services: ['User Research', 'UI Design', 'Design System'],
     tags: ['School project', 'UX/UI Design', 'Design System']
   },

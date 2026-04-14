@@ -116,39 +116,39 @@ Ce qui a changé : clarification de l'écran initial du quiz, récapitulatif de 
     contextAlt: 'Context and challenges',
     contextTitle: 'Context and challenges',
     contextText:
-      "Popular language-learning apps share a problem their metrics usually hide: users open them daily, but do not necessarily learn effectively. Duolingo gradually shifted toward entertainment. Streaks, notifications, and social pressure optimize retention, not acquisition. Interviews confirmed this. We started from a different constraint: can we design an app where progress is truly visible and training situations feel realistic?",
+      "Popular language-learning apps share a problem their metrics usually hide : users open them daily, but do not necessarily learn effectively. Duolingo gradually shifted toward entertainment. Streaks, notifications, and social pressure optimize retention, not acquisition. Interviews confirmed this. We started from a different constraint : can we design an app where progress is truly visible and training situations feel realistic ?",
     researchTitle: 'User research',
-    researchText: `Three 30-minute semi-structured interviews with active users of competing apps.
+    researchText: `Three 30 minute semi-structured interviews with active users of competing apps.
 
-The first one uses Duolingo to learn Spanish before traveling. His frustration: no way to skip already mastered concepts, and frequent confusion between similar words across languages.
+The first one uses Duolingo to learn Spanish before traveling. His frustration : no way to skip already mastered concepts, and frequent confusion between similar words across languages.
 
 The second uses MemRise for work. He dropped off because exercises were too easy for his level, repetition felt mechanical, and progress tracking was unclear.
 
-The last one targets learning around job-specific vocabulary. Everything stays generic regardless of real needs.
+The last one targets learning around job specific vocabulary. Everything stays generic regardless of real needs.
 
-All three had the same starting point: they wanted to learn. Motivation was not the issue. None of the apps made them feel real progress.`,
+All three had the same starting point : they wanted to learn. Motivation was not the issue. None of the apps made them feel real progress.`,
     archAlt: 'Architecture and flows',
     archTitle: 'Architecture and flows',
     archText:
       'The experience is structured around five areas: Home, Learn, Quiz, Quests, and Profile. We designed fluid paths for duels, themed quizzes, and guided learning while keeping navigation clear.',
     uiTitle: 'UI design',
-    uiText: `The UI was designed to simplify multiple formats (lessons, quizzes, duels, quests) through reusable patterns: content cards, progress blocks, quiz modules, and a consistent header.
+    uiText: `The UI was designed to simplify multiple formats (lessons, quizzes, duels, quests) through reusable patterns like content cards, progress blocks, quiz modules, and a consistent header.
 
-Information hierarchy was built for immediacy: clear titles, visible primary actions, and accessible secondary actions without distraction.
+Information hierarchy was built for immediacy : clear titles, visible primary actions, and accessible secondary actions without distraction.
 
 Feedback (answers, progress, score) is central to support the gamified layer and keep users engaged.
 The whole product aims for a predictable and fluid interface where each screen reuses the same logic to reduce cognitive load.`,
     dsAlt: 'Design system',
     dsTitle: 'Design system',
     dsText:
-      'The project covered five sections (Home, Learn, Quiz, Quests, Profile) developed in parallel by two designers. Without a shared foundation, sections would diverge. We built a complete design system: tokens, foundations, documented components by usage, templates, and documentation published on Zeroheight and synced from Figma.',
+      'The project covered five sections (Home, Learn, Quiz, Quests, Profile) designed in parallel by us two. Without a shared foundation, sections would diverge. We built a complete design system: tokens, foundations, documented components by usage, templates, and documentation published on Zeroheight and synced from Figma.',
     testsAlt: 'User testing',
     testsTitle: 'User testing',
     testsText: `Tests were run with 3 participants across two distinct flows.
 
 Both flows were completed with a 100% success rate. Navigation was fluid and nobody got lost.
 
-However, testing surfaced specific issues. In the quiz flow: confusion about "known answers" displayed on the first screen before playing, and inability to invite multiple friends. In the Learn flow: non-clickable buttons in the prototype, missing page title, and no way to exit then resume a lesson.
+However, testing surfaced specific issues. In the quiz flow : confusion about "known answers" displayed on the first screen before playing, and inability to invite multiple friends. In the Learn flow : non clickable buttons in the prototype, missing page title, and no way to exit then resume a lesson.
 
 What changed: clarified initial quiz screen, redesigned end-of-game summary, and added missing states.`,
     uiAlt1: 'Lessons',

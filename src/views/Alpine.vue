@@ -64,7 +64,9 @@ const PAGE_CONTENT = {
       "Adapté à l'identité de la marque, l'infodivertissement est défini par un parcours utilisateur adapté à la voiture : une interface centrée conducteur qui met en avant les informations de monitoring du véhicule.",
     benchmarkTitle: 'Benchmark',
     benchmarkText:
-      'Découverte des bonnes pratiques constructeurs en ergonomie automobile et recherche des meilleures idées et fonctionnalités proposées par les concurrents. <strong>Sources utilisées</strong> : Apple CarPlay, Google Design for Driving, AutoInterfaces.com',
+      `Découverte des bonnes pratiques constructeurs en ergonomie automobile et recherche des meilleures idées et fonctionnalités proposées par les concurrents. 
+      
+      <strong>Sources utilisées</strong> : Apple CarPlay, Google Design for Driving, AutoInterfaces.com`,
     uiKitAlt: "Réalisation d'un UI Kit",
     uiKitTitle: "Réalisation d'un UI Kit",
     uiKitText:
@@ -88,14 +90,16 @@ const PAGE_CONTENT = {
       "Aligned with Alpine's brand identity, the infotainment system is also shaped by a driver-focused journey, emphasizing key vehicle monitoring information.",
     benchmarkTitle: 'Benchmark',
     benchmarkText:
-      'Review of automotive UX best practices and competitor ideas/features. <strong>Sources used</strong>: Apple CarPlay, Google Design for Driving, AutoInterfaces.com',
+      `Review of automotive UX best practices and competitor ideas/features. 
+      
+      <strong>Sources used</strong>: Apple CarPlay, Google Design for Driving, AutoInterfaces.com`,
     uiKitAlt: 'UI Kit production',
     uiKitTitle: 'UI Kit production',
     uiKitText:
-      "Built a UI kit with all components required for screen design: buttons, inputs, navigation, and media elements. Alpine-specific guidelines were applied, including brand typography, logos, French flag details, and additional color shades for accessibility.",
+      "Built a UI kit with all components required for screen design : buttons, inputs, navigation, and media elements. Alpine-specific guidelines were applied, including brand typography, logos, French flag details, and additional color shades for accessibility.",
     finalTitle: 'From concept to final screens',
     finalText:
-      "Final screens were built from the UI kit to shape the infotainment experience. Three core modules were delivered: navigation (driver-centered setup and predefined destinations), dashboard (range, consumption, media and navigation summaries), and multimedia (quick access to playlists, albums, and audio sources) while minimizing driver distraction.",
+      "Final screens were built from the UI kit to shape the infotainment experience. Three core modules were delivered : navigation (driver-centered setup and saved destinations), dashboard (range, consumption, media and navigation summaries), and multimedia (quick access to playlists, albums, and audio sources) while minimizing driver distraction.",
     altNav: 'GPS navigation',
     altDashboard: 'Dashboard',
     altResearch: 'Media search',

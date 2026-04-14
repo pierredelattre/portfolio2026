@@ -108,16 +108,16 @@ The service ran until access to the third-party showtimes API was restricted. It
     geoAlt: 'Geolocation or manual search',
     geoTitle: 'Geolocation or manual search',
     geoText:
-      'Home offers two options: enable geolocation, or manually search by city, cinema, or movie. Geolocation instantly shows nearby cinemas (with adjustable radius). Search is fast, typo-tolerant, and includes autocomplete.',
+      'Home offers two options : enable geolocation, or manually search by city, cinema, or movie. Geolocation instantly shows nearby cinemas (with adjustable radius). Search is fast, typo-tolerant, and includes autocomplete.',
     filtersTitle: 'Search filters',
     listAlt: 'Nearby showtimes list',
     listTitle: 'Nearby showtimes list',
     listText:
       'Once geolocation is enabled, projected movies in the selected area appear. Cinemas are sorted by distance with quick access to same-day sessions. The layout is mobile-first: readable, simple, and compact for rapid scanning.',
     futureTitle: 'Future improvements',
-    futureText: `User tests showed that several people searched by cinema name instead of enabling geolocation. They wanted a weekly theater schedule, not only a single session view. This led to two roadmap decisions: cinema-name search with autocomplete, and multi-day cinema pages.
+    futureText: `User tests showed that several people searched by cinema name instead of enabling geolocation. They wanted a weekly theater schedule, not only a single session view. This led to two roadmap decisions : cinema-name search with autocomplete, and multi-day cinema pages.
 
-Planned improvements include prices, highlighting the next session directly in results, personalized mobile alerts, session-specific metadata (3D, premieres), ratings/reviews, distinctions, real-time result counts in mobile filter sheets, reset filters action, and Letterboxd/Trakt integrations.`,
+Planned improvements include prices, highlighting the next session directly in results, personalized mobile alerts, specific metadatas (3D, premieres), ratings/reviews, distinctions, real-time result counts in mobile filter sheets, reset filters action, and Letterboxd/Trakt integrations.`,
     filtersDescription:
       'To support search, filters were added to enable more precise and useful sorting across different user contexts.',
     filtersOne:
