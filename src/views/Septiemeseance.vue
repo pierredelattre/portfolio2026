@@ -19,6 +19,9 @@
     <ImageFullWidthLayout secondary :image-mobile-src="projectionsImageMobile" :image-src="projectionsImage"
       :image-alt="pageContent.listAlt" :title="pageContent.listTitle" :text="pageContent.listText" />
 
+    <GridScrollLayout :images="productDecisionsImages" :title="pageContent.productDecisionsTitle"
+      :text="pageContent.productDecisionsText" />
+
     <GridScrollLayout :images="upgrades" :title="pageContent.futureTitle" :text="pageContent.futureText" />
   </section>
 </template>
@@ -47,6 +50,12 @@ import filterPerimeterImage from '@/assets/septiemeseance/filter-perimetre.jpg?o
 import filterPerimeterMobileImage from '@/assets/septiemeseance/mobile-filter-perimetre.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 import filterLanguageImage from '@/assets/septiemeseance/filter-langue.jpg?optimized'
 import filterLanguageMobileImage from '@/assets/septiemeseance/mobile-filter-langue.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import filterEmptyImage from '@/assets/septiemeseance/filter-empty.jpg?optimized&w=1920;2560;3200&quality=98&lossless=true'
+import filterEmptyMobileImage from '@/assets/septiemeseance/mobile-filter-empty.jpg?optimized&w=480;720;960;1280&quality=95&format=webp;jpg'
+import filterSeancesImage from '@/assets/septiemeseance/filter-seances.jpg?optimized'
+import filterSeancesMobileImage from '@/assets/septiemeseance/mobile-filter-seances.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import filterResultsImage from '@/assets/septiemeseance/filter-results.jpg?optimized'
+import filterResultsMobileImage from '@/assets/septiemeseance/mobile-filter-results.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 import notesImage from '@/assets/septiemeseance/notes.jpg?optimized'
 import alertsImage from '@/assets/septiemeseance/alertes.jpg?optimized'
 import alertsImageMobile from '@/assets/septiemeseance/mobile-alertes.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
@@ -76,6 +85,16 @@ Le service a fonctionné jusqu'à la restriction d'accès à l'API tierce utilis
     listTitle: 'Liste des projections autour',
     listText:
       "Une fois la géolocalisation acceptée, la liste des films projetés dans le périmètre apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple et compacte.",
+    productDecisionsTitle: 'Décisions produit et arbitrages',
+    productDecisionsText: `Le premier écran, c'est une barre de recherche, rien d'autre. Une ligne explique le principe : trouver des séances près de chez soi. Les utilisateurs arrivent avec une intention. Ils veulent savoir ce qui passe ce soir.
+
+Les résultats s'affichent en grille d'affiches. Chaque carte montre le titre, la durée, le réalisateur, les formats (VO, VF, 3D). Les filtres de genre, décennie et format d'un côté. Les filtres de localisation de l'autre : rayon en kilomètres, dates, cartes d'abonnement (Pathé, UGC). Si rien ne remonte, l'état vide suggère d'élargir le rayon.
+
+Une feature n'est pas passée en production : l'intégration Letterboxd. L'idée était de remonter les films de la watchlist d'un utilisateur qui passaient près de chez lui, et de signaler quand un ami avait le même film en attente. Coupé tôt. La feature avait du sens surtout à Paris, où le catalogue est assez large pour qu'un titre obscur ait une chance de passer quelque part. Pour une nouvelle sortie, savoir qu'un ami a le film dans sa liste ne résolvait pas le bon problème.
+
+Les prix des billets ont été évoqués. L'API ne les exposait pas, mais il y avait un contournement pour les récupérer indirectement. Le problème, c'était le volume : 2 300 cinémas, plusieurs séances par jour, sur sept jours. À cette échelle, les trous étaient assez fréquents pour qu'afficher un prix soit moins utile que de ne rien afficher. Feature abandonnée.
+
+React et Tailwind côté front. Figma pour le design, Heroicons pour les icônes.`,
     futureTitle: 'Futures améliorations',
     futureText: `Lors des tests, plusieurs utilisateurs ont tapé le nom de leur cinéma plutôt que d'activer la géolocalisation. Ils cherchaient le programme de la salle sur la semaine. Cela a conduit à deux décisions : recherche par cinéma avec autocomplétion, et vue salle sur plusieurs jours.
 
@@ -114,6 +133,14 @@ The service ran until access to the third-party showtimes API was restricted. It
     listTitle: 'Nearby showtimes list',
     listText:
       'Once geolocation is enabled, projected movies in the selected area appear. Cinemas are sorted by distance with quick access to same-day sessions. The layout is mobile-first: readable, simple, and compact for rapid scanning.',
+    productDecisionsTitle: 'Product decisions and trade-offs',
+    productDecisionsText: `The first screen is a search bar, nothing else. A short line explains the mechanic : find screenings near you. Users arrive with intent. They want to know what's on tonight.
+
+Results load as a grid of film posters. Each card shows title, runtime, director, formats (Original, French, 3D...). Genre, decade, format filters on one side. Location filters on the other : radius in kilometers, specific dates, subscription cards (Pathé, UGC). If nothing comes back, the empty state suggests widening the radius.
+
+One thing that didn't make it to production: Letterboxd integration. The plan was to surface films from a user's watchlist that were screening nearby, and flag when a friend had the same film queued. It was cut early. The feature made most sense in Paris, where the catalogue is wide enough that an obscure title might actually be showing somewhere. For a standard new release, knowing a friend's watchlist status felt like solving the wrong problem.
+
+Ticket prices came up. The API didn't expose them, but there was a workaround to retrieve them indirectly. The issue was the scale of that workaround : 2,300 cinemas, multiple screenings a day, . At that volume, the gaps were frequent enough that showing a price felt less useful than showing nothing. The feature was dropped.`,
     futureTitle: 'Future improvements',
     futureText: `User tests showed that several people searched by cinema name instead of enabling geolocation. They wanted a weekly theater schedule, not only a single session view. This led to two roadmap decisions : cinema-name search with autocomplete, and multi-day cinema pages.
 
@@ -152,6 +179,12 @@ const upgrades = computed(() => [
   { src: notesImage, alt: pageContent.value.altUpgrades1 },
   { src: alertsImage, mobileSrc: alertsImageMobile, alt: pageContent.value.altUpgrades2 },
   { src: letterboxdImage, mobileSrc: letterboxdMobileImage, alt: pageContent.value.altUpgrades3 }
+])
+
+const productDecisionsImages = computed(() => [
+  { src: filterEmptyImage, mobileSrc: filterEmptyMobileImage, alt: 'Empty filter state' },
+  { src: filterSeancesImage, mobileSrc: filterSeancesMobileImage, alt: 'Showtime filter state' },
+  { src: filterResultsImage, mobileSrc: filterResultsMobileImage, alt: 'Filter results state' }
 ])
 
 const gridScrollFiltersText = computed(() => [

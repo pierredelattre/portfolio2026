@@ -13,6 +13,10 @@
 
     <GridScrollLayoutRows :images="rechercheUX" :title="pageContent.researchTitle" :text="pageContent.researchText" />
 
+    <ImageFullWidthLayout secondary :image-src="designLogicImage" :image-mobile-src="designLogicImageMobile"
+      :image-alt="pageContent.designLogicAlt"
+      :title="pageContent.designLogicTitle" :text="pageContent.designLogicText" />
+
     <GridScrollLayout :images="reader" :title="pageContent.readerTitle" :text="pageContent.readerText" />
 
     <ImageFullWidthLayout :image-src=biblio :image-mobile-src=biblioMobile secondary :image-alt="pageContent.libraryAlt"
@@ -76,6 +80,8 @@ import quizMobileFr from '@/assets/lira/revision-mobile.jpg?optimized'
 import quizMobileEn from '@/assets/lira/revision-mobile-EN.jpg?optimized'
 import landingFr from '@/assets/lira/landing.jpg?optimized'
 import landingEn from '@/assets/lira/landing-EN.jpg?optimized'
+import flowImage from '@/assets/lira/flow.jpg?optimized'
+import flowMobileImage from '@/assets/lira/mobile-flow.jpg?optimized'
 import darkFr from '@/assets/lira/dark.jpg?optimized'
 import darkEn from '@/assets/lira/dark-EN.jpg?optimized'
 import darkMobileFr from '@/assets/lira/dark-mobile.jpg?optimized'
@@ -109,6 +115,13 @@ Ce type de source a un biais évident : les utilisateurs qui postent sont plus f
 Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Un besoin de vocabulaire ciblé par domaine ou contexte ressort aussi clairement. La création manuelle de cartes Anki est souvent citée comme raison d'abandon.
 
 J'ai construit trois proto-personas depuis ces données : le polyglotte qui connaît le FSRS et veut zéro friction, l'expatrié qui veut lire la presse locale sans perdre le fil de sa lecture, et celui qui a des mois de streak Duolingo mais ne sent plus de progression.`,
+    designLogicAlt: 'Logique de design du reader Lira',
+    designLogicTitle: 'Logique de design',
+    designLogicText: `La lecture reste l'activité principale. Le panneau de traduction s'ouvre sans remplacer la page. Le texte reste visible. Appuyer sur un mot suffit à l'ouvrir.
+
+La sauvegarde des mots a été la partie importante à mettre au point. Un clic ouvre le panneau, un deuxième sauvegarde. Le bouton passe par un état de chargement, puis affiche une coche avec un label. Le mot passe en état sauvegardé directement dans le texte.
+
+Les premières versions utilisaient un overlay plein écran. Abandonné : fermer le panneau faisait perdre l'endroit dans le texte. La version finale s'ancre en bas sur mobile, sur le côté sur desktop, sans toucher à la colonne de lecture.`,
     readerTitle: 'Le reader',
     readerText: `Le reader est la partie centrale du projet. L'objectif était que la lecture reste l'activité principale, pas la traduction.
 
@@ -128,8 +141,6 @@ Après quelques minutes de lecture et au moins 3 mots sauvegardés, un mini-quiz
 Les mots croisés sont générés depuis le vocabulaire personnel. Une façon de réviser différente du format flashcard, pour les sessions où l'on veut changer de registre.`,
     designTitle: 'Design',
     designText: `La police de lecture est Literata, une serif taillée pour les longs textes sur écran. L'interface utilise Satoshi. Le fond est un blanc cassé chaud plutôt qu'un blanc neutre. Deux couleurs : un vert forêt pour les actions et la marque, un brun foncé pour le texte.
-
-Pas de streaks, pas de notifications de pression, pas de classements. La progression est personnelle.
 
 Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adapté au contraste.`,
     revisionAlt1: 'Mots croisés',
@@ -161,6 +172,13 @@ This data has an obvious bias : users who post are often more frustrated than av
 Main insight : the B1-B2 transition is the most commonly reported plateau. Advanced learners naturally move toward reading, this is not a need you create. A strong need for domain-specific vocabulary also appeared clearly. Manual Anki card creation is often cited as a dropout reason.
 
 From this data, I built three proto-personas : a polyglot familiar with FSRS (a Free Spaced Repetition Scheduler algorithm) who wants zero friction, an expat who wants to read local news without breaking the reading flow, and a long-term Duolingo user with a big streak but no real sense of progress.`,
+    designLogicAlt: 'Lira reader design logic',
+    designLogicTitle: 'Design logic',
+    designLogicText: `Reading stays the primary activity. The translation panel slides in without replacing the page. Text stays visible. Tapping a word opens it in one gesture.
+
+Word-saving was the part to get right. One tap opens the panel, one more saves. The button goes through a loading state, then settles on a checkmark and a label. The word shows its saved state inline.
+
+Early flows used a full overlay. It was dropped because closing the panel meant losing your place in the text. The final version anchors to the bottom on mobile and to the side on desktop, and doesn't move the reading column.`,
     readerTitle: 'Reader',
     readerText: `The reader is the core of the product. The objective was to keep reading as the main activity, not translation.
 
@@ -180,8 +198,6 @@ After a few minutes of reading and at least three saved words, a short optional 
 Crosswords are generated from personal vocabulary. It gives users an alternative review format to classic flashcards.`,
     designTitle: 'Design',
     designText: `Reading uses Literata, a serif tuned for long-form screen reading. The interface uses Satoshi. The background is a warm off-white instead of neutral white. Two core colors : a forest green for actions and brand, and a dark brown for text.
-
-No streaks, no pressure notifications, no leaderboards. Progress stays personal.
 
 Dark mode reuses the same tokens with a very dark background and contrast-safe green values.`,
     revisionAlt1: 'Crosswords',
@@ -255,6 +271,8 @@ const rechercheUX = computed(() => [
 const contexte = computed(() => localizedImage(contexteFr, contexteEn))
 const biblio = computed(() => localizedImage(biblioFr, biblioEn))
 const biblioMobile = computed(() => localizedImage(biblioMobileFr, biblioMobileEn))
+const designLogicImage = computed(() => flowImage)
+const designLogicImageMobile = computed(() => flowMobileImage)
 
 const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>

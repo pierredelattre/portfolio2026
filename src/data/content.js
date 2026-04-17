@@ -1,8 +1,5 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920;2560;3200&quality=96&lossless=true'
-import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
-import liraVideo from '@/assets/lira/lira-demo-optimized.mp4'
-import liraVideoMobile from '@/assets/lira/lira-demo-mobile.mp4'
-import liraPoster from '@/assets/lira/desk-lira.jpg?optimized'
+// import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import liraBanner from '@/assets/lira/lira-banner.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
@@ -17,12 +14,8 @@ export const works = [
     services: ['Product Design'],
     team: [],
     links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
-    tags: [{ label: 'Projet perso', color: '#4A6741', textColor: 'white' }, 'Product Design'],
-    cover: {
-      src: liraVideo,
-      mobile: liraVideoMobile,
-      poster: liraPoster
-    },
+    tags: ['Product Design'],
+    cover: liraBanner,
     thumbnail: liraBanner,
     route: '/projet/lira',
     type: 'perso'
@@ -34,10 +27,10 @@ export const works = [
       'Plateforme en ligne permettant de consulter rapidement les séances de cinéma autour de soi et de parcourir les films actuellement à l’affiche.',
     description:
       'Septième Séance est une plateforme qui permet de trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche. L’objectif est de proposer une expérience simple, rapide et adaptée au mobile, loin de la complexité des services existants.',
-    services: ['Recherche utilisateur', 'UI Design', 'UI Kit', 'Front-end'],
+    services: ['Recherche utilisateur', 'UI Design', 'UI Kit'],
     team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
-    tags: ['Freelance', 'UX/UI Design', 'Front-end'],
+    tags: ['UX/UI Design', 'Front-end'],
     cover: septiemeCover,
     route: '/projet/septiemeseance',
     type: 'freelance'
@@ -52,26 +45,26 @@ export const works = [
     services: ['Recherche utilisateur', 'UI Design', 'Design system'],
     team: [{ label: 'Grégoire De Gaiffier', href: 'https://gregoiredegaiffier.be/', external: true }],
     links: [],
-    tags: ['École', 'UX/UI Design', 'Design system'],
+    tags: ['UX/UI Design', 'Design system'],
     cover: talkiePlaceholder,
     route: '/projet/talkie',
     type: 'school'
   },
-  {
-    id: 'alpine',
-    title: 'Infodivertissement Alpine',
-    intro:
-      'Conception d’un infodivertissement complet pour une Alpine A110 électrique fictive, pensé pour refléter l’identité de la marque et accompagner le conducteur.',
-    description:
-      'Réalisation d’une interface complète dédiée à une voiture fictive : l’Alpine A110 électrique. Proposition d’un infodivertissement adapté au conducteur de la voiture & à la marque. L’interface possède des accès aux fonctionnalités de base : GPS, gestion voiture, climatisation, réglages, téléphonie, musique, connectivité & un bouton warning obligatoire.',
-    services: ['UI Design', 'UI Kit'],
-    team: [],
-    links: [],
-    tags: ['École', 'UI Design'],
-    cover: alpinePlaceholder,
-    route: '/projet/alpine',
-    type: 'school'
-  }
+  // {
+  //   id: 'alpine',
+  //   title: 'Infodivertissement Alpine',
+  //   intro:
+  //     'Conception d’un infodivertissement complet pour une Alpine A110 électrique fictive, pensé pour refléter l’identité de la marque et accompagner le conducteur.',
+  //   description:
+  //     'Réalisation d’une interface complète dédiée à une voiture fictive : l’Alpine A110 électrique. Proposition d’un infodivertissement adapté au conducteur de la voiture & à la marque. L’interface possède des accès aux fonctionnalités de base : GPS, gestion voiture, climatisation, réglages, téléphonie, musique, connectivité & un bouton warning obligatoire.',
+  //   services: ['UI Design', 'UI Kit'],
+  //   team: [],
+  //   links: [],
+  //   tags: ['École', 'UI Design'],
+  //   cover: alpinePlaceholder,
+  //   route: '/projet/alpine',
+  //   type: 'school'
+  // }
 ]
 
 import layoutvideo from '@/assets/playground/layout.mp4'
@@ -89,37 +82,46 @@ import bookclubMobile from '@/assets/playground/mobile-bookclub.jpg?optimized'
 import bookclubVotes from '@/assets/playground/bookclub-votes.jpg?optimized'
 import bookclubVotesMobile from '@/assets/playground/mobile-bookclub-votes.jpg?optimized'
 
-import nehomia from '@/assets/playground/nehomia.jpg?optimized'
-import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
+// import nehomia from '@/assets/playground/nehomia.jpg?optimized'
+// import nehomiaMobile from '@/assets/playground/mobile-nehomia.jpg?optimized'
 
 import photo from '@/assets/playground/photo.jpg?optimized'
 import photoMobile from '@/assets/playground/mobile-photo.jpg?optimized'
 import photo2 from '@/assets/playground/photo2.jpg?optimized'
 import photo2Mobile from '@/assets/playground/mobile-photo2.jpg?optimized'
 
-import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
-import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
+// import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
+// import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
 
-import flim from '@/assets/playground/flim.jpg?optimized'
-import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
-import flimLive from '@/assets/playground/flim-live.jpg?optimized'
+// import flim from '@/assets/playground/flim.jpg?optimized'
+// import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
+// import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
-import baron from '@/assets/playground/baron-1.jpg?optimized'
-import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
-import baron2 from '@/assets/playground/baron-2.jpg?optimized'
-import baron2Desk from '@/assets/playground/desk-baron-2.jpg?optimized'
-import baron3 from '@/assets/playground/baron-3.jpg?optimized'
-import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
-import baron4 from '@/assets/playground/baron-4.jpg?optimized'
-import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
+// import baron from '@/assets/playground/baron-1.jpg?optimized'
+// import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
+// import baron2 from '@/assets/playground/baron-2.jpg?optimized'
+// import baron2Desk from '@/assets/playground/desk-baron-2.jpg?optimized'
+// import baron3 from '@/assets/playground/baron-3.jpg?optimized'
+// import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
+// import baron4 from '@/assets/playground/baron-4.jpg?optimized'
+// import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 
-import rvrs from '@/assets/playground/rvrs.jpg?optimized'
-import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
+// import rvrs from '@/assets/playground/rvrs.jpg?optimized'
+// import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
-import mag from '@/assets/playground/magazine.jpg?optimized'
-import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
-import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
-import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
+// import mag from '@/assets/playground/magazine.jpg?optimized'
+// import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
+// import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
+// import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
+
+import alpineDash from '@/assets/playground/alpine-dash.jpg?optimized'
+import alpineDashMobile from '@/assets/playground/mobile-alpine-dash.jpg?optimized'
+import alpineGps from '@/assets/playground/alpine-gps.jpg?optimized'
+import alpineGpsMobile from '@/assets/playground/mobile-alpine-gps.jpg?optimized'
+import alpineSearch from '@/assets/playground/alpine-search.jpg?optimized'
+import alpineSearchMobile from '@/assets/playground/mobile-alpine-search.jpg?optimized'
+import alpinePhilo from '@/assets/playground/alpine-philo.jpg?optimized'
+import alpinePhiloMobile from '@/assets/playground/mobile-alpine-philo.jpg?optimized'
 
 export const playgroundItems = [
   {
@@ -194,106 +196,139 @@ export const playgroundItems = [
       }
     ]
   },
+  // {
+  //   title: 'Au Baron',
+  //   image: baron2,
+  //   color: 'dark',
+  //   modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: baron2Desk,
+  //       mobileSrc: baron2,
+  //       alt: 'Sommaire de la page produit'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: baron4,
+  //       mobileSrc: baron4Mobile,
+  //       alt: 'Page produit mobile'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: baronDesk,
+  //       mobileSrc: baron,
+  //       alt: 'Cross-sells'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: baron3,
+  //       mobileSrc: baron3Mobile,
+  //       alt: 'Up-sells & questionnaire des préférences'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'Magazine',
+  //   image: mag,
+  //   color: 'dark',
+  //   modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: mag,
+  //       mobileSrc: magMobile,
+  //       alt: 'Magazine app - écran principal'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: mag2,
+  //       mobileSrc: mag2Mobile,
+  //       alt: 'Magazine app - écran secondaire'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'Flim',
+  //   image: flim,
+  //   color: 'dark',
+  //   modalText: 'Application de réservation de séances cinéma',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: flim,
+  //       mobileSrc: flimMobile,
+  //       alt: 'Flim - Réservations de séances de films'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: flimLive,
+  //       alt: 'Flim - Live Activity iOS'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'Gayacoin',
+  //   image: gayaMobile,
+  //   color: 'dark',
+  //   modalText: 'Gayacoin App & section web',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: gayaMobile,
+  //       alt: 'Gayacoin App'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: gayaDesktop,
+  //       alt: 'Gayacoin Website section'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'RVRS',
+  //   image: rvrs,
+  //   color: 'dark',
+  //   modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: rvrs,
+  //       mobileSrc: rvrsMobile,
+  //       alt: 'Site RVRS'
+  //     }
+  //   ]
+  // },
   {
-    title: 'Au Baron',
-    image: baron2,
+    title: 'Alpine Infotainment',
+    image: alpineDash,
     color: 'dark',
-    modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+    modalText:
+      'Design of a complete infotainment experience for a fictional electric Alpine A110, shaped to reflect the brand identity and support the driver.',
     media: [
       {
         type: 'image',
-        src: baron2Desk,
-        mobileSrc: baron2,
-        alt: 'Sommaire de la page produit'
+        src: alpineDash,
+        mobileSrc: alpineDashMobile,
+        alt: 'Alpine infotainment - dashboard'
       },
       {
         type: 'image',
-        src: baron4,
-        mobileSrc: baron4Mobile,
-        alt: 'Page produit mobile'
+        src: alpineGps,
+        mobileSrc: alpineGpsMobile,
+        alt: 'Alpine infotainment - GPS'
       },
       {
         type: 'image',
-        src: baronDesk,
-        mobileSrc: baron,
-        alt: 'Cross-sells'
+        src: alpineSearch,
+        mobileSrc: alpineSearchMobile,
+        alt: 'Alpine infotainment - search'
       },
       {
         type: 'image',
-        src: baron3,
-        mobileSrc: baron3Mobile,
-        alt: 'Up-sells & questionnaire des préférences'
-      }
-    ]
-  },
-  {
-    title: 'Magazine',
-    image: mag,
-    color: 'dark',
-    modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
-    media: [
-      {
-        type: 'image',
-        src: mag,
-        mobileSrc: magMobile,
-        alt: 'Magazine app - écran principal'
-      },
-      {
-        type: 'image',
-        src: mag2,
-        mobileSrc: mag2Mobile,
-        alt: 'Magazine app - écran secondaire'
-      }
-    ]
-  },
-  {
-    title: 'Flim',
-    image: flim,
-    color: 'dark',
-    modalText: 'Application de réservation de séances cinéma',
-    media: [
-      {
-        type: 'image',
-        src: flim,
-        mobileSrc: flimMobile,
-        alt: 'Flim - Réservations de séances de films'
-      },
-      {
-        type: 'image',
-        src: flimLive,
-        alt: 'Flim - Live Activity iOS'
-      }
-    ]
-  },
-  {
-    title: 'Gayacoin',
-    image: gayaMobile,
-    color: 'dark',
-    modalText: 'Gayacoin App & section web',
-    media: [
-      {
-        type: 'image',
-        src: gayaMobile,
-        alt: 'Gayacoin App'
-      },
-      {
-        type: 'image',
-        src: gayaDesktop,
-        alt: 'Gayacoin Website section'
-      }
-    ]
-  },
-  {
-    title: 'RVRS',
-    image: rvrs,
-    color: 'dark',
-    modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
-    media: [
-      {
-        type: 'image',
-        src: rvrs,
-        mobileSrc: rvrsMobile,
-        alt: 'Site RVRS'
+        src: alpinePhilo,
+        mobileSrc: alpinePhiloMobile,
+        alt: 'Alpine infotainment - philosophy'
       }
     ]
   },
@@ -319,15 +354,15 @@ const WORKS_EN_TRANSLATIONS = {
       'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
     description:
       'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
-    tags: [{ label: 'Side project', color: '#4A6741', textColor: 'white' }, 'Product Design']
+    tags: ['Product Design']
   },
   septiemeseance: {
     intro:
       'Online platform designed to quickly browse nearby cinema showtimes and discover movies currently in theaters.',
     description:
       'Septieme Seance is a platform designed to quickly find nearby cinema showtimes and discover movies currently in theaters. The goal was to provide a simple, fast, mobile-first experience, far from the complexity of existing services.',
-    services: ['User Research', 'UI Design', 'UI Kit', 'Front-end'],
-    tags: ['Freelance', 'UX/UI Design', 'Front-end']
+    services: ['User Research', 'UI Design', 'UI Kit'],
+    tags: ['UX/UI Design', 'Front-end']
   },
   talkie: {
     intro:
@@ -335,7 +370,7 @@ const WORKS_EN_TRANSLATIONS = {
     description:
       'We designed Talkie as a modern alternative to traditional language-learning apps : more dynamic, more flexible, and rooted in real-world scenarios, with a strong social layer. The project includes end-to-end UX research, product architecture, UI mockups, and a documented design system.',
     services: ['User Research', 'UI Design', 'Design System'],
-    tags: ['School project', 'UX/UI Design', 'Design System']
+    tags: ['UX/UI Design', 'Design System']
   },
   alpine: {
     title: 'Alpine Infotainment',
@@ -357,20 +392,13 @@ const PLAYGROUND_EN_TRANSLATIONS = {
   },
   3: {
     modalText:
-      'E-commerce proposal for Au Baron brewery. Product page, cross-sells, upsells, and taste preferences.',
-    mediaAlt: ['Product page overview', 'Mobile product page', 'Cross-sells', 'Upsells and preference quiz']
-  },
-  4: {
-    modalText:
-      'School project - AI-powered moodboard app design, with Adrien BAELEN',
-    mediaAlt: ['Magazine app - primary screen', 'Magazine app - secondary screen']
-  },
-  5: {
-    modalText: 'Cinema booking application',
-    mediaAlt: ['Flim - Movie session booking', 'Flim - iOS Live Activity']
-  },
-  7: {
-    modalText: 'School project - E-commerce website design and integration in Framer for a fictional product'
+      'Design of a complete infotainment experience for a fictional electric Alpine A110, shaped to reflect the brand identity and support the driver.',
+    mediaAlt: [
+      'Alpine infotainment - dashboard',
+      'Alpine infotainment - GPS',
+      'Alpine infotainment - search',
+      'Alpine infotainment - philosophy'
+    ]
   }
 }
 
