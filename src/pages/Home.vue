@@ -27,18 +27,4 @@ usePageLoaded()
   flex-direction: column;
   gap: 4rem;
 }
-
-@media screen and (min-width: 1280px) {
-  #works>.projet:last-child {
-    & img {
-      object-position: right;
-    }
-  }
-
-  #works>.projet:nth-child(2) {
-    & video {
-      object-fit: cover;
-    }
-  }
-}
 </style>
