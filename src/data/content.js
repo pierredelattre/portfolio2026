@@ -389,6 +389,14 @@ const WORKS_EN_TRANSLATIONS = {
     services: ['User Research', 'UI Design', 'Design System'],
     tags: ['UX/UI Design', 'Design System']
   },
+  mba: {
+    intro:
+      'Strategic design of the showcase website for a Qualiopi-certified training organization, focused on journey clarity, trust-building, and conversion.',
+    description:
+      'Project led from scoping to information architecture: requirements gathering, exploratory and competitive research, UX prioritization, journey definition, and preparation for the UI phase (mockups upcoming).',
+    services: ['UX Research', 'Information Architecture', 'UI Kit'],
+    tags: ['Product Design']
+  },
   alpine: {
     title: 'Alpine Infotainment',
     intro:
