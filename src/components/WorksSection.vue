@@ -81,17 +81,9 @@ const sectionLabel = computed(() => (locale.value === 'fr' ? 'Réalisations' : '
 }
 
 @media screen and (min-width: 1281px) {
-  #works :deep(.projet:nth-child(2)) {
-    grid-column: 1 / 3;
-    grid-row: 2;
-  }
 
   #works :deep(.projet:nth-child(2) .projet__image) {
     height: 400px;
-  }
-
-  #works :deep(.projet:nth-child(2) .projet__content) {
-    width: calc(50% - 32px);
   }
 
   #works :deep(.projet:nth-child(3) .projet__image) {
