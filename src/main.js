@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import App from './App.vue'
@@ -8,7 +9,43 @@ import { initializeLocale } from '@/i18n'
 
 import './styles/main.css'
 
+const lenis = new Lenis({
+  duration: 1.2,
+  smooth: true,
+  smoothTouch: false,
+  lerp: 0.15,
+  easing: (t) => t
+})
+
+if (typeof window !== 'undefined') {
+  window.__lenis = lenis
+}
+
 gsap.registerPlugin(ScrollTrigger)
+
+ScrollTrigger.scrollerProxy(document.body, {
+  scrollTop(value) {
+    if (typeof value === 'number') {
+      lenis.scrollTo(value, { immediate: true })
+    } else {
+      return window.scrollY || document.documentElement.scrollTop || 0
+    }
+  },
+  getBoundingClientRect() {
+    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+  }
+})
+
+lenis.on('scroll', () => {
+  ScrollTrigger.update()
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
 
 initPageAnimations()
 initializeLocale()
