@@ -2,6 +2,7 @@ import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920
 // import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import liraBanner from '@/assets/lira/lira-banner.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
+import mbaBanner from '@/assets/mba/mba-banner.jpg?optimized'
 
 export const works = [
   {
@@ -49,6 +50,22 @@ export const works = [
     cover: talkiePlaceholder,
     route: '/projet/talkie',
     type: 'school'
+  },
+  {
+    id: 'mba',
+    title: 'My Business Academy',
+    intro:
+      "Conception stratégique du site vitrine d'un organisme de formation certifié Qualiopi, orientée clarté des parcours, réassurance et conversion.",
+    description:
+      "Projet mené de la phase de cadrage à l'architecture d'information : recueil des besoins, recherche exploratoire et concurrentielle, priorisation UX, définition des parcours et préparation de la phase UI (maquettes à venir).",
+    services: ['UX Research', "Architecture de l'information", 'UI Kit'],
+    team: [],
+    links: [],
+    tags: ['Product Design', 'UX Strategy'],
+    cover: mbaBanner,
+    thumbnail: mbaBanner,
+    route: '/projet/my-business-academy',
+    type: 'freelance'
   },
   // {
   //   id: 'alpine',
