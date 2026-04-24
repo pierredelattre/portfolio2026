@@ -44,54 +44,101 @@ import { resolveOptimizedImageSrc } from '@/utils/image'
 import projectBackground from '@/assets/mba/mba-banner.jpg'
 
 import contexteFr from '@/assets/mba/mba-contexte-contraintes.jpg'
+import contexteFrWebp from '@/assets/mba/mba-contexte-contraintes.webp'
 import contexteEn from '@/assets/mba/en-mba-contexte-contraintes.jpg'
+import contexteEnWebp from '@/assets/mba/en-mba-contexte-contraintes.webp'
 import contexteMobileFr from '@/assets/mba/mobile-mba-contexte-contraintes.jpg'
+import contexteMobileFrWebp from '@/assets/mba/mobile-mba-contexte-contraintes.webp'
 import contexteMobileEn from '@/assets/mba/en-mobile-mba-contexte-contraintes.jpg'
+import contexteMobileEnWebp from '@/assets/mba/en-mobile-mba-contexte-contraintes.webp'
 
 import cadrageFr from '@/assets/mba/mba-cadrage.jpg'
+import cadrageFrWebp from '@/assets/mba/mba-cadrage.webp'
 import cadrageEn from '@/assets/mba/en-mba-cadrage.jpg'
+import cadrageEnWebp from '@/assets/mba/en-mba-cadrage.webp'
 import cadrageMobileFr from '@/assets/mba/mobile-mba-cadrage.jpg'
+import cadrageMobileFrWebp from '@/assets/mba/mobile-mba-cadrage.webp'
 import cadrageMobileEn from '@/assets/mba/en-mobile-mba-cadrage.jpg'
+import cadrageMobileEnWebp from '@/assets/mba/en-mobile-mba-cadrage.webp'
 
 import frictionsFr from '@/assets/mba/mba-frictions.jpg'
+import frictionsFrWebp from '@/assets/mba/mba-frictions.webp'
 import frictionsEn from '@/assets/mba/en-mba-frictions.jpg'
+import frictionsEnWebp from '@/assets/mba/en-mba-frictions.webp'
 import frictionsMobileFr from '@/assets/mba/mobile-mba-frictions.jpg'
+import frictionsMobileFrWebp from '@/assets/mba/mobile-mba-frictions.webp'
 import frictionsMobileEn from '@/assets/mba/en-mobile-mba-frictions.jpg'
+import frictionsMobileEnWebp from '@/assets/mba/en-mobile-mba-frictions.webp'
 
 import personasFr from '@/assets/mba/mba-personas.jpg'
+import personasFrWebp from '@/assets/mba/mba-personas.webp'
 import personasEn from '@/assets/mba/en-mba-personas.jpg'
+import personasEnWebp from '@/assets/mba/en-mba-personas.webp'
 import personasMobileFr from '@/assets/mba/mobile-mba-personas.jpg'
+import personasMobileFrWebp from '@/assets/mba/mobile-mba-personas.webp'
 import personasMobileEn from '@/assets/mba/en-mobile-mba-personas.jpg'
+import personasMobileEnWebp from '@/assets/mba/en-mobile-mba-personas.webp'
 
 import principesFr from '@/assets/mba/mba-principes.jpg'
+import principesFrWebp from '@/assets/mba/mba-principes.webp'
 import principesEn from '@/assets/mba/en-mba-principes.jpg'
+import principesEnWebp from '@/assets/mba/en-mba-principes.webp'
 import principesMobileFr from '@/assets/mba/mobile-mba-principes.jpg'
+import principesMobileFrWebp from '@/assets/mba/mobile-mba-principes.webp'
 import principesMobileEn from '@/assets/mba/en-mobile-mba-principes.jpg'
+import principesMobileEnWebp from '@/assets/mba/en-mobile-mba-principes.webp'
 
 import priorisationFr from '@/assets/mba/mba-priorisation.jpg'
+import priorisationFrWebp from '@/assets/mba/mba-priorisation.webp'
 import priorisationEn from '@/assets/mba/en-mba-priorisation.jpg'
+import priorisationEnWebp from '@/assets/mba/en-mba-priorisation.webp'
 import priorisationMobileFr from '@/assets/mba/mobile-mba-priorisation.jpg'
+import priorisationMobileFrWebp from '@/assets/mba/mobile-mba-priorisation.webp'
 import priorisationMobileEn from '@/assets/mba/en-mobile-mba-priorisation.jpg'
+import priorisationMobileEnWebp from '@/assets/mba/en-mobile-mba-priorisation.webp'
 
 import arboFr from '@/assets/mba/mba-arbo.jpg'
+import arboFrWebp from '@/assets/mba/mba-arbo.webp'
 import arboEn from '@/assets/mba/en-mba-arbo.jpg'
+import arboEnWebp from '@/assets/mba/en-mba-arbo.webp'
 import arboMobileFr from '@/assets/mba/mobile-mba-arbo.jpg'
+import arboMobileFrWebp from '@/assets/mba/mobile-mba-arbo.webp'
 import arboMobileEn from '@/assets/mba/en-mobile-mba-arbo.jpg'
+import arboMobileEnWebp from '@/assets/mba/en-mobile-mba-arbo.webp'
 
 import roadmapFr from '@/assets/mba/mba-roadmap.jpg'
+import roadmapFrWebp from '@/assets/mba/mba-roadmap.webp'
 import roadmapEn from '@/assets/mba/en-mba-roadmap.jpg'
+import roadmapEnWebp from '@/assets/mba/en-mba-roadmap.webp'
 import roadmapMobileFr from '@/assets/mba/mobile-mba-roadmap.jpg'
+import roadmapMobileFrWebp from '@/assets/mba/mobile-mba-roadmap.webp'
 import roadmapMobileEn from '@/assets/mba/en-mobile-mba-roadmap.jpg'
+import roadmapMobileEnWebp from '@/assets/mba/en-mobile-mba-roadmap.webp'
 
 import impactFr from '@/assets/mba/mba-impact.jpg'
+import impactFrWebp from '@/assets/mba/mba-impact.webp'
 import impactEn from '@/assets/mba/en-mba-impact.jpg'
+import impactEnWebp from '@/assets/mba/en-mba-impact.webp'
 import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg'
+import impactMobileFrWebp from '@/assets/mba/mobile-mba-impact.webp'
 import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg'
+import impactMobileEnWebp from '@/assets/mba/en-mobile-mba-impact.webp'
 
 const PROJECT_ROUTE = '/projet/my-business-academy'
 const { locale } = useLocale()
 const isEnglishLocale = computed(() => locale.value === 'en')
-const localizedImage = (frImage, enImage) => (isEnglishLocale.value ? enImage ?? frImage : frImage)
+const createPictureSource = (webpSrc, jpgSrc) => ({
+  sources: {
+    webp: webpSrc
+  },
+  img: {
+    src: jpgSrc
+  }
+})
+const localizedPicture = (frWebp, frJpg, enWebp, enJpg) =>
+  isEnglishLocale.value
+    ? createPictureSource(enWebp ?? frWebp, enJpg ?? frJpg)
+    : createPictureSource(frWebp, frJpg)
 
 const PAGE_CONTENT = {
   fr: {
@@ -205,46 +252,61 @@ if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const contexteImage = computed(() => localizedImage(contexteFr, contexteEn))
-const contexteMobileImage = computed(() => localizedImage(contexteMobileFr, contexteMobileEn))
+const contexteImage = computed(() => localizedPicture(contexteFrWebp, contexteFr, contexteEnWebp, contexteEn))
+const contexteMobileImage = computed(() =>
+  localizedPicture(contexteMobileFrWebp, contexteMobileFr, contexteMobileEnWebp, contexteMobileEn)
+)
 
-const cadrageImage = computed(() => localizedImage(cadrageFr, cadrageEn))
-const cadrageMobileImage = computed(() => localizedImage(cadrageMobileFr, cadrageMobileEn))
+const cadrageImage = computed(() => localizedPicture(cadrageFrWebp, cadrageFr, cadrageEnWebp, cadrageEn))
+const cadrageMobileImage = computed(() =>
+  localizedPicture(cadrageMobileFrWebp, cadrageMobileFr, cadrageMobileEnWebp, cadrageMobileEn)
+)
 
 const needsImages = computed(() => [
   {
-    src: localizedImage(personasFr, personasEn),
-    mobileSrc: localizedImage(personasMobileFr, personasMobileEn),
+    src: localizedPicture(personasFrWebp, personasFr, personasEnWebp, personasEn),
+    mobileSrc: localizedPicture(personasMobileFrWebp, personasMobileFr, personasMobileEnWebp, personasMobileEn),
     alt: pageContent.value.needsAlt
   },
   {
-    src: localizedImage(frictionsFr, frictionsEn),
-    mobileSrc: localizedImage(frictionsMobileFr, frictionsMobileEn),
+    src: localizedPicture(frictionsFrWebp, frictionsFr, frictionsEnWebp, frictionsEn),
+    mobileSrc: localizedPicture(frictionsMobileFrWebp, frictionsMobileFr, frictionsMobileEnWebp, frictionsMobileEn),
     alt: pageContent.value.discoveryTitle
   }
 ])
 
 const principlesImages = computed(() => [
   {
-    src: localizedImage(principesFr, principesEn),
-    mobileSrc: localizedImage(principesMobileFr, principesMobileEn),
+    src: localizedPicture(principesFrWebp, principesFr, principesEnWebp, principesEn),
+    mobileSrc: localizedPicture(principesMobileFrWebp, principesMobileFr, principesMobileEnWebp, principesMobileEn),
     alt: pageContent.value.uxTitle
   },
   {
-    src: localizedImage(priorisationFr, priorisationEn),
-    mobileSrc: localizedImage(priorisationMobileFr, priorisationMobileEn),
+    src: localizedPicture(priorisationFrWebp, priorisationFr, priorisationEnWebp, priorisationEn),
+    mobileSrc: localizedPicture(
+      priorisationMobileFrWebp,
+      priorisationMobileFr,
+      priorisationMobileEnWebp,
+      priorisationMobileEn
+    ),
     alt: pageContent.value.uxTitle
   }
 ])
 
-const roadmapImage = computed(() => localizedImage(roadmapFr, roadmapEn))
-const roadmapMobileImage = computed(() => localizedImage(roadmapMobileFr, roadmapMobileEn))
+const roadmapImage = computed(() => localizedPicture(roadmapFrWebp, roadmapFr, roadmapEnWebp, roadmapEn))
+const roadmapMobileImage = computed(() =>
+  localizedPicture(roadmapMobileFrWebp, roadmapMobileFr, roadmapMobileEnWebp, roadmapMobileEn)
+)
 
-const arboImage = computed(() => localizedImage(arboFr, arboEn))
-const arboMobileImage = computed(() => localizedImage(arboMobileFr, arboMobileEn))
+const arboImage = computed(() => localizedPicture(arboFrWebp, arboFr, arboEnWebp, arboEn))
+const arboMobileImage = computed(() =>
+  localizedPicture(arboMobileFrWebp, arboMobileFr, arboMobileEnWebp, arboMobileEn)
+)
 
-const impactImage = computed(() => localizedImage(impactFr, impactEn))
-const impactMobileImage = computed(() => localizedImage(impactMobileFr, impactMobileEn))
+const impactImage = computed(() => localizedPicture(impactFrWebp, impactFr, impactEnWebp, impactEn))
+const impactMobileImage = computed(() =>
+  localizedPicture(impactMobileFrWebp, impactMobileFr, impactMobileEnWebp, impactMobileEn)
+)
 
 
 const hasProject = computed(() => Boolean(projectData.value))
