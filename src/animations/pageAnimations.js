@@ -17,6 +17,8 @@ const SCROLL_LOCK_CLASS = 'scroll-locked'
 let lockedScrollY = null
 let scrollLockCount = 0
 let shouldRestoreScrollOnUnlock = true
+const shouldReduceMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const isMobileViewport = () =>
   typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
@@ -214,8 +216,8 @@ const setupProjectScrollReveals = ({ projectSection, layoutSections }) => {
         vars: {
           opacity: 1,
           y: 0,
-          stagger: 0.08,
-          duration: 0.4,
+          stagger: 0.1,
+          duration: 0.44,
           ease: 'power3.out'
         }
       })
@@ -234,7 +236,7 @@ const setupProjectScrollReveals = ({ projectSection, layoutSections }) => {
         vars: {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.72,
           ease: 'power3.out'
         }
       })
@@ -272,6 +274,7 @@ export function initPageAnimations() {
       ? Array.from(projectWrapper.querySelectorAll(':scope > .layout'))
       : []
     const debugProjectIntro = isProjectIntroDebugging()
+    const reduceMotion = shouldReduceMotion()
 
     const lenis = typeof window !== 'undefined' ? window.__lenis : null
     const syncLenisToTop = () => {
@@ -356,7 +359,9 @@ export function initPageAnimations() {
     header.style.paddingTop = headerPadding.top
     header.style.paddingBottom = headerPadding.bottom
 
-    lockScroll({ restoreOnUnlock: false })
+    if (!reduceMotion) {
+      lockScroll({ restoreOnUnlock: false })
+    }
 
     pageBg.style.opacity = '0'
     pageBg.style.backgroundImage = `url('${projectBackground}')`
@@ -387,7 +392,7 @@ export function initPageAnimations() {
       tlProject.to(toHide, {
         opacity: 0,
         y: -20,
-        duration: 0.35,
+        duration: reduceMotion ? 0.01 : 0.32,
         stagger: 0.06,
         ease: 'power2.inOut'
       })
@@ -399,7 +404,7 @@ export function initPageAnimations() {
       pageBg,
       {
         opacity: 1,
-        duration: 1.0,
+        duration: reduceMotion ? 0.01 : 0.82,
         ease: 'power3.out'
       },
       toHide.length ? '-=0.1' : '+=0'
@@ -408,7 +413,7 @@ export function initPageAnimations() {
     tlProject.fromTo(
       mainEl,
       { y: MAIN_START_Y },
-      { y: 0, duration: 1.1, ease: 'power3.out' },
+      { y: 0, duration: reduceMotion ? 0.01 : 0.92, ease: 'power3.out' },
       '<'
     )
 
@@ -424,7 +429,7 @@ export function initPageAnimations() {
       markWorksIntroComplete()
     }
 
-    tlProject.call(() => gsap.delayedCall(0.15, settleProjectIntro))
+    tlProject.call(() => gsap.delayedCall(reduceMotion ? 0 : 0.1, settleProjectIntro))
 
     setupProjectScrollReveals({ projectSection, layoutSections })
 
@@ -438,10 +443,10 @@ export function initPageAnimations() {
             opacity: 1,
             y: 0,
             stagger: 0.08,
-            duration: 0.9,
+            duration: reduceMotion ? 0.01 : 0.78,
             ease: 'power3.out'
           },
-          '+=0.15'
+          reduceMotion ? '+=0' : '+=0.12'
         )
       }
     }
@@ -537,12 +542,12 @@ export function initPageAnimations() {
           gsap.set(localeSwitch, { opacity: 0, y: 20 })
         }
 
-        const tl = gsap.timeline({ delay: 0.4 })
+        const tl = gsap.timeline({ delay: isProjectPage ? 0.24 : 0.3 })
         const introStartLabel = 'introStart'
         const headerRevealCompleteLabel = 'headerRevealComplete'
         const worksRevealCompleteLabel = 'worksRevealComplete'
-        const WORKS_TWEEN_DURATION = 0.8
-        const WORKS_OVERLAP_OFFSET = 0.2
+        const WORKS_TWEEN_DURATION = 0.72
+        const WORKS_OVERLAP_OFFSET = 0.18
         const releaseScroll = () => {
           if (!isProjectPage) {
             unlockScroll()
@@ -562,7 +567,7 @@ export function initPageAnimations() {
             opacity: 1,
             paddingTop: headerPadding.top,
             paddingBottom: headerPadding.bottom,
-            duration: 1.4,
+            duration: 1.05,
             ease: 'power4.inOut'
           }, introStartLabel)
         } else {
@@ -570,7 +575,7 @@ export function initPageAnimations() {
             header,
             {
               opacity: 1,
-              duration: 0.8,
+              duration: 0.62,
               ease: 'power2.out'
             },
             introStartLabel
@@ -582,7 +587,7 @@ export function initPageAnimations() {
           tl.fromTo(
             themeSwitch,
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
             switchStart
           )
         }
@@ -592,7 +597,7 @@ export function initPageAnimations() {
           tl.fromTo(
             localeSwitch,
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
             localeSwitchStart
           )
         }
@@ -604,8 +609,8 @@ export function initPageAnimations() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.08,
+            duration: 0.68,
+            stagger: 0.1,
             ease: 'power2.out'
           },
           headerItemsStart
@@ -690,7 +695,7 @@ export function initPageAnimations() {
           vars: {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.7,
             ease: 'power3.out'
           }
         })
@@ -704,8 +709,8 @@ export function initPageAnimations() {
           vars: {
             opacity: 1,
             y: 0,
-            stagger: 0.08,
-            duration: 1.2,
+            stagger: 0.1,
+            duration: 0.9,
             ease: 'power3.out'
           }
         })
@@ -719,8 +724,8 @@ export function initPageAnimations() {
           vars: {
             opacity: 1,
             y: 0,
-            stagger: 0.08,
-            duration: 0.9,
+            stagger: 0.1,
+            duration: 0.76,
             ease: 'power3.out'
           }
         })

@@ -135,8 +135,8 @@ const getScrollPosition = () => {
 }
 
 let pendingScrollToTop = null
-const SCROLL_TO_TOP_DURATION = 0.3
-const MAX_SCROLL_WAIT = 1200
+const SCROLL_TO_TOP_DURATION = 0.55
+const MAX_SCROLL_WAIT = 1600
 
 const scrollToTopBeforeProjectNavigation = () => {
   if (typeof window === 'undefined') return Promise.resolve()
@@ -167,7 +167,10 @@ const scrollToTopBeforeProjectNavigation = () => {
     }
 
     if (lenisInstance && typeof lenisInstance.scrollTo === 'function') {
-      lenisInstance.scrollTo(0, { duration: SCROLL_TO_TOP_DURATION })
+      lenisInstance.scrollTo(0, {
+        duration: SCROLL_TO_TOP_DURATION,
+        easing: (t) => 1 - Math.pow(1 - t, 2.2)
+      })
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }

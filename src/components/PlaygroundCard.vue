@@ -124,7 +124,7 @@ video.playground__image-media {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 360ms var(--ease-out-strong);
 }
 
 .playground__label {
@@ -154,7 +154,13 @@ video.playground__image-media {
   right: 1rem;
 }
 
-.playground__item:hover :deep(.playground__image-media) {
-  transform: scale(1.05);
+.playground__item:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .playground__item:hover :deep(.playground__image-media) {
+    transform: scale(1.05);
+  }
 }
 </style>

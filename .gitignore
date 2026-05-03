@@ -11,3 +11,5 @@ exports/
 
 # si claude code
 .claude/
+.agents/
+skills-lock.json

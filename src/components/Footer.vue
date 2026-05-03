@@ -201,6 +201,7 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
         &>.project--description {
           line-height: 1.5;
           width: 65%;
+          
 
           @media screen and (max-width: 768px) {
             width: 100%;
@@ -210,7 +211,7 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
         &>.project--label {
           text-transform: uppercase;
           font-size: .75rem;
-          color: oklch(81.719% 0.00009 271.152);
+          color: oklch(75.802% 0.00112 12.93);
         }
 
         & .overlay {
@@ -221,7 +222,7 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
           left: 0;
           height: 100%;
           width: 100%;
-          background: linear-gradient(180deg, #171717, #17171700);
+          background: linear-gradient(180deg, #090909, #09090900);
           height: 280px;
         }
 

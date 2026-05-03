@@ -184,14 +184,14 @@ const linkProps = computed(() => {
     }
 
     & :deep(video) {
-      transition: transform 0.4s ease;
+      transition: transform 360ms var(--ease-out-strong);
     }
  
     & :deep(.projet__image-tag) {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 360ms var(--ease-out-strong);
 
       @media screen and (max-width: 768px) {
         height: 320px;
@@ -218,15 +218,17 @@ const linkProps = computed(() => {
   }
 }
 
-.projet:hover .projet__image :deep(.projet__image-tag){
-  transform: scale(1.05)!important;
-}
-
 .projet .projet__image video {
   transform: scale(1.02);
 }
 
-.projet:hover .projet__image video {
-  transform: scale(1.07)!important;
+@media (hover: hover) and (pointer: fine) {
+  .projet:hover .projet__image :deep(.projet__image-tag){
+    transform: scale(1.05)!important;
+  }
+
+  .projet:hover .projet__image video {
+    transform: scale(1.07)!important;
+  }
 }
 </style>

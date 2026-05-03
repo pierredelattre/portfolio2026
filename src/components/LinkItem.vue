@@ -107,18 +107,18 @@ const wrapperAttrs = computed(() => {
     flex-direction: row;
     gap: 0.125rem;
     color: inherit;
-    transition: color 0.4s ease;
+    transition: color var(--motion-base) var(--ease-out-strong);
 
     & p {
       color: inherit;
-      transition: color 0.4s ease;
+      transition: color var(--motion-base) var(--ease-out-strong);
     }
 
     & .link__icon {
       width: 16px;
       height: 16px;
       fill: currentColor;
-      transition: fill 0.4s ease;
+      transition: fill var(--motion-base) var(--ease-out-strong);
     }
   }
 
@@ -138,18 +138,24 @@ const wrapperAttrs = computed(() => {
     background-color: var(--primary);
     transform-origin: left center;
     transform: scaleX(0) translateY(-1px);
-    transition: transform 0.4s ease;
+    transition: transform var(--motion-base) var(--ease-out-strong);
     will-change: transform;
   }
 }
 
-.link:hover {
-  & .link__label {
-    color: var(--primary);
-  }
+.link:active {
+  transform: scale(0.98);
+}
 
-  & .link__border--hover {
-    transform: scaleX(1) translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    & .link__label {
+      color: var(--primary);
+    }
+
+    & .link__border--hover {
+      transform: scaleX(1) translateY(-1px);
+    }
   }
 }
 </style>

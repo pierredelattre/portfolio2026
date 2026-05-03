@@ -400,7 +400,7 @@ onBeforeUnmount(() => {
 
 .modal-fade-enter-active,
 .modal-fade-leave-active {
-  transition: opacity 0.35s ease;
+  transition: opacity var(--motion-base) var(--ease-out-strong);
 }
 
 .modal-fade-enter-from,
@@ -417,7 +417,7 @@ onBeforeUnmount(() => {
   padding: 2rem;
   background: rgba(10, 10, 16, 0.65);
   backdrop-filter: blur(16px);
-  animation: overlay-in 0.35s ease forwards;
+  animation: overlay-in var(--motion-base) var(--ease-out-strong) forwards;
   z-index: 999;
 }
 
@@ -477,7 +477,7 @@ onBeforeUnmount(() => {
 .slide-next-leave-active,
 .slide-prev-enter-active,
 .slide-prev-leave-active {
-  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease;
+  transition: transform var(--motion-slow) var(--ease-out-strong), opacity var(--motion-slow) var(--ease-out-strong);
 }
 
 .slide-next-enter-active,
@@ -556,12 +556,18 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background-color var(--motion-fast) var(--ease-out-strong), border-color var(--motion-fast) var(--ease-out-strong), transform var(--motion-fast) var(--ease-out-strong);
 }
 
-.playground-modal__control:hover {
-  background: rgba(0, 0, 0, 0.65);
-  border-color: rgba(255, 255, 255, 0.6);
+.playground-modal__control:active {
+  transform: translateY(-50%) scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .playground-modal__control:hover {
+    background: rgba(0, 0, 0, 0.65);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 .playground-modal__control svg {

@@ -132,7 +132,7 @@ header {
   row-gap: 4rem;
   align-content: start;
   padding: 2rem;
-  transition: height 0.5s ease;
+  transition: height var(--motion-slow) var(--ease-out-strong);
 
   @media screen and (max-width: 768px) {
     /* grid-template-columns: repeat(4, 1fr);
@@ -173,7 +173,7 @@ header {
     border-radius: 999px;
     background-color: var(--switch);
     cursor: pointer;
-    transition: background-color 0.4s ease;
+    transition: background-color var(--motion-base) var(--ease-out-strong);
     z-index: 1000;
     border: 1px solid var(--text-primary);
     padding: 0;
@@ -214,18 +214,24 @@ header {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    transition: width var(--motion-base) var(--ease-out-strong), background-color var(--motion-base) var(--ease-out-strong), color var(--motion-base) var(--ease-out-strong), transform var(--motion-fast) var(--ease-out-strong);
 
     :root[data-theme='light'] & {
       background: color-mix(in oklch, var(--primary) 10%, var(--surface));
     }
 
-    &:hover {
-      background: color-mix(in oklch, var(--primary) 35%, var(--surface));
+    &:active {
+      transform: scale(0.97);
     }
 
-    :root[data-theme='light'] &:hover {
-      background: color-mix(in oklch, var(--primary) 18%, var(--surface));
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: color-mix(in oklch, var(--primary) 35%, var(--surface));
+      }
+
+      :root[data-theme='light'] &:hover {
+        background: color-mix(in oklch, var(--primary) 18%, var(--surface));
+      }
     }
 
     &:focus-visible {
