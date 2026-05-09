@@ -18,7 +18,7 @@ export const works = [
     cover: liraBanner,
     thumbnail: liraBanner,
     route: '/projet/lira',
-    type: 'perso'
+    type: ''
   },
   {
     id: 'mba',
