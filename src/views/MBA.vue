@@ -41,104 +41,57 @@ import { getWorksByLocale } from '@/data/content'
 import { useLocale } from '@/i18n'
 import { resolveOptimizedImageSrc } from '@/utils/image'
 
-import projectBackground from '@/assets/mba/mba-banner.jpg'
+import projectBackground from '@/assets/mba/mba-banner.jpg?optimized&format=webp;jpg'
 
-import contexteFr from '@/assets/mba/mba-contexte-contraintes.jpg'
-import contexteFrWebp from '@/assets/mba/mba-contexte-contraintes.webp'
-import contexteEn from '@/assets/mba/en-mba-contexte-contraintes.jpg'
-import contexteEnWebp from '@/assets/mba/en-mba-contexte-contraintes.webp'
-import contexteMobileFr from '@/assets/mba/mobile-mba-contexte-contraintes.jpg'
-import contexteMobileFrWebp from '@/assets/mba/mobile-mba-contexte-contraintes.webp'
-import contexteMobileEn from '@/assets/mba/en-mobile-mba-contexte-contraintes.jpg'
-import contexteMobileEnWebp from '@/assets/mba/en-mobile-mba-contexte-contraintes.webp'
+import contexteFr from '@/assets/mba/mba-contexte-contraintes.jpg?optimized&format=webp;jpg'
+import contexteEn from '@/assets/mba/en-mba-contexte-contraintes.jpg?optimized&format=webp;jpg'
+import contexteMobileFr from '@/assets/mba/mobile-mba-contexte-contraintes.jpg?optimized&format=webp;jpg'
+import contexteMobileEn from '@/assets/mba/en-mobile-mba-contexte-contraintes.jpg?optimized&format=webp;jpg'
 
-import cadrageFr from '@/assets/mba/mba-cadrage.jpg'
-import cadrageFrWebp from '@/assets/mba/mba-cadrage.webp'
-import cadrageEn from '@/assets/mba/en-mba-cadrage.jpg'
-import cadrageEnWebp from '@/assets/mba/en-mba-cadrage.webp'
-import cadrageMobileFr from '@/assets/mba/mobile-mba-cadrage.jpg'
-import cadrageMobileFrWebp from '@/assets/mba/mobile-mba-cadrage.webp'
-import cadrageMobileEn from '@/assets/mba/en-mobile-mba-cadrage.jpg'
-import cadrageMobileEnWebp from '@/assets/mba/en-mobile-mba-cadrage.webp'
+import cadrageFr from '@/assets/mba/mba-cadrage.jpg?optimized&format=webp;jpg'
+import cadrageEn from '@/assets/mba/en-mba-cadrage.jpg?optimized&format=webp;jpg'
+import cadrageMobileFr from '@/assets/mba/mobile-mba-cadrage.jpg?optimized&format=webp;jpg'
+import cadrageMobileEn from '@/assets/mba/en-mobile-mba-cadrage.jpg?optimized&format=webp;jpg'
 
-import frictionsFr from '@/assets/mba/mba-frictions.jpg'
-import frictionsFrWebp from '@/assets/mba/mba-frictions.webp'
-import frictionsEn from '@/assets/mba/en-mba-frictions.jpg'
-import frictionsEnWebp from '@/assets/mba/en-mba-frictions.webp'
-import frictionsMobileFr from '@/assets/mba/mobile-mba-frictions.jpg'
-import frictionsMobileFrWebp from '@/assets/mba/mobile-mba-frictions.webp'
-import frictionsMobileEn from '@/assets/mba/en-mobile-mba-frictions.jpg'
-import frictionsMobileEnWebp from '@/assets/mba/en-mobile-mba-frictions.webp'
+import frictionsFr from '@/assets/mba/mba-frictions.jpg?optimized&format=webp;jpg'
+import frictionsEn from '@/assets/mba/en-mba-frictions.jpg?optimized&format=webp;jpg'
+import frictionsMobileFr from '@/assets/mba/mobile-mba-frictions.jpg?optimized&format=webp;jpg'
+import frictionsMobileEn from '@/assets/mba/en-mobile-mba-frictions.jpg?optimized&format=webp;jpg'
 
-import personasFr from '@/assets/mba/mba-personas.jpg'
-import personasFrWebp from '@/assets/mba/mba-personas.webp'
-import personasEn from '@/assets/mba/en-mba-personas.jpg'
-import personasEnWebp from '@/assets/mba/en-mba-personas.webp'
-import personasMobileFr from '@/assets/mba/mobile-mba-personas.jpg'
-import personasMobileFrWebp from '@/assets/mba/mobile-mba-personas.webp'
-import personasMobileEn from '@/assets/mba/en-mobile-mba-personas.jpg'
-import personasMobileEnWebp from '@/assets/mba/en-mobile-mba-personas.webp'
+import personasFr from '@/assets/mba/mba-personas.jpg?optimized&format=webp;jpg'
+import personasEn from '@/assets/mba/en-mba-personas.jpg?optimized&format=webp;jpg'
+import personasMobileFr from '@/assets/mba/mobile-mba-personas.jpg?optimized&format=webp;jpg'
+import personasMobileEn from '@/assets/mba/en-mobile-mba-personas.jpg?optimized&format=webp;jpg'
 
-import principesFr from '@/assets/mba/mba-principes.jpg'
-import principesFrWebp from '@/assets/mba/mba-principes.webp'
-import principesEn from '@/assets/mba/en-mba-principes.jpg'
-import principesEnWebp from '@/assets/mba/en-mba-principes.webp'
-import principesMobileFr from '@/assets/mba/mobile-mba-principes.jpg'
-import principesMobileFrWebp from '@/assets/mba/mobile-mba-principes.webp'
-import principesMobileEn from '@/assets/mba/en-mobile-mba-principes.jpg'
-import principesMobileEnWebp from '@/assets/mba/en-mobile-mba-principes.webp'
+import principesFr from '@/assets/mba/mba-principes.jpg?optimized&format=webp;jpg'
+import principesEn from '@/assets/mba/en-mba-principes.jpg?optimized&format=webp;jpg'
+import principesMobileFr from '@/assets/mba/mobile-mba-principes.jpg?optimized&format=webp;jpg'
+import principesMobileEn from '@/assets/mba/en-mobile-mba-principes.jpg?optimized&format=webp;jpg'
 
-import priorisationFr from '@/assets/mba/mba-priorisation.jpg'
-import priorisationFrWebp from '@/assets/mba/mba-priorisation.webp'
-import priorisationEn from '@/assets/mba/en-mba-priorisation.jpg'
-import priorisationEnWebp from '@/assets/mba/en-mba-priorisation.webp'
-import priorisationMobileFr from '@/assets/mba/mobile-mba-priorisation.jpg'
-import priorisationMobileFrWebp from '@/assets/mba/mobile-mba-priorisation.webp'
-import priorisationMobileEn from '@/assets/mba/en-mobile-mba-priorisation.jpg'
-import priorisationMobileEnWebp from '@/assets/mba/en-mobile-mba-priorisation.webp'
+import priorisationFr from '@/assets/mba/mba-priorisation.jpg?optimized&format=webp;jpg'
+import priorisationEn from '@/assets/mba/en-mba-priorisation.jpg?optimized&format=webp;jpg'
+import priorisationMobileFr from '@/assets/mba/mobile-mba-priorisation.jpg?optimized&format=webp;jpg'
+import priorisationMobileEn from '@/assets/mba/en-mobile-mba-priorisation.jpg?optimized&format=webp;jpg'
 
-import arboFr from '@/assets/mba/mba-arbo.jpg'
-import arboFrWebp from '@/assets/mba/mba-arbo.webp'
-import arboEn from '@/assets/mba/en-mba-arbo.jpg'
-import arboEnWebp from '@/assets/mba/en-mba-arbo.webp'
-import arboMobileFr from '@/assets/mba/mobile-mba-arbo.jpg'
-import arboMobileFrWebp from '@/assets/mba/mobile-mba-arbo.webp'
-import arboMobileEn from '@/assets/mba/en-mobile-mba-arbo.jpg'
-import arboMobileEnWebp from '@/assets/mba/en-mobile-mba-arbo.webp'
+import arboFr from '@/assets/mba/mba-arbo.jpg?optimized&format=webp;jpg'
+import arboEn from '@/assets/mba/en-mba-arbo.jpg?optimized&format=webp;jpg'
+import arboMobileFr from '@/assets/mba/mobile-mba-arbo.jpg?optimized&format=webp;jpg'
+import arboMobileEn from '@/assets/mba/en-mobile-mba-arbo.jpg?optimized&format=webp;jpg'
 
-import roadmapFr from '@/assets/mba/mba-roadmap.jpg'
-import roadmapFrWebp from '@/assets/mba/mba-roadmap.webp'
-import roadmapEn from '@/assets/mba/en-mba-roadmap.jpg'
-import roadmapEnWebp from '@/assets/mba/en-mba-roadmap.webp'
-import roadmapMobileFr from '@/assets/mba/mobile-mba-roadmap.jpg'
-import roadmapMobileFrWebp from '@/assets/mba/mobile-mba-roadmap.webp'
-import roadmapMobileEn from '@/assets/mba/en-mobile-mba-roadmap.jpg'
-import roadmapMobileEnWebp from '@/assets/mba/en-mobile-mba-roadmap.webp'
+import roadmapFr from '@/assets/mba/mba-roadmap.jpg?optimized&format=webp;jpg'
+import roadmapEn from '@/assets/mba/en-mba-roadmap.jpg?optimized&format=webp;jpg'
+import roadmapMobileFr from '@/assets/mba/mobile-mba-roadmap.jpg?optimized&format=webp;jpg'
+import roadmapMobileEn from '@/assets/mba/en-mobile-mba-roadmap.jpg?optimized&format=webp;jpg'
 
-import impactFr from '@/assets/mba/mba-impact.jpg'
-import impactFrWebp from '@/assets/mba/mba-impact.webp'
-import impactEn from '@/assets/mba/en-mba-impact.jpg'
-import impactEnWebp from '@/assets/mba/en-mba-impact.webp'
-import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg'
-import impactMobileFrWebp from '@/assets/mba/mobile-mba-impact.webp'
-import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg'
-import impactMobileEnWebp from '@/assets/mba/en-mobile-mba-impact.webp'
+import impactFr from '@/assets/mba/mba-impact.jpg?optimized&format=webp;jpg'
+import impactEn from '@/assets/mba/en-mba-impact.jpg?optimized&format=webp;jpg'
+import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg?optimized&format=webp;jpg'
+import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg?optimized&format=webp;jpg'
 
 const PROJECT_ROUTE = '/projet/my-business-academy'
 const { locale } = useLocale()
 const isEnglishLocale = computed(() => locale.value === 'en')
-const createPictureSource = (webpSrc, jpgSrc) => ({
-  sources: {
-    webp: webpSrc
-  },
-  img: {
-    src: jpgSrc
-  }
-})
-const localizedPicture = (frWebp, frJpg, enWebp, enJpg) =>
-  isEnglishLocale.value
-    ? createPictureSource(enWebp ?? frWebp, enJpg ?? frJpg)
-    : createPictureSource(frWebp, frJpg)
+const localizedImage = (frImage, enImage) => (isEnglishLocale.value ? enImage ?? frImage : frImage)
 
 const PAGE_CONTENT = {
   fr: {
@@ -216,60 +169,55 @@ if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const contexteImage = computed(() => localizedPicture(contexteFrWebp, contexteFr, contexteEnWebp, contexteEn))
+const contexteImage = computed(() => localizedImage(contexteFr, contexteEn))
 const contexteMobileImage = computed(() =>
-  localizedPicture(contexteMobileFrWebp, contexteMobileFr, contexteMobileEnWebp, contexteMobileEn)
+  localizedImage(contexteMobileFr, contexteMobileEn)
 )
 
-const cadrageImage = computed(() => localizedPicture(cadrageFrWebp, cadrageFr, cadrageEnWebp, cadrageEn))
+const cadrageImage = computed(() => localizedImage(cadrageFr, cadrageEn))
 const cadrageMobileImage = computed(() =>
-  localizedPicture(cadrageMobileFrWebp, cadrageMobileFr, cadrageMobileEnWebp, cadrageMobileEn)
+  localizedImage(cadrageMobileFr, cadrageMobileEn)
 )
 
 const needsImages = computed(() => [
   {
-    src: localizedPicture(personasFrWebp, personasFr, personasEnWebp, personasEn),
-    mobileSrc: localizedPicture(personasMobileFrWebp, personasMobileFr, personasMobileEnWebp, personasMobileEn),
+    src: localizedImage(personasFr, personasEn),
+    mobileSrc: localizedImage(personasMobileFr, personasMobileEn),
     alt: pageContent.value.needsAlt
   },
   {
-    src: localizedPicture(frictionsFrWebp, frictionsFr, frictionsEnWebp, frictionsEn),
-    mobileSrc: localizedPicture(frictionsMobileFrWebp, frictionsMobileFr, frictionsMobileEnWebp, frictionsMobileEn),
+    src: localizedImage(frictionsFr, frictionsEn),
+    mobileSrc: localizedImage(frictionsMobileFr, frictionsMobileEn),
     alt: pageContent.value.discoveryTitle
   }
 ])
 
 const principlesImages = computed(() => [
   {
-    src: localizedPicture(principesFrWebp, principesFr, principesEnWebp, principesEn),
-    mobileSrc: localizedPicture(principesMobileFrWebp, principesMobileFr, principesMobileEnWebp, principesMobileEn),
+    src: localizedImage(principesFr, principesEn),
+    mobileSrc: localizedImage(principesMobileFr, principesMobileEn),
     alt: pageContent.value.uxTitle
   },
   {
-    src: localizedPicture(priorisationFrWebp, priorisationFr, priorisationEnWebp, priorisationEn),
-    mobileSrc: localizedPicture(
-      priorisationMobileFrWebp,
-      priorisationMobileFr,
-      priorisationMobileEnWebp,
-      priorisationMobileEn
-    ),
+    src: localizedImage(priorisationFr, priorisationEn),
+    mobileSrc: localizedImage(priorisationMobileFr, priorisationMobileEn),
     alt: pageContent.value.uxTitle
   }
 ])
 
-const roadmapImage = computed(() => localizedPicture(roadmapFrWebp, roadmapFr, roadmapEnWebp, roadmapEn))
+const roadmapImage = computed(() => localizedImage(roadmapFr, roadmapEn))
 const roadmapMobileImage = computed(() =>
-  localizedPicture(roadmapMobileFrWebp, roadmapMobileFr, roadmapMobileEnWebp, roadmapMobileEn)
+  localizedImage(roadmapMobileFr, roadmapMobileEn)
 )
 
-const arboImage = computed(() => localizedPicture(arboFrWebp, arboFr, arboEnWebp, arboEn))
+const arboImage = computed(() => localizedImage(arboFr, arboEn))
 const arboMobileImage = computed(() =>
-  localizedPicture(arboMobileFrWebp, arboMobileFr, arboMobileEnWebp, arboMobileEn)
+  localizedImage(arboMobileFr, arboMobileEn)
 )
 
-const impactImage = computed(() => localizedPicture(impactFrWebp, impactFr, impactEnWebp, impactEn))
+const impactImage = computed(() => localizedImage(impactFr, impactEn))
 const impactMobileImage = computed(() =>
-  localizedPicture(impactMobileFrWebp, impactMobileFr, impactMobileEnWebp, impactMobileEn)
+  localizedImage(impactMobileFr, impactMobileEn)
 )
 
 
