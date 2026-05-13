@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-    <button
+    <!-- <button
       class="locale-switch"
       type="button"
       :aria-label="localeSwitchLabel"
@@ -18,7 +18,7 @@
         />
       </svg>
       <span>{{ t(`header.localeButton.${locale}`) }}</span>
-    </button>
+    </button> -->
     <button
       class="switch"
       type="button"
@@ -71,7 +71,7 @@ import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 import { useLocale } from '@/i18n'
 
-const { locale, setLocale, t } = useLocale()
+const { locale, t } = useLocale()
 
 const resumePdf = computed(() =>
   locale.value === 'fr' ? '/CV%20Delattre%20Pierre.pdf' : '/Resume%20Delattre%20Pierre.pdf'
@@ -79,8 +79,6 @@ const resumePdf = computed(() =>
 
 const theme = ref('dark')
 const THEME_STORAGE_KEY = 'portfolio-theme'
-const nextLocale = computed(() => (locale.value === 'fr' ? 'en' : 'fr'))
-const localeSwitchLabel = computed(() => t('header.localeSwitchLabel'))
 const services = computed(() => t('header.services'))
 
 const themeLabel = computed(() =>
@@ -109,10 +107,6 @@ const getInitialTheme = () => {
 
 const toggleTheme = () => {
   applyTheme(theme.value === 'dark' ? 'light' : 'dark')
-}
-
-const toggleLocale = () => {
-  setLocale(nextLocale.value)
 }
 
 onMounted(() => {

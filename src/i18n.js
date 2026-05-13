@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 
 const STORAGE_KEY = 'preferred-locale'
-const FALLBACK_LOCALE = 'en'
+const FALLBACK_LOCALE = 'fr'
 const SUPPORTED_LOCALES = ['fr', 'en']
 
 const messages = {
@@ -10,7 +10,7 @@ const messages = {
       homeAriaLabel: 'Retour à l\'accueil',
       role: 'Product Designer',
       cityLabel: 'Villes',
-      city: 'Lille – Paris',
+      city: 'Lille',
       servicesLabel: 'Services',
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
@@ -57,7 +57,7 @@ const messages = {
       homeAriaLabel: 'Back to homepage',
       role: 'Product Designer',
       cityLabel: 'Cities',
-      city: 'Lille – Paris',
+      city: 'Lille',
       servicesLabel: 'Services',
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
@@ -122,28 +122,12 @@ const normalizeLocale = (value) => {
   const lowered = value.toLowerCase().trim()
   if (lowered.startsWith('fr')) return 'fr'
   if (SUPPORTED_LOCALES.includes(lowered)) return lowered
-  return 'en'
-}
-
-const detectFromNavigator = () => {
-  if (typeof navigator === 'undefined') return FALLBACK_LOCALE
-  const browserLocales = Array.isArray(navigator.languages) && navigator.languages.length
-    ? navigator.languages
-    : [navigator.language]
-
-  const hasFrench = browserLocales.some((item) => typeof item === 'string' && item.toLowerCase().startsWith('fr'))
-  return hasFrench ? 'fr' : 'en'
+  return FALLBACK_LOCALE
 }
 
 const resolveInitialLocale = () => {
   if (typeof window === 'undefined') return FALLBACK_LOCALE
-
-  const saved = normalizeLocale(window.localStorage.getItem(STORAGE_KEY))
-  if (saved && SUPPORTED_LOCALES.includes(saved)) {
-    return saved
-  }
-
-  return detectFromNavigator()
+  return FALLBACK_LOCALE
 }
 
 const locale = ref(resolveInitialLocale())
