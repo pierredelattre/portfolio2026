@@ -90,6 +90,15 @@
                 <p class="playground-modal__text">
                   {{ modalText }}
                 </p>
+                <div v-if="selectedItem?.links?.length" class="playground-modal__links">
+                  <LinkItem
+                    v-for="link in selectedItem.links"
+                    :key="link.href"
+                    :label="link.label"
+                    :href="link.href"
+                    :external="link.external"
+                  />
+                </div>
               </div>
               <div v-if="hasMultipleMedia" class="playground-modal__counter">
                 {{ activeMediaIndex + 1 }} / {{ mediaItems.length }}
@@ -107,6 +116,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 import ModalVideoPlayer from '@/components/ModalVideoPlayer.vue'
+import LinkItem from '@/components/LinkItem.vue'
 import { useLocale } from '@/i18n'
 
 const props = defineProps({
@@ -415,7 +425,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(10, 10, 16, 0.65);
+  background: rgba(10, 10, 16, 0.88);
   backdrop-filter: blur(16px);
   animation: overlay-in var(--motion-base) var(--ease-out-strong) forwards;
   z-index: 999;
@@ -427,7 +437,7 @@ onBeforeUnmount(() => {
     backdrop-filter: blur(0px);
   }
   to {
-    background: rgba(10, 10, 16, 0.35);
+    background: rgba(10, 10, 16, 0.65);
     backdrop-filter: blur(16px);
   }
 }
@@ -508,7 +518,7 @@ onBeforeUnmount(() => {
 }
 
 .playground-modal__text {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.9);
   max-width: 80ch;
@@ -520,6 +530,25 @@ onBeforeUnmount(() => {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+}
+
+.playground-modal__links {
+  margin-top: 0.75rem;
+
+  :deep(.link__label),
+  :deep(.link__label p),
+  :deep(.link__icon) {
+    color: rgba(255, 255, 255, 0.9);
+    fill: rgba(255, 255, 255, 0.9);
+  }
+
+  :deep(.link__border) {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  :deep(.link__border--hover) {
+    background-color: #ffffff;
+  }
 }
 
 .playground-modal__text-row {

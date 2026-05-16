@@ -140,7 +140,50 @@ import alpineSearchMobile from '@/assets/playground/mobile-alpine-search.jpg?opt
 import alpinePhilo from '@/assets/playground/alpine-philo.jpg?optimized'
 import alpinePhiloMobile from '@/assets/playground/mobile-alpine-philo.jpg?optimized'
 
+import roomsDemo from '@/assets/playground/rooms-demo.mp4'
+import roomsCard from '@/assets/playground/rooms-card.mp4'
+import roomsHero from '@/assets/playground/rooms-hero.jpg?optimized'
+import roomsHeroMobile from '@/assets/playground/mobile-rooms-hero.jpg?optimized'
+import roomsInspector from '@/assets/playground/rooms-inspector.mp4'
+import roomsPlan from '@/assets/playground/rooms-plan.jpg?optimized'
+import roomsPlanMobile from '@/assets/playground/mobile-rooms-plan.jpg?optimized'
+import roomsToolbar from '@/assets/playground/rooms-toolbar.jpg?optimized'
+import roomsToolbarMobile from '@/assets/playground/mobile-rooms-toolbar.jpg?optimized'
+
 export const playgroundItems = [
+  {
+    title: '2D Room Planner',
+    image: { type: 'video', src: roomsCard, mobileSrc: roomsCard, poster: roomsHero },
+    color: 'dark',
+    modalText: 'Outil de plan d\'espace en 2D. Exploration des interactions d\'un éditeur type Figma : tracé de murs, snap, panneau d\'édition flottant, smart guides...',
+    links: [{ label: 'Tester l\'outil en ligne', href: 'https://rooms.pierredelattre.fr', external: true }],
+    media: [
+      {
+        type: 'video',
+        src: roomsDemo,
+        poster: roomsHero,
+        alt: 'Rooms — flow de création d\'un plan'
+      },
+      {
+        type: 'video',
+        src: roomsInspector,
+        poster: roomsPlan,
+        alt: 'Rooms — inspector : scrubbing, rotation, couleurs'
+      },
+      {
+        type: 'image',
+        src: roomsPlan,
+        mobileSrc: roomsPlanMobile,
+        alt: 'Rooms — vue plan habité'
+      },
+      {
+        type: 'image',
+        src: roomsToolbar,
+        mobileSrc: roomsToolbarMobile,
+        alt: 'Rooms — toolbar et formes'
+      },
+    ]
+  },
   {
     title: 'Book Club',
     image: { type: 'video', src: bookclubvideo, poster: bookclub },
@@ -316,44 +359,44 @@ export const playgroundItems = [
   //     }
   //   ]
   // },
-  {
-    title: 'Alpine Infotainment',
-    image: alpineDash,
-    color: 'dark',
-    modalText:
-      'Design of a complete infotainment experience for a fictional electric Alpine A110, shaped to reflect the brand identity and support the driver.',
-    media: [
-      {
-        type: 'image',
-        src: alpineDash,
-        mobileSrc: alpineDashMobile,
-        alt: 'Alpine infotainment - dashboard'
-      },
-      {
-        type: 'image',
-        src: alpinePlaceholder,
-        alt: 'Alpine infotainment - dashboard'
-      },
-      {
-        type: 'image',
-        src: alpineGps,
-        mobileSrc: alpineGpsMobile,
-        alt: 'Alpine infotainment - GPS'
-      },
-      {
-        type: 'image',
-        src: alpineSearch,
-        mobileSrc: alpineSearchMobile,
-        alt: 'Alpine infotainment - search'
-      },
-      {
-        type: 'image',
-        src: alpinePhilo,
-        mobileSrc: alpinePhiloMobile,
-        alt: 'Alpine infotainment - philosophy'
-      }
-    ]
-  },
+  // {
+  //   title: 'Alpine Infotainment',
+  //   image: alpineDash,
+  //   color: 'dark',
+  //   modalText:
+  //     'Design of a complete infotainment experience for a fictional electric Alpine A110, shaped to reflect the brand identity and support the driver.',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: alpineDash,
+  //       mobileSrc: alpineDashMobile,
+  //       alt: 'Alpine infotainment - dashboard'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: alpinePlaceholder,
+  //       alt: 'Alpine infotainment - dashboard'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: alpineGps,
+  //       mobileSrc: alpineGpsMobile,
+  //       alt: 'Alpine infotainment - GPS'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: alpineSearch,
+  //       mobileSrc: alpineSearchMobile,
+  //       alt: 'Alpine infotainment - search'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: alpinePhilo,
+  //       mobileSrc: alpinePhiloMobile,
+  //       alt: 'Alpine infotainment - philosophy'
+  //     }
+  //   ]
+  // },
   // {
   //   title: 'Nehomia',
   //   image: nehomia,
