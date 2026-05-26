@@ -15,7 +15,7 @@ const messages = {
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
       intro:
-        'Designer UX/UI orienté produit, spécialisé dans la conception d\'interfaces accessibles et la création de design systems cohérents. Expérience en recherche utilisateur, e-commerce et intégration front-end.',
+        'Product Designer et intégrateur web, je travaille autant sur la conception d\'interfaces que sur leur intégration front-end. Expérience en e-commerce, design systems et recherche utilisateur.',
       resume: 'CV',
       localeSwitchLabel: 'Changer de langue',
       localeButton: {
