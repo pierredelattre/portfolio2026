@@ -11,7 +11,7 @@ export const works = [
       'Aider les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
     description:
       'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
-    services: ['Product Design', 'UX Research', 'UI Design'],
+    services: ['Product Design', 'Web Design', 'UX Research', 'UI Design'],
     team: [],
     links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
     tags: ['Product Design', 'Live product'],
