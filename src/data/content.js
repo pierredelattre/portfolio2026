@@ -30,7 +30,7 @@ export const works = [
     services: ['UX Research', "Architecture de l'information", 'UX Strategy'],
     team: [],
     links: [],
-    tags: ['Product Design', 'Web Design'],
+    tags: ['Product Design'],
     cover: mbaBanner,
     thumbnail: mbaBanner,
     route: '/projet/my-business-academy',
