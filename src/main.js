@@ -10,10 +10,10 @@ import { initializeLocale } from '@/i18n'
 import './styles/main.css'
 
 const lenis = new Lenis({
-  duration: 1.2,
-  smooth: true,
+  duration: 0,
+  smooth: false,
   smoothTouch: false,
-  lerp: 0.15,
+  lerp: 1,
   easing: (t) => t
 })
 

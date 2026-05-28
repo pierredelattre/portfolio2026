@@ -9,16 +9,19 @@
   </main>
   <Footer :key="`footer-${locale}`" :locale="locale" />
   <SpeedInsights/>
-   <Analytics />
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+onMounted(() => {
+  inject();
+});
 import { RouterView } from 'vue-router'
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 import { useLocale } from '@/i18n'
 import { SpeedInsights } from "@vercel/speed-insights/vue"
-import { Analytics } from '@vercel/analytics/vue';
+import { inject } from '@vercel/analytics';
 
 const { locale } = useLocale()
 </script>
