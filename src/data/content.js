@@ -109,9 +109,9 @@ import photo2Mobile from '@/assets/playground/mobile-photo2.jpg?optimized'
 // import gayaMobile from '@/assets/playground/gaya-mobile.jpg?optimized'
 // import gayaDesktop from '@/assets/playground/gaya-desk.jpg?optimized'
 
-// import flim from '@/assets/playground/flim.jpg?optimized'
-// import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
-// import flimLive from '@/assets/playground/flim-live.jpg?optimized'
+import flim from '@/assets/playground/flim.jpg?optimized'
+import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
+import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
 import baron from '@/assets/playground/baron-1.jpg?optimized'
 import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
@@ -122,8 +122,8 @@ import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
 import baron4 from '@/assets/playground/baron-4.jpg?optimized'
 import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 
-// import rvrs from '@/assets/playground/rvrs.jpg?optimized'
-// import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
+import rvrs from '@/assets/playground/rvrs.jpg?optimized'
+import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
 // import mag from '@/assets/playground/magazine.jpg?optimized'
 // import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
@@ -237,25 +237,25 @@ export const playgroundItems = [
       },
     ]
   },
-  // {
-  //   title: 'Camera App',
-  //   image: photo,
-  //   color: 'dark',
-  //   media: [
-  //     {
-  //       type: 'image',
-  //       src: photo,
-  //       mobileSrc: photoMobile,
-  //       alt: 'Camera app & Bibliothèque'
-  //     },
-  //     {
-  //       type: 'image',
-  //       src: photo2,
-  //       mobileSrc: photo2Mobile,
-  //       alt: 'Landscape'
-  //     }
-  //   ]
-  // },
+  {
+    title: 'Camera App',
+    image: photo,
+    color: 'dark',
+    media: [
+      {
+        type: 'image',
+        src: photo,
+        mobileSrc: photoMobile,
+        alt: 'Camera app & Bibliothèque'
+      },
+      {
+        type: 'image',
+        src: photo2,
+        mobileSrc: photo2Mobile,
+        alt: 'Landscape'
+      }
+    ]
+  },
   {
     title: 'Au Baron',
     image: baron2,
@@ -288,6 +288,38 @@ export const playgroundItems = [
       }
     ]
   },
+  {
+    title: 'Alpine Infotainment',
+    image: alpinePlaceholder,
+    color: 'light',
+    modalText:
+      'École - Design d\'un infodivertissement à destination d\'une A110 électrique fictive.',
+    media: [
+      {
+        type: 'image',
+        src: alpineDash,
+        mobileSrc: alpineDashMobile,
+        alt: 'Alpine infotainment - dashboard'
+      },
+      {
+        type: 'image',
+        src: alpinePlaceholder,
+        alt: 'Alpine infotainment - dashboard'
+      },
+      {
+        type: 'image',
+        src: alpineGps,
+        mobileSrc: alpineGpsMobile,
+        alt: 'Alpine infotainment - GPS'
+      },
+      {
+        type: 'image',
+        src: alpinePhilo,
+        mobileSrc: alpinePhiloMobile,
+        alt: 'Alpine infotainment - philosophy'
+      }
+    ]
+  },
   // {
   //   title: 'Magazine',
   //   image: mag,
@@ -308,25 +340,25 @@ export const playgroundItems = [
   //     }
   //   ]
   // },
-  // {
-  //   title: 'Flim',
-  //   image: flim,
-  //   color: 'dark',
-  //   modalText: 'Application de réservation de séances cinéma',
-  //   media: [
-  //     {
-  //       type: 'image',
-  //       src: flim,
-  //       mobileSrc: flimMobile,
-  //       alt: 'Flim - Réservations de séances de films'
-  //     },
-  //     {
-  //       type: 'image',
-  //       src: flimLive,
-  //       alt: 'Flim - Live Activity iOS'
-  //     }
-  //   ]
-  // },
+  {
+    title: 'Flim',
+    image: flim,
+    color: 'dark',
+    modalText: 'Application de réservation de séances cinéma',
+    media: [
+      {
+        type: 'image',
+        src: flim,
+        mobileSrc: flimMobile,
+        alt: 'Flim - Réservations de séances de films'
+      },
+      {
+        type: 'image',
+        src: flimLive,
+        alt: 'Flim - Live Activity iOS'
+      }
+    ]
+  },
   // {
   //   title: 'Gayacoin',
   //   image: gayaMobile,
@@ -345,20 +377,20 @@ export const playgroundItems = [
   //     }
   //   ]
   // },
-  // {
-  //   title: 'RVRS',
-  //   image: rvrs,
-  //   color: 'dark',
-  //   modalText: 'École - Conception & intégration d\'un site e-commerce via Framer pour un produit fictif',
-  //   media: [
-  //     {
-  //       type: 'image',
-  //       src: rvrs,
-  //       mobileSrc: rvrsMobile,
-  //       alt: 'Site RVRS'
-  //     }
-  //   ]
-  // },
+  {
+    title: 'RVRS',
+    image: rvrs,
+    color: 'dark',
+    modalText: 'École - Conception & intégration d\'un site e-commerce via Figma et intégration Framer pour un produit fictif',
+    media: [
+      {
+        type: 'image',
+        src: rvrs,
+        mobileSrc: rvrsMobile,
+        alt: 'Site RVRS'
+      }
+    ]
+  },
   // {
   //   title: 'Alpine Infotainment',
   //   image: alpineDash,
