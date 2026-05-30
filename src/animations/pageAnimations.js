@@ -705,7 +705,7 @@ export function initPageAnimations() {
         createDeferredScrollReveal({
           targets: playgroundItems,
           trigger: playgroundSection,
-          start: 'top 75%',
+          start: 'top 95%',
           vars: {
             opacity: 1,
             y: 0,
