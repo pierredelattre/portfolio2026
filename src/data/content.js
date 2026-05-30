@@ -22,7 +22,7 @@ export const works = [
   },
   {
     id: 'mba',
-    title: 'My Business Academy',
+    title: 'MBA Formations',
     intro:
       "Conception stratégique du site vitrine d'un organisme de formation certifié Qualiopi, orientée clarté des parcours, réassurance et conversion.",
     description:
@@ -33,7 +33,7 @@ export const works = [
     tags: ['Product Design'],
     cover: mbaBanner,
     thumbnail: mbaBanner,
-    route: '/projet/my-business-academy',
+    route: '/projet/mba-formations',
     type: 'freelance'
   },
   {

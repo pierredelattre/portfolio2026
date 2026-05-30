@@ -86,10 +86,10 @@ const routes = [
     }
   },
   {
-    path: '/projet/my-business-academy',
+    path: '/projet/mba-formations',
     name: 'mba',
     component: lazyWithChunkReload(() => import('@/views/MBA.vue')),
-    alias: buildLocalizedAliases('/projet/my-business-academy'),
+    alias: buildLocalizedAliases('/projet/mba-formations'),
     meta: {
       headerMode: 'project'
     }

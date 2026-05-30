@@ -88,7 +88,7 @@ import impactEn from '@/assets/mba/en-mba-impact.jpg?optimized&format=webp;jpg'
 import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg?optimized&format=webp;jpg'
 import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg?optimized&format=webp;jpg'
 
-const PROJECT_ROUTE = '/projet/my-business-academy'
+const PROJECT_ROUTE = '/projet/mba-formations'
 const { locale } = useLocale()
 const isEnglishLocale = computed(() => locale.value === 'en')
 const localizedImage = (frImage, enImage) => (isEnglishLocale.value ? enImage ?? frImage : frImage)
