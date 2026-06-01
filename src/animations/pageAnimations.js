@@ -498,6 +498,7 @@ export function initPageAnimations() {
       if (worksItems.length) {
         gsap.set(worksItems, { opacity: 0, y: 40 })
       }
+      // Remplace les lignes commentées par ça, sans condition
       if (playgroundTitle) {
         gsap.set(playgroundTitle, { opacity: 0, y: 40 })
       }
@@ -642,6 +643,29 @@ export function initPageAnimations() {
         } else {
           tl.addLabel(worksRevealCompleteLabel, headerRevealCompleteLabel)
         }
+
+        // Après le tween des worksItems
+        if (playgroundTitle) {
+          tl.to(
+            playgroundTitle,
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+            worksRevealCompleteLabel  // démarre quand works est fini
+          )
+        }
+
+        if (playgroundItems.length) {
+          tl.to(
+            playgroundItems,
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.05,
+              duration: 0.9,
+              ease: 'power3.out'
+            },
+            worksRevealCompleteLabel  // idem, en parallèle du titre
+          )
+        }
         tl.call(() => {
           if (isProjectPage) {
             mainEl?.style.removeProperty('min-height')
@@ -687,34 +711,34 @@ export function initPageAnimations() {
         }
       }
 
-      if (playgroundSection && playgroundTitle) {
-        createDeferredScrollReveal({
-          targets: playgroundTitle,
-          trigger: playgroundSection,
-          start: 'top 80%',
-          vars: {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out'
-          }
-        })
-      }
+      // if (playgroundSection && playgroundTitle) {
+      //   createDeferredScrollReveal({
+      //     targets: playgroundTitle,
+      //     trigger: playgroundSection,
+      //     start: 'top 80%',
+      //     vars: {
+      //       opacity: 1,
+      //       y: 0,
+      //       duration: 0.7,
+      //       ease: 'power3.out'
+      //     }
+      //   })
+      // }
 
-      if (playgroundSection && playgroundItems.length) {
-        createDeferredScrollReveal({
-          targets: playgroundItems,
-          trigger: playgroundSection,
-          start: 'top 95%',
-          vars: {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.9,
-            ease: 'power3.out'
-          }
-        })
-      }
+      // if (playgroundSection && playgroundItems.length) {
+      //   createDeferredScrollReveal({
+      //     targets: playgroundItems,
+      //     trigger: playgroundSection,
+      //     start: 'top 95%',
+      //     vars: {
+      //       opacity: 1,
+      //       y: 0,
+      //       stagger: 0.1,
+      //       duration: 0.9,
+      //       ease: 'power3.out'
+      //     }
+      //   })
+      // }
 
       if (!isProjectPage && footer && footerItems.length) {
         createDeferredScrollReveal({
