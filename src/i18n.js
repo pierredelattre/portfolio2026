@@ -8,14 +8,14 @@ const messages = {
   fr: {
     header: {
       homeAriaLabel: 'Retour à l\'accueil',
-      role: 'Product Designer',
+      role: 'UX/UI Designer & Front-end',
       cityLabel: 'Villes',
       city: 'Lille',
       servicesLabel: 'Services',
       services: ['Product Design', 'Web Design', 'Framer, Webflow, Shopify & WordPress'],
       emailLabel: 'Email',
       intro:
-        'Product Designer et intégrateur web, je travaille autant sur la conception d\'interfaces que sur leur intégration front-end. Expérience en e-commerce, design systems et recherche utilisateur.',
+        'UX/UI Designer et intégrateur web, je travaille autant sur la conception d\'interfaces que sur leur intégration front-end. Expérience en e-commerce, design systems et recherche utilisateur.',
       resume: 'CV',
       localeSwitchLabel: 'Changer de langue',
       localeButton: {
