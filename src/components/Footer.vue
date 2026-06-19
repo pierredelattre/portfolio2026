@@ -35,7 +35,7 @@
     <div class="footer__infos">
       <template v-if="!isHomePage">
         <div class="footer__liens">
-          <h3>{{ footerText.links }}</h3>
+          <!-- <h3>{{ footerText.links }}</h3> -->
           <!-- <div class="links">
             <LinkItem :href="resumePdf" :label="footerText.resume" secondary external />
             <LinkItem href="https://source.pierredelattre.fr/" label="Source Design system" secondary external />
